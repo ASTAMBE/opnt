@@ -1,0 +1,20 @@
+-- bringPostLCount
+
+DELIMITER //
+DROP FUNCTION IF EXISTS bringPostLCount //
+CREATE FUNCTION bringPostLCount(postid INT) RETURNS INT
+BEGIN
+
+/* 04/25/2020 AST: Rebuilt: Removed the @ from the var PostlCOUNT 
+ SELECT bringPostHlount(postid INT) */
+
+  DECLARE PostLCOUNT INT ;
+
+SET PostLCOUNT = (SELECT COUNT(DISTINCT OPA.ACTION_BY_USERID) 
+FROM OPN_USER_POST_ACTION OPA 
+WHERE OPA.CAUSE_POST_ID = postid AND OPA.POST_ACTION_TYPE = 'L');
+  RETURN PostLCOUNT;
+  
+END;//
+
+-- 

@@ -1,0 +1,60 @@
+-- userContentReport
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS userContentReport //
+CREATE PROCEDURE userContentReport(uuid varchar(45), contentID INT, contentType varchar(10)
+, reportTypeCode varchar(5), userComment varchar(100))
+thisProc: BEGIN
+
+/* 	
+
+	06/30/2020 AST: Initial Creation for recording the User Reporting 
+	a specific content for UGC violation
+
+	07/09/2020 AST: Adding KOUserCommon to complete the Report Content action
+	
+	08/11/2020 Kapil: Confirmed
+
+*/
+
+declare  byUID, againstUID, TID INT;
+declare byUname, againstUname, againstUUID, byFGID, againstFGID varchar(45) ;
+DECLARE EMBURL, MEDCONTENT VARCHAR(1000) ;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT USERID, USERNAME, IFNULL(G_USERID, FB_USERID)  
+INTO byUID, byUname, byFGID FROM OPN_USERLIST WHERE USER_UUID = uuid ;
+
+CASE WHEN contentType = 'POST' THEN
+
+SELECT P.POST_BY_USERID, P.TOPICID, P.EMBEDDED_CONTENT, P.MEDIA_CONTENT
+, U.USER_UUID, U.USERNAME, IFNULL(U.G_USERID, U.FB_USERID)
+INTO againstUID, TID, EMBURL, MEDCONTENT, againstUUID, againstUname, againstFGID
+FROM OPN_POSTS P, OPN_USERLIST U
+WHERE P.POST_BY_USERID = U.USERID AND P.POST_ID = contentID;
+
+WHEN contentType = 'COMMENT' THEN
+
+SELECT C.COMMENT_BY_USERID, C.TOPICID, C.EMBEDDED_CONTENT, C.MEDIA_CONTENT
+, U.USER_UUID, U.USERNAME, IFNULL(U.G_USERID, U.FB_USERID)
+INTO againstUID, TID, EMBURL, MEDCONTENT, againstUUID, againstUname, againstFGID
+FROM OPN_POST_COMMENTS C, OPN_USERLIST U
+WHERE C.COMMENT_BY_USERID = U.USERID AND C.COMMENT_ID = contentID;
+
+END CASE ;
+
+INSERT INTO OPN_USER_REPORTED_CONTENT(REPORTING_USERID, REPORTING_UUID, REPORTING_UNAME
+, REPORTING_DTM, REPORT_TYPE, REPORTING_UFGID, CONTENT_TYPE, USER_COMMENT, TOPICID
+, CONTENT_ID, EMBEDDED_URL, MEDIA_CONTENT, AGAINST_USERID, AGAINST_UUID, AGAINST_UNAME)
+VALUES(byUID, UUID, byUNAME
+, NOW(), reportTypeCode, byFGID, contentType, userComment, TID
+, contentID, EMBURL, MEDCONTENT, againstUID, againstUUID, againstUname) ;
+
+CALL KOUserCommon(uuid, contentType, contentID) ;
+
+ 
+END; //
+ DELIMITER ;
+ 
+ -- 

@@ -1,0 +1,36 @@
+-- 
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS usernamelist // 
+CREATE PROCEDURE usernamelist(username VARCHAR(25), logintype varchar(20))
+BEGIN
+
+/* 07/02/2020 Rohit: Added insret into proc log 
+call usernamelist("rohit","com.facebook");
+
+07/11/2020 AST: Changed CONCAT_VALUES  to CONCAT(username, '-', logintype)
+08/11/2020 Kapil: Confirmed
+*/
+DECLARE ID VARCHAR(50);
+
+INSERT INTO OPN_PROC_LOG(PROC_NAME, PROC_DTM, CONCAT_FIELDS, CONCAT_VALUES)
+VALUES('usernamelist', NOW(), 'USERNAME', CONCAT(username, '-', logintype)) ;
+
+CASE WHEN logintype = "com.google" THEN
+
+SELECT OU.G_USERID INTO ID FROM OPN_USERLIST OU WHERE OU.USERNAME = username ;
+
+SELECT OU.USER_UUID USERID, OU.USERNAME, OU.COUNTRY_CODE 
+FROM OPN_USERLIST OU WHERE OU.G_USERID = ID LIMIT 5;
+
+WHEN logintype= 'com.facebook' THEN
+SELECT OU.FB_USERID INTO ID FROM OPN_USERLIST OU WHERE OU.USERNAME = username ;
+SELECT OU.USER_UUID USERID, OU.USERNAME, OU.COUNTRY_CODE FROM OPN_USERLIST OU 
+WHERE OU.FB_USERID = ID LIMIT 5;
+
+END CASE;
+
+END //
+DELIMITER ;
+
+-- 

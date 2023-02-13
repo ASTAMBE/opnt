@@ -1,0 +1,150 @@
+-- copyUserCarts
+
+DROP PROCEDURE IF EXISTS `copyUserCarts`;
+DELIMITER //
+CREATE PROCEDURE copyUserCarts(uuidFrom varchar(45), uuidTo varchar(45), tid INT, postID INT)
+BEGIN
+
+/* 	
+
+	07/13/2020 AST: Initial Creation for copying an inviter user's carts to invitee user
+					Handling the cases where the inviter kills the cart after the invite
+                    
+	08/09/2020 AST: COnfirmed
+	12/09/2020 AST: Added enhannced BHV LOG. Added OU update to track the invites
+
+	01/12/2021 AST: adding cases for copying minimum cart so that existing users
+    can also get 'shared post'
+    Why: Here is what is happening. Lots of people have registered but there is no further 
+	interaction. We need to nudge them by posting controversial articles or posts and
+    inviting them to join the discussion.
+    But this can be done only if we allow the sharedTo user to have at least something
+    common with the sharing user - if not then we should copy just one element from the sharer
+    cart to shareTo cart
+    Whast if sharer and shareTo have exactly opposite carts?
+    Option 1: We can select a random keyid (that is not in the cart already) in that topic 
+    and assign it to both with same cart L
+    Option 2: truly leave them alone and show a msg that this post is not available
+    option 3: in this case the post will be avlbl as an 'opposite' - we can write very
+    complex code to identify this scenario and take the app landing to opposites
+*/
+
+declare UIDFROM, UIDTO, FROMCARTCNT, TOCARTCNT, TIDTO INT;
+declare UNAMEFROM, UNAMETO varchar(40) ;
+declare CCODEFROM, CCODETO varchar(3) ;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT U1.USERID, U1.USERNAME, U1.COUNTRY_CODE INTO UIDFROM, UNAMEFROM, CCODEFROM 
+FROM OPN_USERLIST U1 WHERE U1.USER_UUID = uuidFrom ;
+
+SELECT U2.USERID, U2.USERNAME, U2.COUNTRY_CODE INTO UIDTO, UNAMETO, CCODETO 
+FROM OPN_USERLIST U2 WHERE U2.USER_UUID = uuidTo ;
+
+
+
+SET TIDTO = (SELECT IFNULL(MAX(TOPICID),0) FROM OPN_USER_CARTS WHERE USERID = UIDFROM 
+AND CREATION_DTM = (SELECT MAX(CREATION_DTM) FROM OPN_USER_CARTS WHERE USERID = UIDFROM) ) ;
+SET TOCARTCNT = (SELECT COUNT(1) FROM OPN_USER_CARTS WHERE USERID = UIDTO) ;
+
+/* 	When the Inviter has an empty cart - then the invitee carts are also kept empty or unchanged */
+
+CASE WHEN tid = 0 THEN
+
+CASE WHEN TIDTO = 0 THEN 
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID
+, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(UNAMEFROM, UIDFROM, uuidFrom
+, NOW(), 'copyUserCarts', CONCAT(UIDFROM, '-', UNAMEFROM, '-', UIDTO, '-', UNAMETO, '-', 'inviter killed his carts'));
+
+SELECT uuidTo, 0, 0 ;
+
+WHEN TIDTO <> 0 THEN
+
+DELETE FROM OPN_USER_INTERESTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_INTERESTS(USERID, USER_UUID, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, CREATION_DTM, USERNAME)
+SELECT UIDTO, uuidTo, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, NOW(), UNAMETO FROM OPN_USER_INTERESTS WHERE USERID = UIDFROM ;
+
+DELETE FROM OPN_USER_CARTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_CARTS(USERID, TOPICID, KEYID, CART, CREATION_DTM, LAST_UPDATE_DTM)
+SELECT UIDTO, TOPICID, KEYID, CART, NOW(), NOW() FROM OPN_USER_CARTS WHERE USERID = UIDFROM ;
+
+UPDATE OPN_USERLIST SET INVITEE_FLAG = 'Y', INVITER_UNAME = UNAMEFROM, INVITER_UID = UIDFROM
+WHERE USERID = UIDTO ;
+
+/* USER BHV LOG */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(UNAMEFROM, UIDFROM, uuidFrom, NOW(), 'copyUserCarts'
+, CONCAT(UIDFROM, '-', UNAMEFROM, '-', UIDTO, '-', UNAMETO, ' - ', tid, ' - ', postid, ' - ', TIDTO));
+
+SELECT uuidTo, TIDTO, 0 ;
+
+END CASE ;
+
+WHEN tid <> 0 THEN
+
+CASE WHEN postID = 0 THEN 
+
+DELETE FROM OPN_USER_INTERESTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_INTERESTS(USERID, USER_UUID, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, CREATION_DTM, USERNAME)
+SELECT UIDTO, uuidTo, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, NOW(), UNAMETO FROM OPN_USER_INTERESTS WHERE USERID = UIDFROM ;
+
+DELETE FROM OPN_USER_CARTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_CARTS(USERID, TOPICID, KEYID, CART, CREATION_DTM, LAST_UPDATE_DTM)
+SELECT UIDTO, TOPICID, KEYID, CART, NOW(), NOW() FROM OPN_USER_CARTS WHERE USERID = UIDFROM ;
+
+UPDATE OPN_USERLIST SET INVITEE_FLAG = 'Y', INVITER_UNAME = UNAMEFROM, INVITER_UID = UIDFROM
+WHERE USERID = UIDTO ;
+
+/* USER BHV LOG */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(UNAMEFROM, UIDFROM, uuidFrom, NOW(), 'copyUserCarts'
+, CONCAT(UIDFROM, '-', UNAMEFROM, '-', UIDTO, '-', UNAMETO, ' - ', tid, ' - ', postid, ' - ', TIDTO));
+
+SELECT uuidTo, TIDTO, 0 ;
+
+WHEN  postID <> 0 THEN 
+
+DELETE FROM OPN_USER_INTERESTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_INTERESTS(USERID, USER_UUID, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, CREATION_DTM, USERNAME)
+SELECT UIDTO, uuidTo, INTEREST_ID, INTEREST_NAME
+, INTEREST_CODE, NOW(), UNAMETO FROM OPN_USER_INTERESTS WHERE USERID = UIDFROM ;
+
+DELETE FROM OPN_USER_CARTS WHERE USERID = UIDTO ;
+
+INSERT INTO OPN_USER_CARTS(USERID, TOPICID, KEYID, CART, CREATION_DTM, LAST_UPDATE_DTM)
+SELECT UIDTO, TOPICID, KEYID, CART, NOW(), NOW() FROM OPN_USER_CARTS WHERE USERID = UIDFROM ;
+
+UPDATE OPN_USERLIST SET INVITEE_FLAG = 'Y', INVITER_UNAME = UNAMEFROM, INVITER_UID = UIDFROM
+WHERE USERID = UIDTO ;
+
+/* USER BHV LOG */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(UNAMEFROM, UIDFROM, uuidFrom, NOW(), 'copyUserCarts'
+, CONCAT(UIDFROM, '-', UNAMEFROM, '-', UIDTO, '-', UNAMETO, ' - ', tid, ' - ', postid, ' - ', TIDTO));
+
+SELECT uuidTo, TIDTO, postID ;
+
+END CASE ;
+
+END CASE ;
+
+
+END//
+DELIMITER ;
+
+-- 

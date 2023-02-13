@@ -1,0 +1,31 @@
+-- insertCartInsertQ
+
+ DELIMITER //
+DROP PROCEDURE IF EXISTS insertCartInsertQ //
+CREATE PROCEDURE insertCartInsertQ(uuid varchar(45), tid INT, kid INT, cartv varchar(3))
+thisproc:BEGIN
+
+/*      070517 AST
+        ADDED LAST_UPDATE_DTM --> NOW() IN THE INSERT STMNT FOR LUDTM-BASED CLUSTERING
+        08/19/2020 Kapil: Confirmed
+*/
+
+declare  orig_uid INT;
+DECLARE SUSP VARCHAR(5) ;
+
+SELECT  USERID, USER_SUSPEND_FLAG INTO orig_uid, SUSP FROM OPN_USERLIST WHERE USER_UUID = uuid ;
+
+IF SUSP = 'Y' THEN LEAVE thisproc ;
+
+ELSE
+
+INSERT INTO OPN_USER_CARTS(TOPICID, USERID, KEYID, CART, CREATION_DTM, LAST_UPDATE_DTM)
+VALUES (tid, orig_uid, kid, cartv, NOW(), NOW());
+
+END IF ;
+
+
+END //
+DELIMITER ;
+
+-- 

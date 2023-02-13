@@ -1,0 +1,19 @@
+-- bringUserPostAction
+
+DELIMITER //
+DROP FUNCTION IF EXISTS bringUserPostAction //
+CREATE FUNCTION bringUserPostAction(UID INT, PID INT) RETURNS VARCHAR(3)
+BEGIN
+
+/* 04/25/2020 AST: Rebuilt: brought the comment inside the body
+ SELECT bringUserPostAction(UID INT, PID INT) -- PID = CAUSE_POST_ID */
+
+  DECLARE UPAction VARCHAR(3) ;
+
+SET UPAction = (SELECT POST_ACTION_TYPE FROM OPN_USER_POST_ACTION 
+WHERE ACTION_BY_USERID = UID AND CAUSE_POST_ID = PID);
+
+  RETURN UPAction;
+END;//
+
+-- 

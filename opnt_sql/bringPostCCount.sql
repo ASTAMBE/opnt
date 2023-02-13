@@ -1,0 +1,19 @@
+-- bringPostCCount
+
+DELIMITER //
+DROP FUNCTION IF EXISTS bringPostCCount //
+CREATE FUNCTION bringPostCCount(postid INT) RETURNS INT
+BEGIN
+
+/* 04/25/2020 AST: Rebuilt: Removed the @ from the var PostCCOUNT 
+ SELECT bringPostCCount(postid INT) */
+
+  DECLARE PostCCOUNT INT ;
+
+SET PostCCOUNT = (SELECT COUNT(*) FROM OPN_POST_COMMENTS OPC 
+WHERE OPC.CAUSE_POST_ID = postid AND OPC.CLEAN_COMMENT_FLAG = 'Y');
+  RETURN PostCCOUNT;
+  
+END;//
+
+-- 

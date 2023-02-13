@@ -1,0 +1,20 @@
+-- bringPostHCount
+
+DELIMITER //
+DROP FUNCTION IF EXISTS bringPostHCount //
+CREATE FUNCTION bringPostHCount(postid INT) RETURNS INT
+BEGIN
+
+/* 04/25/2020 AST: Rebuilt: Removed the @ from the var PostHCOUNT 
+ SELECT bringPostHCount(postid INT) */
+
+  DECLARE PostHCOUNT INT ;
+
+SET PostHCOUNT = (SELECT COUNT(DISTINCT OPA.ACTION_BY_USERID) 
+FROM OPN_USER_POST_ACTION OPA 
+WHERE OPA.CAUSE_POST_ID = postid AND OPA.POST_ACTION_TYPE = 'H');
+  RETURN PostHCOUNT;
+  
+END;//
+
+-- 

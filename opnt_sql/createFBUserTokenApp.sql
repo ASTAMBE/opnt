@@ -12,6 +12,9 @@ BEGIN
         10172020 AST: Recreated with Default Cart assignment  
             		12102020 AST: Default Cart is done through vars now - instead of hard -code
         This is to ensure that the ptoc will work in any db instance
+        
+                01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
+                
         */
 
 DECLARE DEVICE_UUID VARCHAR(45) ;
@@ -45,12 +48,14 @@ END CASE;
 
 set UID = (SELECT U.USERID FROM OPN_USERLIST U WHERE U.USERNAME = username) ;
 
+/*
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
 , (UID, T2, 'L', 2, NOW(), NOW()), (UID, T4, 'L', 4, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
 

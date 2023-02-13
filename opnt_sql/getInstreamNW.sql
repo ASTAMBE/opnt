@@ -1,11 +1,11 @@
--- getDiscussionsANTI
+-- getInstreamNW
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getDiscussionsANTI`;
+DROP procedure IF EXISTS `getInstreamNW`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getDiscussionsANTI`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getInstreamNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
@@ -40,7 +40,7 @@ INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsANTI', CONCAT(tid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -112,13 +112,8 @@ FROM
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
         A.TOPICID = B.TOPICID
-			AND A.KEYID = B.KEYID
-            AND A.CART <> B.CART
-            AND B.USERID NOT IN 
-(SELECT DISTINCT D.USERID FROM 
-(SELECT C1.USERID, C1.TOPICID, C1.CART, C1.KEYID FROM OPN_USER_CARTS C1 WHERE C1.USERID = orig_uid AND C1.TOPICID = tid) C ,
-(SELECT C2.USERID, C2.TOPICID, C2.CART, C2.KEYID FROM OPN_USER_CARTS C2 ) D
-WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
+            AND A.CART = B.CART
+            AND A.KEYID = B.KEYID
             AND A.TOPICID = tid
     GROUP BY B.USERID , B.BOT_FLAG , A.TOPICID
     ORDER BY COUNT(*) DESC) UN
@@ -133,7 +128,7 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
     FROM
         OPN_USERLIST
     WHERE
-        BOT_FLAG <> 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
+        BOT_FLAG = 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID,

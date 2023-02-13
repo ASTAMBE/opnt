@@ -15,6 +15,8 @@ BEGIN
     sourceID		= POST_ID/COMMENT_ID
 	
 	08/11/2020 Kapil: Confirmed
+    
+    12/26/2022 AST: Added user BHV log
 */
 
 declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID INT;
@@ -28,11 +30,11 @@ SELECT OPC1.TOPICID, OPC1.COMMENT_BY_USERID, OPC1.CAUSE_POST_ID INTO TID, commen
 FROM OPN_POST_COMMENTS OPC1 WHERE OPC1.COMMENT_ID = sourceID ;
 
 /* Adding user action logging portion - in case we want to turn this on for this proc */
-/*
+
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
 VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userCommentLH'
 , CONCAT(ORIG_UID, ' - COMMENT -',actionType, ' FOR COMMENT_ID = ', sourceID));
-*/
+
 /* end of use action tracking */
 
 DELETE FROM OPN_USER_POST_ACTION WHERE OPN_USER_POST_ACTION.ACTION_BY_USERID = ORIG_UID 
@@ -45,10 +47,12 @@ IF actionType = 'L1' THEN
 ELSE
    SET actionTypeNew = 'H';
 END IF;
+
 INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, COMMENT_BY_USERID, ACTION_TYPE, POST_ACTION_DTM
 , CAUSE_COMMENT_ID, ACTION_SOURCE, TOPICID) 
 VALUES (ORIG_UID, commentByUID, actionTypeNew, NOW(), sourceID, 'COMMENT', TID) ;
 ELSE BEGIN END;
+
 END CASE ;
 
 WHEN actionSource = 'POST' THEN
@@ -59,7 +63,9 @@ SELECT TOPICID, POST_BY_USERID INTO TID, postByUID FROM OPN_POSTS WHERE POST_ID 
 
 /* Adding user action logging portion */
 
-
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
+, CONCAT(ORIG_UID, ' - POST -',actionType, ' FOR POST_ID = ', sourceID));
 
 /* end of use action tracking */
 
@@ -77,6 +83,8 @@ INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_
 , CAUSE_POST_ID, ACTION_SOURCE, TOPICID) 
 VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID) ;
 ELSE BEGIN END;
+
+
 END CASE ;
 
 END CASE ;

@@ -16,6 +16,8 @@ BEGIN
         
 	09/29/2021 AST: Changed the 'POLNEWS' to 'politicsnews1'
     
+            01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
+    
     */
 
 DECLARE DEVICE_UUID VARCHAR(45) ;
@@ -48,20 +50,23 @@ VALUES(bringUseridFromUsername(username), DEVICE_UUID, NOW(), device_serial, 'Y'
 
 END CASE;
 
-/* 10172020 AST: Adding the default Cart below */
+
+
 
 set UID = (SELECT U.USERID FROM OPN_USERLIST U WHERE U.USERNAME = username) ;
 
+/*
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW())
-/*, (UID, T10, 'L', 10, NOW(), NOW()) 
+, (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
 , (UID, T2, 'L', 2, NOW(), NOW()), (UID, T4, 'L', 4, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
-*/
-;
 
-/* 10172020 AST: END OF : Adding the default Cart */
+
+
+*/
+
 
 SELECT U.USER_UUID AS USERID, U.USERNAME, U.COUNTRY_CODE FROM OPN_USERLIST U WHERE U.USERNAME = username;
 

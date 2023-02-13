@@ -5,7 +5,11 @@ DELIMITER //
 CREATE   PROCEDURE `createGuestUserApp`(devicename varchar(600), country_code varchar(5), device_serial VARCHAR(40))
 BEGIN
 
-/*    10172020 AST: Recreated with Default Cart assignment */
+/*    10172020 AST: Recreated with Default Cart assignment 
+
+            01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
+
+*/
 
 
 DECLARE RND4DIGIT, RND6DIGIT, DNAMEOK, G1OK, G2OK INT ;
@@ -54,6 +58,7 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
+/*
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
@@ -61,6 +66,7 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
 
@@ -86,12 +92,16 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
+/*
+
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
 , (UID, T2, 'L', 2, NOW(), NOW()), (UID, T4, 'L', 4, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
+
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
     
@@ -115,12 +125,15 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
+/*
+
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
 , (UID, T2, 'L', 2, NOW(), NOW()), (UID, T4, 'L', 4, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
             

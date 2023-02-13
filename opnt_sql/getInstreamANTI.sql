@@ -1,11 +1,11 @@
--- getDiscussionsANTI
+-- getInstreamANTI
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getDiscussionsANTI`;
+DROP procedure IF EXISTS `getInstreamANTI`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getDiscussionsANTI`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getInstreamANTI`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
@@ -40,7 +40,7 @@ INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsANTI', CONCAT(tid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamANTI', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -133,7 +133,7 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
     FROM
         OPN_USERLIST
     WHERE
-        BOT_FLAG <> 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
+        BOT_FLAG = 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID,

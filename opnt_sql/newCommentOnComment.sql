@@ -29,6 +29,14 @@ INTO causePostID, causepostbyuid, tid, parentCommentContent, parentcmntbyuid, pa
 , parentCommentMediaContent, parentCommentMediaFlag, parentCommentDTM
 FROM OPN_POST_COMMENTS OPC where OPC.COMMENT_ID = parentCommentID  ;
 
+/* USER BH LOG */
+
+ INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+ VALUES(UNAME, orig_uid, concUUID, NOW(), 'newCommentOnComment'
+ , concat('UID-causePostID-parentid', '-', orig_uid, '-', causePostID, '-', parentCommentID) );
+ 
+ /* END USER BH LOG */
+
 INSERT INTO OPN_POST_COMMENTS_RAW 
 (CAUSE_POST_ID
 , POST_BY_USERID

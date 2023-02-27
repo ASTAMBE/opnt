@@ -11,15 +11,18 @@ BEGIN
     As usual, it will first delete any existing actions - in order to avoid possible doubles.alter
     
     actionSource 	= POST/COMMENT
-    actionType 		= L/H 
+    actionType 		= L0/H0/L1/H1 (L0/H0 is sent when the user is canceling an existing L/H
+						L1/H1 is sent when the user is showing L/H fresh
     sourceID		= POST_ID/COMMENT_ID
 	
 	08/11/2020 Kapil: Confirmed
     
     12/26/2022 AST: Added user BHV log
+    
+    02/26/2023 AST: Added ALT_KEYID from OPN_POSTS for convertPostToKW proc
 */
 
-declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID INT;
+declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID, altkey INT;
 DECLARE actionTypeNew,UNAME VARCHAR(30) ;
 
 CASE WHEN actionSource = 'COMMENT' THEN
@@ -59,7 +62,7 @@ WHEN actionSource = 'POST' THEN
 
 SELECT U1.USERNAME, U1.USERID INTO UNAME, ORIG_UID FROM OPN_USERLIST U1 WHERE U1.USER_UUID = uuid ;
 
-SELECT TOPICID, POST_BY_USERID INTO TID, postByUID FROM OPN_POSTS WHERE POST_ID = sourceID ;
+SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0) INTO TID, postByUID, altkey FROM OPN_POSTS WHERE POST_ID = sourceID ;
 
 /* Adding user action logging portion */
 
@@ -69,19 +72,21 @@ VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
 
 /* end of use action tracking */
 
-DELETE FROM OPN_USER_POST_ACTION WHERE OPN_USER_POST_ACTION.ACTION_BY_USERID = ORIG_UID 
-AND OPN_USER_POST_ACTION.CAUSE_POST_ID = sourceID 
-AND OPN_USER_POST_ACTION.POST_BY_USERID =  postByUID ;
+CASE WHEN actionType IN ('L0', 'H0') THEN 
 
-CASE WHEN actionType = 'L1' or actionType = 'H1' THEN
+DELETE FROM OPN_USER_POST_ACTION WHERE OPN_USER_POST_ACTION.ACTION_BY_USERID = ORIG_UID 
+AND OPN_USER_POST_ACTION.CAUSE_POST_ID = sourceID AND OPN_USER_POST_ACTION.POST_BY_USERID =  postByUID ;
+
+ WHEN actionType IN ('L1', 'H1') THEN
 IF actionType = 'L1' THEN
    SET actionTypeNew = 'L';
 ELSE
    SET actionTypeNew = 'H';
 END IF;
 INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_TYPE, POST_ACTION_DTM
-, CAUSE_POST_ID, ACTION_SOURCE, TOPICID) 
-VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID) ;
+, CAUSE_POST_ID, ACTION_SOURCE, TOPICID, KEYID) 
+VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, altkey) ;
+
 ELSE BEGIN END;
 
 

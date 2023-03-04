@@ -47,7 +47,10 @@ DECLARE pbuname, actionByUNAME VARCHAR(30) ;
 DECLARE substrPCONT, KW, substrURLT, UUID VARCHAR(160) ;
 DECLARE POSTCONTENT, URLTITLE LONGTEXT ;
 DECLARE actionCDTM DATETIME ;
-DECLARE CCODE, actionType VARCHAR(5) ;
+DECLARE CCODE VARCHAR(5) ;
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+'convertPostToKW-postid-actionbyid-actionType-kidparam', CONCAT(postid,'-',actionbyid,'-', actionType, '-', kidparam), NOW() ) ;
 
 CASE WHEN kidparam = 0 THEN
 
@@ -64,14 +67,18 @@ INSERT INTO OPN_P_KW(TOPICID, KEYWORDS, KW_TRIM, COUNTRY_CODE, DISPLAY_SEQ, CREA
 USER_CREATED_KW, CREATED_BY_UID, CREATED_BY_UUID, CREATED_BY_UNAME, CLEAN_KW_FLAG, KW_EXT, KW_URL, ALT_KEYID)
 VALUES (tid, substrURLT, CONCAT(UPPER(REPLACE(substrURLT, ' ', '') ), tid) , CCODE, 5, NOW()
 , NOW(), 5, CCODE, 'N', 'NOSCRAPE', 'NOSCRAPETAG2'
-, 'Y', actionbyid, UUID, actionByUNAME, 'Y', POSTCONTENT , URLTITLE , postid ); 
+, 'Y', actionbyid, UUID, actionByUNAME, 'Y', URLTITLE, POSTCONTENT , postid ); 
 
 SELECT KEYID INTO newkeyid FROM OPN_P_KW WHERE ALT_KEYID = postid limit 1 ;
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+'substrURLT-POSTCONTENT-postid-newkeyid'
+, CONCAT(substrURLT,'-',POSTCONTENT,'-', postid, '-', newkeyid), NOW() ) ;
 
 INSERT INTO OPN_KW_TAGS(TOPICID, KEYID, KEYWORDS, KW_TRIM, COUNTRY_CODE, ORIGIN_COUNTRY_CODE
 , SCRAPE_TAG1, SCRAPE_TAG2, KW_EXT, KW_URL, ALT_KEYID, SCRAPE_DESIGN_DONE, KW_DTM)
 VALUES(tid, newkeyid, substrURLT, CONCAT(UPPER(REPLACE(substrURLT, ' ', '') ), tid) , CCODE, CCODE
-, 'NOSCRAPE', 'NOSCRAPETAG2', POSTCONTENT, URLTITLE, postid, 'N', NOW()) ;
+, 'NOSCRAPE', 'NOSCRAPETAG2', URLTITLE, POSTCONTENT, postid, 'N', NOW()) ;
 
 UPDATE OPN_POSTS SET KEYID = newkeyid WHERE POST_ID = postid ;
 
@@ -80,7 +87,7 @@ UPDATE OPN_POSTS SET KEYID = newkeyid WHERE POST_ID = postid ;
 /* Begin upsert in the cart */
 
 INSERT INTO OPN_USER_CARTS(CART, KEYID, USERID, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
-VALUES( actionType, newkeyid, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPDATE CART = actionType ;
+VALUES(actionType, newkeyid, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPDATE CART = actionType ;
 
 /* END upsert in the cart */
 
@@ -92,6 +99,10 @@ VALUES(actionByUNAME, actionbyid, UUID, NOW(), 'convertPostToKW', CONCAT(tid,'-'
 /* end of user action tracking */
 
 WHEN kidparam <> 0 then
+
+-- SELECT actionType, kidparam, actionbyid, tid ;
+
+-- LEAVE thisproc ;
 
 INSERT INTO OPN_USER_CARTS(CART, KEYID, USERID, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES( actionType, kidparam, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPDATE CART = actionType ;

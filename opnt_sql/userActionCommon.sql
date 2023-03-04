@@ -11,7 +11,7 @@ BEGIN
     As usual, it will first delete any existing actions - in order to avoid possible doubles.alter
     
     actionSource 	= POST/COMMENT
-    actionType 		= L0/H0/L1/H1 (L0/H0 is sent when the user is canceling an existing L/H
+    actionType 		= L0/H0/L1/H1 (L0/H0 is sent when the user is canceling an existing L/H)
 						L1/H1 is sent when the user is showing L/H fresh
     sourceID		= POST_ID/COMMENT_ID
 	
@@ -20,6 +20,13 @@ BEGIN
     12/26/2022 AST: Added user BHV log
     
     02/26/2023 AST: Added ALT_KEYID from OPN_POSTS for convertPostToKW proc
+    03/04/2023 AST: When a user already has L/H for a post, he can change it in 2 ways. 
+    1. He can click the same sign again - this will cancel the existing L/H and pass a L0/H0 as param
+    2. If he simply switches the sign (eg. he had given L but now he is clicking H), then the App 
+    actually passes 2 API calls. First for a 0 - no negate the existing sign
+    Then it passes the 1 to record his latest opinion on the post.alter
+    This introduces a need whereby we need to specifically delete the CART row as part of
+    dealing with the L0/H0 param.
 */
 
 declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID, altkey INT;
@@ -64,7 +71,15 @@ SELECT U1.USERNAME, U1.USERID INTO UNAME, ORIG_UID FROM OPN_USERLIST U1 WHERE U1
 
 SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0) INTO TID, postByUID, altkey FROM OPN_POSTS WHERE POST_ID = sourceID ;
 
-/* Adding user action logging portion */
+
+/* Adding user action logging portion 
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+CONCAT('userActionCommon', '-', 'UNAME-ORIG_UID-uuid-TID-postByUID-altkey-sourceID-actionType' )
+, concat(UNAME,'-', ORIG_UID, '-', uuid,'-', TID,'-', postByUID,'-', altkey,'-', sourceID,'-', actionType), NOW() 
+) ; 
+
+END OF RAW LOGGING */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
 VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
@@ -76,6 +91,8 @@ CASE WHEN actionType IN ('L0', 'H0') THEN
 
 DELETE FROM OPN_USER_POST_ACTION WHERE OPN_USER_POST_ACTION.ACTION_BY_USERID = ORIG_UID 
 AND OPN_USER_POST_ACTION.CAUSE_POST_ID = sourceID AND OPN_USER_POST_ACTION.POST_BY_USERID =  postByUID ;
+
+DELETE FROM OPN_USER_CARTS WHERE USERID = ORIG_UID AND TOPICID = TID AND KEYID = altkey ;
 
  WHEN actionType IN ('L1', 'H1') THEN
 IF actionType = 'L1' THEN

@@ -50,7 +50,7 @@ DECLARE actionCDTM DATETIME ;
 DECLARE CCODE VARCHAR(5) ;
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
-'convertPostToKW-postid-actionbyid-actionType-kidparam', CONCAT(postid,'-',actionbyid,'-', actionType, '-', kidparam), NOW() ) ;
+'convertPostToKW-Entrypoint: postid-actionbyid-actionType-kidparam', CONCAT(postid,'-',actionbyid,'-', actionType, '-', kidparam), NOW() ) ;
 
 CASE WHEN kidparam = 0 THEN
 
@@ -72,8 +72,8 @@ VALUES (tid, substrURLT, CONCAT(UPPER(REPLACE(substrURLT, ' ', '') ), tid) , CCO
 SELECT KEYID INTO newkeyid FROM OPN_P_KW WHERE ALT_KEYID = postid limit 1 ;
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
-'substrURLT-POSTCONTENT-postid-newkeyid'
-, CONCAT(substrURLT,'-',POSTCONTENT,'-', postid, '-', newkeyid), NOW() ) ;
+'convertPostToKW-Inserted New POST to KW: newkeyid-substrURLT-POSTCONTENT-postid'
+, CONCAT(newkeyid, '-', substrURLT,'-',POSTCONTENT,'-', postid), NOW() ) ;
 
 INSERT INTO OPN_KW_TAGS(TOPICID, KEYID, KEYWORDS, KW_TRIM, COUNTRY_CODE, ORIGIN_COUNTRY_CODE
 , SCRAPE_TAG1, SCRAPE_TAG2, KW_EXT, KW_URL, ALT_KEYID, SCRAPE_DESIGN_DONE, KW_DTM)
@@ -88,6 +88,10 @@ UPDATE OPN_POSTS SET KEYID = newkeyid WHERE POST_ID = postid ;
 
 INSERT INTO OPN_USER_CARTS(CART, KEYID, USERID, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES(actionType, newkeyid, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPDATE CART = actionType ;
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+'convertPostToKW-Inserted CART with new POST-TO-KW: newkeyid-Cart For USERID-Topicid-CART Value'
+, CONCAT(newkeyid, '-', actionbyid,'-',tid,'-', actionType), NOW() ) ;
 
 /* END upsert in the cart */
 
@@ -106,6 +110,10 @@ WHEN kidparam <> 0 then
 
 INSERT INTO OPN_USER_CARTS(CART, KEYID, USERID, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES( actionType, kidparam, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPDATE CART = actionType ;
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+'convertPostToKW-Inserted CART with existing POST-TO-KW: kidparam-Cart For USERID-Topicid-CART Value'
+, CONCAT(kidparam, '-', actionbyid,'-',tid,'-', actionType), NOW() ) ;
 
 /* Adding user action logging portion */
 

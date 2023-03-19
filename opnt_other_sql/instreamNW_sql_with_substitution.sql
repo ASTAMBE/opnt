@@ -1,61 +1,3 @@
--- getInstreamNW
-
--- USE `opntprod`;
-DROP procedure IF EXISTS `getInstreamNW`;
-
-DELIMITER $$
--- USE `opntprod`$$
-CREATE  PROCEDURE `getInstreamNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
-)
-thisproc: BEGIN
-
-/* 
-    09/29/2021 AST: This proc is being created to supply the NW Instream - Only for Bolo
-    1. It excludes the non-bot posts - so that only scraped news items show up in instream
-    2. It also excludes the Politics News KW for the NW calculation purpose. This is because:
-    
-    + For Bolo, the Politics News KW will be auto-assigned to every user. But we don't want
-    this KW to determine the network - because then every one will be in the same network.
-    + To avoid the same NW for everyone problem, we have decided to create a separate class of KWs
-    + These KWs will have NEWS_ONLY_FLAG = 'Y' in the OPN_P_KW and OPN_KW_TAGS tables.
-    + While computing the UN (User Network) in the SQL below, the KEYID with NEWS_ONLY_FLAG = 'Y'
-    will be excluded from the A and B portions of the UN query
-    
-    THis will have 2 consequences (only for Bolo):
-    1. These KWs will not be used in the network formation at all - 
-		- the NW Counts and Network Details etc will have to be changed too
-    2. But they will be used to deliver the Poltics News to all the users irrespective of whether they 
-    have a cart or not.
-	
-    10/13/2022 AST: Changed the orde3r clause and removed the order clause from subquery for performance
-    Also limited the posts to last 50 days.
-    
-    11/11/2022 AST: Further reorg of the instream query for perf enhancement
-            
- */
- 
-declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
-DECLARE UNAME VARCHAR(30) ;
-DECLARE CDTM DATETIME ;
-DECLARE CCODE, SUSPFLAG VARCHAR(5) ;
-
-SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.USER_SUSPEND_FLAG
-INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
-
-/* Adding user action logging portion */
-
-INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
-
-
-/* end of use action tracking */
-
-
-/* 04/06/2021 INSERTING THE SUSPENDED USER EXCLUSION BELOW */
-CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
-WHEN SUSPFLAG <> 'Y' THEN
-/* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
-
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
@@ -96,7 +38,7 @@ FROM
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = orig_uid AND C1.TOPICID = tid) A, (SELECT 
+        C1.USERID = 1020530 AND C1.TOPICID = 1) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -107,14 +49,14 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND C2.TOPICID = tid AND CU.BOT_FLAG = 'Y'
+        AND C2.TOPICID = 1 AND CU.BOT_FLAG = 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
-                OUUA.BY_USERID = orig_uid
-                    AND OUUA.TOPICID = tid
+                OUUA.BY_USERID = 1020530
+                    AND OUUA.TOPICID = 1
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
         B.TOPICID = A.TOPICID
@@ -150,23 +92,23 @@ FROM
                 ELSE 0
             END) HCOUNT
     FROM
-        OPN_USER_POST_ACTION  WHERE TOPICID = tid
+        OPN_USER_POST_ACTION  WHERE TOPICID = 1
     GROUP BY CAUSE_POST_ID) POST_LHC ON INSTREAM.POST_ID = POST_LHC.CAUSE_POST_ID
         LEFT OUTER JOIN
     OPN_USER_POST_ACTION UP ON INSTREAM.POST_ID = UP.CAUSE_POST_ID
-        AND UP.ACTION_BY_USERID = orig_uid
+        AND UP.ACTION_BY_USERID = 1020530
         LEFT OUTER JOIN
     (SELECT 
         BK.POST_ID
     FROM
         OPN_POST_BOOKMARKS BK
     WHERE
-        BK.USERID = orig_uid
-            AND BK.TOPICID = tid) BK2 ON INSTREAM.POST_ID = BK2.POST_ID
+        BK.USERID = 1020530
+            AND BK.TOPICID = 1) BK2 ON INSTREAM.POST_ID = BK2.POST_ID
         LEFT OUTER JOIN
     OPN_USER_USER_ACTION UUA ON INSTREAM.POST_BY_USERID = UUA.ON_USERID
-        AND UUA.BY_USERID = orig_uid
-        AND UUA.TOPICID = tid
+        AND UUA.BY_USERID = 1020530
+        AND UUA.TOPICID = 1
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID, COUNT(1) POST_COMMENT_COUNT
@@ -175,16 +117,8 @@ FROM
     WHERE
         CLEAN_COMMENT_FLAG = 'Y'
             AND COMMENT_DELETE_FLAG = 'N'
-            AND TOPICID = tid
+            AND TOPICID = 1
     GROUP BY CAUSE_POST_ID) OPC ON INSTREAM.POST_ID = OPC.CAUSE_POST_ID
 ORDER BY 3 DESC, 10 DESC 
-LIMIT fromindex, toindex
+LIMIT 0, 50
 ;
-
-END CASE ; -- THIS IS THE SUSPFLAG CASE END
-  
-END$$
-
-DELIMITER ;
-
--- 

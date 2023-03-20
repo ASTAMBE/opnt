@@ -31,6 +31,9 @@ thisproc: BEGIN
     Also limited the posts to last 50 days.
     
     11/11/2022 AST: Further reorg of the instream query for perf enhancement
+    
+    03/19/2023 AST: Bifurcating the instream into Trending Vs non-trending by adding a call to the new
+    getInstreamTrendingNW proc.
             
  */
  
@@ -55,6 +58,14 @@ VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
 CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
+
+/* Adding the CASE for Trending */
+
+CASE WHEN tid = 9 THEN
+
+CALL getInstreamTrendingNW(uuid , tid  , fromindex , toindex ) ;
+
+ELSE
 
 SELECT 
     INSTREAM.POST_ID,
@@ -180,6 +191,8 @@ FROM
 ORDER BY 3 DESC, 10 DESC 
 LIMIT fromindex, toindex
 ;
+
+END CASE ; -- THIS IS THE TRENDING CASE END
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

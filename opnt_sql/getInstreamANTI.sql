@@ -26,6 +26,10 @@ thisproc: BEGIN
 		- the NW Counts and Network Details etc will have to be changed too
     2. But they will be used to deliver the Poltics News to all the users irrespective of whether they 
     have a cart or not.
+    
+        
+    03/19/2023 AST: Bifurcating the instream into Trending Vs non-trending by adding a call to the new
+    getInstreamTrendingANTI proc.
         
  */
  
@@ -50,6 +54,14 @@ VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamANTI', CONCAT(tid,'-',toindex))
 CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
+
+/* Adding the CASE for Trending */
+
+CASE WHEN tid = 9 THEN
+
+CALL getInstreamTrendingANTI(uuid , tid  , fromindex , toindex ) ;
+
+ELSE
 
 SELECT 
     INSTREAM.POST_ID,
@@ -174,6 +186,8 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
 ORDER BY POST_ID DESC  
 LIMIT fromindex, toindex
 ;
+
+END CASE ; -- THIS IS THE TRENDING CASE END
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

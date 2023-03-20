@@ -1,11 +1,11 @@
--- getInstreamTrendingNW
+-- getInstreamTrendingANTI
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getInstreamTrendingNW`;
+DROP procedure IF EXISTS `getInstreamTrendingANTI`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getInstreamTrendingNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getInstreamTrendingANTI`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
@@ -19,7 +19,7 @@ thisproc: BEGIN
    CUrrently, the ranking is such that all the posts that the user has expressed L/H for will have the L/H action date 
    to sub for the POST_DTM. Hence they will appear at the top of the Trending 
    In future, we will also incorp. the latest comment_dtm to enhance the ordering of the posts.
-            
+        
  */
  
 declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
@@ -33,7 +33,7 @@ INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamTrendingNW', CONCAT(tid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamTrendingANTI', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -84,7 +84,7 @@ FROM
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = orig_uid AND C1.TOPICID <> 9 ) A, (SELECT 
+        C1.USERID = orig_uid AND C1.TOPICID <> 9) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -95,29 +95,33 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND CU.BOT_FLAG = 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
                 OUUA.BY_USERID = orig_uid
-                    -- AND OUUA.TOPICID = 1
+                    -- AND OUUA.TOPICID = tid
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
-        B.TOPICID = A.TOPICID
-            AND B.CART = A.CART
-            AND B.KEYID = A.KEYID
+        A.TOPICID = B.TOPICID
+			AND A.KEYID = B.KEYID
+            AND A.CART <> B.CART
+            AND B.USERID NOT IN 
+(SELECT DISTINCT D.USERID FROM 
+(SELECT C1.USERID, C1.TOPICID, C1.CART, C1.KEYID FROM OPN_USER_CARTS C1 WHERE C1.USERID = orig_uid -- AND C1.TOPICID = tid
+) C ,
+(SELECT C2.USERID, C2.TOPICID, C2.CART, C2.KEYID FROM OPN_USER_CARTS C2 ) D
+WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
             -- AND A.TOPICID = tid
-    -- ORDER BY A.CART_LDTM DESC 
-        ) UN
-    WHERE 1=1
-    AND P.CLEAN_POST_FLAG = 'Y'
-    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 10 DAY
-            AND UN.USERID = P.POST_BY_USERID 
-			AND P.TOPICID = UN.TOPICID
-            -- AND P.CLEAN_POST_FLAG = 'Y'
-            ) INSTREAM
+    GROUP BY B.USERID , B.BOT_FLAG , A.TOPICID
+    -- ORDER BY COUNT(*) DESC
+    ) UN
+    WHERE
+        UN.USERID = P.POST_BY_USERID
+            AND UN.TOPICID = P.TOPICID
+            AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 300 DAY
+            AND P.CLEAN_POST_FLAG = 'Y') INSTREAM
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL
@@ -137,7 +141,7 @@ FROM
                 ELSE 0
             END) HCOUNT
     FROM
-        OPN_USER_POST_ACTION -- WHERE TOPICID = tid
+        OPN_USER_POST_ACTION
     GROUP BY CAUSE_POST_ID) POST_LHC ON INSTREAM.POST_ID = POST_LHC.CAUSE_POST_ID
         LEFT OUTER JOIN
     OPN_USER_POST_ACTION UP ON INSTREAM.POST_ID = UP.CAUSE_POST_ID
@@ -154,7 +158,6 @@ FROM
         LEFT OUTER JOIN
     OPN_USER_USER_ACTION UUA ON INSTREAM.POST_BY_USERID = UUA.ON_USERID
         AND UUA.BY_USERID = orig_uid
-        -- AND UUA.TOPICID = tid
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID, COUNT(1) POST_COMMENT_COUNT
@@ -163,9 +166,8 @@ FROM
     WHERE
         CLEAN_COMMENT_FLAG = 'Y'
             AND COMMENT_DELETE_FLAG = 'N'
-          --  AND TOPICID = tid
     GROUP BY CAUSE_POST_ID) OPC ON INSTREAM.POST_ID = OPC.CAUSE_POST_ID
-ORDER BY 3 DESC, 10 DESC 
+ORDER BY POST_ID DESC  
 LIMIT fromindex, toindex
 ;
 

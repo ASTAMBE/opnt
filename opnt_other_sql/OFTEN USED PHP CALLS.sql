@@ -6,8 +6,8 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 CALL newPostwithmedia(1, bringUUID(1023649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
-CALL getInstreamBoloANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamBoloNW(bringuuid(1023377), 1, 0, 30) ;
+CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
+CALL getInstreamNW(bringuuid(1020530), 1, 0, 30) ;
 
 CALL getUserCarts(1, BRINGUUID(bringUseridFromUsername('rmx185')), 'POPULAR', 0, 400) ;
 CALL getUserCarts(1, BRINGUUID(1018387), 'LATEST', 0, 400) ;

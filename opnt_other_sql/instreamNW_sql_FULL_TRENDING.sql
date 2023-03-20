@@ -1,49 +1,3 @@
--- getInstreamTrendingNW
-
--- USE `opntprod`;
-DROP procedure IF EXISTS `getInstreamTrendingNW`;
-
-DELIMITER $$
--- USE `opntprod`$$
-CREATE  PROCEDURE `getInstreamTrendingNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
-)
-thisproc: BEGIN
-
-/* 
-   03/19/2023: AST: This proc is written in order to divert the 'Trending' Instream to what matters to the user.
-   Previously Trending (topicid = 9) was like any other topic, with its own independent keywords, cart and instream.
-   But that is not the real 'Trending'. SO it is being re-purposed as Trending among the things that the user 
-   cares about. So it will use a combined instream for all topics in which the user has cart/s and the main thing is to 
-   have special sorting techniques to give a user-specific Trending experience.
-   
-   CUrrently, the ranking is such that all the posts that the user has expressed L/H for will have the L/H action date 
-   to sub for the POST_DTM. Hence they will appear at the top of the Trending 
-   In future, we will also incorp. the latest comment_dtm to enhance the ordering of the posts.
-            
- */
- 
-declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
-DECLARE UNAME VARCHAR(30) ;
-DECLARE CDTM DATETIME ;
-DECLARE CCODE, SUSPFLAG VARCHAR(5) ;
-
-SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.USER_SUSPEND_FLAG
-INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
-
-/* Adding user action logging portion */
-
-INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamTrendingNW', CONCAT(tid,'-',toindex));
-
-
-/* end of use action tracking */
-
-
-/* 04/06/2021 INSERTING THE SUSPENDED USER EXCLUSION BELOW */
-CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
-WHEN SUSPFLAG <> 'Y' THEN
-/* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
-
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
@@ -65,14 +19,15 @@ SELECT
         ELSE NULL
     END BOOKMARK_FLAG
 FROM
-    (SELECT 
+    (
+SELECT 
         P.POST_ID,
             P.TOPICID,
             P.POST_DATETIME,
             UN.CART_LDTM POST_UPDATE_DTM,
             P.POST_BY_USERID,
             P.POST_CONTENT,
-            1 TOTAL_NS,
+            UNIX_TIMESTAMP(P.POST_DATETIME) - UNIX_TIMESTAMP(UN.CART_LDTM) TOTAL_NS,
             P.MEDIA_CONTENT,
             P.MEDIA_FLAG
     FROM
@@ -84,7 +39,7 @@ FROM
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = orig_uid AND C1.TOPICID <> 9 ) A, (SELECT 
+        C1.USERID = 1020530 AND C1.TOPICID <> 9 ) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -101,7 +56,7 @@ FROM
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
-                OUUA.BY_USERID = orig_uid
+                OUUA.BY_USERID = 1020530
                     -- AND OUUA.TOPICID = 1
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
@@ -113,12 +68,14 @@ FROM
         ) UN
     WHERE 1=1
     AND P.CLEAN_POST_FLAG = 'Y'
-    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 10 DAY
+    AND P.TAG1_KEYID IS NOT NULL
+    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 100 DAY
             AND UN.USERID = P.POST_BY_USERID 
 			AND P.TOPICID = UN.TOPICID
             -- AND P.CLEAN_POST_FLAG = 'Y'
-            ) INSTREAM
-        INNER JOIN
+            -- ORDER BY CAST(P.POST_DATETIME AS DATE) DESC, UN.CART_LDTM DESC
+              ) INSTREAM
+ INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL
     FROM
@@ -137,24 +94,24 @@ FROM
                 ELSE 0
             END) HCOUNT
     FROM
-        OPN_USER_POST_ACTION -- WHERE TOPICID = tid
+        OPN_USER_POST_ACTION  -- WHERE TOPICID = 1
     GROUP BY CAUSE_POST_ID) POST_LHC ON INSTREAM.POST_ID = POST_LHC.CAUSE_POST_ID
         LEFT OUTER JOIN
     OPN_USER_POST_ACTION UP ON INSTREAM.POST_ID = UP.CAUSE_POST_ID
-        AND UP.ACTION_BY_USERID = orig_uid
+        AND UP.ACTION_BY_USERID = 1020530
         LEFT OUTER JOIN
     (SELECT 
         BK.POST_ID
     FROM
         OPN_POST_BOOKMARKS BK
     WHERE
-        BK.USERID = orig_uid
-            -- AND BK.TOPICID = tid
+        BK.USERID = 1020530
+            -- AND BK.TOPICID = 1
             ) BK2 ON INSTREAM.POST_ID = BK2.POST_ID
         LEFT OUTER JOIN
     OPN_USER_USER_ACTION UUA ON INSTREAM.POST_BY_USERID = UUA.ON_USERID
-        AND UUA.BY_USERID = orig_uid
-        -- AND UUA.TOPICID = tid
+        AND UUA.BY_USERID = 1020530
+        -- AND UUA.TOPICID = 1
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID, COUNT(1) POST_COMMENT_COUNT
@@ -163,16 +120,8 @@ FROM
     WHERE
         CLEAN_COMMENT_FLAG = 'Y'
             AND COMMENT_DELETE_FLAG = 'N'
-          --  AND TOPICID = tid
+            -- AND TOPICID = 1
     GROUP BY CAUSE_POST_ID) OPC ON INSTREAM.POST_ID = OPC.CAUSE_POST_ID
 ORDER BY 3 DESC, 10 DESC 
-LIMIT fromindex, toindex
-;
-
-END CASE ; -- THIS IS THE SUSPFLAG CASE END
-  
-END$$
-
-DELIMITER ;
-
--- 
+LIMIT 0, 750
+            ;

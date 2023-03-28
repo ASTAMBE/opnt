@@ -4,7 +4,7 @@
 DROP PROCEDURE IF EXISTS createGoogleUserTokenApp //
 CREATE PROCEDURE createGoogleUserTokenApp(username varchar(30), country_code varchar(5), fname varchar(150)
 , lname varchar(150), google_email varchar(250), dp_url varchar(500) 
-, Google_username varchar(100), Google_userid varchar(45), device_serial VARCHAR(40))
+, Google_username varchar(100), Google_userid varchar(45), device_serial VARCHAR(40), tcc varchar(5))
 BEGIN
 
 /* 04012018 AST: Added insret into proc log 
@@ -17,6 +17,7 @@ BEGIN
 	09/29/2021 AST: Changed the 'POLNEWS' to 'politicsnews1'
     
             01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
+            03/27/2023 AST: Adding tcc (TRUE_COUNTRY_CODE) to start logging the actual country code of the thousands of the GGG users
     
     */
 
@@ -40,8 +41,8 @@ INSERT INTO OPN_PROC_LOG(PROC_NAME, PROC_DTM, CONCAT_FIELDS, CONCAT_VALUES)
 VALUES('createGoogleUserTokenApp', NOW(), 'USERNAME', username) ;
 
 INSERT INTO OPN_USERLIST(USERNAME, USER_UUID, CREATION_DATE, COUNTRY_CODE, FIRST_NAME
-, LAST_NAME, EMAIL_ADDR, G_UNAME, G_USERID, FB_USER_FLAG, DP_URL)
-VALUES (username, UUID(), NOW(), country_code, fname, lname, google_email, Google_username, Google_userid, 'G' , dp_url);
+, LAST_NAME, EMAIL_ADDR, G_UNAME, G_USERID, FB_USER_FLAG, DP_URL, TRUE_COUNTRY_CODE)
+VALUES (username, UUID(), NOW(), country_code, fname, lname, google_email, Google_username, Google_userid, 'G' , dp_url, tcc);
 
 SET DEVICE_UUID = (SELECT U.USER_UUID FROM OPN_USERLIST U WHERE U.USERNAME = username);
 

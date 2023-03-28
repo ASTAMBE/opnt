@@ -69,17 +69,17 @@ FROM
         P.POST_ID,
             P.TOPICID,
             P.POST_DATETIME,
-            UN.CART_LDTM POST_UPDATE_DTM,
+            P.POST_UPDATE_DTM,
             P.POST_BY_USERID,
             P.POST_CONTENT,
             1 TOTAL_NS,
             P.MEDIA_CONTENT,
             P.MEDIA_FLAG
     FROM
-        OPN_POSTS P, (SELECT 
-        B.USERID, B.BOT_FLAG, A.TOPICID, A.CART_LDTM
+        OPN_POSTS P, (SELECT DISTINCT
+        B.USERID  -- , B.BOT_FLAG, A.TOPICID, A.CART_LDTM
     FROM
-        (SELECT 
+        (SELECT  
         C1.USERID, C1.TOPICID, C1.CART, C1.KEYID, C1.LAST_UPDATE_DTM CART_LDTM
     FROM
         OPN_USER_CARTS C1
@@ -119,7 +119,7 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
     ) UN
     WHERE
         UN.USERID = P.POST_BY_USERID
-            AND UN.TOPICID = P.TOPICID
+            -- AND UN.TOPICID = P.TOPICID
             AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 300 DAY
             AND P.CLEAN_POST_FLAG = 'Y') INSTREAM
         INNER JOIN

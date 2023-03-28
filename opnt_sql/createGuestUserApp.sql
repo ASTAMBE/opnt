@@ -2,12 +2,13 @@
 
 DROP PROCEDURE IF EXISTS `createGuestUserApp`;
 DELIMITER //
-CREATE   PROCEDURE `createGuestUserApp`(devicename varchar(600), country_code varchar(5), device_serial VARCHAR(40))
+CREATE   PROCEDURE `createGuestUserApp`(devicename varchar(600), country_code varchar(5), device_serial VARCHAR(40), tcc varchar(5))
 BEGIN
 
 /*    10172020 AST: Recreated with Default Cart assignment 
 
             01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
+            03/27/2023 AST: Adding tcc (TRUE_COUNTRY_CODE) to start logging the actual country code of the thousands of the GGG users
 
 */
 
@@ -20,7 +21,7 @@ DECLARE DEVICE_UUID VARCHAR(45) ;
 declare UID, T1, T2, T3, T4, T5, T8, T9, T10 INT ;
 
 /* 04012018 AST: End of device_serial addition for declarations */
-
+/*
 SET T1 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'POLNEWS' ) ;
 SET T2 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'sportsnews2' ) ;
 SET T3 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'sciencenews3' ) ;
@@ -29,7 +30,7 @@ SET T5 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'entertainmentnews5' ) 
 SET T8 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'opnt' ) ;
 SET T9 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'trendingnews9' ) ;
 SET T10 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'CELEBNEWS' ) ;
-
+*/
 SET RND4DIGIT = FLOOR(RAND()* (9999-1000) +1000);
 SET RND6DIGIT = FLOOR(RAND()* (999999-100000) +100000);
 
@@ -42,8 +43,8 @@ SET G1OK = (SELECT COUNT(*) FROM OPN_USERLIST WHERE USERNAME = GUESTUNAME1);
 
 CASE WHEN DNAMEOK = 0 THEN
 
-INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE) 
-VALUES (SUBSTR(devicename,1,6), AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST');
+INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE, TRUE_COUNTRY_CODEE) 
+VALUES (SUBSTR(devicename,1,6), AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST', tcc);
 
 /* 04012018 AST: The below portion is added in order to track the device_serial of the user */
 
@@ -76,8 +77,8 @@ WHEN DNAMEOK = 1 THEN
 
 	CASE WHEN G1OK = 0 THEN
     
-    INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE) 
-	VALUES (GUESTUNAME1, AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST');
+    INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE, TRUE_COUNTRY_CODE) 
+	VALUES (GUESTUNAME1, AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST', tcc);
     
     /* 04012018 AST: The below portion is added in order to track the device_serial of the user */
 
@@ -109,8 +110,8 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW())
     
 		WHEN G1OK = 1 THEN 
             
-            INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE) 
-			VALUES (GUESTUNAME2, AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST');
+            INSERT INTO OPN_USERLIST (USERNAME, PASSWORD, USER_UUID, CREATION_DATE, COUNTRY_CODE,FB_USER_FLAG, USER_TYPE, TRUE_COUNTRY_CODE) 
+			VALUES (GUESTUNAME2, AES_ENCRYPT('dummypassword', '290317'), UUID(), NOW(), country_code,'N', 'GUEST', tcc);
             
                 /* 04012018 AST: The below portion is added in order to track the device_serial of the user */
 

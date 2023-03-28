@@ -3,7 +3,7 @@
  DELIMITER //
 DROP PROCEDURE IF EXISTS createFBUserTokenApp //
 CREATE PROCEDURE createFBUserTokenApp(username varchar(30), country_code varchar(5), fb_username varchar(100)
-, fb_userid varchar(20), device_serial VARCHAR(40), dp_url VARCHAR(255))
+, fb_userid varchar(20), device_serial VARCHAR(40), dp_url VARCHAR(255), tcc varchar(5))
 BEGIN
 
 /* 04012018 AST: Added insret into proc log 
@@ -14,12 +14,13 @@ BEGIN
         This is to ensure that the ptoc will work in any db instance
         
                 01/24/2023 AST: Commented out the XYZ News insertion - for Dev only
-                
+            03/27/2023 AST: Adding tcc (TRUE_COUNTRY_CODE) to start logging the actual country code of the thousands of the GGG users
+
         */
 
 DECLARE DEVICE_UUID VARCHAR(45) ;
 declare UID, T1, T2, T3, T4, T5, T8, T9, T10 INT ;
-
+/*
 SET T1 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'POLNEWS' ) ;
 SET T2 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'sportsnews2' ) ;
 SET T3 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'sciencenews3' ) ;
@@ -28,14 +29,14 @@ SET T5 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'entertainmentnews5' ) 
 SET T8 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'opnt' ) ;
 SET T9 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'trendingnews9' ) ;
 SET T10 = (SELECT KEYID FROM OPN_P_KW WHERE SCRAPE_TAG2 = 'CELEBNEWS' ) ;
-
+*/
 CASE WHEN fb_userid IS NOT NULL THEN
 
 INSERT INTO OPN_PROC_LOG(PROC_NAME, PROC_DTM, CONCAT_FIELDS, CONCAT_VALUES)
 VALUES('createFBUserTokenApp', NOW(), 'USERNAME', username) ;
 
-INSERT INTO OPN_USERLIST(USERNAME, USER_UUID, CREATION_DATE, COUNTRY_CODE, FB_USER_NAME, FB_USERID, FB_USER_FLAG,DP_URL)
-VALUES (username, UUID(), NOW(), country_code, fb_username, fb_userid, 'Y',dp_url );
+INSERT INTO OPN_USERLIST(USERNAME, USER_UUID, CREATION_DATE, COUNTRY_CODE, FB_USER_NAME, FB_USERID, FB_USER_FLAG,DP_URL, TRUE_COUNTRY_CODE)
+VALUES (username, UUID(), NOW(), country_code, fb_username, fb_userid, 'Y',dp_url , tcc);
 
 SET DEVICE_UUID = (SELECT U.USER_UUID FROM OPN_USERLIST U WHERE U.USERNAME = username);
 

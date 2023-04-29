@@ -39,6 +39,9 @@ thisproc: BEGIN
         needs an upsert in the OPN_USER_CARTS table. Hence this proc (convertPostToKW) will only upsert
         the cart (why upsert ? because the user may change his L/H, so it may exist already in his cart)
         1.2 If the KEYID is null, then the proc will do all the 4 tasks mentioned above.
+        
+	04/21/2023 AST: Covering the case of discussion post converting to KW - in a discussion post, you may have
+    no URL - hence you have to use IFNULL(substrURLT, substrPCONT) for KEYWORDS
     
  */
 
@@ -65,7 +68,8 @@ FROM OPN_USERLIST WHERE USERID = actionbyid ;
 INSERT INTO OPN_P_KW(TOPICID, KEYWORDS, KW_TRIM, COUNTRY_CODE, DISPLAY_SEQ, CREATION_DTM
 , LAST_UPDATE_DTM, CLUSTER_PRIO, ORIGIN_COUNTRY_CODE, NEW_KW_FLAG, SCRAPE_TAG1, SCRAPE_TAG2,
 USER_CREATED_KW, CREATED_BY_UID, CREATED_BY_UUID, CREATED_BY_UNAME, CLEAN_KW_FLAG, KW_EXT, KW_URL, ALT_KEYID)
-VALUES (tid, substrURLT, CONCAT(UPPER(REPLACE(substrURLT, ' ', '') ), tid) , CCODE, 5, NOW()
+VALUES (tid, IFNULL(substrURLT, substrPCONT)
+, CONCAT(UPPER(REPLACE(IFNULL(substrURLT, substrPCONT), ' ', '') ), tid) , CCODE, 5, NOW()
 , NOW(), 5, CCODE, 'N', 'NOSCRAPE', 'NOSCRAPETAG2'
 , 'Y', actionbyid, UUID, actionByUNAME, 'Y', URLTITLE, POSTCONTENT , postid ); 
 
@@ -77,7 +81,8 @@ INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 
 INSERT INTO OPN_KW_TAGS(TOPICID, KEYID, KEYWORDS, KW_TRIM, COUNTRY_CODE, ORIGIN_COUNTRY_CODE
 , SCRAPE_TAG1, SCRAPE_TAG2, KW_EXT, KW_URL, ALT_KEYID, SCRAPE_DESIGN_DONE, KW_DTM)
-VALUES(tid, newkeyid, substrURLT, CONCAT(UPPER(REPLACE(substrURLT, ' ', '') ), tid) , CCODE, CCODE
+VALUES(tid, newkeyid, IFNULL(substrURLT, substrPCONT)
+, CONCAT(UPPER(REPLACE(IFNULL(substrURLT, substrPCONT), ' ', '') ), tid) , CCODE, CCODE
 , 'NOSCRAPE', 'NOSCRAPETAG2', URLTITLE, POSTCONTENT, postid, 'N', NOW()) ;
 
 UPDATE OPN_POSTS SET KEYID = newkeyid WHERE POST_ID = postid ;

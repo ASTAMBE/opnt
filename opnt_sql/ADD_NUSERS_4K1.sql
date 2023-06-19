@@ -14,6 +14,8 @@ replacing AND USERID < 1020000 AND TAILORED_USER_FLAG = 'N' with BOT_FLAG = 'Y'
 
 	07/01/2020 AST: Adding the steps where each new KW will create some BOT users
     in all the CCODES - not just the CCODE of the origin user.
+    
+        06/18/2023 AST: Added the Raw Loggin portion for analysis of convertPostToKW
 
 */
 
@@ -79,6 +81,10 @@ SELECT 'L', K1, USERID, TID, NOW(), NOW() FROM
 AND BOT_FLAG = 'Y' AND COUNTRY_CODE IN (CCD3) ORDER BY RAND() LIMIT LCOUNT)Q ;
 
 /* End of 07/01/2020 addition */
+
+INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
+'ADD_NUSERS_4K1-KEYID-CCODE1-HCOUNT-LCOUNT'
+, CONCAT(K1, '-', CCODE,'-',HCOUNT,'-', LCOUNT), NOW() ) ;
 
  
 END; //

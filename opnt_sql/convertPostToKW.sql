@@ -43,6 +43,8 @@ thisproc: BEGIN
 	04/21/2023 AST: Covering the case of discussion post converting to KW - in a discussion post, you may have
     no URL - hence you have to use IFNULL(substrURLT, substrPCONT) for KEYWORDS
     
+    06/11/2023 AST: Adding the ADD_NUSERS_4K1 call - for parity with the cretaaeKW proc
+    
  */
 
 declare pbuid, actionByUID, postidvar, newkeyid INT;
@@ -97,6 +99,8 @@ VALUES(actionType, newkeyid, actionbyid, tid, NOW(), NOW()) ON DUPLICATE KEY UPD
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 'convertPostToKW-Inserted CART with new POST-TO-KW: newkeyid-Cart For USERID-Topicid-CART Value'
 , CONCAT(newkeyid, '-', actionbyid,'-',tid,'-', actionType), NOW() ) ;
+
+-- CALL ADD_NUSERS_4K1(newkeyid , CCODE,  tid) ;
 
 /* END upsert in the cart */
 

@@ -10,7 +10,28 @@ CREATE  PROCEDURE `getDiscussionsNW`(uuid varchar(45), tid INT , fromindex INT, 
 thisproc: BEGIN
 
 /* 
+    09/29/2021 AST: This proc is being created to supply the NW Instream - Only for Bolo
+    1. It excludes the non-bot posts - so that only scraped news items show up in instream
+    2. It also excludes the Politics News KW for the NW calculation purpose. This is because:
     
+    + For Bolo, the Politics News KW will be auto-assigned to every user. But we don't want
+    this KW to determine the network - because then every one will be in the same network.
+    + To avoid the same NW for everyone problem, we have decided to create a separate class of KWs
+    + These KWs will have NEWS_ONLY_FLAG = 'Y' in the OPN_P_KW and OPN_KW_TAGS tables.
+    + While computing the UN (User Network) in the SQL below, the KEYID with NEWS_ONLY_FLAG = 'Y'
+    will be excluded from the A and B portions of the UN query
+    
+    THis will have 2 consequences (only for Bolo):
+    1. These KWs will not be used in the network formation at all - 
+		- the NW Counts and Network Details etc will have to be changed too
+    2. But they will be used to deliver the Poltics News to all the users irrespective of whether they 
+    have a cart or not.
+	
+    10/13/2022 AST: Changed the orde3r clause and removed the order clause from subquery for performance
+    Also limited the posts to last 50 days.
+    
+    11/11/2022 AST: Further reorg of the instream query for perf enhancement
+            
  */
  
 declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
@@ -19,12 +40,12 @@ DECLARE CDTM DATETIME ;
 DECLARE CCODE, SUSPFLAG VARCHAR(5) ;
 
 SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.USER_SUSPEND_FLAG
-INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = userid ;
+INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, userid, NOW(), 'getDiscussionsNW', CONCAT(topicid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -86,7 +107,7 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND C2.TOPICID = tid AND IFNULL(CU.BOT_FLAG, 'N') <> 'Y'
+        AND C2.TOPICID = tid AND CU.BOT_FLAG <> 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
@@ -116,7 +137,7 @@ FROM
     FROM
         OPN_USERLIST
     WHERE
-        BOT_FLAG = 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
+        BOT_FLAG <> 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID,

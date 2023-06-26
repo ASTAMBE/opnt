@@ -100,7 +100,7 @@ INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 'convertPostToKW-Inserted CART with new POST-TO-KW: newkeyid-Cart For USERID-Topicid-CART Value'
 , CONCAT(newkeyid, '-', actionbyid,'-',tid,'-', actionType), NOW() ) ;
 
--- CALL ADD_NUSERS_4K1(newkeyid , CCODE,  tid) ;
+CALL ADD_NUSERS_4K1(newkeyid , CCODE,  tid) ;
 
 /* END upsert in the cart */
 

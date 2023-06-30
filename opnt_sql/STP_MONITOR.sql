@@ -46,6 +46,23 @@ VALUES (WSR_FILE, WFD, 'STP_GRAND_XYZNEWS', CDTM)
 , (WSR_FILE, WFD, 'STP_GRAND_GGG()', CDTM)
 ;
 
+/* 06/09/2023 AST: Adding the pre-processing for scrapes that do not have a standard NEWS_DTM_RAW or the python scrapes that
+have a different DTM format. They have LENGTH(NEWS_DTM_RAW) between 28 and 31.
+
+Some scrapes still have no NDTM - they need to be given the SCRAPE_DATE and NEWS_DATE
+*/
+
+
+UPDATE WEB_SCRAPE_RAW SET NEWS_DATE = STR_TO_DATE(substr(NEWS_DTM_RAW, 6, 11), '%d %M %Y') 
+WHERE LENGTH(NEWS_DTM_RAW) BETWEEN 28 AND 31 ;
+
+UPDATE WEB_SCRAPE_RAW SET NEWS_DATE = SCRAPE_DATE WHERE NEWS_DATE IS NULL ;
+
+/* 06/26/2023 AST:  Removing the scrapes that are of no use or have insufficient URL data
+*/
+
+DELETE FROM WEB_SCRAPE_RAW WHERE LENGTH(NEWS_URL) < 50 OR (LENGTH(NEWS_URL) - LENGTH(REPLACE(NEWS_URL, '/', ''))) / LENGTH('/') < 3 ;
+
 SET R_ID = (SELECT ROW_ID FROM OPN_STP_MONITOR WHERE WSR_FILE_NAME = WSR_FILE AND STP_MONITOR_PROCESS = 'INITIAL_WSR_LOAD' AND CREATION_DTM = CDTM) ;
 CALL WSR_DEDUPE_ALL() ;
 SET DWC = (SELECT COUNT(1) FROM WEB_SCRAPE_RAW) ;

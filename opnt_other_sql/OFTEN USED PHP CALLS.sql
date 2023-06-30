@@ -6,8 +6,8 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 CALL newPostwithmedia(1, bringUUID(1023649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
-CALL getInstreamBoloANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamBoloNW(bringuuid(1023377), 1, 0, 30) ;
+CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
+CALL getInstreamNW(bringuuid(1020530), 1, 0, 30) ;
 
 CALL getUserCarts(1, BRINGUUID(bringUseridFromUsername('rmx185')), 'POPULAR', 0, 400) ;
 CALL getUserCarts(1, BRINGUUID(1018387), 'LATEST', 0, 400) ;
@@ -85,3 +85,7 @@ CALL getNetworkDetails('astbolo101121', bringUUID(1023818), 1) ;
 SELECT * FROM OPN_USER_CARTS WHERE USERID = 1023385 AND TOPICID = 1 ;
 
 CALL networkNamesByUserName('db70937e-2b16-11ec-9935-061dbb11189b', 1, 0, 100) ;
+
+CALL userActionCommon(bringUUID(1020450), 'POST', 'H1', 1145494) ; -- NEED TO INPUT L1 OR H1 - DUE TO A SPECIFIC LOGIC IN THE PROC - NOT L/H
+
+CALL showInitialKWs(bringUUID(1020530), 10, 0, 20) ;

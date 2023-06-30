@@ -1,11 +1,11 @@
--- getDiscussionsNW
+-- getInstreamNW
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getDiscussionsNW`;
+DROP procedure IF EXISTS `getInstreamNW`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getDiscussionsNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getInstreamNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
@@ -31,6 +31,9 @@ thisproc: BEGIN
     Also limited the posts to last 50 days.
     
     11/11/2022 AST: Further reorg of the instream query for perf enhancement
+    
+    03/19/2023 AST: Bifurcating the instream into Trending Vs non-trending by adding a call to the new
+    getInstreamTrendingNW proc.
             
  */
  
@@ -55,6 +58,14 @@ VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
 CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
+
+/* Adding the CASE for Trending */
+
+CASE WHEN tid = 9 THEN
+
+CALL getInstreamTrendingNW(uuid , tid  , fromindex , toindex ) ;
+
+ELSE
 
 SELECT 
     INSTREAM.POST_ID,
@@ -107,7 +118,7 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND C2.TOPICID = tid AND CU.BOT_FLAG <> 'Y'
+        AND C2.TOPICID = tid AND CU.BOT_FLAG = 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
@@ -137,7 +148,7 @@ FROM
     FROM
         OPN_USERLIST
     WHERE
-        BOT_FLAG <> 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
+        BOT_FLAG = 'Y') OU ON INSTREAM.POST_BY_USERID = OU.USERID
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID,
@@ -180,6 +191,8 @@ FROM
 ORDER BY 3 DESC, 10 DESC 
 LIMIT fromindex, toindex
 ;
+
+END CASE ; -- THIS IS THE TRENDING CASE END
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

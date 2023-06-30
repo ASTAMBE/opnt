@@ -31,6 +31,8 @@ THISPROC: BEGIN
 04/25/2019 AST: Removing the CALL STP_STAG1_1KW(1, 'GPOL', 'GGG')  because it is not productive 
 
 	07/19/2020 AST: ADDED TAG_DONE_FLAG = 'Y' AFTER UPDATE
+    
+    06/24/2023: AST: Introducing the STP_REMAINDER proc 
 
 */
 

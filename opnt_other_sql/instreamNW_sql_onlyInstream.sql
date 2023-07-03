@@ -17,7 +17,7 @@ SELECT
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = 1020530 AND C1.TOPICID = 1) A, (SELECT 
+        C1.USERID = 1022662 AND C1.TOPICID = 1) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -34,7 +34,7 @@ SELECT
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
-                OUUA.BY_USERID = 1020530
+                OUUA.BY_USERID = 1022662
                     AND OUUA.TOPICID = 1
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
@@ -47,8 +47,9 @@ SELECT
     ) UN
     WHERE 1=1
     AND P.CLEAN_POST_FLAG = 'Y'
-    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 100 DAY
+    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 10 DAY
             AND UN.USERID = P.POST_BY_USERID 
 			AND P.TOPICID = UN.TOPICID
             -- AND P.CLEAN_POST_FLAG = 'Y'
+            ORDER BY 3 DESC, 7 DESC 
             ;

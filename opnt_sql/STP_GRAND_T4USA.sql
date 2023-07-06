@@ -13,6 +13,8 @@ THISPROC: BEGIN
         10/04/2020 AST: adding filter to XYZNEWS to avoid: old news, stock market update, SHOPPING ADS ETC.
         10/09/2020 AST: fixing the date issue in XYZNEWS  addition - also moving it to the front of the UPDATE
     10/10/2020 AST: removed the above - as a new proc was created for this purpose
+    
+             06/24/2023: AST: Introducing the STP_REMAINDER proc 
 
 */
 

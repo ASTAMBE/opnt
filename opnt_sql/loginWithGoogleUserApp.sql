@@ -2,7 +2,7 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS loginWithGoogleUserApp //
-CREATE PROCEDURE loginWithGoogleUserApp(Google_userid VARCHAR(25), device_serial VARCHAR(45))
+CREATE PROCEDURE loginWithGoogleUserApp(Google_userid VARCHAR(45), device_serial VARCHAR(45))
 BEGIN
 
 /* 02/17/2020 AST: INITIAL CREATION  

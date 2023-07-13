@@ -15,6 +15,7 @@ THISPROC: BEGIN
     10/10/2020 AST: removed the above - as a new proc was created for this purpose
     
              06/24/2023: AST: Introducing the STP_REMAINDER proc 
+             07/12/2023 AST: Diverting 1/3rd of the USA BIZ scrapes to GGG
 
 */
 
@@ -22,7 +23,16 @@ THISPROC: BEGIN
 
 DECLARE POSTCOUNT, UNTAGCOUNT INT ;
 
+/* 07/12/2023 AST: Diverting 1/3rd of the USA BIZ scrapes to GGG: Begin  */
 
+UPDATE WEB_SCRAPE_RAW SET COUNTRY_CODE = 'GGG', SCRAPE_TAG1 = 'GGGBIZ', SCRAPE_TAG2 = 'GGGBIZ', SCRAPE_TAG3 = 'GGGBIZ' 
+WHERE SCRAPE_TOPIC = 'BUSINESS' AND COUNTRY_CODE = 'USA' and MOD(ROW_ID, 3) = 0 ;
+
+/* 07/12/2023 AST: Diverting 1/3rd of the USA BIZ scrapes to GGG: End. The above SQL will automaticaly convert 1/3rd of the BUSINESS/USA
+scrapes into BUSINESS/GGG scrapes. The rest of the script remains unchanged and will behave as normal T4USA
+Only thing is, we will add a CALL STP_REMAINDER('BUSINESS', 4, 'GGG') ;
+
+Since we are not doing the UNTAGCOUNT for T4GGG, the counts in the OPN_STP_LOG will be incorrect - but that is not a priority currently */
   
 UPDATE WEB_SCRAPE_RAW SET SCRAPE_TAG1 = 'USABIZ', SCRAPE_TAG2 = 'USABIZ', SCRAPE_TAG3 = 'USABIZ' WHERE SCRAPE_TOPIC = 'BUSINESS' AND COUNTRY_CODE = 'USA' ;
  
@@ -585,6 +595,7 @@ SET UNTAGCOUNT = (SELECT COUNT(*) FROM WEB_SCRAPE_RAW
 WHERE SCRAPE_TOPIC IN ('BUSINESS') AND COUNTRY_CODE = 'USA' AND MOVED_TO_POST_FLAG = 'N') ;
 
 CALL STP_REMAINDER('BUSINESS', 4, 'USA') ;
+CALL STP_REMAINDER('BUSINESS', 4, 'GGG') ;
 
 INSERT INTO WSR_CONVERTED(STP_PROCESS, SCRAPE_TOPIC, SCRAPE_SOURCE, SCRAPE_DATE, NEWS_DATE, NEWS_HEADLINE, NEWS_EXCERPT, NEWS_PIC_URL, NEWS_URL, COUNTRY_CODE)
 SELECT 'STP_REMAINDER', SCRAPE_TOPIC, SCRAPE_SOURCE,  SCRAPE_DATE, NEWS_DATE, NEWS_HEADLINE, NEWS_EXCERPT, NEWS_PIC_URL, NEWS_URL, COUNTRY_CODE FROM WEB_SCRAPE_RAW

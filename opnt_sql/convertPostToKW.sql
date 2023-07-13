@@ -45,6 +45,9 @@ thisproc: BEGIN
     
     06/11/2023 AST: Adding the ADD_NUSERS_4K1 call - for parity with the cretaaeKW proc
     
+    07/07/2023 AST: CCODE sourcing from OPN_POSTS instead of OPN_USERLIST (this is because the country code
+    of a KW should be determined by the original post's country code.)
+    
  */
 
 declare pbuid, actionByUID, postidvar, newkeyid INT;
@@ -59,10 +62,10 @@ INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 
 CASE WHEN kidparam = 0 THEN
 
-SELECT P.POST_ID, POST_CONTENT, SUBSTR(P.POST_CONTENT, 1, 160), P.URL_TITLE, SUBSTR(P.URL_TITLE, 1, 160)
-INTO postidvar, POSTCONTENT, substrPCONT, URLTITLE, substrURLT FROM OPN_POSTS P WHERE P.POST_ID = postid ;
+SELECT P.POST_ID, POST_CONTENT, SUBSTR(P.POST_CONTENT, 1, 160), P.URL_TITLE, SUBSTR(P.URL_TITLE, 1, 160), POSTOR_COUNTRY_CODE
+INTO postidvar, POSTCONTENT, substrPCONT, URLTITLE, substrURLT, CCODE FROM OPN_POSTS P WHERE P.POST_ID = postid ;
 
-SELECT USERNAME, USER_UUID, COUNTRY_CODE INTO actionByUNAME, UUID, CCODE 
+SELECT USERNAME, USER_UUID INTO actionByUNAME, UUID 
 FROM OPN_USERLIST WHERE USERID = actionbyid ;
 
 /* Creating the new KeyWord below and updating the OPN_POSTS */

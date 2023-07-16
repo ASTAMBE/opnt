@@ -30,6 +30,11 @@ thisproc: BEGIN
         
     03/19/2023 AST: Bifurcating the instream into Trending Vs non-trending by adding a call to the new
     getInstreamTrendingANTI proc.
+    
+        07/16/2023 AST: Removing the  DELETED_FLAG = 'Y' posts from the instream.
+    DELETE_FLAG was introduced some time back to deal with crappy posts that were added by the dev testers.
+    In order to retain the integrity of the system even when a user deletes his post, we currently only 
+    make the DELETED_FLAG = 'Y' thru' the deletePost proc.
         
  */
  
@@ -138,7 +143,8 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
         UN.USERID = P.POST_BY_USERID
             AND UN.TOPICID = P.TOPICID
             AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 300 DAY
-            AND P.CLEAN_POST_FLAG = 'Y') INSTREAM
+                AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y'
+) INSTREAM
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL

@@ -6,7 +6,7 @@ SELECT
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = 1020530 AND C1.TOPICID = 1) A, (SELECT 
+        C1.USERID = 1008559 AND C1.TOPICID = 2) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -17,14 +17,14 @@ SELECT
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND C2.TOPICID = 1 AND CU.BOT_FLAG = 'Y'
+        AND C2.TOPICID = 2 AND CU.BOT_FLAG = 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
-                OUUA.BY_USERID = 1020530
-                    AND OUUA.TOPICID = 1
+                OUUA.BY_USERID = 1008559
+                    AND OUUA.TOPICID = 2
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
         B.TOPICID = A.TOPICID

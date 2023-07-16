@@ -31,6 +31,11 @@ thisproc: BEGIN
     Also limited the posts to last 50 days.
     
     11/11/2022 AST: Further reorg of the instream query for perf enhancement
+    
+            07/16/2023 AST: Removing the  DELETED_FLAG = 'Y' posts from the instream.
+    DELETE_FLAG was introduced some time back to deal with crappy posts that were added by the dev testers.
+    In order to retain the integrity of the system even when a user deletes his post, we currently only 
+    make the DELETED_FLAG = 'Y' thru' the deletePost proc.
             
  */
  
@@ -125,7 +130,7 @@ FROM
     -- ORDER BY COUNT(*) DESC
     ) UN
     WHERE 1=1
-    AND P.CLEAN_POST_FLAG = 'Y'
+    AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y'
     AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 100 DAY
             AND UN.USERID = P.POST_BY_USERID 
 			AND P.TOPICID = UN.TOPICID

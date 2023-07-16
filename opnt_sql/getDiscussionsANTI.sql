@@ -26,6 +26,11 @@ thisproc: BEGIN
 		- the NW Counts and Network Details etc will have to be changed too
     2. But they will be used to deliver the Poltics News to all the users irrespective of whether they 
     have a cart or not.
+    
+                07/16/2023 AST: Removing the  DELETED_FLAG = 'Y' posts from the instream.
+    DELETE_FLAG was introduced some time back to deal with crappy posts that were added by the dev testers.
+    In order to retain the integrity of the system even when a user deletes his post, we currently only 
+    make the DELETED_FLAG = 'Y' thru' the deletePost proc.
         
  */
  
@@ -126,7 +131,7 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
         UN.USERID = P.POST_BY_USERID
             AND UN.TOPICID = P.TOPICID
             AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 300 DAY
-            AND P.CLEAN_POST_FLAG = 'Y') INSTREAM
+    AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y') INSTREAM
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL

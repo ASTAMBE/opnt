@@ -35,6 +35,11 @@ thisproc: BEGIN
     DELETE_FLAG was introduced some time back to deal with crappy posts that were added by the dev testers.
     In order to retain the integrity of the system even when a user deletes his post, we currently only 
     make the DELETED_FLAG = 'Y' thru' the deletePost proc.
+    
+        08/06/2023 AST: Instead of BOT_FLAG = 'Y', switching to DEMO_POST_FLAG = 'Y' for instream.
+    This is so that the BOTs can be used to start discussions and post STP as discussions.
+    
+    ALSO switching to last 30 days of posts instead of last 100 days
         
  */
  
@@ -142,8 +147,9 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
     WHERE
         UN.USERID = P.POST_BY_USERID
             AND UN.TOPICID = P.TOPICID
-            AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 300 DAY
+            AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 30 DAY
                 AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y'
+                AND P.DEMO_POST_FLAG = 'Y'
 ) INSTREAM
         INNER JOIN
     (SELECT 

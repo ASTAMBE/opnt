@@ -44,6 +44,8 @@ thisproc: BEGIN
     This is so that the BOTs can be used to start discussions and post STP as discussions.
     
     ALSO switching to last 30 days of posts instead of last 100 days
+    
+    08/11/2023 AST: Added POST_ID to the ordering of instream
             
  */
  
@@ -199,7 +201,7 @@ FROM
             AND COMMENT_DELETE_FLAG = 'N'
             AND TOPICID = tid
     GROUP BY CAUSE_POST_ID) OPC ON INSTREAM.POST_ID = OPC.CAUSE_POST_ID
-ORDER BY 3 DESC, 10 DESC 
+ORDER BY 3 DESC, 1 DESC, 10 DESC 
 LIMIT fromindex, toindex
 ;
 

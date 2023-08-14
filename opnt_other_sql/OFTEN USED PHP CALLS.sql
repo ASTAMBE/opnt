@@ -2,15 +2,19 @@
 use opntprod;
 SET SQL_SAFE_UPDATES = 0;
 SET GLOBAL log_bin_trust_function_creators = 1;
+SHOW ENGINE INNODB STATUS ;
+SHOW FULL PROCESSLIST;
 
 CALL newPostwithmedia(1, bringUUID(1023649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamNW(bringuuid(1020530), 1, 0, 30) ;
+CALL getInstreamNW(bringuuid(1023879), 1, 0, 30) ;
+CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
+CALL getDiscussionsNW(bringuuid(1005689), 1, 0, 30) ;
 
 CALL getUserCarts(1, BRINGUUID(bringUseridFromUsername('rmx185')), 'POPULAR', 0, 400) ;
-CALL getUserCarts(1, BRINGUUID(1018387), 'LATEST', 0, 400) ;
+CALL getUserCarts(1, BRINGUUID(1005689), 'LATEST', 0, 400) ;
 
 CALL addcleandomain('www.deccanherald.com', 'www.deccanherald.com', 'deccanherald.com' ) ;
 
@@ -89,3 +93,8 @@ CALL networkNamesByUserName('db70937e-2b16-11ec-9935-061dbb11189b', 1, 0, 100) ;
 CALL userActionCommon(bringUUID(1020450), 'POST', 'H1', 1145494) ; -- NEED TO INPUT L1 OR H1 - DUE TO A SPECIFIC LOGIC IN THE PROC - NOT L/H
 
 CALL showInitialKWs(bringUUID(1020530), 10, 0, 20) ;
+
+SELECT * FROM OPN_PUSH_LAUNCH LIMIT 10 ;
+
+CREATE TABLE OPN_PUSH_LAUNCH_BK AS SELECT * FROM OPN_PUSH_LAUNCH WHERE 1 = 2 ;
+

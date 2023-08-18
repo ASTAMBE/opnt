@@ -95,6 +95,7 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
+        AND CU.BOT_FLAG = 'Y' AND CU.COUNTRY_CODE = CCODE
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM

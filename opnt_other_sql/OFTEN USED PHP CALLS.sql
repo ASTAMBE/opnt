@@ -5,7 +5,7 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 SHOW ENGINE INNODB STATUS ;
 SHOW FULL PROCESSLIST;
 
-CALL newPostwithmedia(1, bringUUID(1023649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
+CALL newPostwithmedia(1, bringUUID(1004649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
@@ -94,7 +94,8 @@ CALL userActionCommon(bringUUID(1020450), 'POST', 'H1', 1145494) ; -- NEED TO IN
 
 CALL showInitialKWs(bringUUID(1020530), 10, 0, 20) ;
 
-SELECT * FROM OPN_PUSH_LAUNCH LIMIT 10 ;
-
-CREATE TABLE OPN_PUSH_LAUNCH_BK AS SELECT * FROM OPN_PUSH_LAUNCH WHERE 1 = 2 ;
+CALL createBOTDiscussion('SCRAPE_TO_DISC', 311, 'USA', 'H' , 1, '','' , '', '') ;
+CALL createBOTDiscussion('ORIG_DISCUSSION', NULL, 'GGG', 'L' , 3, 'Scientific Research Is in Crisis as more and more premier universities face fake data scandals','' 
+, 'Recently Stanford president had to resign because a kid exposed many of his fake data episodes'
+, 'And the harvard went one further - their ethics researcher was caught faking the data. Talk about the utter hypocrisy') ;
 

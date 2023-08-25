@@ -2,8 +2,9 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS createBOTDiscussion //
-CREATE PROCEDURE createBOTDiscussion(CREATION_TYPE varchar(40), source_row_id INT, ccode VARCHAR(5), CARTVAL VARCHAR(3),
-tid INT, message varchar(2000) , embedded_content varchar(1000), cmnt1 varchar(2000), cmnt2 varchar(2000), minExistsUsers INT)
+CREATE PROCEDURE createBOTDiscussion(CREATION_TYPE varchar(40), source_row_id INT, country_code VARCHAR(5), CARTVAL VARCHAR(3),
+tid INT, message varchar(2000) , embedded_content varchar(1000), cmnt1 varchar(2000), cmnt2 varchar(2000) -- , minExistsUsers INT
+)
 thisProc: BEGIN
 
 /*   
@@ -17,16 +18,20 @@ thisProc: BEGIN
 we have to do 3 for now.
 ALSO: Added the STD_ONLY_DISC case to create discussions that look like STP posts with previews.
 
-08/23/2023 AST: Re-building the UID selector to use OPN_MAIN_BOTS.
+08/23/2023 AST: Re-building the UID selector to use OPN_MAIN_BOTS. And removing the minExistsUsers param
+
+08/25/2023 AST: Added logic to avoid running into duplicate KW if the cursor brings a scrape that has
+been already converted into a KW. This could happen due to the repetition of news in the scrapes.
 
 */
 
-declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2 INT;
+declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST INT;
 DECLARE UNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic VARCHAR(30) ;
 DECLARE UUID VARCHAR(50) ;
 DECLARE SUSPUSER, LIKECODE VARCHAR(5) ;
 DECLARE URL, newsTitle, newsExcrpt varchar(1000) ;
 
+/*
 SET MATCHKID = (SELECT CASE WHEN tid = 1 then 105087
 WHEN tid = 2 THEN 105654
 WHEN tid = 3 THEN 105108
@@ -34,7 +39,7 @@ WHEN tid = 4 THEN 105653
 WHEN tid = 5 THEN 105655
 WHEN tid = 8 THEN 80005
 WHEN tid = 10 AND country_code = 'IND' THEN 105088
-WHEN tid = 10 AND country_code <> 'IND' THEN 105089 END ) ;
+WHEN tid = 10 AND country_code <> 'IND' THEN 105089 END ) ; */
 
 SET LIKECODE = (SELECT CASE WHEN CARTVAL = 'L' THEN 'L1' ELSE 'H1' END) ;
 
@@ -96,6 +101,10 @@ WHEN CREATION_TYPE = 'SCRAPE_TO_DISC' THEN
 SELECT NEWS_URL, NEWS_HEADLINE, NEWS_EXCERPT, SCRAPE_SOURCE, SCRAPE_TOPIC into URL, newsTitle, newsExcrpt, scr_src, scr_topic 
 FROM WEB_SCRAPE_RAW_L WHERE ROW_ID = source_row_id ;
 
+SET KWEXIST = (SELECT COUNT(1) FROM OPN_P_KW WHERE TOPICID = tid AND KEYWORDS LIKE CONCAT(SUBSTR(newsTitle, 1, 150), '%') );
+
+CASE WHEN KWEXIST = 0 THEN 
+
 INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG
 ,EMBEDDED_CONTENT,EMBEDDED_FLAG, POSTOR_COUNTRY_CODE,MEDIA_CONTENT,MEDIA_FLAG, STP_PROC_NAME)
 VALUES (tid, NOW(), orig_uid, newsTitle, 'N', '', 'N', country_code, '', 'N', 'SCRAPE_TO_DISC');
@@ -134,6 +143,16 @@ INSERT INTO WSR_CONVERTED(SCRAPE_DATE, SCRAPE_SOURCE, SCRAPE_TOPIC, COUNTRY_CODE
 VALUES(CURRENT_DATE(), scr_src, scr_topic, country_code, URL, newsTitle, newsExcrpt, CONCAT('POST_ID=', POSTID, ' PBUID=', orig_uid, ' CBYUID=', CBYUID1), 'SCRAPE_TO_DISC') ;
 
 DELETE FROM WEB_SCRAPE_RAW_L WHERE ROW_ID = source_row_id ;
+
+WHEN KWEXIST > 0 THEN 
+
+INSERT INTO WSR_CONVERTED(SCRAPE_DATE, SCRAPE_SOURCE, SCRAPE_TOPIC, COUNTRY_CODE, NEWS_URL, NEWS_HEADLINE, NEWS_EXCERPT, SCRAPE_TAG1, STP_PROCESS) 
+VALUES(CURRENT_DATE(), scr_src, scr_topic, country_code, URL, newsTitle, newsExcrpt, CONCAT('POST_ID=', POSTID, ' PBUID=', orig_uid, ' CBYUID=', CBYUID1), 'STD_DUPE_REJECT') ;
+
+DELETE FROM WEB_SCRAPE_RAW_L WHERE ROW_ID = source_row_id ;
+LEAVE thisproc ;
+
+END CASE ;
 
 WHEN CREATION_TYPE = 'STD_NO_EXCRPT' THEN
 

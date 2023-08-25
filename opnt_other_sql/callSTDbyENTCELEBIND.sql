@@ -30,21 +30,21 @@ BEGIN
 CASE WHEN SCR_SRC IN ('ITV/ENT', 'TOI/ENT') THEN 
 CASE WHEN  MOD(RID, 2) = 1  THEN 
 
-CALL createBOTDiscussion('STD_ONLY_DISC', RID, 'IND', 'L' , 10, '','' , '','', 3) ;
+CALL createBOTDiscussion('STD_ONLY_DISC', RID, 'IND', 'L' , 10, '','' , '','') ;
 
 WHEN  MOD(RID, 2) = 0  THEN 
 
-CALL createBOTDiscussion('STD_NO_EXCRPT', RID, 'IND', 'L' , 5, '','' , '','', 3) ;
+CALL createBOTDiscussion('STD_NO_EXCRPT', RID, 'IND', 'L' , 5, '','' , '','') ;
 END CASE ;
 
 WHEN SCR_SRC NOT IN ('ITV/ENT', 'TOI/ENT') THEN 
 CASE WHEN  MOD(RID, 2) = 1  THEN 
 
-CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, 'IND', 'L' , 10, '','' , '','', 3) ;
+CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, 'IND', 'L' , 10, '','' , '','') ;
 
 WHEN  MOD(RID, 2) = 0  THEN 
 
-CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, 'IND', 'L' , 5, '','' , '','', 3) ;
+CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, 'IND', 'L' , 5, '','' , '','') ;
 END CASE ;
 
 END CASE ;

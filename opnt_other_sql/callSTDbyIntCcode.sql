@@ -27,7 +27,7 @@ thisproc:BEGIN
       LEAVE READ_LOOP;
       END IF;
       
-CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, ccode, 'L' , tid, '','' , '','', 5) ;
+CALL createBOTDiscussion('SCRAPE_TO_DISC', RID, ccode, 'L' , tid, '','' , '','') ;
 
         END LOOP;
   CLOSE CURSOR_I;

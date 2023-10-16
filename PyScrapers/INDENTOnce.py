@@ -1,24 +1,48 @@
 import feedparser
 from datetime import date, datetime, timedelta
+from dateutil import parser
 
 today = date.today()
 ## url
 url1 = 'https://www.newindianexpress.com/Entertainment/English/rssfeed/?id=194&getXmlFeed=true'
 url2 = 'https://feeds.feedburner.com/bignewsnetwork/alSnr13fEUK'
 url3 = 'https://www.thehindu.com/entertainment/movies/feeder/default.rss'
-url4 = 'https://www.huffpost.com/section/celebrity/feed'
-url5 = 'https://thehill.com/homenews/administration/feed/'
-url6 = 'https://feeds.washingtonpost.com/rss/SPORTS'
-rss = []
-url_ls = [url1, url2, url3, url4, url5, url6]
-scrape_src = ['ESPN/CRIC', 'HINDU/SPORTS', 'NYT/POL', 'HUFF/CELEB', 'HILL/ADMIN', 'WAPO/POL']
-scrape_top = ['SPORTS', 'SPORTS', 'SPORTS', 'CELEB', 'SPORTS', 'SPORTS']
-coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND']
-tag1 = ['SPORTS', 'SPORTS', 'SPORTS', 'CELEB', 'SPORTS', 'SPORTS']
-tag2 = ['SPORTS', 'SPORTS', 'SPORTS', 'CELEB', 'SPORTS', 'SPORTS']
-tag3 = ['SPORTS', 'SPORTS', 'SPORTS', 'CELEB', 'SPORTS', 'SPORTS']
+url4 = 'https://www.hindustantimes.com/feeds/rss/entertainment/bollywood/rssfeed.xml'
+url5 = 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms'
+url6 = 'https://www.indiatvnews.com/rssnews/topstory-entertainment.xml'
+url7 = 'https://www.news18.com/rss/entertainment.xml'
+url8 = 'https://www.news18.com/rss/movies.xml'
+url9 = ''
 
-with open("INDSports.sql", 'w') as f:
+rss = []
+
+def convert_to_desired_format(rss_date):
+    # Parse the date using dateutil parser, which can handle both formats
+    dt_object = parser.parse(rss_date)
+
+    # Convert the datetime object to the desired string format
+    formatted_date = dt_object.strftime("%b %d, %Y %H:%M:%S")
+    return formatted_date
+
+
+def find_pubdate_date(pub_date_str):
+    # Parse the pubDate string to a datetime object
+    pub_date = parser.parse(pub_date_str)
+
+    # Get the date portion of the pubDate
+    pub_date_date = pub_date.date()
+
+    return pub_date_date
+
+url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9 ]
+scrape_src = ['NEWIND/ENT', 'BIGNEWS/ENT', 'HINDU/ENT', 'HT/ENT', 'TOI/ENT', 'ITV/ENT', 'NEWS18/ENT', 'NEWS18/MOV', 'WAPO/GLOBAL' ]
+scrape_top = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND']
+tag1 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+tag2 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+tag3 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+
+with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -41,25 +65,28 @@ with open("INDSports.sql", 'w') as f:
             if len(s) >= 500:
                 s = item.summary[:500]
 
-            a = item.published.split()
-            published_date = datetime.strptime(" ".join(a[:-1]), "%a, %d %b %Y %H:%M:%S")
-            date_only = published_date.date()
+
+            a = item.published
+            published_date = convert_to_desired_format(a)
+            date_only = find_pubdate_date(item.published)
 
             two_days_ago = today - timedelta(days=2)
             if date_only <= two_days_ago:
                 continue
 
-            entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%m/%d/%Y"),
+            entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
                             entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'],
-                            item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''")]
+                            item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''")
+                            , published_date]
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values) + ')')
+            items_to_insert.append('(' + ','.join(entry_values).replace('\u2009','').replace('\u20b9','').replace('\u200b','') + ')')
 
         if items_to_insert:
             f.write(
-                "INSERT INTO WEB_SCRAPE_RAW(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
+                "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3"
+                ", NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

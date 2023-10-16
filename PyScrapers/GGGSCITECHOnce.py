@@ -1,18 +1,23 @@
 import feedparser
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from dateutil import parser
+import pytz
+
+indTz = pytz.timezone("Asia/Kolkata")
+today = datetime.now(indTz)
+current_time = today.strftime("%H:%M:%S")
 
 today = date.today()
 ## url
-url1 = 'http://www.rollcall.com/rss/all_news.xml'
-url2 = 'https://www.nationalreview.com/rss.xml'
-url3 = 'https://feeds.feedburner.com/breitbart'
-# url4 = 'https://feeds.feedburner.com/breitbart'
-url4 = 'https://www.huffpost.com/section/celebrity/feed'
-url5 = 'https://thehill.com/homenews/administration/feed/'
-url6 = 'https://feeds.washingtonpost.com/rss/politics'
-url7 = 'https://www.realclearpolitics.com/index.xml'
-url8 = 'https://www.washingtontimes.com/rss/headlines/news/politics/'
+url1 = 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms'
+url2 = 'https://feeds.feedburner.com/gadgets360-latest'
+url3 = 'https://feeds.skynews.com/feeds/rss/technology.xml'
+url4 = 'https://www.newscientist.com/section/news/feed/'
+url5 = 'https://www.sciencedaily.com/rss/all.xml'
+url6 = 'https://feeds.washingtonpost.com/rss/business/technology'
+url7 = 'https://www.newscientist.com/feed/home/'
+url8 = 'https://www.techradar.com/rss'
+url9 = 'https://www.wired.com/feed/rss'
 
 rss = []
 
@@ -34,15 +39,16 @@ def find_pubdate_date(pub_date_str):
 
     return pub_date_date
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8]
-scrape_src = ['ROLL/POL', 'NR/POL', 'BBRT/POL', 'BBRT/TOP', 'HILL/ADMIN', 'WAPO/POL', 'RCP/POL', 'WASHTIMES/POL']
-scrape_top = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
-tag1 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9 ]
+scrape_src = ['TOI/TECH', 'NDTV/TECH', 'SKY/TECH', 'NEWSCI/NEWS', 'SCIDAILY/SCI', 'WAPO/TECH', 'NEWSCI/ALL', 'TECHRADAR/TECH', 'WIRED/TECH' ]
+scrape_top = ['SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE' ]
+coun_code = ['GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG']
+tag1 = ['SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE' ]
+tag2 = ['SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE' ]
+tag3 = ['SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE' ]
 
-with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
+# with open(f"../../scraper/GGGALL/GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
+with open(f"GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -64,7 +70,6 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
                 s = item.title
             if len(s) >= 500:
                 s = item.summary[:500]
-
             a = item.published
             published_date = convert_to_desired_format(a)
             date_only = find_pubdate_date(item.published)
@@ -81,7 +86,7 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values).replace('\u0101','').replace('\u2015','').replace('\u202f','') + ')')
+            items_to_insert.append('(' + ','.join(entry_values).replace('\u2009','').replace('\u20b9','').replace('\u200b','') + ')')
 
         if items_to_insert:
             f.write(

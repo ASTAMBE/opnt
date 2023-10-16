@@ -1,18 +1,22 @@
 import feedparser
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
+import pytz
 from dateutil import parser
+
+indTz = pytz.timezone("Asia/Kolkata")
+today = datetime.now(indTz)
+current_time = today.strftime("%H:%M:%S")
 
 today = date.today()
 ## url
-url1 = 'http://www.rollcall.com/rss/all_news.xml'
-url2 = 'https://www.nationalreview.com/rss.xml'
-url3 = 'https://feeds.feedburner.com/breitbart'
-# url4 = 'https://feeds.feedburner.com/breitbart'
-url4 = 'https://www.huffpost.com/section/celebrity/feed'
-url5 = 'https://thehill.com/homenews/administration/feed/'
-url6 = 'https://feeds.washingtonpost.com/rss/politics'
-url7 = 'https://www.realclearpolitics.com/index.xml'
-url8 = 'https://www.washingtontimes.com/rss/headlines/news/politics/'
+url1 = 'https://www.businessdailyafrica.com/latestrss.rss'
+url2 = 'https://bmmagazine.co.uk/feed/'
+url3 = 'https://www.cnbc.com/id/100727362/device/rss/rss.html'
+url4 = 'https://www.theguardian.com/uk/business/rss'
+url5 = 'https://markets.businessinsider.com/rss/news'
+url6 = ''
+url7 = ''
+url8 = ''
 
 rss = []
 
@@ -35,14 +39,15 @@ def find_pubdate_date(pub_date_str):
     return pub_date_date
 
 url_ls = [url1, url2, url3, url4, url5, url6, url7, url8]
-scrape_src = ['ROLL/POL', 'NR/POL', 'BBRT/POL', 'BBRT/TOP', 'HILL/ADMIN', 'WAPO/POL', 'RCP/POL', 'WASHTIMES/POL']
-scrape_top = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
-tag1 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+scrape_src = ['BIZAFRC/BIZ', 'BMAG/BIZ', 'CNBC/EUROBIZ', 'GUARD/BIZ', 'BIZINS/BIZ', 'LAT/BUSINESS', 'WAPO/BUSINESS', 'USNEWS/BUSINESS']
+scrape_top = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
+coun_code = ['GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG']
+tag1 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
+tag2 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
+tag3 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
 
-with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
+#with open(f"../../scraper/GGGALL/GGGPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
+with open(f"GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -59,12 +64,14 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
 
         items_to_insert = []
         for item in newsItem:
-            s = item.summary
-            if len(s) <= 0:
+            # Check if 'summary' attribute exists
+            if 'summary' in item:
+                s = item.summary
+            else:
+                # If 'summary' is not present, use 'title' as a fallback
                 s = item.title
             if len(s) >= 500:
                 s = item.summary[:500]
-
             a = item.published
             published_date = convert_to_desired_format(a)
             date_only = find_pubdate_date(item.published)
@@ -81,7 +88,7 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values).replace('\u0101','').replace('\u2015','').replace('\u202f','') + ')')
+            items_to_insert.append('(' + ','.join(entry_values).replace('\u2009','').replace('\u20b9','').replace('\u200b','') + ')')
 
         if items_to_insert:
             f.write(

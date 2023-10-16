@@ -4,15 +4,17 @@ from dateutil import parser
 
 today = date.today()
 ## url
-url1 = 'https://www.sportsworldnews.com/rss/sections/soccer.xml'
-url2 = 'https://www.espn.com/espn/rss/soccer/news'
-url3 = 'https://feeds.feedburner.com/bignewsnetwork/uXVh5Jg0tei'
-url4 = 'http://feeds.bbci.co.uk/news/rss.xml'
-url5 = ''
-url6 = ''
-url7 = ''
-url8 = ''
-
+url1 = 'https://www.espn.com/espn/rss/news'
+url2 = 'https://www.espn.com/espn/rss/nfl/news'
+url3 = 'https://www.espn.com/espn/rss/nba/news'
+# url4 = 'https://feeds.feedburner.com/breitbart'
+url4 = 'https://www.espn.com/espn/rss/mlb/news'
+url5 = 'https://www.espn.com/espn/rss/ncb/news'
+url6 = 'https://www.espn.com/espn/rss/ncf/news'
+url7 = 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs/truck-series,fs/cup-series,fs/xfinity-series'
+url8 = 'https://www.cbssports.com/rss/headlines/golf/'
+url9 = 'https://sports.yahoo.com/rss/'
+url10 = 'http://www.si.com/rss/si_topstories.rss'
 
 rss = []
 
@@ -34,15 +36,15 @@ def find_pubdate_date(pub_date_str):
 
     return pub_date_date
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8 ]
-scrape_src = ['SPWORLD/SPORTS', 'ESPN/SOCCER', 'BIGNEWS/GSPORTS', 'BBC/SPORTS', 'SCIDAILY/SCI', 'WAPO/TECH', 'WIRED/SCI', 'BBC/POL', 'WAPO/GLOBAL' ]
-scrape_top = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS'  ]
-coun_code = ['GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG']
-tag1 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
-tag2 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
-tag3 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
+url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9, url10]
+scrape_src = ['ESPN/TOP', 'ESPN/NFL', 'ESPN/NBA', 'ESPN/MLB', 'ESPN/NCB', 'ESPN/NCF', 'FOX/NASCAR', 'CBS/GOLF', 'YAHOO/SPORTS', 'SILLU/SPORTS']
+scrape_top = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
+tag1 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+tag2 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+tag3 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
 
-with open("GGGSPORTSOnce.sql", 'w', encoding='utf-8') as f:
+with open(f"USASPORTSTWICE{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]

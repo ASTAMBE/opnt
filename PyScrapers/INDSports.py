@@ -1,27 +1,25 @@
 import feedparser
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from dateutil import parser
 
 today = date.today()
 ## url
-url1 = 'http://www.rollcall.com/rss/all_news.xml'
-url2 = 'https://www.nationalreview.com/rss.xml'
-url3 = 'https://feeds.feedburner.com/breitbart'
-# url4 = 'https://feeds.feedburner.com/breitbart'
-url4 = 'https://www.huffpost.com/section/celebrity/feed'
-url5 = 'https://thehill.com/homenews/administration/feed/'
-url6 = 'https://feeds.washingtonpost.com/rss/politics'
-url7 = 'https://www.realclearpolitics.com/index.xml'
-url8 = 'https://www.washingtontimes.com/rss/headlines/news/politics/'
+url1 = 'https://www.espncricinfo.com/rss/content/story/feeds/0.xml'
+url2 = 'https://www.indiatoday.in/rss/1206550'
+url3 = 'https://timesofindia.indiatimes.com/rssfeeds/4719148.cms'
+url4 = 'https://timesofindia.indiatimes.com/rssfeeds/54829575.cms'
+url5 = 'https://feeds.feedburner.com/ndtvsports-cricket'
+url6 = 'https://feeds.feedburner.com/ndtvsports-latest'
 
 rss = []
+
 
 def convert_to_desired_format(rss_date):
     # Parse the date using dateutil parser, which can handle both formats
     dt_object = parser.parse(rss_date)
 
     # Convert the datetime object to the desired string format
-    formatted_date = dt_object.strftime("%b %d, %Y %H:%M:%S")
+    formatted_date = dt_object.strftime("%b/%d/%Y %H:%M:%S")
     return formatted_date
 
 
@@ -34,15 +32,16 @@ def find_pubdate_date(pub_date_str):
 
     return pub_date_date
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8]
-scrape_src = ['ROLL/POL', 'NR/POL', 'BBRT/POL', 'BBRT/TOP', 'HILL/ADMIN', 'WAPO/POL', 'RCP/POL', 'WASHTIMES/POL']
-scrape_top = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
-tag1 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 
-with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
+url_ls = [url1, url2, url3, url4, url5, url6]
+scrape_src = ['ESPN/CRIC', 'ITODAY/SPORTS', 'TOI/SPORTS', 'TOI/CRIC', 'NDTV/CRIC', 'NDTV/SPORTS']
+scrape_top = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND']
+tag1 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+tag2 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+tag3 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS']
+
+with open(f"INDSports{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -77,11 +76,12 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
                             entry['COUNTRY_CODE'],
                             entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'],
                             item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''")
-                            , published_date]
+                , published_date]
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values).replace('\u0101','').replace('\u2015','').replace('\u202f','') + ')')
+            items_to_insert.append(
+                '(' + ','.join(entry_values).replace('\u2009', '').replace('\u20b9', '').replace('\u200b', '') + ')')
 
         if items_to_insert:
             f.write(

@@ -1,29 +1,36 @@
 import feedparser
 from datetime import date, datetime, timedelta
+import pytz
+from dateutil import parser
+
+indTz = pytz.timezone("Asia/Kolkata")
+today = datetime.now(indTz)
+current_time = today.strftime("%H:%M:%S")
 
 today = date.today()
 ## url
 url1 = 'https://www.huffpost.com/section/celebrity/feed'
 url2 = 'https://www.etonline.com/news/rss'
 url3 = 'https://www.buzzfeed.com/celebrity.xml'
-# url4 = 'https://feeds.feedburner.com/breitbart'
-url4 = 'https://www.buzzfeed.com/tvandmovies.xml'
+# url4 = 'https://www.buzzfeed.com/tvandmovies.xml'
+url4 = 'https://www.etonline.com/movies/rss'
 url5 = 'https://www.etonline.com/movies/rss'
-url6 = 'https://rss.nytimes.com/services/xml/rss/nyt/Movies.xml'
+url6 = 'https://www.latimes.com/entertainment-arts/rss2.0.xml'
 url7 = 'https://feeds.washingtonpost.com/rss/entertainment'
 url8 = 'https://www.usmagazine.com/category/entertainment/feed/'
 
 
 rss = []
 url_ls = [url1, url2, url3, url4, url5, url6, url7, url8]
-scrape_src = ['HUFF/ENT', 'ETONLINE/ENT', 'BUZZ/CELEB', 'BUZZ/ENT', 'ETONLINE/MOV', 'NYT/ENT', 'WAPO/ENT', 'USNEWS/CELEB']
+scrape_src = ['HUFF/ENT', 'ETONLINE/ENT', 'BUZZ/CELEB', 'BUZZ/ENT', 'ETONLINE/MOV', 'LAT/ENT', 'WAPO/ENT', 'USNEWS/CELEB']
 scrape_top = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
 coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
 tag1 = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
 tag2 = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
 tag3 = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
 
-with open("USAENTOnce_0713.sql", 'w') as f:
+# with open(f"../../scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
+with open(f"USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -61,10 +68,11 @@ with open("USAENTOnce_0713.sql", 'w') as f:
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values) + ')')
+            items_to_insert.append('(' + ','.join(entry_values).replace('\U0001f933', '').replace('\U0001f440', '') + ')')
 
         if items_to_insert:
             f.write(
-                "INSERT INTO WEB_SCRAPE_RAW(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
+                "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2"
+                ",  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

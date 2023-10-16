@@ -4,15 +4,16 @@ from dateutil import parser
 
 today = date.today()
 ## url
-url1 = 'https://www.sportsworldnews.com/rss/sections/soccer.xml'
-url2 = 'https://www.espn.com/espn/rss/soccer/news'
-url3 = 'https://feeds.feedburner.com/bignewsnetwork/uXVh5Jg0tei'
-url4 = 'http://feeds.bbci.co.uk/news/rss.xml'
-url5 = ''
+url1 = 'https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml'
+url2 = 'https://www.thehindu.com/news/national/feeder/default.rss'
+url3 = 'https://www.news18.com/rss/politics.xml'
+url4 = 'https://feeds.feedburner.com/ndtvnews-top-stories'
+url5 = 'https://www.livemint.com/rss/politics'
 url6 = ''
 url7 = ''
 url8 = ''
-
+url9 = ''
+url10 = ''
 
 rss = []
 
@@ -34,15 +35,16 @@ def find_pubdate_date(pub_date_str):
 
     return pub_date_date
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8 ]
-scrape_src = ['SPWORLD/SPORTS', 'ESPN/SOCCER', 'BIGNEWS/GSPORTS', 'BBC/SPORTS', 'SCIDAILY/SCI', 'WAPO/TECH', 'WIRED/SCI', 'BBC/POL', 'WAPO/GLOBAL' ]
-scrape_top = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS'  ]
-coun_code = ['GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG', 'GGG']
-tag1 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
-tag2 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
-tag3 = ['SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS', 'SPORTS' ]
+url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9, url10]
+scrape_src = ['HT/TOP', 'HINDU/TOP', 'NEWS18/POL', 'NDTV/TOP', 'MINT/POL', 'ESPN/NCF', 'FOX/NASCAR', 'CBS/GOLF', 'YAHOO/POLITICS', 'SILLU/POLITICS']
+scrape_top = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND']
+tag1 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 
-with open("GGGSPORTSOnce.sql", 'w', encoding='utf-8') as f:
+
+with open(f"INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]

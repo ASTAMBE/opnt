@@ -9,7 +9,7 @@ CALL newPostwithmedia(1, bringUUID(1004649), 'https://www.hindustantimes.com/ind
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamNW(bringuuid(1023879), 1, 0, 30) ;
+CALL getInstreamNW(bringuuid(1004789), 1, 0, 30) ;
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
 CALL getDiscussionsNW(bringuuid(1005689), 1, 0, 30) ;
 
@@ -22,6 +22,7 @@ call createSearchKW(8, bringuuid(1003845), 'discuss absolutely any topic here', 
 CALL createGuestUserApp('astdev', 'USA', 'EAFE9C2A-698E-49E5-95AB-FA9669C0A0F5') ;
 call createSearchKW(10, bringuuid(1017856), 'neha kakkar', 'L') ;
 
+call  getPostDetails(bringuuid(1004789), 1242806) ;
 
 CALL copyUserCarts(bringUUID(1006539), '93d393a8-a39a-11ea-82d4-06500c451eb8', 1, 661871) ;
 CALL copyUserCarts(bringUUID(1006539), BRINGUUID(1002397), 1, 661871) ;

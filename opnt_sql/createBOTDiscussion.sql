@@ -23,6 +23,13 @@ ALSO: Added the STD_ONLY_DISC case to create discussions that look like STP post
 08/25/2023 AST: Added logic to avoid running into duplicate KW if the cursor brings a scrape that has
 been already converted into a KW. This could happen due to the repetition of news in the scrapes.
 
+09/17/2023 AST: Adding the source table (WEB_SCRAPE_RAW_L, WEB_SCRAPE_RAW) so that the same STD process
+can be used on the regular scrapes also.
+
+10/10/2023 AST: Changing the SCRAPE_TO_DISC --> instead of the Comment1 getting the news URL, the post 
+(discussion) itself will get the news_url. This is because we want to change the way the showInitialKWs 
+is shown on the screen - we want more visually attractive popup screen. This will require the image.
+
 */
 
 declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST INT;
@@ -98,7 +105,8 @@ VALUES
 
 WHEN CREATION_TYPE = 'SCRAPE_TO_DISC' THEN
 
-SELECT NEWS_URL, NEWS_HEADLINE, NEWS_EXCERPT, SCRAPE_SOURCE, SCRAPE_TOPIC into URL, newsTitle, newsExcrpt, scr_src, scr_topic 
+SELECT NEWS_URL, NEWS_HEADLINE, 	IFNULL(NEWS_EXCERPT, "This is a great discussion. I agree with it in principle. Will post more comments shortly")
+, SCRAPE_SOURCE, SCRAPE_TOPIC into URL, newsTitle, newsExcrpt, scr_src, scr_topic 
 FROM WEB_SCRAPE_RAW_L WHERE ROW_ID = source_row_id ;
 
 SET KWEXIST = (SELECT COUNT(1) FROM OPN_P_KW WHERE TOPICID = tid AND KEYWORDS LIKE CONCAT(SUBSTR(newsTitle, 1, 150), '%') );
@@ -107,10 +115,10 @@ CASE WHEN KWEXIST = 0 THEN
 
 INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG
 ,EMBEDDED_CONTENT,EMBEDDED_FLAG, POSTOR_COUNTRY_CODE,MEDIA_CONTENT,MEDIA_FLAG, STP_PROC_NAME)
-VALUES (tid, NOW(), orig_uid, newsTitle, 'N', '', 'N', country_code, '', 'N', 'SCRAPE_TO_DISC');
+VALUES (tid, NOW(), orig_uid, URL, 'N', '', 'N', country_code, '', 'N', 'SCRAPE_TO_DISC');
 
 SELECT MAX(POST_ID) INTO POSTID FROM OPN_POSTS WHERE POST_BY_USERID = orig_uid AND STP_PROC_NAME = 'SCRAPE_TO_DISC'
-AND POST_CONTENT = newsTitle ;
+AND POST_CONTENT = URL ;
 
 CALL userActionCommon(UUID, 'POST', LIKECODE, POSTID) ;
 
@@ -121,7 +129,7 @@ INSERT INTO OPN_POST_COMMENTS_RAW
 ,COMMENT_DTM,EMBEDDED_CONTENT,EMBEDDED_FLAG, COMMENT_TYPE, MEDIA_CONTENT, MEDIA_FLAG) 
 VALUES
 (POSTID, orig_uid, tid, 1, URL, orig_uid, UNAME
-, URL, orig_uid, UNAME, ''
+, newsTitle, orig_uid, UNAME, ''
 , 'N', NOW()
 , now(), '', 'N', 'CONP', '', 'N');
 

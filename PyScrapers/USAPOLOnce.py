@@ -41,8 +41,9 @@ coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
 tag1 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
+ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
-with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
+with open(f"USAPOLOnce0820{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -52,6 +53,9 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
         entry['SCRAPE_TAG1'] = tag1[i]
         entry['SCRAPE_TAG2'] = tag2[i]
         entry['SCRAPE_TAG3'] = tag3[i]
+        entry['NEWS_TAGS'] = ntag[i]
+
+
         rss.append(entry)
 
         f1 = feedparser.parse(entry['url_en'])
@@ -75,7 +79,7 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
 
             entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
-                            entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'],
+                            entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
                             item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''")
                             , published_date]
 
@@ -86,6 +90,6 @@ with open("USAPOLOnce0820.sql", 'w', encoding='utf-8') as f:
         if items_to_insert:
             f.write(
                 "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3"
-                ", NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
+                ", NEWS_TAGS, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

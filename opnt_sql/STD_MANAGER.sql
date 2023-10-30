@@ -14,6 +14,9 @@ It will : 	1. Create the discussion posts for each CCODE/SCRAPE_TOPIC combinatio
             3. It will sweep the remaining scrapes into the WEB_SCRAPE_RAW table so that the STP process can take over.
             
             TBD: Need to create OPN_STD_MONITOR just like the way STP Monitor keeps the STP records
+            
+            10/28/2023 AST: Removing the scrapes that have useless URLs such as www.washingtonpost.com - and nothing
+            else. no actual url of the news item. Need to remove such scrapes.
 
 */
 
@@ -21,6 +24,8 @@ It will : 	1. Create the discussion posts for each CCODE/SCRAPE_TOPIC combinatio
 DECLARE SCRCOUNT, STDNUM, COUNTNUMDIFF, ONETHIRD INT;
 
 SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM WEB_SCRAPE_RAW_L where LENGTH(NEWS_URL) < 50 ;
 
 CASE WHEN CCD = 'IND' AND SCRTPC IN ('ENT', 'CELEB') THEN
 

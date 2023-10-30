@@ -27,6 +27,7 @@ coun_code = ['USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA', 'USA']
 tag1 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
 tag2 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
 tag3 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS']
+ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
 # with open(f"../../scraper/USAALL/USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
 with open(f"USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
@@ -39,6 +40,8 @@ with open(f"USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf
         entry['SCRAPE_TAG1'] = tag1[i]
         entry['SCRAPE_TAG2'] = tag2[i]
         entry['SCRAPE_TAG3'] = tag3[i]
+        entry['NEWS_TAGS'] = ntag[i]
+
         rss.append(entry)
 
         f1 = feedparser.parse(entry['url_en'])
@@ -79,7 +82,7 @@ with open(f"USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf
                 BUSINESSry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'],
                                      today.strftime("%m/%d/%Y"),
                                      entry['COUNTRY_CODE'],
-                                     entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'],
+                                     entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
                                      item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''")]
 
                 # Join the values with quotes and commas
@@ -94,6 +97,6 @@ with open(f"USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf
         if items_to_insert:
             f.write(
                 "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2"
-                ",  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
+                ", NEWS_TAGS,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

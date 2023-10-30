@@ -34,13 +34,14 @@ def find_pubdate_date(pub_date_str):
 
     return pub_date_date
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9 ]
-scrape_src = ['NEWIND/ENT', 'BIGNEWS/ENT', 'HINDU/ENT', 'HT/ENT', 'TOI/ENT', 'ITV/ENT', 'NEWS18/ENT', 'NEWS18/MOV', 'WAPO/GLOBAL' ]
-scrape_top = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
-coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND']
-tag1 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
-tag2 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
-tag3 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+url_ls = [url1, url2, url3, url4, url5, url6, url7, url8 ]
+scrape_src = ['NEWIND/ENT', 'BIGNEWS/ENT', 'HINDU/ENT', 'HT/ENT', 'TOI/ENT', 'ITV/ENT', 'NEWS18/ENT', 'NEWS18/MOV']
+scrape_top = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+coun_code = ['IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND']
+tag1 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+tag2 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+tag3 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
+ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
 with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
@@ -52,6 +53,8 @@ with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') 
         entry['SCRAPE_TAG1'] = tag1[i]
         entry['SCRAPE_TAG2'] = tag2[i]
         entry['SCRAPE_TAG3'] = tag3[i]
+        entry['NEWS_TAGS'] = ntag[i]
+
         rss.append(entry)
 
         f1 = feedparser.parse(entry['url_en'])
@@ -76,7 +79,7 @@ with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') 
 
             entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
-                            entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'],
+                            entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
                             item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''")
                             , published_date]
 
@@ -87,6 +90,6 @@ with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') 
         if items_to_insert:
             f.write(
                 "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3"
-                ", NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
+                ", NEWS_TAGS, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

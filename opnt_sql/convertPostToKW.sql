@@ -48,6 +48,8 @@ thisproc: BEGIN
     07/07/2023 AST: CCODE sourcing from OPN_POSTS instead of OPN_USERLIST (this is because the country code
     of a KW should be determined by the original post's country code.)
     
+    10/28/2023: AST:  Changing the UPDATE OPN_POSTS - to update the TAG1_KEYID
+    
  */
 
 declare pbuid, actionByUID, postidvar, newkeyid INT;
@@ -90,7 +92,7 @@ VALUES(tid, newkeyid, IFNULL(substrURLT, substrPCONT)
 , CONCAT(UPPER(REPLACE(IFNULL(substrURLT, substrPCONT), ' ', '') ), tid) , CCODE, CCODE
 , 'NOSCRAPE', 'NOSCRAPETAG2', URLTITLE, POSTCONTENT, postid, 'N', NOW()) ;
 
-UPDATE OPN_POSTS SET KEYID = newkeyid WHERE POST_ID = postid ;
+UPDATE OPN_POSTS SET KEYID = newkeyid, TAG1_KEYID = newkeyid WHERE POST_ID = postid ;
 
 /* End of new KW creation */
 

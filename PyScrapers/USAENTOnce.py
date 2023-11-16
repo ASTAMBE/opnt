@@ -64,7 +64,7 @@ with open(f"../../scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w
             if date_only <= two_days_ago:
                 continue
 
-            entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%m/%d/%Y"),
+            entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
                             entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
                             item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''")]

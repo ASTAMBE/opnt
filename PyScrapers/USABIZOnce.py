@@ -80,7 +80,7 @@ with open(f"../../scraper/USAALL/USABUSINESSOnce{today.strftime('%d-%m-%Y')}.sql
                     continue
 
                 BUSINESSry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'],
-                                     today.strftime("%m/%d/%Y"),
+                                     today.strftime("%Y-%m-%d"),
                                      entry['COUNTRY_CODE'],
                                      entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
                                      item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''")]

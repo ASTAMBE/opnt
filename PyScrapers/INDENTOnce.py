@@ -43,7 +43,7 @@ tag2 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
 tag3 = ['ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT', 'ENT' ]
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
-with open(f"INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"../../scraper/INDALL/INDENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]

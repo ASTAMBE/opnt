@@ -31,7 +31,7 @@ tag3 = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
 # with open(f"../../scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
-with open(f"USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"../../scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]

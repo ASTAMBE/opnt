@@ -1,6 +1,7 @@
 import feedparser
 from datetime import date, datetime, timedelta, timezone
 from dateutil import parser
+import os
 
 today = date.today()
 ## url
@@ -44,7 +45,9 @@ tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 
 tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
-with open(f"../../scraper/INDALL/INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+os.chown('/var/www/html/scraper/INDALL/', 1000,1000)
+
+with open(f"/var/www/html/scraper/INDALL/INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -57,8 +60,11 @@ with open(f"../../scraper/INDALL/INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w
         entry['NEWS_TAGS'] = ntag[i]
 
         rss.append(entry)
-
-        f1 = feedparser.parse(entry['url_en'])
+        try:
+            f1 = feedparser.parse(entry['url_en'])
+        except Exception as e:
+            print("Exception occurred in INDPOL:",e)
+            continue
         newsItem = f1.entries
 
         items_to_insert = []

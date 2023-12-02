@@ -49,7 +49,7 @@ tag3 = ['SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIENCE', 'SCIEN
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
 # with open(f"../../scraper/GGGALL/GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
-with open(f"../../scraper/GGGALL/GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"/var/www/html/scraper/GGGALL/GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -62,8 +62,12 @@ with open(f"../../scraper/GGGALL/GGGSCIOnce{today.strftime('%d-%m-%Y')}.sql", 'w
         entry['NEWS_TAGS'] = ntag[i]
 
         rss.append(entry)
+        try:
+            f1 = feedparser.parse(entry['url_en'])
+        except Exception as e:
+            print("Exception occurred:",e)
+            continue
 
-        f1 = feedparser.parse(entry['url_en'])
         newsItem = f1.entries
 
         items_to_insert = []

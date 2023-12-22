@@ -70,7 +70,7 @@ CALL openKWbyIP(1, '8079af80-04b8-11ec-8112-061dbb11189b', 'IN-DL') ;
 CALL getDiscussionsNW(bringUUID(1023377), 1, 0, 300) ; 
 CALL getDiscussionsANTI(bringUUID(1023618), 1, 0, 300) ; 
 
-CALL myActivity(bringUUID(1023649)) ;
+CALL myActivity(bringUUID(1002857)) ;
 
 call userOpinions(1, bringUUID(1023678)) ; -- 4bf84852-2027-11ec-8b81-061dbb11189b
 call userOpinions(1, '4bf84852-2027-11ec-8b81-061dbb11189b') ; -- 4bf84852-2027-11ec-8b81-061dbb11189b
@@ -100,3 +100,4 @@ CALL createBOTDiscussion('ORIG_DISCUSSION', NULL, 'GGG', 'L' , 3, 'Scientific Re
 , 'Recently Stanford president had to resign because a kid exposed many of his fake data episodes'
 , 'And the harvard went one further - their ethics researcher was caught faking the data. Talk about the utter hypocrisy') ;
 
+CALL newPostwithmedia(1, bringUUID(1002857), 'Checking the post save time from proc call', '', 'N', '','N') ;

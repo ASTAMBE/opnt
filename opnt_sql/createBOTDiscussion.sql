@@ -41,14 +41,22 @@ DECLARE SUSPUSER, LIKECODE VARCHAR(5) ;
 DECLARE URL, newsTitle, newsExcrpt varchar(1000) ;
 
 /*
-SET MATCHKID = (SELECT CASE WHEN tid = 1 then 105087
-WHEN tid = 2 THEN 105654
-WHEN tid = 3 THEN 105108
-WHEN tid = 4 THEN 105653 
-WHEN tid = 5 THEN 105655
-WHEN tid = 8 THEN 80005
-WHEN tid = 10 AND country_code = 'IND' THEN 105088
-WHEN tid = 10 AND country_code <> 'IND' THEN 105089 END ) ; */
+01/01/2024 AST: The criteria of which BOT users to allot the STD scrapes needs to be changed.
+Currently it is using a fixed set of bots using the OPN_MAIN_BOTS table. It needs to be replaced with
+a dynamic oneas follows:
+
+SELECT DISTINCT C.USERID, U.USERNAME
+FROM OPN_USER_CARTS C, OPN_P_KW K, OPN_USERLIST U
+WHERE C.KEYID = K.KEYID AND C.USERID = U.USERID
+AND C.CART = 'L' AND C.TOPICID = 2 AND C.LAST_UPDATE_DTM > CURRENT_DATE() - INTERVAL 30 DAY
+AND K.TOPICID = 2 AND K.COUNTRY_CODE = 'USA' AND K.CREATION_DTM > CURRENT_DATE() - INTERVAL 30 DAY 
+AND U.COUNTRY_CODE = 'USA' AND U.BOT_FLAG = 'Y' GROUP BY C.KEYID,  K.KEYWORDS ;
+
+The above SQL is bringing the distinct BOT UIDs for a specific CCODE, TID combination 
+(TID = 2 and CCODE = 'USA' in the above case) and bringing only those BOTs that were 
+automatically used in the last 30 days of KW creation.
+
+*/
 
 SET LIKECODE = (SELECT CASE WHEN CARTVAL = 'L' THEN 'L1' ELSE 'H1' END) ;
 

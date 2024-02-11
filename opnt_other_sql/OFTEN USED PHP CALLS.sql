@@ -9,9 +9,10 @@ CALL newPostwithmedia(1, bringUUID(1004649), 'https://www.hindustantimes.com/ind
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamNW(bringuuid(1004789), 1, 0, 30) ;
+CALL getInstreamNW(bringUUID(1033629), 5, 0, 30) ;
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
 CALL getDiscussionsNW(bringuuid(1005689), 1, 0, 30) ;
+CALL getUserInterests(BRINGUUID(1033749)) ;
 
 CALL getUserCarts(1, BRINGUUID(bringUseridFromUsername('rmx185')), 'POPULAR', 0, 400) ;
 CALL getUserCarts(1, BRINGUUID(1005689), 'LATEST', 0, 400) ;

@@ -47,3 +47,7 @@ CALL STD_MANAGER(4, 'USA', 'BUSINESS') ;
 CALL STD_MANAGER(5, 'IND', 'ENT') ;
 CALL STD_MANAGER(5, 'USA', 'ENT') ;
 CALL STD_MANAGER(10, 'USA', 'CELEB') ;
+
+-- Most Current Instream and Discussions for a username
+
+

@@ -9,9 +9,9 @@ CALL newPostwithmedia(1, bringUUID(1004649), 'https://www.hindustantimes.com/ind
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getInstreamNW(bringUUID(1033629), 5, 0, 30) ;
+CALL getInstreamNW(bringUUID(1011005), 10, 0, 30) ;
 CALL getInstreamANTI(bringuuid(1023377), 1, 0, 30) ;
-CALL getDiscussionsNW(bringuuid(1005689), 1, 0, 30) ;
+CALL getDiscussionsNW(bringUUID(1018013), 10, 0, 30) ;
 CALL getUserInterests(BRINGUUID(1033749)) ;
 
 CALL getUserCarts(1, BRINGUUID(bringUseridFromUsername('rmx185')), 'POPULAR', 0, 400) ;
@@ -102,3 +102,8 @@ CALL createBOTDiscussion('ORIG_DISCUSSION', NULL, 'GGG', 'L' , 3, 'Scientific Re
 , 'And the harvard went one further - their ethics researcher was caught faking the data. Talk about the utter hypocrisy') ;
 
 CALL newPostwithmedia(1, bringUUID(1002857), 'Checking the post save time from proc call', '', 'N', '','N') ;
+
+CALL callSTDbyENTCELEBIND(30) ;
+CALL callSTDbyIntCcode(5, 'USA', 'ENT' , SCRCOUNT) ; 
+CALL OPN_SUPPRESS_DUPES(1, 3 , 'DAY');
+

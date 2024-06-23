@@ -51,6 +51,10 @@ with
     10/10/2020 AST: removed the above - as a new proc was created for this purpose
     
     06/24/2023: AST: Introducing the STP_REMAINDER proc 
+    
+    05/18/2024 AST: Sinc eth current scrapers are mostly bringing URLs that have content in the NEWS_HEADLINE 
+    OR NEWS_EXCERPT columns, we need to replace the current TAG scheme - replace the NEWS_URL with 
+    these two columns
 
 */
 

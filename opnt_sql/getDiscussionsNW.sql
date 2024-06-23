@@ -41,6 +41,11 @@ thisproc: BEGIN
     This is so that the BOTs can be used to start discussions and post STP as discussions.
     
     ALSO switching to last 30 days of posts instead of last 100 days
+    
+    06/22/2024 AST: How do we distinguish between an instream (POST) Vs a discussion ?
+    - A Discussion consists of two types of posts: 1. Any post made by a non-bot (that means a real) user
+    2. All the BOT posts that are created through the SCRAPE_TO_DISC process --> these posts are created with
+    DEMO_POST_FLAG = 'N' 
             
  */
  
@@ -55,7 +60,7 @@ INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamNW', CONCAT(tid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsNW', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */

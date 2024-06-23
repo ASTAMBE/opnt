@@ -2,7 +2,7 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS STP_REMAINDER //
-CREATE PROCEDURE STP_REMAINDER(interest VARCHAR(25), TID INT, ccode VARCHAR(5))
+CREATE PROCEDURE STP_REMAINDER(interest VARCHAR(25), TID INT, ccode VARCHAR(5), numdays INT, scrcount INT)
 thisProc: BEGIN
   DECLARE SCRAPEID, PBUID, PBUID2, KID, USERCNT, SCRAPECNT, UNTAG_CNT INT;
   DECLARE SCRAPEURL, URLTITLE, NEWSDESC VARCHAR(1000);
@@ -10,7 +10,11 @@ thisProc: BEGIN
   DECLARE SCRPTPC VARCHAR(30) ;
   DECLARE SCRDATE DATETIME ;
 
-/* 06/18/2023 AST:
+/* 06/18/2024 AST: Adding the logic to take the last n days and counts as per the param
+Also fixing the issue where the cursor brings nothing - due to the absence of IFNULL
+for the W.MOVED_TO_POST_FLAG
+
+06/18/2023 AST:
 Reason: When the current STP process is completed, a large number of scrapes get swept into the WSR_UNTAGGED table
 because the news items do not have any good tags that can be associated with the existing UKW tagging or the 
 carefully built IND/USA/GGG tagging and STP infra (as the KWs and tagging has not kept pace with the news).
@@ -44,9 +48,10 @@ This proc will need to be called in each of the STP processes - just before the 
   , W.SCRAPE_TOPIC, SUBSTR(W.NEWS_URL, 1, 499) NEWS_URL, SUBSTR(W.NEWS_HEADLINE, 1, 499) NEWS_HEADLINE
   , SUBSTR(W.NEWS_EXCERPT, 1, 499) NEWS_EXCERPT, W.COUNTRY_CODE 
   FROM WEB_SCRAPE_RAW W
-  WHERE W.SCRAPE_TOPIC = interest AND W.MOVED_TO_POST_FLAG = 'N' AND W.COUNTRY_CODE = ccode
+  WHERE W.SCRAPE_TOPIC = interest AND IFNULL(W.MOVED_TO_POST_FLAG, 'N') = 'N' AND W.COUNTRY_CODE = ccode
   AND IFNULL(NEWS_DATE, SCRAPE_DATE) IS NOT NULL 
-  AND IFNULL(STR_TO_DATE(W.NEWS_DATE, '%b %d, %Y %H:%i:%s'), SCRAPE_DATE) > CURRENT_DATE() - INTERVAL 5 DAY LIMIT 100 ;
+  AND IFNULL(STR_TO_DATE(W.NEWS_DATE, '%b %d, %Y %H:%i:%s'), SCRAPE_DATE) 
+  > CURRENT_DATE() - INTERVAL numdays DAY LIMIT scrcount ;
 
 
    DECLARE CONTINUE HANDLER FOR NOT FOUND SET DONE = TRUE;
@@ -57,12 +62,32 @@ This proc will need to be called in each of the STP processes - just before the 
       LEAVE READ_LOOP;
       END IF;
 
+/*
 SET UNTAG_CNT = (SELECT COUNT(1) FROM WEB_SCRAPE_RAW W   WHERE W.SCRAPE_TOPIC = interest AND W.COUNTRY_CODE = CCODEVAR 
-AND W.MOVED_TO_POST_FLAG = 'N' )*2 ;
+AND W.MOVED_TO_POST_FLAG = 'N' )*2 ; 
+06/20/2024 ast: Originally the PBUID below was selected using a more complex logic - in order to take the most recent
+cart additions among the BOT users. But that would take 3-5 sec per PBUID generation - resulting into several
+minutes for this proc.
 
-SET PBUID = (SELECT USERID FROM (SELECT DISTINCT C.USERID FROM OPN_USER_CARTS C, OPN_USERLIST U WHERE C.TOPICID = TID
-AND C.USERID = U.USERID AND U.COUNTRY_CODE = CCODEVAR  AND U.BOT_FLAG = 'Y'  
-ORDER BY CREATION_DTM DESC LIMIT UNTAG_CNT)Q ORDER BY RAND() LIMIT 1)  ;
+Hence now we are doing the easier - more random - not ordered by the latest cart changes - PBUID gen.
+
+Also, we are going to use this proc to generate Posts (news items) as well as Discussions. 
+
+This will be done by just checking if the SCRAPEID is even then Discussion, if odd then post 
+*/
+
+SET PBUID = (SELECT DISTINCT C.USERID FROM OPN_USER_CARTS C, OPN_USERLIST U WHERE C.TOPICID = TID
+AND C.USERID = U.USERID AND U.COUNTRY_CODE = CCODEVAR  AND U.BOT_FLAG = 'Y' ORDER BY RAND() LIMIT 1)  ;
+
+CASE WHEN SCRAPEID % 2 = 0 THEN 
+
+INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG 
+, EMBEDDED_CONTENT, EMBEDDED_FLAG, POSTOR_COUNTRY_CODE, SCRAPE_ROW_ID, URL_TITLE, URL_EXCERPT, STP_PROC_NAME
+, MEDIA_CONTENT, MEDIA_FLAG)
+VALUES( TID, SCRDATE, PBUID, SCRAPEURL, 'N', '', 'N', CCODEVAR, SCRAPEID, URLTITLE, NEWSDESC
+, 'STP_REMAINDER', '', 'N');
+
+ELSE 
 
 INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG 
 , EMBEDDED_CONTENT, EMBEDDED_FLAG, POSTOR_COUNTRY_CODE, SCRAPE_ROW_ID, URL_TITLE, URL_EXCERPT, STP_PROC_NAME
@@ -70,6 +95,9 @@ INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, 
 VALUES( TID, SCRDATE, PBUID, SCRAPEURL, 'Y', '', 'N', CCODEVAR, SCRAPEID, URLTITLE, NEWSDESC
 , 'STP_REMAINDER', '', 'N');
 
+END CASE ;
+
+	INSERT INTO WSR_CONVERTED
   UPDATE WEB_SCRAPE_RAW SET MOVED_TO_POST_FLAG = 'Y' WHERE ROW_ID = SCRAPEID ;
  
         END LOOP;

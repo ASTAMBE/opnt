@@ -9,6 +9,10 @@ thisProc: BEGIN
 
 /* for loading demo users carts with the new KW that is crated by a user
 
+07/14/2024 AST: Changing the random ranges for HCOUNT AND LCOUNT. This is becuase 
+the CART table has become huge and each bot has hundred+ KWs in the cart.
+We don't need a large number random bots for each new post that is converted to KW
+
 07/24/2019 AST: Changing the random user KW->cart assignment logic - 
 replacing AND USERID < 1020000 AND TAILORED_USER_FLAG = 'N' with BOT_FLAG = 'Y'
 
@@ -36,9 +40,9 @@ CASE WHEN CCODE = 'USA' THEN SET CCD2 = 'IND' ;
 
 /* End of 07/01/2020 addition */
 
-SET HCOUNT = FLOOR(RAND()* (25-15) +15) ;
+SET HCOUNT = FLOOR(RAND()* (5-2) +2) ;
 
-SET LCOUNT = FLOOR(RAND()* (40-25) +25) ;
+SET LCOUNT = FLOOR(RAND()* (8-2) +2) ;
 
 INSERT INTO OPN_USER_CARTS(CART, KEYID, USERID, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 SELECT 'H', K1, USERID, TID, NOW(), NOW() FROM 

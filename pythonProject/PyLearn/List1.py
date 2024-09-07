@@ -8,7 +8,7 @@ def lmax():
             var = i
 
     return var
-print(lmax())
+#print(lmax())
 
 def nodupe():
     ndl = []
@@ -16,7 +16,7 @@ def nodupe():
         if i not in ndl:
             ndl.append(i)
     return ndl
-print(nodupe())
+#print(nodupe())
 
 def longestIncr():
     le, breaks = [], []
@@ -26,5 +26,22 @@ def longestIncr():
             breaks.append(i+1)
             lenToStr.update({i+1:l1[i+1]})
     return breaks, lenToStr
-print(longestIncr())
+#print(longestIncr())
 
+# make the two lists of equal size by popping the items from the longer list
+
+def eql(l1, l2):
+    newl1, newl2 = [], []
+    l1len = len(l1)
+    l2len = len(l2)
+    if l1len > l2len:
+        while l2len < l1len:
+            l1.pop()
+
+    elif l2len > l1len:
+        while l1len < l2len:
+            l2.pop()
+
+    return l1, l2
+
+print(eql(l1, l2))

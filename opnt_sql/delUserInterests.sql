@@ -13,7 +13,7 @@ declare  orig_uid, pbuid INT;
 SET orig_uid = (SELECT  bringUserid(userid));
 -- SET @Ppbuid := (SELECT bringUseridFromUsername(postuserid));
 
-DELETE FROM OPN_USER_INTERESTS WHERE USERID = orig_uid ;  
+DELETE FROM OPN_USER_INTERESTS OSU WHERE OSU.USERID = orig_uid ;  
 
 END //
 DELIMITER ;

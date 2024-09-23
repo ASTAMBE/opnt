@@ -16,6 +16,7 @@ THISPROC: BEGIN
 01/01/2024 AST: Adding the entire STD_MANAGER call list prior to the start of the STP_MANAGER
 
 09/06/2024 AST: Adding the MOVED_TO_POST_FLAG = 'N' update because it is causing all STP fails
+09/22/2024 AST: MOVED_TO_POST_FLAG, TAG_DONE_FLAG and all the missing NEWS_DATE records are now managed in the WSR_DATE_MGMT proc
 */
 
 
@@ -30,7 +31,7 @@ SET SWC = (SELECT COUNT(1) FROM WEB_SCRAPE_RAW) ;
 SET CDTM = NOW() ;
 SET WFD = CURRENT_DATE() ;
 
-UPDATE WEB_SCRAPE_RAW_L SET MOVED_TO_POST_FLAG = 'N' ;
+CALL WSR_DATE_MGMT() ;
 
 CALL STD_MANAGER(1, 'GGG', 'POLITICS') ;
 CALL STD_MANAGER(1, 'IND', 'POLITICS') ;

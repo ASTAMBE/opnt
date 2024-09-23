@@ -71,13 +71,13 @@ VALUES (WSR_FILE, WFD, 'STP_GRAND_XYZNEWS', CDTM)
 have a different DTM format. They have LENGTH(NEWS_DTM_RAW) between 28 and 31.
 
 Some scrapes still have no NDTM - they need to be given the SCRAPE_DATE and NEWS_DATE
-*/
+
 
 
 UPDATE WEB_SCRAPE_RAW SET NEWS_DATE = STR_TO_DATE(substr(NEWS_DTM_RAW, 6, 11), '%d %M %Y') 
 WHERE LENGTH(NEWS_DTM_RAW) BETWEEN 28 AND 31 ;
 
-UPDATE WEB_SCRAPE_RAW SET NEWS_DATE = SCRAPE_DATE WHERE NEWS_DATE IS NULL ;
+UPDATE WEB_SCRAPE_RAW SET NEWS_DATE = SCRAPE_DATE WHERE NEWS_DATE IS NULL ; */
 
 /* 06/26/2023 AST:  Removing the scrapes that are of no use or have insufficient URL data
 */

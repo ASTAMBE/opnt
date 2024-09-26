@@ -49,6 +49,12 @@ with
 10/04/2020 AST: adding filter to XYZNEWS to avoid: old news, stock market update, SHOPPING ADS ETC.
  10/09/2020 AST: fixing the date issue in XYZNEWS  addition - also moving it to the front of the UPDATE
     10/10/2020 AST: removed the above - as a new proc was created for this purpose
+    
+    06/24/2023: AST: Introducing the STP_REMAINDER proc 
+    
+    05/18/2024 AST: Sinc eth current scrapers are mostly bringing URLs that have content in the NEWS_HEADLINE 
+    OR NEWS_EXCERPT columns, we need to replace the current TAG scheme - replace the NEWS_URL with 
+    these two columns
 
 */
 
@@ -502,12 +508,27 @@ WHERE SCRAPE_TOPIC IN ('SCIENCE') AND 1=1  AND MOVED_TO_POST_FLAG = 'N' ;
 SET UNTAGCOUNT = (SELECT COUNT(*) FROM WEB_SCRAPE_RAW
 WHERE SCRAPE_TOPIC IN ('SCIENCE') AND 1=1  AND MOVED_TO_POST_FLAG = 'N') ;
 
+/* 06/24/2023 AST: Starting addition to insert the STP_REMAINDER 
+This addition is inserted right after the SET UNTAGCOUNT = ...
+And it replaces the DELETE FROM WEB_SCRAPE_RAW line with 3 statements
+CALL, INSERT AND DELETE
+
+*/
+CALL STP_REMAINDER('SCIENCE', 3, 'GGG', 3, UNTAGCOUNT) ;
+
+INSERT INTO WSR_CONVERTED(STP_PROCESS, SCRAPE_TOPIC, SCRAPE_SOURCE, SCRAPE_DATE, NEWS_DATE, NEWS_HEADLINE, NEWS_EXCERPT, NEWS_PIC_URL, NEWS_URL, COUNTRY_CODE)
+SELECT 'STP_REMAINDER', SCRAPE_TOPIC, SCRAPE_SOURCE,  SCRAPE_DATE, NEWS_DATE, NEWS_HEADLINE, NEWS_EXCERPT, NEWS_PIC_URL, NEWS_URL, COUNTRY_CODE FROM WEB_SCRAPE_RAW
+WHERE SCRAPE_TOPIC IN ('SCIENCE') AND COUNTRY_CODE = 'GGG'   AND MOVED_TO_POST_FLAG = 'Y' ;
+
 DELETE FROM WEB_SCRAPE_RAW
-WHERE SCRAPE_TOPIC IN ('SCIENCE') AND 1=1  AND MOVED_TO_POST_FLAG = 'N' ;  
+WHERE SCRAPE_TOPIC = 'SCIENCE' AND COUNTRY_CODE = 'GGG' AND MOVED_TO_POST_FLAG = 'Y' ;  
+
+/* 06/24/2023 AST: End of  addition to insert the STP_REMAINDER */
 
 INSERT INTO OPN_STP_LOG(PROC_NAME, STP_TOPIC, STP_COUNTRY_CODE, POST_COUNT, UNTAG_COUNT, STP_PROC_DTM)
 VALUES('STP_GRAND_T3', 'SCIENCE', 'GGG', POSTCOUNT, UNTAGCOUNT, NOW()) ;
-  
+
+
   
   
 END ; //

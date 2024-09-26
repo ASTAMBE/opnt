@@ -1,0 +1,31 @@
+Prod Database 
+
+Prod DB Connection String/ Host -> prodopnt-new.cidtah9kj29d.us-west-1.rds.amazonaws.com
+dbport -> '3306'
+dbname -> 'opntprodd'
+
+Root User:
+username -> 'opinito'
+Password -> OPNTPROD=26
+
+Non Root User:
+username -> 'prod_user'
+password -> 'produser@opnt1504'
+
+============================================================================================
+
+Dev Database
+
+Dev DB Connection String/host -> opnt-dev.cidtah9kj29d.us-west-1.rds.amazonaws.com
+DB_name -> 'opntprodd'
+DB_Port -> 3306
+
+Root User:
+Username -> opinito
+Password -> OPNTPROD=26
+
+Non-Root User:
+Username -> dev_user
+Password -> devuser@opnt
+
+sqladminuser/AbhijitTambe123 (this is for Nitin's azure space)

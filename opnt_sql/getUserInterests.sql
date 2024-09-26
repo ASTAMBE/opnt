@@ -11,6 +11,9 @@ for a user.
 
 05/26/2020 AST: Added the USR BHV section
 08/11/2020 Kapil: Confirmed
+
+02/10/2024 AST: Changing this proc to not use the OPN_USER_INTEREST_V which was messing up the performance
+Now it is < 0.5 sec instead of 6.5 sec
 */
 
 declare  orig_uid INT;
@@ -26,11 +29,9 @@ VALUES(UNAME, orig_uid, UUID, NOW(), 'getUserInterests', CONCAT(orig_uid,'-',UNA
 
 /* end of use action tracking */
 
-SELECT T.TOPICID, T.TOPIC, T.CODE, IF(IV2.SELECTED_KW_COUNT IS NULL, 'N', 'Y') 'SLCT'
-FROM OPN_TOPICS T LEFT OUTER JOIN 
-(SELECT IV.INTEREST_ID, IV.INTEREST_NAME, IV.INTEREST_CODE, IV.SELECTED_KW_COUNT
-FROM OPN_USER_INTERESTS_V IV WHERE IV.USERID = orig_uid) IV2
-ON T.TOPICID = IV2.INTEREST_ID ORDER BY T.CODE
+SELECT T.TOPICID, T.TOPIC, T.CODE, IF(I.INTEREST_ID IS NULL, 'N', 'Y') 'SLCT'
+FROM OPN_TOPICS T LEFT OUTER JOIN OPN_USER_INTERESTS I ON T.TOPICID = I.INTEREST_ID
+AND I.USERID = orig_uid
 ;
   
 END //

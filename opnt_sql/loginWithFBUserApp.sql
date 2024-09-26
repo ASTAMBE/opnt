@@ -2,7 +2,7 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS loginWithFBUserApp //
-CREATE PROCEDURE loginWithFBUserApp(fbuserid VARCHAR(25), device_serial VARCHAR(45))
+CREATE PROCEDURE loginWithFBUserApp(fbuserid VARCHAR(45), device_serial VARCHAR(45))
 BEGIN
 
 /* 04012018 AST: Added insret into proc log 

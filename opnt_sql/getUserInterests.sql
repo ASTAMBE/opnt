@@ -2,7 +2,7 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS getUserInterests //
-CREATE DEFINER=`root`@`%` PROCEDURE `getUserInterests`(uuid VARCHAR(45))
+CREATE PROCEDURE `getUserInterests`(uuid VARCHAR(45))
 BEGIN
 
 /*

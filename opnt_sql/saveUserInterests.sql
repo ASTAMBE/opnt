@@ -26,6 +26,7 @@ INSERT INTO OPN_USER_INTERESTS(USERID, USER_UUID, INTEREST_ID, INTEREST_NAME, IN
 VALUES (orig_uid, uuid, tid, intName, intCode, NOW(), uname);
 
 
+
 END //
 DELIMITER ;
 

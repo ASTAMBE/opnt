@@ -1,8 +1,8 @@
--- STP_REMAINDER
+-- STP_REMAINDER_NONXYZ
 
 DELIMITER //
-DROP PROCEDURE IF EXISTS STP_REMAINDER //
-CREATE PROCEDURE STP_REMAINDER(interest VARCHAR(25), TID INT, xyzkid int, ccode VARCHAR(5), numdays INT, scrcount INT)
+DROP PROCEDURE IF EXISTS STP_REMAINDER_NONXYZ //
+CREATE PROCEDURE STP_REMAINDER_NONXYZ(interest VARCHAR(25), TID INT, xyzkid int, ccode VARCHAR(5), numdays INT, scrcount INT)
 thisProc: BEGIN
   DECLARE SCRAPEID, PBUID, PBUID2, KID, USERCNT, SCRAPECNT, UNTAG_CNT INT;
   DECLARE SCRAPEURL, URLTITLE, NEWSDESC VARCHAR(1000);
@@ -12,51 +12,10 @@ thisProc: BEGIN
 
 /* 
 
-10/05/2024 AST: Changing this proc as follows:
-	Adding the KID as an input prompt - to handle the bolly news dichotomy
-	Will also create a new STP_REMAINDER_NONXYZ to handle the scrapes that 
-	need to be distributed to non-XYZBOTs - because those other bots will allow the
-	non-bot users get a more varied instream
-	
-	The calling of STP_REMAINDER and STP_REMAINDER_NONXYZ will be controlled
-	at the STP_MONITOR stage - where, depending on the number of scrapes available
-	in each tid/ccode COMBO, we will decide what numbers to send to either
-	of these two procs.
-
-09/16/2024 AST: Changing the target UID selection to use the OPN_XYZNEWS_BOTS table
-
-ALSO: ALL THE SCRAPES WILL BE CONVERTED ONLY TO INSTREAM POSTS - NO DISCUSSIONS
-
-06/18/2024 AST: Adding the logic to take the last n days and counts as per the param
-Also fixing the issue where the cursor brings nothing - due to the absence of IFNULL
-for the W.MOVED_TO_POST_FLAG
-
-06/18/2023 AST:
-Reason: When the current STP process is completed, a large number of scrapes get swept into the WSR_UNTAGGED table
-because the news items do not have any good tags that can be associated with the existing UKW tagging or the 
-carefully built IND/USA/GGG tagging and STP infra (as the KWs and tagging has not kept pace with the news).
-Currently only a small portion of this untagged news gets distributed as STP through the STP_GRAND_XYZNEWS. 
-This proc will convert all the remaining (untagged) scrapes into posts and assign it to a carefully designed
-random selection of users.
-
-Purpose: 1. To convert the untagged scrapes into posts and slot them into well-designed USERID selections
-2. To prepare the ground for automating the showInitialKWs proc - so that the latest news scrapes will 
-automatically start appearing in the showInitialKWs
-
-PreReq: In order to make this proc work, first the ADD_NUSERS_4K1 had to be added to the convertPostToKW
-proc - only for the portion which actually converts the Post to KW. SO that enough recipients of the untagged 
-scrapes can be pre-populated. 
-Why? Because it makes sense to distribute to untagged STP into users who have had RECENT interactions in terms of
-subscribing to the recently added KWs. If this is not done, then the STP will be done to those bots that have had 
-only old KWs subscriptions.
-
-Method: Create a cursor of the UNTAGGED news - before the scrapes are swept into the WSR_UNTAGGED. 
-Then find the USERIDs that have had the most recent cart additions for the same interest and country code.
-Then start converting each cursor row to post for each of these users - by using the order by rand() limit 1
-
-This proc will need to be called in each of the STP processes - just before the sweeping into WSR_UNTAGGED
-	
-
+10/05/2024 AST: This proc will be mirror image of STP_REMAINDER - but will be used as follows:
+	1. It will be used when the scrape count for TID/CCODE combo is > XYZBOTs in the OPN_XYZNEWS_BOTS
+    2. Why ? because we want the scrape-to-post to be evenly distributed among XYZBOTs and the non-XYZBOTs
+    
 */
 
     DECLARE DONE INT DEFAULT FALSE;
@@ -92,7 +51,9 @@ Also, we are going to use this proc to generate Posts (news items) as well as Di
 This will be done by just checking if the SCRAPEID is even then Discussion, if odd then post 
 */
 
-SET PBUID = (SELECT USERID FROM OPN_XYZNEWS_BOTS WHERE TOPICID = TID AND CCODE = CCODEVAR ORDER BY RAND() LIMIT 1)  ;
+SET PBUID = (SELECT DISTINCT USERID FROM OPN_USER_CARTS WHERE TOPICID = TID AND USERID IN 
+(SELECT USERID FROM OPN_USERLIST WHERE BOT_FLAG = 'Y' AND COUNTRY_CODE = CCODEVAR )
+AND USERID NOT IN (SELECT USERID FROM OPN_XYZNEWS_BOTS WHERE TOPICID = TID AND CCODE = CCODEVAR) ORDER BY RAND() LIMIT 1)  ;
 
 /*
 CASE WHEN TID = 1 THEN SET TAG1_KEYID = 105087, KEYID = 105087 ;
@@ -116,7 +77,7 @@ THIS IS THE CONVERSION TO POST (INSTREAM) WHERE DEMO_POST_FLAG = 'Y' */
 INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG, TAG1_KEYID
 , EMBEDDED_CONTENT, EMBEDDED_FLAG, POSTOR_COUNTRY_CODE, SCRAPE_ROW_ID, URL_TITLE, URL_EXCERPT, STP_PROC_NAME
 , MEDIA_CONTENT, MEDIA_FLAG)
-VALUES( TID, SCRDATE, PBUID, SCRAPEURL, 'Y',xyzkid, '', 'N', CCODEVAR, SCRAPEID, URLTITLE, NEWSDESC
+VALUES( TID, SCRDATE, PBUID, SCRAPEURL, 'Y', xyzkid, '', 'N', CCODEVAR, SCRAPEID, URLTITLE, NEWSDESC
 , 'STP_REMAINDER', '', 'N');
 
 -- END CASE ;

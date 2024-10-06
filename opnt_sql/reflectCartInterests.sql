@@ -11,6 +11,15 @@ BEGIN
 a user's cart - E.g. a user may completely remove all the KWs in one or more Interests 
 This proc should be called only through the insertUserCartsByTopic.php after the insert step forloop
 
+10/05/2024 AST: Balle Balle ! this proc DOESN'T  have to do the adjustment needed due to 
+105088	Bollywood news and 105089	Celeb News - that was needed for reflectUserInterests
+
+This is because we are already using the DISTINCT in the inner INSERT :
+(SELECT DISTINCT TOPICID FROM OPN_USER_CARTS WHERE USERID = orig_uid)  --> this ensures that 
+even when a user selects both keys 105088	Bollywood news and 105089	Celeb News - it still 
+gets only one row (TOPICID 10) in the OPN_USER_INTERESTS
+
+
 */
 
 declare  orig_uid, pbuid INT;

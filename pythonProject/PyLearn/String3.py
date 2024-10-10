@@ -40,13 +40,26 @@ def wtonum(numAsStr):
     for word in words:
         if word in wnum.keys():
             tonum += str(wnum[word])
-    print(int(tonum))
+    #print(int(tonum))
 
 #print(wtonum('one and two and three'))
 
 def wordposn(str1):
     word = 'good'
+    wcount = 0
     posn = []
     startpos = 0
-    for
-    posn += str1.find(word, startpos)
+    wcount = str1.count('good')
+    for i in str1:
+        if str1.find(word, startpos) != -1 :
+            posn.append(startpos)
+            startpos = startpos + len(word)
+    return (posn)
+
+print(wordposn('good it is good is it good really'))
+
+
+
+
+#print('good it is good is it good really'.find('good', 5))
+

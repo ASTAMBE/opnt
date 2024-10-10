@@ -19,7 +19,7 @@ CALL getUserCarts(1, BRINGUUID(1005689), 'LATEST', 0, 400) ;
 
 CALL addcleandomain('www.deccanherald.com', 'www.deccanherald.com', 'deccanherald.com' ) ;
 
-call createSearchKW(8, bringuuid(1003845), 'discuss absolutely any topic here', 'L') ;
+call createSearchKW(8, bringuuid(1003845), 'Testing the search-->create functionality', 'L') ;
 CALL createGuestUserApp('astdev', 'USA', 'EAFE9C2A-698E-49E5-95AB-FA9669C0A0F5') ;
 call createSearchKW(10, bringuuid(1017856), 'neha kakkar', 'L') ;
 

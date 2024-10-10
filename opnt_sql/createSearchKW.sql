@@ -26,6 +26,9 @@ and that was causing issues in the downstream tagging and STP processes.
 06/14/2020 AST: Added WHEN TOPICID = 11 THEN 'HEALTH' 
 08/19/2020 Kapil: Confirmed
 
+10/06/2024 AST: Suppressing the OPN_SCRAPE_DESIGN_GEN call - because it is failing
+and because the scrape design is not being used anymnore
+
  */
 
 declare  orig_uid , NEWKID INT;
@@ -86,7 +89,7 @@ CALL ADD_NUSERS_4K1(NEWKID , ccode,  tid) ;
 
 -- ADD_NUSERS_4K1 call added on 03/11/2019
 
-CALL OPN_SCRAPE_DESIGN_GEN(tid, NEWKID, STAG24LLIST, userKW ) ;
+-- CALL OPN_SCRAPE_DESIGN_GEN(tid, NEWKID, STAG24LLIST, userKW ) ;
 END IF ;
 
 

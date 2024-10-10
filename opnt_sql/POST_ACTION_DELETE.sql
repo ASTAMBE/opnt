@@ -12,7 +12,6 @@ begin
 
 	02/26/2023 AST: This trigger will remove the KW from the user's cart once the user removes
     his Post Action (L/H)
-       
 
 */
 

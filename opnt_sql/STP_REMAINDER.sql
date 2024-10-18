@@ -11,6 +11,8 @@ thisProc: BEGIN
   DECLARE SCRDATE DATETIME ;
 
 /* 
+10/17/2024 AST: Changed the PBUID selector to have the alias for OPN_XYZNEWS_BOTS - else it was selecting 
+wrong users with random country codes
 
 10/05/2024 AST: Changing this proc as follows:
 	Adding the KID as an input prompt - to handle the bolly news dichotomy
@@ -92,7 +94,7 @@ Also, we are going to use this proc to generate Posts (news items) as well as Di
 This will be done by just checking if the SCRAPEID is even then Discussion, if odd then post 
 */
 
-SET PBUID = (SELECT USERID FROM OPN_XYZNEWS_BOTS WHERE TOPICID = TID AND CCODE = CCODEVAR ORDER BY RAND() LIMIT 1)  ;
+SET PBUID = (SELECT B.USERID FROM OPN_XYZNEWS_BOTS B WHERE B.TOPICID = TID AND B.CCODE = CCODEVAR ORDER BY RAND() LIMIT 1)  ;
 
 /*
 CASE WHEN TID = 1 THEN SET TAG1_KEYID = 105087, KEYID = 105087 ;

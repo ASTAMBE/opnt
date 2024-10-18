@@ -8,6 +8,9 @@ tid INT, message varchar(2000) , embedded_content varchar(1000), cmnt1 varchar(2
 thisProc: BEGIN
 
 /*   
+10/17/2024 AST: This proc is forcing the NOW() as POST_DATETIME on all posts. We are changing it to 
+the actual NEWS_DATE - because now we have fixed all the NEWS_DATE issues
+
 08/06/2023 AST:Creating this proc to create discussion posts by BOTs.
  08/14/2023 AST: Made small changes - like ccode lowercase and source_row -> source_row_id
  

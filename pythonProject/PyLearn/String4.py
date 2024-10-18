@@ -18,5 +18,11 @@ def longestNoRepeat(str2):
     take the second letter of the string and compare it to the first letter
     if they are the same then go to the next letter and compare it to its previous.
     if they do not match then increment the length of the long string and go to the next
-    letter. 
+    letter.
     '''
+    startpos, longest = 0,0
+    for i in range(len(str2)):
+        if str2[i+1] == str2[i]:
+            1 += 1
+        else:
+            

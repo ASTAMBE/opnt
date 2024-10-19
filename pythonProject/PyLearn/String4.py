@@ -25,4 +25,4 @@ def longestNoRepeat(str2):
         if str2[i+1] == str2[i]:
             1 += 1
         else:
-            
+

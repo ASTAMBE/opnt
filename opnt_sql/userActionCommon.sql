@@ -27,10 +27,18 @@ BEGIN
     Then it passes the 1 to record his latest opinion on the post.alter
     This introduces a need whereby we need to specifically delete the CART row as part of
     dealing with the L0/H0 param.
+    
+    10/21/2024 AST: It was found that sometimes a post may be created again and escapes the DUPE detection
+    This can cause a vreakdown if the same post is L/H by a user and then the convertPosttoKW tries to create a new KW
+    It finds that the KW already exists - this scenario results into an internal error which prevents the recording
+    of L/H in the OPN_USER_POST_ACTION table.alter
+    Hence we need to populate the altkey in a different manner.
+    
 */
 
-declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID, altkey INT;
+declare  ORIG_UID, causePostID, TID, causeCommentID, postByUID, commentByUID, altkey, altkid INT;
 DECLARE actionTypeNew,UNAME VARCHAR(30) ;
+DECLARE POSTCONTENT VARCHAR(300) ;
 
 CASE WHEN actionSource = 'COMMENT' THEN
 
@@ -69,17 +77,20 @@ WHEN actionSource = 'POST' THEN
 
 SELECT U1.USERNAME, U1.USERID INTO UNAME, ORIG_UID FROM OPN_USERLIST U1 WHERE U1.USER_UUID = uuid ;
 
-SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0) INTO TID, postByUID, altkey FROM OPN_POSTS WHERE POST_ID = sourceID ;
+SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0), SUBSTR(POST_CONTENT, 1, 100) INTO TID, postByUID, altkey, POSTCONTENT FROM OPN_POSTS WHERE POST_ID = sourceID ;
 
+IF altkey = 0 THEN 
+SELECT ifnull(MIN(KEYID),0) INTO altkid FROM OPN_P_KW WHERE KEYWORDS LIKE CONCAT("'", POSTCONTENT, '%', "'") ;
+ELSE 
+set altkid = altkey ;
 
-/* Adding user action logging portion 
+/* Adding RAW logging portion */
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
-CONCAT('userActionCommon', '-', 'UNAME-ORIG_UID-uuid-TID-postByUID-altkey-sourceID-actionType' )
-, concat(UNAME,'-', ORIG_UID, '-', uuid,'-', TID,'-', postByUID,'-', altkey,'-', sourceID,'-', actionType), NOW() 
-) ; 
+CONCAT('sourceID', '-', 'altkey-altkid-CONCAT' )
+, concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") )) ; 
 
-END OF RAW LOGGING */
+-- END OF RAW LOGGING */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
 VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
@@ -92,7 +103,7 @@ CASE WHEN actionType IN ('L0', 'H0') THEN
 DELETE FROM OPN_USER_POST_ACTION WHERE OPN_USER_POST_ACTION.ACTION_BY_USERID = ORIG_UID 
 AND OPN_USER_POST_ACTION.CAUSE_POST_ID = sourceID AND OPN_USER_POST_ACTION.POST_BY_USERID =  postByUID ;
 
-DELETE FROM OPN_USER_CARTS WHERE USERID = ORIG_UID AND TOPICID = TID AND KEYID = altkey ;
+DELETE FROM OPN_USER_CARTS WHERE USERID = ORIG_UID AND TOPICID = TID AND KEYID = altkid ;
 
  WHEN actionType IN ('L1', 'H1') THEN
 IF actionType = 'L1' THEN
@@ -102,12 +113,11 @@ ELSE
 END IF;
 INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_TYPE, POST_ACTION_DTM
 , CAUSE_POST_ID, ACTION_SOURCE, TOPICID, KEYID) 
-VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, altkey) ;
-
-ELSE BEGIN END;
-
+VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, altkid) ;
 
 END CASE ;
+
+END IF ;
 
 END CASE ;
 

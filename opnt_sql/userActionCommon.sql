@@ -79,18 +79,24 @@ SELECT U1.USERNAME, U1.USERID INTO UNAME, ORIG_UID FROM OPN_USERLIST U1 WHERE U1
 
 SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0), SUBSTR(POST_CONTENT, 1, 100) INTO TID, postByUID, altkey, POSTCONTENT FROM OPN_POSTS WHERE POST_ID = sourceID ;
 
-IF altkey = 0 THEN 
+CASE WHEN altkey = 0 THEN 
 SELECT ifnull(MIN(KEYID),0) INTO altkid FROM OPN_P_KW WHERE KEYWORDS LIKE CONCAT("'", POSTCONTENT, '%', "'") ;
-ELSE 
-set altkid = altkey ;
+-- SELECT UNAME, ORIG_UID, TID, postByUID, altkey, POSTCONTENT, CONCAT("'", POSTCONTENT, '%', "'"), altkid ;
+-- LEAVE thisproc ;
 
-/* Adding RAW logging portion */
+WHEN  altkey != 0 THEN
+SET altkid = altkey ;
+-- SELECT UNAME, ORIG_UID, TID, postByUID, altkey, POSTCONTENT, CONCAT("'", POSTCONTENT, '%', "'"), altkid ;
+
+END CASE ;
+
+/* Adding RAW logging portion 
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 CONCAT('sourceID', '-', 'altkey-altkid-CONCAT' )
-, concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") )) ; 
+, concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") ), NOW()) ; 
 
--- END OF RAW LOGGING */
+ END OF RAW LOGGING */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
 VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
@@ -116,8 +122,6 @@ INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_
 VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, altkid) ;
 
 END CASE ;
-
-END IF ;
 
 END CASE ;
 

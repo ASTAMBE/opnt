@@ -24,17 +24,17 @@ SELECT ifnull(MIN(KEYID),0) INTO altkid FROM OPN_P_KW WHERE KEYWORDS LIKE CONCAT
 
 WHEN  altkey != 0 THEN
 SET altkid = altkey ;
-SELECT UNAME, ORIG_UID, TID, postByUID, altkey, POSTCONTENT, CONCAT("'", POSTCONTENT, '%', "'"), altkid ;
+-- SELECT UNAME, ORIG_UID, TID, postByUID, altkey, POSTCONTENT, CONCAT("'", POSTCONTENT, '%', "'"), altkid ;
 
 END CASE ;
-LEAVE thisproc ;
+-- LEAVE thisproc ;
 
 
 /* Adding RAW logging portion */
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 CONCAT('sourceID', '-', 'altkey-altkid-CONCAT' )
-, concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") )) ; 
+, concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") ), NOW()) ; 
 
 -- END OF RAW LOGGING */
 

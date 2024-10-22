@@ -1,11 +1,6 @@
 import feedparser
 from datetime import date, datetime, timedelta
-import pytz
 from dateutil import parser
-
-indTz = pytz.timezone("Asia/Kolkata")
-today = datetime.now(indTz)
-current_time = today.strftime("%H:%M:%S")
 
 today = date.today()
 ## url
@@ -48,8 +43,8 @@ tag3 = ['BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 'BUSINESS', 
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
 
-#with open(f"../../scraper/GGGALL/GGGPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
-with open(f"../../scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+#with open(f"/var/www/html/scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"c:/AST/scrapefiles/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -62,24 +57,44 @@ with open(f"../../scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w
         entry['NEWS_TAGS'] = ntag[i]
 
         rss.append(entry)
-
-        f1 = feedparser.parse(entry['url_en'])
+        try:
+            f1 = feedparser.parse(entry['url_en'])
+        except Exception as e:
+            print("Exception occurred:", e)
+            continue
         newsItem = f1.entries
 
         items_to_insert = []
         for item in newsItem:
-            # Check if 'summary' attribute exists
-            if 'summary' in item:
-                s = item.summary
-            else:
-                # If 'summary' is not present, use 'title' as a fallback
-                s = item.title
+            s = item.summary if 'summary' in item else item.title
             if len(s) >= 500:
-                s = item.summary[:500]
-            a = item.published
-            published_date = convert_to_desired_format(a)
-            date_only = find_pubdate_date(item.published)
+                s = s[:500]
 
+            # Check for 'dc:date' as the date field
+            if 'published' in item:
+                date_str = item.published
+            elif 'updated' in item:
+                date_str = item.updated
+            elif 'dc:date' in item:
+                date_str = item['dc:date']
+            else:
+                # Skip this entry if no date field is available
+                continue
+
+            # Parse the date string
+            try:
+                # Use `dateutil.parser.parse` to automatically handle different date formats
+                published_date = parser.parse(date_str)
+
+                # Format the date as 'YYYY-MM-DD hh:mm:ss'
+                formatted_date = published_date.strftime("%Y-%m-%d %H:%M:%S")
+            except Exception as e:
+                print(f"Error parsing date: {e}")
+                continue
+
+            date_only = published_date.date()
+
+            # Compare date with two days ago
             two_days_ago = today - timedelta(days=2)
             if date_only <= two_days_ago:
                 continue
@@ -87,16 +102,16 @@ with open(f"../../scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w
             entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
                             entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
-                            item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''")
-                            , published_date]
+                            item.title.replace("'", "''"), item.link, date_str, formatted_date, s.replace("'", "''")]
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
-            items_to_insert.append('(' + ','.join(entry_values).replace('\u2009','').replace('\u20b9','').replace('\u200b','') + ')')
+            items_to_insert.append(
+                '(' + ','.join(entry_values).replace('\U0001f933', '').replace('\U0001f440', '') + ')')
 
         if items_to_insert:
             f.write(
-                "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2,  SCRAPE_TAG3"
-                ", NEWS_TAGS, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
+                "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2"
+                ", NEWS_TAGS,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_DATE, NEWS_EXCERPT) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

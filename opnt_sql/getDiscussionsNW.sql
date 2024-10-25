@@ -46,6 +46,8 @@ thisproc: BEGIN
     - A Discussion consists of two types of posts: 1. Any post made by a non-bot (that means a real) user
     2. All the BOT posts that are created through the SCRAPE_TO_DISC process --> these posts are created with
     DEMO_POST_FLAG = 'N' 
+    
+    10/24/2024 AST: Adding AND P.POSTOR_COUNTRY_CODE = CCODE 
             
  */
  
@@ -144,6 +146,7 @@ FROM
     AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 30 DAY
             AND UN.USERID = P.POST_BY_USERID 
 			AND P.TOPICID = UN.TOPICID
+            AND P.POSTOR_COUNTRY_CODE = CCODE
             AND P.DEMO_POST_FLAG <> 'Y'
             ) INSTREAM
         INNER JOIN

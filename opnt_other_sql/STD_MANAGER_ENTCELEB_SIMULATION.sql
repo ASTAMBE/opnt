@@ -47,6 +47,11 @@ FROM OPN_POSTS P, OPN_USERLIST U WHERE P.POST_BY_USERID = U.USERID
 AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 10 DAY GROUP BY P.TOPICID, P.POSTOR_COUNTRY_CODE
 ORDER BY 1, 2;
 
+SELECT CAST(POST_DATETIME AS DATE) PDATE, TOPICID, POSTOR_COUNTRY_CODE, COUNT(1) FROM OPN_POSTS WHERE POST_DATETIME > CURRENT_DATE() - INTERVAL 5 DAY 
+GROUP BY CAST(POST_DATETIME AS DATE), TOPICID, POSTOR_COUNTRY_CODE ORDER BY 1,2,3;
+
+
+
 
 
 SELECT 308 DIV 4 DIV 2 ; -- GENT = 38
@@ -78,8 +83,8 @@ SELECT W.ROW_ID, IFNULL(W.NEWS_DATE, W.SCRAPE_DATE) SCRAPE_DATE
   AND IFNULL(NEWS_DATE, SCRAPE_DATE)   > CURRENT_DATE() - INTERVAL 3 DAY LIMIT 10;
  
 SELECT * FROM OPN_POSTS WHERE POST_DATETIME > '2024-09-10 20:31:05'
-AND (POST_CONTENT = 'https://www.usmagazine.com/entertainment/news/tiffany-pollard-says-her-mom-doesnt-approve-of-her-wedding-plans/'
-OR URL_TITLE = 'https://www.usmagazine.com/entertainment/news/tiffany-pollard-says-her-mom-doesnt-approve-of-her-wedding-plans/') ;
+AND (POST_CONTENT = 'https://www.ndtv.com/world-news/sanjay-kumar-verma-ndtv-interview-india-canada-diplomatic-crisis-how-khalistani-terrorists-influence-indian-students-in-canada-indian-envoy-6864262'
+OR URL_TITLE = 'https://www.ndtv.com/world-news/sanjay-kumar-verma-ndtv-interview-india-canada-diplomatic-crisis-how-khalistani-terrorists-influence-indian-students-in-canada-indian-envoy-6864262') ;
 
 CALL createBOTDiscussion('SCRAPE_TO_DISC', 1111, 'USA', 'L' , 10, '','' , '','') ;
 SELECT * FROM WEB_SCRAPE_RAW_L WHERE SCRAPE_TOPIC IN ('ENT', 'CELEB') AND COUNTRY_CODE = 'USA' ;
@@ -94,12 +99,23 @@ CALL STP_MONITOR_REVAMP() ;
 CALL STD_MANAGER(4, 'IND', 'BUSINESS') ;
 CALL WSR_DATE_MGMT() ;
 
-SELECT * FROM OPN_30DAYS_POST_CONTENT WHERE POST_CONTENT = 'https://www.cnbc.com/2024/10/20/travel-trend-in-2025-places-that-are-lesser-known-and-less-crowded.html' ;
+SELECT * FROM OPN_30DAYS_POST_CONTENT WHERE POST_CONTENT = 'https://www.ndtv.com/world-news/sanjay-kumar-verma-ndtv-interview-india-canada-diplomatic-crisis-how-khalistani-terrorists-influence-indian-students-in-canada-indian-envoy-6864262' ;
 
 SELECT * FROM OPN_30DAYS_POST_CONTENT ORDER BY LOAD_DTM DESC ;
 
 SELECT * FROM OPN_P_KW WHERE NEWS_ONLY_FLAG = 'Y' ;
 
+SELECT TOPICID, KEYID, CCODE,  COUNT(1) FROM OPN_XYZNEWS_BOTS oxb WHERE TOPICID IN (5, 10)  GROUP BY TOPICID, KEYID, CCODE ;
+SELECT * FROM OPN_XYZNEWS_BOTS oxb WHERE TOPICID IN (5) AND CCODE = 'IND' ;
+
+SELECT * FROM WEB_SCRAPE_RAW_L WHERE COUNTRY_CODE = 'IND' AND NEWS_URL IN (SELECT POST_CONTENT FROM OPN_30DAYS_POST_CONTENT WHERE LOAD_DTM > '2024-10-20') ;
+CALL STD_MANAGER(2, 'USA', 'SPORTS') ;
+
+CALL callSTDbyIntCcode(2, 'USA', 'SPORTS', 1) ;
+
+SELECT ROW_ID, SCRAPE_SOURCE FROM WEB_SCRAPE_RAW_L WHERE COUNTRY_CODE = 'USA' AND SCRAPE_TOPIC = 'SPORTS'  ORDER BY RAND() LIMIT 2 ;
+
+CALL createBOTDiscussion('SCRAPE_TO_DISC', 186, 'USA', 'L' , 2, '','' , '','') ;
 
 
 

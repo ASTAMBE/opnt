@@ -8,6 +8,8 @@ tid INT, message varchar(2000) , embedded_content varchar(1000), cmnt1 varchar(2
 thisProc: BEGIN
 
 /*   
+10/24/2024 AST: Incorporating the URL_TITLE/NEWS_URL from OPN_P_KW TO CHECK FOR DUPES
+
 10/17/2024 AST: This proc is forcing the NOW() as POST_DATETIME on all posts. We are changing it to 
 the actual NEWS_DATE - because now we have fixed all the NEWS_DATE issues
 
@@ -123,7 +125,8 @@ SELECT NEWS_URL, NEWS_HEADLINE, 	IFNULL(NEWS_EXCERPT, "This is a great discussio
 , SCRAPE_SOURCE, SCRAPE_TOPIC, IFNULL(NEWS_TAGS, 'PYSCRAPE'), NEWS_DATE into URL, newsTitle, newsExcrpt, scr_src, scr_topic, scr_type, ndtm
 FROM WEB_SCRAPE_RAW_L WHERE ROW_ID = source_row_id ;
 
-SET KWEXIST = (SELECT COUNT(1) FROM OPN_P_KW WHERE TOPICID = tid AND KEYWORDS LIKE CONCAT(SUBSTR(newsTitle, 1, 150), '%') );
+SET KWEXIST = (SELECT COUNT(1) FROM OPN_P_KW WHERE TOPICID = tid AND (KEYWORDS LIKE CONCAT(SUBSTR(newsTitle, 1, 150), '%') OR 
+KEYWORDS = URL));
 
 CASE WHEN KWEXIST = 0 THEN 
 

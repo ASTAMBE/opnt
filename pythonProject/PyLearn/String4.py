@@ -21,8 +21,10 @@ def longestNoRepeat(str2):
     letter.
     '''
     startpos, longest = 0,0
+    currlong = ''
     for i in range(len(str2)):
         if str2[i+1] == str2[i]:
-            1 += 1
+            i += 1
         else:
+
 

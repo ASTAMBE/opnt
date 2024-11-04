@@ -1,0 +1,27 @@
+<?php
+
+include('includeHeader.inc.php');
+
+
+
+$username = $postData['username'];
+$answer = $postData['answer'];
+
+
+if (!$username || $username == "" ||  !$answer || $answer == ""){
+  $response = "{\"status\": \"error\"}";
+  die($response);
+}
+else{
+      
+  $q = "call checkAnswer(\"$username\", \"$answer\");";
+
+  $result = mysqli_query($db,$q);
+      while (($row = mysqli_fetch_array($result))){
+        $json_arry[] =  $row;
+    }
+  $r =  json_encode($json_arry);
+  echo $r ;
+
+}
+?>

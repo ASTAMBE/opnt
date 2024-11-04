@@ -1,0 +1,62 @@
+<?php
+require 'jwt/vendor/autoload.php';
+use \Firebase\JWT\JWT;  
+include('includeHeader.inc.php');
+include('jwt_verify.php');
+
+$fromIndex="";
+$toIndex="";
+$topicid = $postData['topicid'];
+$userid = $postData['userid'];
+$token = $headers['Token'];
+
+if(isset($postData['from'])){
+  $fromIndex = $postData['from'];
+}
+if(isset($postData['to'])){
+  $toIndex = $postData['to'];
+}
+if (!$topicid || $topicid == "" || !$userid || $userid == "" || $token == ""){
+     $response = "{\"status\": \"error\"}";
+    die($response);
+}
+if ($fromIndex == ""){
+  $fromIndex = 0;
+}
+if ($toIndex == ""){
+  $toIndex = 20;
+}
+if($verify=verify_jwt_by_userid($token,$userid)){
+
+}else{
+			$response =array("status"=>"Authentication Failed");
+			http_response_code(401);
+			print json_encode($response);
+			die();
+}
+    $q = "call myCommentPosts(\"$userid\", \"$topicid\",\"$fromIndex\",\"$toIndex\");";
+	$json_arry = array();
+           $result = mysqli_query($db,$q);
+                    if($result == TRUE){
+                    while (($row = mysqli_fetch_assoc($result))){
+	                      $json['POST_ID'] = $row['POST_ID'];
+        	              $json['USERNAME'] =$row['POST_BY_USERNAME'];
+                          $json['DP_URL'] =$row['DP_URL'];
+                          $json['TOPICID'] =  $row['TOPICID'];
+            		      $json['POST_DATETIME'] = $row['POST_DATETIME'];
+                           $json['POST_CONTENT'] = utf8_encode($row['POST_CONTENT'] );
+                           $json['MEDIA_CONTENT'] = utf8_encode($row['MEDIA_CONTENT'] );
+                           $json['MEDIA_FLAG'] = utf8_encode($row['MEDIA_FLAG'] );
+                          $json['LCOUNT'] = $row['LCOUNT'];
+                          $json['HCOUNT'] = $row['HCOUNT'];
+                          $json['POST_COMMENT_COUNT'] = $row['POST_COMMENT_COUNT'];
+                          array_push($json_arry, $json); 
+                     }
+                    $r =  json_encode($json_arry);
+                     echo $r;
+                    }
+                   else{
+                    $response = "{\"status\": \"error\"}";
+                   echo $r;
+                    }
+  ?>

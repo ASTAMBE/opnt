@@ -1,0 +1,67 @@
+<?php
+
+include('includeHeader.inc.php');
+
+
+$fromIndex="";
+$toIndex="";
+$topicid = $postData['topicid'];
+$userid = $postData['userid'];
+
+
+if(isset($postData['from'])){
+  $fromIndex = $postData['from'];
+}
+if(isset($postData['to'])){
+  $toIndex = $postData['to'];
+}
+if (!$topicid || $topicid == "" || !$userid || $userid == "" ){
+     $response = "{\"status\": \"error\"}";
+    die($response);
+}
+else{
+
+if ($fromIndex == ""){
+  $fromIndex = 0;
+}
+if ($toIndex == ""){
+  $toIndex = 20;
+}
+
+
+ $json_arry = array();
+$q = "CALL getPostsByUsername( \"$userid\",  \"$topicid\",\"$fromIndex\",\"$toIndex\");"; 
+//echo $q;
+    $result = mysqli_query($db,$q);
+//                echo $result;  
+if($result == TRUE){
+      while (($row = mysqli_fetch_assoc($result))){
+             // $json_arry[] =  $row;
+$json['POST_ID'] = $row['POST_ID'];
+$json['TOPICID'] =  $row['TOPICID'];
+$json['POST_DATETIME'] = $row['POST_DATETIME'];
+$json['POST_BY_USERID'] = $row['POST_BY_USERID'];
+$json['USERNAME'] =$row['USERNAME'];
+$json['TOTAL_NS'] = $row['TOTAL_NS'];
+$json['LCOUNT'] = $row['LCOUNT'];
+$json['HCOUNT'] = $row['HCOUNT'];
+$json['POST_ACTION_TYPE'] = $row['POST_ACTION_TYPE'];
+$json['UU_ACTION'] = $row['UU_ACTION'];
+$json['POST_COMMENT_COUNT'] = $row['POST_COMMENT_COUNT'];
+$json['POST_CONTENT'] = $row['POST_CONTENT'];
+//$json['POST_CONTENT'] = utf8_encode($row['POST_CONTENT'] );
+//$json['POST_CONTENT'] = utf8_decode($row['POST_CONTENT'] );
+array_push($json_arry, $json); 
+
+       }
+      $r =  json_encode($json_arry);
+      echo $r;
+    }
+    else{
+    $response = "{\"status\": \"error\"}";
+    echo $r;
+    }
+}
+
+
+?>

@@ -1,15 +1,10 @@
 import feedparser
 from datetime import date, datetime, timedelta
-import pytz
 from dateutil import parser
-
-indTz = pytz.timezone("Asia/Kolkata")
-today = datetime.now(indTz)
-current_time = today.strftime("%H:%M:%S")
 
 today = date.today()
 ## url
-url1 = 'https://www.slashfilm.com/feed/'
+url1 = 'https://allafrica.com/tools/headlines/rdf/africa/headlines.rdf'
 '''
 url2 = 'https://soapdirt.com/feed/'
 url3 = 'https://www.tmz.com/rss.xml'

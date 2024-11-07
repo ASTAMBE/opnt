@@ -1,26 +1,16 @@
--- getInstreamTrendingNW
+-- getDiscussionsTrendingNW
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getInstreamTrendingNW`;
+DROP procedure IF EXISTS `getDiscussionsTrendingNW`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getInstreamTrendingNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getDiscussionsTrendingNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
 /* 
-   03/19/2023: AST: This proc is written in order to divert the 'Trending' Instream to what matters to the user.
-   Previously Trending (topicid = 9) was like any other topic, with its own independent keywords, cart and instream.
-   But that is not the real 'Trending'. SO it is being re-purposed as Trending among the things that the user 
-   cares about. So it will use a combined instream for all topics in which the user has cart/s and the main thing is to 
-   have special sorting techniques to give a user-specific Trending experience.
-   
-   CUrrently, the ranking is such that all the posts that the user has expressed L/H for will have the L/H action date 
-   to sub for the POST_DTM. Hence they will appear at the top of the Trending 
-   In future, we will also incorp. the latest comment_dtm to enhance the ordering of the posts.
-   
-   11/06/2024 AST: Adding the filter that (since it is instream) P.DEMO_POST_FLAG = 'Y'
+   11/06/2024 AST: Initial Creation
             
  */
  
@@ -35,7 +25,7 @@ INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getInstreamTrendingNW', CONCAT(tid,'-',toindex));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsTrendingNW', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -97,7 +87,8 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND CU.BOT_FLAG = 'Y' AND CU.COUNTRY_CODE IN (CCODE, 'GGG')
+        -- AND CU.BOT_FLAG = 'Y' 
+        AND CU.COUNTRY_CODE IN (CCODE, 'GGG')
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
@@ -118,7 +109,7 @@ FROM
     AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 7 DAY
             AND UN.USERID = P.POST_BY_USERID 
 			AND P.TOPICID = UN.TOPICID
-            AND P.DEMO_POST_FLAG = 'Y'
+            AND P.DEMO_POST_FLAG <> 'Y'
             ) INSTREAM
         INNER JOIN
     (SELECT 

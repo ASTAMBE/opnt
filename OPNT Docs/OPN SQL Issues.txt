@@ -1,0 +1,64 @@
+CHALLENGING SQL PROBLEMS
+
+1. in mysql i have a table that contains the following two columns (among others) - scrape_source and news_content. i want to select one arbitrary record for each value of scrape_source. how do i do that. 
+
+2. Design a data model for : OPNT cart, posts, discussions etc.
+
+
+-- Must Do - OPNT
+
+1. cart clean up - and automate the process
+2. posts clean up 
+3. re-start the post triggers
+4. std process - why ent/celeb is not working
+5. stp process - make sure every day no leftovers in wsr
+6. clean the high vol tables - wsr c and u, proc logs, etc.
+7. trending to be fixed
+8. showinitial - to be improved
+
+
+NEW PROBLEM DISCOVERED:
+
+The STD process is creating KWs out of scrapes - but the scrapes are URLs and can go to any length - but the max of KEYWORDS column is 160. Moreover, it is a primary index and the MySQL seems to stop the index at length 64. This is causing the KWs to be truncated or being found dupes (such as 'https://timesofindia.indiatimes.com/entertainment/hindi/bollywoo') - this needs to be fixed at the proc level:
+
+- the convertPostToKW proc - it needs to use the NEWS_HEADLINE to create the KW - instead of the NEWS_URL
+- this means, the post_content in opn_posts will carry the full url and the full url will also be stored in the KW_URL column of the OPN_P_KW
+- This can still run into cinflict (where the news headline is itself repeated and runs into primary key conflict - such as 'trump wins' )
+- so, in the WSRL Dedupe all, we should add a step where if stbstr(news_headline, 1, 64) already exists in the OPN_P_KW, then we should just kill that scrape.
+
+- replicate to prod
+
+createBOTDiscussion
+STD_MANAGER
+STP_MONITOR
+STP_REMAINDER_NONXYZ
+userActionCommon 
+
+
+
+nEW MUST DO: 10-24-2024
+
+1. WHY IND DISC IN USA USER ?
+
+Hi Friends,
+
+Every now and then we hear of someone from our extended circles in 40's and 50's suffering from sudden heart attack or even death, especially after covid. Preventive cardiac screening can make a huge positive impact. Happy to share that NimbleHeart Inc, co-founded by my wife Sonal, provides convenient cardiac screening. Please check out the flyer below for details.
+
+Here is cardiac health awareness video.
+https://www.youtube.com/watch?v=oKGqENK9TR4 
+
+And here is the screening sign up form.
+https://www.surveymonkey.com/r/NHCardiacScreening
+
+
+TRUNCATE TABLE OPN_CART_ARCHIVE ;
+TRUNCATE TABLE OPN_TAILORED_CART_LOG ;
+TRUNCATE TABLE OPN_STP_MONITOR ;
+TRUNCATE TABLE OPN_STP_LOG ;
+
+It is not that. The American society is not (yet) sufficiently corrupted into a self-loathing, anti-majority, islam-hugging 
+
+
+
+
+

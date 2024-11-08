@@ -1,12 +1,12 @@
 -- convertPostToKW
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `convertPostToKW`;
 
-DELIMITER $$
--- USE `opntprod`$$
-CREATE DEFINER=`root`@`%` PROCEDURE `convertPostToKW`(postid INT, tid INT, actionbyid INT
+DELIMITER //
+DROP PROCEDURE IF EXISTS convertPostToKW //
+CREATE PROCEDURE  `convertPostToKW`(postid INT, tid INT, actionbyid INT
 , actiondtm DATETIME, actionType varchar(5), kidparam INT )
+
 thisproc: BEGIN
 
 /*
@@ -49,6 +49,15 @@ thisproc: BEGIN
     of a KW should be determined by the original post's country code.)
     
     10/28/2023: AST:  Changing the UPDATE OPN_POSTS - to update the TAG1_KEYID
+    11/07/2024 AST: The STD process is creating KWs out of scrapes - but the scrapes are URLs and can go to any length - 
+    but the max of KEYWORDS column is 160. Moreover, it is a primary index and the MySQL seems to stop the index at length 64. 
+    This is causing the KWs to be truncated or being found dupes (such as 'https://timesofindia.indiatimes.com/entertainment/hindi/bollywoo') 
+    this needs to be fixed at the proc level:
+    
+    tURNS OUT, THE STD_NO_DISC type of createBotDiscussion was the one that was causing the issue - beccause it did not insert
+    the NEWS_HEADLINE into the POST_POSTS_RAW. Which, in turn, caused the convertPostToKW (this proc) to use the post_content (= URL)
+    as the KEYWORDS value. Now the createBotDiscussion has been fixed.
+
     
  */
 
@@ -138,9 +147,7 @@ VALUES(NULL, actionbyid, NULL, NOW(), 'convertPostToKW-CART', CONCAT(tid,'-',pos
 
 END CASE ;
 
-
-END$$
-
-DELIMITER ;
+END; //
+ DELIMITER ;
 
 -- 

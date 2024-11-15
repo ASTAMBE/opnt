@@ -73,6 +73,14 @@ CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
 
+/* Adding the CASE for Trending */
+
+CASE WHEN tid = 9 THEN
+
+CALL getDiscussionsTrendingNW(uuid , tid  , fromindex , toindex ) ;
+
+ELSE
+
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
@@ -197,6 +205,8 @@ FROM
 ORDER BY 3 DESC, 10 DESC 
 LIMIT fromindex, toindex
 ;
+
+END CASE ; -- THIS IS THE TRENDING CASE END
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

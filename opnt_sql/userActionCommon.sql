@@ -90,13 +90,13 @@ SET altkid = altkey ;
 
 END CASE ;
 
-/* Adding RAW logging portion 
+/* Adding RAW logging portion */
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 CONCAT('sourceID', '-', 'altkey-altkid-CONCAT' )
 , concat(sourceID,'-', altkey, '-', altkid,'-', CONCAT("'", POSTCONTENT, '%', "'") ), NOW()) ; 
 
- END OF RAW LOGGING */
+/* END OF RAW LOGGING */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
 VALUES(UNAME, ORIG_UID, uuid, NOW(), 'userPostLH'
@@ -119,7 +119,7 @@ ELSE
 END IF;
 INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_TYPE, POST_ACTION_DTM
 , CAUSE_POST_ID, ACTION_SOURCE, TOPICID, KEYID) 
-VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, altkid) ;
+VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, IFNULL(altkid, 0)) ;
 
 END CASE ;
 

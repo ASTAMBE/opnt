@@ -21,9 +21,9 @@ CALL addcleandomain('www.deccanherald.com', 'www.deccanherald.com', 'deccanheral
 
 call createSearchKW(8, bringuuid(1003845), 'Testing the search-->create functionality', 'L') ;
 CALL createGuestUserApp('astdev', 'USA', 'EAFE9C2A-698E-49E5-95AB-FA9669C0A0F5') ;
-call createSearchKW(10, bringuuid(1017856), 'neha kakkar', 'L') ;
+call createSearchKW(10, bringuuid(1017856), 'neha kakkar again', 'L') ;
 
-call  getPostDetails(bringuuid(1004789), 1242806) ;
+call  getPostDetails(bringuuid(1017720), 1431828) ;
 
 CALL copyUserCarts(bringUUID(1006539), '93d393a8-a39a-11ea-82d4-06500c451eb8', 1, 661871) ;
 CALL copyUserCarts(bringUUID(1006539), BRINGUUID(1002397), 1, 661871) ;
@@ -36,12 +36,12 @@ SELECT * FROM OPN_USERLIST WHERE FB_USER_FLAG = 'G' ORDER BY USERID DESC ;
 CALL loginWithGoogleUserApp('103771670142755987296', 'OUYV76R967FVLUYF') ;
 
 SELECT * FROM OPN_USER_CARTS WHERE USERID IN (SELECT USERID FROM OPN_USERLIST WHERE USERNAME LIKE 'NEWDBUSER%' ) ;
-SELECT * FROM OPN_USER_CARTS WHERE USERID IN (1022469) ;
+SELECT * FROM OPN_USER_CARTS WHERE USERID IN (1004567) ;
 
 SELECT IDENTIFIER_TOKEN FROM OPN_USERLIST WHERE USERNAME LIKE  ('ASTCMC%') ;
 
 CALL profilephp(bringUUID(1019653)) ;
-CALL myActivity(bringUUID(1019653)) ;
+CALL myActivity(bringUUID(1022727)) ;
 CALL myBookmarks(bringUUID(1022653), 1, 0, 5);
 
 SELECT * FROM OPN_USERLIST WHERE USERNAME LIKE 'ASTCMC%' ; -- 104544264703116866030  1022726  astcmnP1  903add2d-b377-46fd-b1e2-86d497673e09
@@ -68,7 +68,7 @@ CALL openKWbyIP(1, bringUUID(1023649), 'IN-DL') ;
 CALL openKWbyIP(1, bringUUID(1023649), 'IN-MH') ;
 CALL openKWbyIP(1, '8079af80-04b8-11ec-8112-061dbb11189b', 'IN-DL') ;
 
-CALL getDiscussionsNW(bringUUID(1023377), 1, 0, 300) ; 
+CALL getDiscussionsNW(bringUUID(1022727), 1, 0, 300) ; 
 CALL getDiscussionsANTI(bringUUID(1023618), 1, 0, 300) ; 
 
 CALL myActivity(bringUUID(1002857)) ;

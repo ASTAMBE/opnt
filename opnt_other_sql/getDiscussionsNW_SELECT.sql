@@ -1,7 +1,7 @@
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
-    INSTREAM.POST_DATETIME,
+    IFNULL(OUC.LUDTM, INSTREAM.POST_DATETIME) POST_DATETIME,
     INSTREAM.POST_BY_USERID,
     OU.USERNAME,
     OU.DP_URL,
@@ -28,7 +28,8 @@ FROM
             P.POST_CONTENT,
             UN.TOTAL_NS,
             P.MEDIA_CONTENT,
-            P.MEDIA_FLAG
+            P.MEDIA_FLAG,
+            P.KEYID
     FROM
         OPN_POSTS P, (SELECT 
         B.USERID, B.BOT_FLAG, A.TOPICID, COUNT(*) TOTAL_NS
@@ -38,7 +39,7 @@ FROM
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = 1042834 AND C1.TOPICID = 1) A, (SELECT 
+        C1.USERID = 1040588 AND C1.TOPICID = 1) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -55,7 +56,7 @@ FROM
             FROM
                 OPN_USER_USER_ACTION OUUA
             WHERE
-                OUUA.BY_USERID = 1042834
+                OUUA.BY_USERID = 1040588
                     AND OUUA.TOPICID = 1
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
@@ -74,6 +75,12 @@ FROM
             AND P.POSTOR_COUNTRY_CODE IN ('IND', 'GGG')
             AND P.DEMO_POST_FLAG <> 'Y'
             ) INSTREAM
+            	    /* Adding an outer join to the user cart - to get the things that the user placed in the cart, mainly through the showFreshContent
+    This is to bring the cart addition dtm as a sub for the poast dtm - so that when the user selects something from SFC, he will see it at the top */
+    /* addition start */
+                LEFT OUTER JOIN (SELECT USERID, TOPICID, KEYID, LAST_UPDATE_DTM LUDTM FROM OPN_USER_CARTS WHERE USERID = 1040588
+						AND TOPICID = 1) OUC ON INSTREAM.KEYID = OUC.KEYID
+    /* addition end */
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL
@@ -96,18 +103,18 @@ FROM
     GROUP BY CAUSE_POST_ID) POST_LHC ON INSTREAM.POST_ID = POST_LHC.CAUSE_POST_ID
         LEFT OUTER JOIN
     OPN_USER_POST_ACTION UP ON INSTREAM.POST_ID = UP.CAUSE_POST_ID
-        AND UP.ACTION_BY_USERID = 1042834
+        AND UP.ACTION_BY_USERID = 1040588
         LEFT OUTER JOIN
     (SELECT 
         BK.POST_ID
     FROM
         OPN_POST_BOOKMARKS BK
     WHERE
-        BK.USERID = 1042834
+        BK.USERID = 1040588
             AND BK.TOPICID = 1) BK2 ON INSTREAM.POST_ID = BK2.POST_ID
         LEFT OUTER JOIN
     OPN_USER_USER_ACTION UUA ON INSTREAM.POST_BY_USERID = UUA.ON_USERID
-        AND UUA.BY_USERID = 1042834
+        AND UUA.BY_USERID = 1040588
         AND UUA.TOPICID = 1
         LEFT OUTER JOIN
     (SELECT 

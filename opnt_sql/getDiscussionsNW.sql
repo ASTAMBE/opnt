@@ -48,6 +48,8 @@ thisproc: BEGIN
     DEMO_POST_FLAG = 'N' 
     
     10/24/2024 AST: Adding AND P.POSTOR_COUNTRY_CODE IN (CCODE, 'GGG') -- GGG IS ADDED ONLY TO HANDLE THE SCIENCE DATA
+    
+    12/08/2024 AST: Adding the portion that brings the latests selctions (if any) by the user from the showFreshContent
             
  */
  
@@ -84,7 +86,7 @@ ELSE
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
-    INSTREAM.POST_DATETIME,
+    IFNULL(OUC.LUDTM, INSTREAM.POST_DATETIME) POST_DATETIME,
     INSTREAM.POST_BY_USERID,
     OU.USERNAME,
     OU.DP_URL,
@@ -111,7 +113,8 @@ FROM
             P.POST_CONTENT,
             UN.TOTAL_NS,
             P.MEDIA_CONTENT,
-            P.MEDIA_FLAG
+            P.MEDIA_FLAG,
+            P.KEYID
     FROM
         OPN_POSTS P, (SELECT 
         B.USERID, B.BOT_FLAG, A.TOPICID, COUNT(*) TOTAL_NS
@@ -157,6 +160,12 @@ FROM
             AND P.POSTOR_COUNTRY_CODE IN (CCODE, 'GGG')
             AND P.DEMO_POST_FLAG <> 'Y'
             ) INSTREAM
+	/* Adding an outer join to the user cart - to get the things that the user placed in the cart, mainly through the showFreshContent
+    This is to bring the cart addition dtm as a sub for the poast dtm - so that when the user selects something from SFC, he will see it at the top */
+    /* addition start */
+                LEFT OUTER JOIN (SELECT USERID, TOPICID, KEYID, LAST_UPDATE_DTM LUDTM FROM OPN_USER_CARTS WHERE USERID = orig_uid
+						AND TOPICID = tid) OUC ON INSTREAM.KEYID = OUC.KEYID
+    /* addition end */
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL

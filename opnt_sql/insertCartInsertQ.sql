@@ -22,6 +22,13 @@ ELSE
 INSERT INTO OPN_USER_CARTS(TOPICID, USERID, KEYID, CART, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (tid, orig_uid, kid, cartv, NOW(), NOW());
 
+/* Adding user action logging portion */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(bringUsernameByUUID(uuid), orig_uid, uuid, NOW(), 'insertCartInsertQ', CONCAT('uid-tid-kid-cart:',orig_uid,'-',tid, '-', kid, '-', cartv));
+
+/* end of user action tracking */
+
 END IF ;
 
 

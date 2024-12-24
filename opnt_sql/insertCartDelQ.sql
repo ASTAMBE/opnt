@@ -20,6 +20,13 @@ DELETE FROM OPN_CART_ARCHIVE WHERE OPN_CART_ARCHIVE.USERID = @orig_uid AND OPN_C
 
 DELETE FROM OPN_USER_CARTS WHERE OPN_USER_CARTS.USERID = @orig_uid AND OPN_USER_CARTS.TOPICID = topicid;  
 
+/* Adding user action logging portion */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(bringUsernameByUUID(userid), @orig_uid, userid, NOW(), 'insertCartDelQ', CONCAT(@orig_uid,'-',topicid));
+
+/* end of user action tracking */
+
 
 
 

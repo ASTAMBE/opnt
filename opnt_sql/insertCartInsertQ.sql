@@ -29,6 +29,13 @@ IF SUSP = 'Y' THEN LEAVE thisproc ;
 
 ELSE
 
+/* Adding user action logging portion */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(bringUsernameByUUID(uuid), orig_uid, uuid, NOW(), 'insertCartInsertQ1', CONCAT('uid-tid-kidtid-kid-cart:',orig_uid,'-',kidtid, '-', tid, '-', kid, '-', cartv));
+
+/* end of user action tracking */
+
 SET orig_cart = (SELECT COALESCE((SELECT MAX(CART) FROM OPN_USER_CARTS WHERE USERID = orig_uid AND KEYID = kid), 'NC')) ;
 
 CASE WHEN orig_cart = 'NC' then 

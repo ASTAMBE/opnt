@@ -12,6 +12,7 @@ BEGIN
             03/27/2023 AST: Adding tcc (TRUE_COUNTRY_CODE) to start logging the actual country code of the thousands of the GGG users
             
 			04/24/2023 AST: Adding CASE to accept non-GGG country codes
+            01/14/2025 AST: Removing the default cart additions - for multi-select interests
 
 */
 
@@ -70,7 +71,7 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
-
+/*
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
@@ -78,6 +79,7 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
+*/
 
 
 /* 10172020 AST: END OF : Adding the default Cart */
@@ -104,7 +106,7 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
-
+/*
 
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
@@ -113,7 +115,7 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
-
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
     
@@ -137,7 +139,7 @@ VALUES(bringUserid(DEVICE_UUID), DEVICE_UUID, NOW(), device_serial, 'Y');
 
 /* 10172020 AST: Adding the default Cart below */
 
-
+/*
 
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW()) 
@@ -146,6 +148,7 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW()), (UID, T10, 'L', 10, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
+*/
 
 /* 10172020 AST: END OF : Adding the default Cart */
             

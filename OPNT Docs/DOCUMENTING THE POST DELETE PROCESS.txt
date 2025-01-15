@@ -1,0 +1,26 @@
+DOCUMENTING THE POST DELETE PROCESS AND THE DOWNSTREAM IMPACTS
+
+what are the concerns when we delete a post for bulk cleanup:
+
+1. A non-bot post is deleted, but it could exist as a KW because of the post-to-kw process. Does it matter ? the OPN_P_KW will contniue to have that KEYID
+The KEYID will also exist in the OPN_USER_CARTS. Can it create a conflict ? most likely not - it is like a kw that has been put into a cart but has no post asso. with it.
+
+pre-req: ensure that the scripts for all the triggers are available
+
+triggers: POST_DELETE, POST_COMMENT_DELETE, POST_ACTION_DELETE
+
+
+
+1. OPN_POSTS_RAW : there is no trigger on. OPN_POSTS_RAW - hence no corrective action is needed
+2. OPN_POSTS : There is a POST_DELETE trigger on the OPN_POSTS  table. It deletes from OPN_POST_COMMENTS, OPN_USER_POST_ACTION and OPN_POST_SEARCH_T
+tables. It also inserts into OPN_POSTS_DELETED table
+3. OPN_POST_COMMENTS: it has a POST_COMMENT_DELETE trigger. It inserts into OPN_COMMENTS_DELETED table.
+4. OPN_USER_POST_ACTION: it has a POST_ACTION_DELETE trigger. 
+5. OPN_POST_SEARCH_T: no trogger on this
+6. OPN_POSTS_DELETED: no trigger
+
+
+
+
+
+

@@ -21,6 +21,7 @@ BEGIN
             03/27/2023 AST: Adding tcc (TRUE_COUNTRY_CODE) to start logging the actual country code of the thousands of the GGG users
             
 	04/24/2023 AST: Adding CASE to accept non-GGG country codes
+    01/14/2025 AST: Removing the default cart additions - for multi-select interests
     
     */
 
@@ -69,7 +70,7 @@ END CASE;
 
 set UID = (SELECT U.USERID FROM OPN_USERLIST U WHERE U.USERNAME = username) ;
 
-
+/*
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW())
 , (UID, T10, 'L', 10, NOW(), NOW()) 
@@ -78,7 +79,7 @@ VALUES (UID, T1, 'L', 1, NOW(), NOW())
 , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
-
+*/
 
 
 

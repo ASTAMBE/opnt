@@ -12,6 +12,8 @@ BEGIN
         This could have been handled by having a separate process for the SFC selections - but that 
         will require more dev - might as well fix the basic problem - the cart should have always been an UPSERT
         The orig insertCartInsertQ has been saved in the DOC folder just in case.
+        
+        01/29/2025 AST: Turning back on the DELETE of cart for the user - in NEWDEV only for the time being
  */
 declare  orig_uid, pbuid INT;
 
@@ -24,7 +26,7 @@ SET @orig_uid := (SELECT  bringUserid(userid));
 
 -- THE DELETE FROM OPN_CART_ARCHIVE HAD TO BE ADDED BEFORE THE DELETE FROM OPN_USER_CARTS. ELSE IT DOESN'T WORK.
 
--- DELETE FROM OPN_USER_CARTS WHERE OPN_USER_CARTS.USERID = @orig_uid AND OPN_USER_CARTS.TOPICID = topicid;  
+DELETE FROM OPN_USER_CARTS WHERE OPN_USER_CARTS.USERID = @orig_uid AND OPN_USER_CARTS.TOPICID = topicid;  
 
 /* Adding user action logging portion */
 

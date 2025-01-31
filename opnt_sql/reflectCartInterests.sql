@@ -43,7 +43,12 @@ SELECT orig_uid, uuid, T1.TOPICID, T1.TOPIC, T1.CODE, NOW(), uname FROM
 )T1
 ;
 
+/* Adding user action logging portion */
 
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(bringUsernameByUUID(uuid), orig_uid, uuid, NOW(), 'reflectCartInterests', CONCAT(orig_uid));
+
+/* end of user action tracking */
 
 END //
 DELIMITER ;

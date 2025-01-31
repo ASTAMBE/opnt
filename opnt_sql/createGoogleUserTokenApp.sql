@@ -70,18 +70,23 @@ END CASE;
 
 set UID = (SELECT U.USERID FROM OPN_USERLIST U WHERE U.USERNAME = username) ;
 
-/*
+
 INSERT INTO OPN_USER_CARTS(USERID, KEYID, CART, TOPICID, CREATION_DTM, LAST_UPDATE_DTM)
 VALUES (UID, T1, 'L', 1, NOW(), NOW())
 , (UID, T10, 'L', 10, NOW(), NOW()) 
 , (UID, T5, 'L', 5, NOW(), NOW()), (UID, T3, 'L', 3, NOW(), NOW())
 , (UID, T2, 'L', 2, NOW(), NOW()), (UID, T4, 'L', 4, NOW(), NOW())
-, (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
+-- , (UID, T8, 'L', 8, NOW(), NOW()), (UID, T9, 'L', 9, NOW(), NOW())
 ;
 
-*/
+CALL reflectCartInterests(bringUUID(UID)) ;
 
+/* Adding user action logging portion */
 
+-- INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+-- VALUES(username, orig_uid, uuid, NOW(), 'createGoogleUserTokenApp', CONCAT(orig_uid));
+
+/* end of user action tracking */
 
 SELECT U.USER_UUID AS USERID, U.USERNAME, U.COUNTRY_CODE FROM OPN_USERLIST U WHERE U.USERNAME = username;
 

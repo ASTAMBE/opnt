@@ -21,6 +21,25 @@ url8 = 'https://www.usmagazine.com/category/entertainment/feed/'
 
 
 rss = []
+def convert_to_desired_format(rss_date):
+    print('rss',rss_date)
+    # Parse the date using dateutil parser, which can handle both formats
+    dt_object = parser.parse(rss_date)
+
+    # Convert the datetime object to the desired string format
+    formatted_date = dt_object.strftime("%Y-%m-%d %H:%M:%S")
+    print('formatted method',formatted_date)
+    return formatted_date
+
+
+def find_pubdate_date(pub_date_str):
+    # Parse the pubDate string to a datetime object
+    pub_date = parser.parse(pub_date_str)
+
+    # Get the date portion of the pubDate
+    pub_date_date = pub_date.date()
+
+    return pub_date_date
 url_ls = [url1, url2, url3, url4, url5, url6, url7, url8]
 scrape_src = ['HUFF/ENT', 'ETONLINE/ENT', 'BUZZ/CELEB', 'BUZZ/ENT', 'ETONLINE/MOV', 'LAT/ENT', 'WAPO/ENT', 'USNEWS/CELEB']
 scrape_top = ['ENT', 'ENT', 'CELEB', 'ENT', 'ENT', 'ENT', 'ENT', 'CELEB']
@@ -32,7 +51,6 @@ ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 
 
 # with open(f"../../scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
 with open(f"/var/www/html/scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
-# with open("USAENTOnce10062024.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -60,9 +78,9 @@ with open(f"/var/www/html/scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.
             if len(s) >= 500:
                 s = item.summary[:500]
 
-            a = item.published.split()
-            published_date = datetime.strptime(" ".join(a[:-1]), "%a, %d %b %Y %H:%M:%S")
-            date_only = published_date.date()
+            a = item.published
+            published_date = convert_to_desired_format(a)
+            date_only = find_pubdate_date(item.published)
 
             two_days_ago = today - timedelta(days=2)
             if date_only <= two_days_ago:
@@ -71,7 +89,7 @@ with open(f"/var/www/html/scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.
             entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
                             entry['COUNTRY_CODE'],
                             entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
-                            item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''")]
+                            item.title.replace("'", "''"), item.link, item.published, s.replace("'", "''"),published_date]
 
             # Join the values with quotes and commas
             entry_values = ["'" + value + "'" for value in entry_values]
@@ -80,6 +98,6 @@ with open(f"/var/www/html/scraper/USAALL/USAENTOnce{today.strftime('%d-%m-%Y')}.
         if items_to_insert:
             f.write(
                 "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2"
-                ", NEWS_TAGS,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT) VALUES ")
+                ", NEWS_TAGS,  SCRAPE_TAG3, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT,NEWS_DATE) VALUES ")
             f.write(',\n'.join(items_to_insert))
             f.write(';\n')

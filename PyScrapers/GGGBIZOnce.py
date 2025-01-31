@@ -25,7 +25,7 @@ def convert_to_desired_format(rss_date):
     dt_object = parser.parse(rss_date)
 
     # Convert the datetime object to the desired string format
-    formatted_date = dt_object.strftime("%b %d, %Y %H:%M:%S")
+    formatted_date = dt_object.strftime("%Y-%m-%d %H:%M:%S")
     return formatted_date
 
 
@@ -49,7 +49,7 @@ ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 
 
 
 #with open(f"../../scraper/GGGALL/GGGPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w') as f:
-with open(f"../../scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"/var/www/html/scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]
@@ -62,8 +62,11 @@ with open(f"../../scraper/GGGALL/GGGBIZOnce{today.strftime('%d-%m-%Y')}.sql", 'w
         entry['NEWS_TAGS'] = ntag[i]
 
         rss.append(entry)
-
-        f1 = feedparser.parse(entry['url_en'])
+        try:
+            f1 = feedparser.parse(entry['url_en'])
+        except Exception as e:
+            print("Exception occurred in GGGBIZ:",e)
+            continue
         newsItem = f1.entries
 
         items_to_insert = []

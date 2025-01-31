@@ -19,7 +19,7 @@ def convert_to_desired_format(rss_date):
     dt_object = parser.parse(rss_date)
 
     # Convert the datetime object to the desired string format
-    formatted_date = dt_object.strftime("%b/%d/%Y %H:%M:%S")
+    formatted_date = dt_object.strftime("%Y-%m-%d %H:%M:%S")
     return formatted_date
 
 

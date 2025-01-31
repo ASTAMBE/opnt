@@ -23,7 +23,7 @@ def convert_to_desired_format(rss_date):
     dt_object = parser.parse(rss_date)
 
     # Convert the datetime object to the desired string format
-    formatted_date = dt_object.strftime("%b %d, %Y %H:%M:%S")
+    formatted_date = dt_object.strftime("%Y-%m-%d %H:%M:%S")
     return formatted_date
 
 
@@ -45,9 +45,9 @@ tag2 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 
 tag3 = ['POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
 ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
-# os.chown('/var/www/html/scraper/INDALL/', 1000,1000)
+os.chown('/var/www/html/scraper/INDALL/', 1000,1000)
 
-with open(f"INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
+with open(f"/var/www/html/scraper/INDALL/INDPOLOnce{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
     for i in range(len(url_ls)):
         entry = {}
         entry['url_en'] = url_ls[i]

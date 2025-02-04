@@ -2,18 +2,25 @@
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS createSFCDiscussion //
-CREATE PROCEDURE createSFCDiscussion(CREATION_TYPE varchar(40), source_row_id INT, country_code VARCHAR(5), CARTVAL VARCHAR(3),
-tid INT, message varchar(2000) , embedded_content varchar(1000), cmnt1 varchar(2000), cmnt2 varchar(2000) -- , minExistsUsers INT
-)
+CREATE PROCEDURE createSFCDiscussion(source_row_id INT, country_code VARCHAR(5)
+, trueCountryCode varchar(5), opnCamp varchar(50), CARTVAL VARCHAR(3), tid INT )
 thisProc: BEGIN
 
 /*   
 01/31/2025 AST: Creating this proc as the first step towards incorporating the TCC in SFC
-For now, it will only have ORIG_DISCUSSION and no pre-created comment - contd ..
+For now, it will only have ORIG_DISCUSSION and no pre-created comment - 
+Prereq: The Python prog written by chatGpt that fetches the latest news items from NGA
+- it also tags the item with Opinion Camp (oCamp). Then it creates a for and an opposite comment
+and also tags them with the oCamp. It saves these in the OPN_SFC_CONTENT 
+- Thus, when we call this proc (createSFCDiscussion), we know exactly what is going to be 
+the post, the comment 1 and comment 2
+- Taking these from the table itself, we will create the SFC content
+- We will assign it to the OPN_MAIN_BOTS bot/s as per their tagging (they have been already 
+tagged with th OCAMP attribute.
 */
 
 declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST INT;
-DECLARE UNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic, scr_type, ocamp VARCHAR(30) ;
+DECLARE UNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic, scr_type, oCamp VARCHAR(30) ;
 declare ndtm DATETIME ;
 DECLARE UUID VARCHAR(50) ;
 DECLARE SUSPUSER, LIKECODE, tcountrycode VARCHAR(5) ;

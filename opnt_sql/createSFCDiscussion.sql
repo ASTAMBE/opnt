@@ -3,7 +3,8 @@
 DELIMITER //
 DROP PROCEDURE IF EXISTS createSFCDiscussion //
 CREATE PROCEDURE createSFCDiscussion(source_row_id INT, country_code VARCHAR(5)
-, trueCountryCode varchar(5), opnCamp varchar(50), CARTVAL VARCHAR(3), tid INT )
+-- , trueCountryCode varchar(5), opnCamp varchar(50)
+, CARTVAL VARCHAR(3), tid INT )
 thisProc: BEGIN
 
 /*   
@@ -26,9 +27,11 @@ DECLARE UUID VARCHAR(50) ;
 DECLARE SUSPUSER, LIKECODE, tcountrycode VARCHAR(5) ;
 DECLARE URL, newsTitle, newsExcrpt varchar(1000) ;
 
+SELECT 
+
 SET LIKECODE = (SELECT CASE WHEN CARTVAL = 'L' THEN 'L1' ELSE 'H1' END) ;
 
-SELECT USERID, USERNAME, USER_UUID INTO orig_uid, UNAME, UUID FROM OPN_MAIN_BOTS 
+SELECT USERID, USERNAME, USER_UUID,  INTO orig_uid, UNAME, UUID FROM OPN_MAIN_BOTS 
 WHERE CCODE = country_code AND TOPICID = tid ORDER BY RAND() LIMIT 1 ;
 
 -- SELECT UNAME ;
@@ -38,7 +41,7 @@ WHERE CCODE = country_code AND TOPICID = tid ORDER BY RAND() LIMIT 1 ;
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, UUID, NOW(), 'createBOTDiscussion', CONCAT(tid,'-',country_code));
+VALUES(UNAME, orig_uid, UUID, NOW(), 'createSFCDiscussion', CONCAT(tid,'-',country_code));
 
 /* end of use action tracking */
 

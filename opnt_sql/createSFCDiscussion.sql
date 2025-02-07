@@ -1,10 +1,11 @@
--- createSFCDiscussion
+-- createTCCDiscussion
 
 DELIMITER //
-DROP PROCEDURE IF EXISTS createSFCDiscussion //
-CREATE PROCEDURE createSFCDiscussion(source_row_id INT, country_code VARCHAR(5)
+DROP PROCEDURE IF EXISTS createTCCDiscussion //
+CREATE PROCEDURE createTCCDiscussion(source_row_id INT -- , country_code VARCHAR(5)
 -- , trueCountryCode varchar(5), opnCamp varchar(50)
-, CARTVAL VARCHAR(3), tid INT )
+-- , CARTVAL VARCHAR(3), tid INT 
+)
 thisProc: BEGIN
 
 /*   
@@ -20,17 +21,19 @@ the post, the comment 1 and comment 2
 tagged with th OCAMP attribute.
 */
 
-declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST INT;
-DECLARE UNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic, scr_type, oCamp VARCHAR(30) ;
+declare  orig_uid, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST, TID INT;
+DECLARE UNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic, scr_type, CONTCAMP, COMM1CAMP, COMM2CAMP VARCHAR(30) ;
 declare ndtm DATETIME ;
 DECLARE UUID VARCHAR(50) ;
-DECLARE SUSPUSER, LIKECODE, tcountrycode VARCHAR(5) ;
+DECLARE SUSPUSER, LIKECODE, CCODE,  TCCODE VARCHAR(5) ;
+DECLARE DISCCART, COMMENT1CART, COMMENT2CART VARCHAR(2) ;
 DECLARE URL, newsTitle, newsExcrpt varchar(1000) ;
 
-SELECT 
-
-SET LIKECODE = (SELECT CASE WHEN CARTVAL = 'L' THEN 'L1' ELSE 'H1' END) ;
-
+ SELECT TOPICID, COUNTRY_CODE, TRUE_COUNTRY_CODE, CONTENT_TITLE, CASE WHEN CONTENT_TONE = 'POSITIVE' THEN 'L1' ELSE 'H1' END 
+ , CONTENT_CAMP, 
+ INTO 
+ FROM OPN_SFC_CONTENT ;
+ 
 SELECT USERID, USERNAME, USER_UUID,  INTO orig_uid, UNAME, UUID FROM OPN_MAIN_BOTS 
 WHERE CCODE = country_code AND TOPICID = tid ORDER BY RAND() LIMIT 1 ;
 

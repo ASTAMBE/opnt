@@ -8,16 +8,7 @@ from datetime import datetime
 # Configuration
 # -----------------------------
 # OpenAI API Key
-# client = openai.Client(api_key="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")
 
-# MySQL Database Connection Parameters
-'''
-DB_CONFIG = {
-    "host": "opntdevdb.cidtah9kj29d.us-west-1.rds.amazonaws.com",
-    "user": "opinito",
-    "password": "astopnt=0118",
-    "database": "opntprodd",
-} '''
 
 # Topic ID Mapping
 TOPIC_ID_MAP = {

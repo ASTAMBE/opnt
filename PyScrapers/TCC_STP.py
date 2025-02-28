@@ -87,41 +87,21 @@ def fetch_parameters_from_db(row_id=None):
 
 
 def fetch_news_from_rss(feed_urls, num_topics_per_feed):
-    """Fetch latest news articles from multiple RSS feeds, distributing the load across them."""
+    """Fetch 'num_topics_per_feed' latest news articles from EACH RSS feed URL in the provided list."""
     articles = []
-    total_articles = 0
-    num_feeds = len([url for url in feed_urls if url])
-    if num_feeds == 0:
-        return []
-
-    articles_per_feed = num_topics_per_feed  # Distribute evenly across feeds
-    remaining_articles = num_topics_per_feed % num_feeds  # Distribute any leftovers
 
     for feed_url in feed_urls:
         if feed_url:
             try:
-                feed = feedparser.parse(feed_url)
-                count = num_topics_per_feed  # Distribute extra items evenly
-                articles.extend([(entry.title, entry.link) for entry in feed.entries[:count]])
-                if total_articles >= (num_topics_per_feed * len(feed_urls)):
-                    break
+                feed = feedparser.parse(feed_url)  # Parse RSS feed
+                fetched_articles = [(entry.title, entry.link) for entry in feed.entries[:num_topics_per_feed]]
+                articles.extend(fetched_articles)
+                print(f"Fetched {len(fetched_articles)} articles from {feed_url}")
             except Exception as e:
                 print(f"Error fetching RSS feed {feed_url}: {e}")
 
-    return articles[:num_topics_per_feed]
-    """Fetch latest news articles from the RSS feeds provided."""
-    articles = []
-    for feed_url in feed_urls:
-        if feed_url:
-            try:
-                feed = feedparser.parse(feed_url)
-                for entry in feed.entries[:num_topics_per_feed]:
-                    articles.append((entry.title, entry.link))
-                if len(articles) >= num_topics_per_feed:
-                    break
-            except Exception as e:
-                print(f"Error fetching RSS feed {feed_url}: {e}")
-    return articles[:num_topics_per_feed]
+    return articles  # Return the collected articles from all feeds
+
 
 
 def generate_debatable_statement(news_title, true_country_name):

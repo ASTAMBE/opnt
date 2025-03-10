@@ -23,5 +23,30 @@ in order to minimize the disruption to the existing system, we should create a s
 - then we should have a modified createBOTDiscussion - say, createSFCdiscussion - that will build discussion from the wsr_tcc - these will have to have some flag?
 - 
 
-- Let's first create the createSFCdiscussion for the NGA content we have in the wsr_tcc
+- Let's first create the createTCCdiscussion for the NGA content we have in the wsr_tcc
 - ok - found that first we have to deal with the OPN_MAIN_BOTS - do we create TCC-based bots ? or convert some of the bots for the specific TCC
+- main bots have been tagged with TCC and the CAMP. the createTCCdiscussion is ready and tested for NGA TID 1, 2
+
+what next ?
+
+now we need to change the SFC - to use the TCC content when the user is from the specific TCC - and then UNION ALL for the rest of teh CCODE-based SFC content
+
+-- 02/28/2025
+
+- createTCCdiscussion is created
+- callSTDbyTCC is also created and it is creating the discussions as expected
+- ASTOpinions (1053689) has been given TCC = NGA - but..
+- Now, the problem seems to be, the latest discussions created by the CTD are not showing up in the discussions screen of ASTOpinions - hy ?
+- this may be because the NGA main bots seem to have lost the politics news 105087 - let's check 
+- LO KALLO BAAT ! 1021369 main bot (NGA REFORM) has no 105087 - how many such bots are there ?
+- WTF ! NOT A SINGLE BOT has 105087.
+- When I added the 105087 to the specific NGA bot, the latest NGA TCC disc started showing at the top 
+
+- BUT, the opposite comment was not found by AST Opinion - why ? and it showed only one comment in the discdetail screen - why ?
+
+- first essential steps:
+
+1. kill all the KWs from the bot carts that are not matching the CCODE - especially the GGG is causing junk 
+2. add the NEWS_ONLY_FLAG kws to all the bot carts
+3. CONSIDER HOW WE ARE GOING TO BUILD THE NETWORK - THAT PRIORITIZES THE LATEST L/H SELECTIONS BY THE USER - AND FADE OUT THE NEWS_ONLY KW FOR NETWORK
+

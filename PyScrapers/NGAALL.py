@@ -1,104 +1,38 @@
-import feedparser
-from datetime import date, datetime, timedelta, timezone
-from dateutil import parser
+from newsapi import NewsApiClient
 
-today = date.today()
-## url
-url1 = 'https://guardian.ng/feed/'
-url2 = 'https://rss.punchng.com/v1/category/business'
-url3 = 'https://www.premiumtimesng.com/feed'
-url4 = ''
-url5 = ''
-url6 = ''
-url7 = ''
-url8 = ''
-url9 = ''
-url10 = ''
-
-rss = []
-
-def convert_to_desired_format(rss_date):
-    # Parse the date using dateutil parser, which can handle both formats
-    dt_object = parser.parse(rss_date)
-
-    # Convert the datetime object to the desired string format
-    formatted_date = dt_object.strftime("%b %d, %Y %H:%M:%S")
-    return formatted_date
+# Initialize the NewsAPI client
+API_KEY = "0dbc12a2265b471cac98f9f4b5eee620"
+newsapi = NewsApiClient(api_key=API_KEY)
 
 
-def find_pubdate_date(pub_date_str):
-    # Parse the pubDate string to a datetime object
-    pub_date = parser.parse(pub_date_str)
+def get_latest_political_news(country="in",  page_size=5):
+    """
+    Fetches the latest political news articles based on country and category.
+    :param country: Country code (default is "in" for India).
+    :param category: News category (default is "politics").
+    :param page_size: Number of articles to fetch (default is 5).
+    :return: List of news articles.
+    """
+    # Fetch top headlines with category and country filters
+    top_headlines = newsapi.get_top_headlines(
+        country=country,
+        page_size=page_size
+    )
 
-    # Get the date portion of the pubDate
-    pub_date_date = pub_date.date()
+    # Extract articles from the response
+    articles = top_headlines.get("articles", [])
 
-    return pub_date_date
+    if not articles:
+        print("No articles found for the given parameters.")
+    return articles
 
-url_ls = [url1, url2, url3, url4, url5, url6, url7, url8, url9, url10]
-scrape_src = ['GRD/POL', 'PUNCH/BIZ', 'PMTNG/POL', 'NDTV/TOP', 'MINT/POL', 'ESPN/NCF', 'FOX/NASCAR', 'CBS/GOLF', 'YAHOO/POLITICS', 'SILLU/POLITICS']
-scrape_top = ['POLITICS', 'BUSINESS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-coun_code = ['NGA', 'NGA', 'NGA', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND', 'IND']
-tag1 = ['POLITICS', 'BUSINESS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag2 = ['POLITICS', 'BUSINESS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-tag3 = ['POLITICS', 'BUSINESS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS', 'POLITICS']
-ntag = ['PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE', 'PYSCRAPE']
 
-with open(f"NGAALL{today.strftime('%d-%m-%Y')}.sql", 'w', encoding='utf-8') as f:
-    for i in range(len(url_ls)):
-        entry = {}
-        entry['url_en'] = url_ls[i]
-        entry['SCRAPE_SOURCE'] = scrape_src[i]
-        entry['SCRAPE_TOPIC'] = scrape_top[i]
-        entry['COUNTRY_CODE'] = coun_code[i]
-        entry['SCRAPE_TAG1'] = tag1[i]
-        entry['SCRAPE_TAG2'] = tag2[i]
-        entry['SCRAPE_TAG3'] = tag3[i]
-        entry['NEWS_TAGS'] = ntag[i]
+# Example usage
+if __name__ == "__main__":
+    news_articles = get_latest_political_news(country="in")
 
-        rss.append(entry)
-
-        f1 = feedparser.parse(entry['url_en'])
-        newsItem = f1.entries
-
-        items_to_insert = []
-        for item in newsItem:
-            try:
-                s = item.summary
-                if len(s) <= 0:
-                    s = item.title
-                if len(s) >= 500:
-                    s = item.summary[:500]
-
-                a = item.published
-                published_date = convert_to_desired_format(a)
-                date_only = find_pubdate_date(item.published)
-
-                two_days_ago = today - timedelta(days=2)
-                if date_only <= two_days_ago:
-                    continue
-
-                entry_values = [entry['SCRAPE_SOURCE'], entry['SCRAPE_TOPIC'], today.strftime("%Y-%m-%d"),
-                                entry['COUNTRY_CODE'],
-                                entry['SCRAPE_TAG1'], entry['SCRAPE_TAG2'], entry['SCRAPE_TAG3'], entry['NEWS_TAGS'],
-                                item.title.replace("'", "''"), item.link, published_date, s.replace("'", "''"),
-                                published_date]
-
-                # Join the values with quotes and commas
-                entry_values = ["'" + value + "'" for value in entry_values]
-                items_to_insert.append(
-                    '(' + ','.join(entry_values).replace('\u0101', '').replace('\u2015', '').replace('\u202f',
-                                                                                                     '').replace(
-                        '\u0107', '') + ')')
-
-            except UnicodeDecodeError:
-                # Skip rows with Unicode decode errors
-                continue
-
-        # Write the INSERT statements to the file
-        if items_to_insert:
-            f.write(
-                "INSERT INTO WEB_SCRAPE_RAW_L(SCRAPE_SOURCE, SCRAPE_TOPIC, SCRAPE_DATE, COUNTRY_CODE, SCRAPE_TAG1, SCRAPE_TAG2, SCRAPE_TAG3"
-                ", NEWS_TAGS, NEWS_HEADLINE, NEWS_URL, NEWS_DTM_RAW, NEWS_EXCERPT, NEWS_DATE) VALUES ")
-            f.write(',\n'.join(items_to_insert))
-            f.write(';\n')
+    for idx, article in enumerate(news_articles, start=1):
+        print(f"{idx}. Title: {article['title']}")
+        print(f"   Source: {article['source']['name']}")
+        print(f"   Published At: {article['publishedAt']}")
+        print(f"   URL: {article['url']}\n")

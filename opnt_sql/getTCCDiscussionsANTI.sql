@@ -1,11 +1,11 @@
--- getTCCDiscussionsNW
+-- getTCCDiscussionsANTI
 
 -- USE `opntprod`;
-DROP procedure IF EXISTS `getTCCDiscussionsNW`;
+DROP procedure IF EXISTS `getTCCDiscussionsANTI`;
 
 DELIMITER $$
 -- USE `opntprod`$$
-CREATE  PROCEDURE `getTCCDiscussionsNW`(uuid varchar(45), tid INT , fromindex INT, toindex INT
+CREATE  PROCEDURE `getTCCDiscussionsANTI`(uuid varchar(45), tid INT , fromindex INT, toindex INT
 )
 thisproc: BEGIN
 
@@ -26,31 +26,17 @@ thisproc: BEGIN
 		- the NW Counts and Network Details etc will have to be changed too
     2. But they will be used to deliver the Poltics News to all the users irrespective of whether they 
     have a cart or not.
-	
-    10/13/2022 AST: Changed the orde3r clause and removed the order clause from subquery for performance
-    Also limited the posts to last 50 days.
     
-    11/11/2022 AST: Further reorg of the instream query for perf enhancement
-    
-            07/16/2023 AST: Removing the  DELETED_FLAG = 'Y' posts from the instream.
+                07/16/2023 AST: Removing the  DELETED_FLAG = 'Y' posts from the instream.
     DELETE_FLAG was introduced some time back to deal with crappy posts that were added by the dev testers.
     In order to retain the integrity of the system even when a user deletes his post, we currently only 
     make the DELETED_FLAG = 'Y' thru' the deletePost proc.
     
-        08/06/2023 AST: Instead of BOT_FLAG = 'Y', switching to DEMO_POST_FLAG = 'Y' for instream.
+            08/06/2023 AST: Instead of BOT_FLAG = 'Y', switching to DEMO_POST_FLAG = 'Y' for instream.
     This is so that the BOTs can be used to start discussions and post STP as discussions.
     
     ALSO switching to last 30 days of posts instead of last 100 days
-    
-    06/22/2024 AST: How do we distinguish between an instream (POST) Vs a discussion ?
-    - A Discussion consists of two types of posts: 1. Any post made by a non-bot (that means a real) user
-    2. All the BOT posts that are created through the SCRAPE_TO_DISC process --> these posts are created with
-    DEMO_POST_FLAG = 'N' 
-    
-    10/24/2024 AST: Adding AND P.POSTOR_COUNTRY_CODE IN (CCODE, 'GGG') -- GGG IS ADDED ONLY TO HANDLE THE SCIENCE DATA
-    
-    12/08/2024 AST: Adding the portion that brings the latests selctions (if any) by the user from the showFreshContent
-            
+        
  */
  
 declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
@@ -64,7 +50,7 @@ INTO orig_uid, UNAME, CCODE, TCC, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UU
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getTCCDiscussionsNW', CONCAT(tid,'-',TCC));
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getTCCDiscussionsANTI', CONCAT(tid,'-',toindex));
 
 
 /* end of use action tracking */
@@ -75,18 +61,10 @@ CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
 
-/* Adding the CASE for Trending */
-
-CASE WHEN tid = 9 THEN
-
-CALL getDiscussionsTrendingNW(uuid , tid  , fromindex , toindex ) ;
-
-ELSE
-
 SELECT 
     INSTREAM.POST_ID,
     INSTREAM.TOPICID,
-    IFNULL(OUC.LUDTM, INSTREAM.POST_DATETIME) POST_DATETIME,
+    INSTREAM.POST_DATETIME,
     INSTREAM.POST_BY_USERID,
     OU.USERNAME,
     OU.DP_URL,
@@ -113,8 +91,7 @@ FROM
             P.POST_CONTENT,
             UN.TOTAL_NS,
             P.MEDIA_CONTENT,
-            P.MEDIA_FLAG,
-            P.KEYID
+            P.MEDIA_FLAG
     FROM
         OPN_POSTS P, (SELECT 
         B.USERID, B.BOT_FLAG, A.TOPICID, COUNT(*) TOTAL_NS
@@ -124,7 +101,7 @@ FROM
     FROM
         OPN_USER_CARTS C1
     WHERE
-        C1.USERID = orig_uid AND C1.TOPICID = tid) A, (SELECT 
+        C1.USERID = orig_uid) A, (SELECT 
         C2.USERID,
             CU.BOT_FLAG,
             C2.TOPICID,
@@ -135,7 +112,6 @@ FROM
         OPN_USER_CARTS C2, OPN_USERLIST CU
     WHERE
         C2.USERID = CU.USERID
-        AND C2.TOPICID = tid -- AND CU.BOT_FLAG <> 'Y'
             AND C2.USERID NOT IN (SELECT 
                 OUUA.ON_USERID
             FROM
@@ -145,33 +121,32 @@ FROM
                     AND OUUA.TOPICID = tid
                     AND OUUA.ACTION_TYPE = 'KO')) B
     WHERE
-        B.TOPICID = A.TOPICID
-            AND B.CART = A.CART
-            AND B.KEYID = A.KEYID
-            -- AND A.TOPICID = tid
+        A.TOPICID = B.TOPICID
+			AND A.KEYID = B.KEYID
+            AND A.CART <> B.CART
+         /*   AND B.USERID NOT IN 
+(SELECT DISTINCT D.USERID FROM 
+(SELECT C1.USERID, C1.TOPICID, C1.CART, C1.KEYID FROM OPN_USER_CARTS C1 WHERE C1.USERID = orig_uid AND C1.TOPICID = tid) C ,
+(SELECT C2.USERID, C2.TOPICID, C2.CART, C2.KEYID FROM OPN_USER_CARTS C2 ) D
+WHERE C.KEYID = D.KEYID AND C.CART = D.CART ) */
+            AND A.TOPICID = tid
     GROUP BY B.USERID , B.BOT_FLAG , A.TOPICID
-    -- ORDER BY COUNT(*) DESC
-    ) UN
-    WHERE 1=1
-    AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y'
-    AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 30 DAY
-            AND UN.USERID = P.POST_BY_USERID 
-			AND P.TOPICID = UN.TOPICID
-            AND P.POSTOR_TCC IN (TCC)
+    ORDER BY COUNT(*) DESC) UN
+    WHERE
+        UN.USERID = P.POST_BY_USERID
+            AND UN.TOPICID = P.TOPICID
             AND P.DEMO_POST_FLAG <> 'Y'
-            ) INSTREAM
-	/* Adding an outer join to the user cart - to get the things that the user placed in the cart, mainly through the showFreshContent
-    This is to bring the cart addition dtm as a sub for the poast dtm - so that when the user selects something from SFC, he will see it at the top */
-    /* addition start */
-                LEFT OUTER JOIN (SELECT USERID, TOPICID, KEYID, LAST_UPDATE_DTM LUDTM FROM OPN_USER_CARTS WHERE USERID = orig_uid
-						AND TOPICID = tid) OUC ON INSTREAM.KEYID = OUC.KEYID
-    /* addition end */
+            AND P.POSTOR_TCC IN (TCC)
+            AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 30 DAY
+    AND P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y') INSTREAM
         INNER JOIN
     (SELECT 
         USERID, USERNAME, DP_URL
     FROM
         OPN_USERLIST
-        ) OU ON INSTREAM.POST_BY_USERID = OU.USERID
+    -- WHERE
+     --   BOT_FLAG <> 'Y'
+     ) OU ON INSTREAM.POST_BY_USERID = OU.USERID
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID,
@@ -184,7 +159,7 @@ FROM
                 ELSE 0
             END) HCOUNT
     FROM
-        OPN_USER_POST_ACTION  WHERE TOPICID = tid
+        OPN_USER_POST_ACTION
     GROUP BY CAUSE_POST_ID) POST_LHC ON INSTREAM.POST_ID = POST_LHC.CAUSE_POST_ID
         LEFT OUTER JOIN
     OPN_USER_POST_ACTION UP ON INSTREAM.POST_ID = UP.CAUSE_POST_ID
@@ -200,7 +175,6 @@ FROM
         LEFT OUTER JOIN
     OPN_USER_USER_ACTION UUA ON INSTREAM.POST_BY_USERID = UUA.ON_USERID
         AND UUA.BY_USERID = orig_uid
-        AND UUA.TOPICID = tid
         LEFT OUTER JOIN
     (SELECT 
         CAUSE_POST_ID, COUNT(1) POST_COMMENT_COUNT
@@ -209,13 +183,10 @@ FROM
     WHERE
         CLEAN_COMMENT_FLAG = 'Y'
             AND COMMENT_DELETE_FLAG = 'N'
-            AND TOPICID = tid
     GROUP BY CAUSE_POST_ID) OPC ON INSTREAM.POST_ID = OPC.CAUSE_POST_ID
-ORDER BY 3 DESC, 10 DESC 
+ORDER BY POST_ID DESC  
 LIMIT fromindex, toindex
 ;
-
-END CASE ; -- THIS IS THE TRENDING CASE END
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

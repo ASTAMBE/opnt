@@ -1,42 +1,51 @@
--- callSTDbyTCC
-
 DELIMITER $$
 DROP PROCEDURE IF EXISTS callSTDbyTCC $$
-CREATE PROCEDURE `callSTDbyTCC`(tid INT, tcc varchar(5))
-thisproc:BEGIN
+CREATE PROCEDURE `callSTDbyTCC`(tid INT, tcc VARCHAR(5))
+thisproc: BEGIN
 
- /* 	02/28/2025 AST: This proc is for calling the createTCCDiscussion for the TCC that are being handled by OpenAI
-		- Read from OPN_SFC_CONTENT for the specific TCC + INTEREST combination where CONVERTED_POST_ID  is null
-        - For each row, call createTCCDiscussion: This will create a new discussion and the associated comments
-        - There is no need for scr_tpc or howMany -> convert all the SFC rows for the TCC + INT combo
- */
-    
-       DECLARE NURL, NTITLE, NEXCRPT TEXT;
-       DECLARE SCR_SRC VARCHAR(15) ;
-  declare RID, UCNT INT;
-  
+  DECLARE NURL, NTITLE, NEXCRPT TEXT;
+  DECLARE SCR_SRC VARCHAR(15);
+  DECLARE RID, UCNT INT;
   DECLARE DONE INT DEFAULT FALSE;
-  DECLARE CURSOR_I CURSOR FOR SELECT ROW_ID FROM OPN_SFC_CONTENT WHERE TRUE_COUNTRY_CODE = tcc AND TOPICID = tid 
-  -- AND CONTENT_DTM > NOW() - INTERVAL 48 HOUR 
-  AND IFNULL(CONVERTED_POST_ID, 0) = 0 -- ORDER BY RAND() LIMIT 5 
-  ;
+  
+  DECLARE CURSOR_I CURSOR FOR 
+    SELECT ROW_ID 
+    FROM OPN_SFC_CONTENT 
+    WHERE TRUE_COUNTRY_CODE = tcc 
+      AND TOPICID = tid 
+      AND CONVERTED_POST_ID IS NULL;
+  
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET DONE = TRUE;
 
-   DECLARE CONTINUE HANDLER FOR NOT FOUND SET DONE = TRUE;
+  -- Step 1: Deduplicate rows for the specific (tid, tcc) combo where CONVERTED_POST_ID is NULL
+  WITH cte AS (
+    SELECT 
+      ROW_ID,
+      ROW_NUMBER() OVER (
+        PARTITION BY CONTENT_URL 
+        ORDER BY CONTENT_DTM DESC, ROW_ID DESC
+      ) AS rn
+    FROM OPN_SFC_CONTENT
+    WHERE TRUE_COUNTRY_CODE = tcc  -- Scope to input TCC
+      AND TOPICID = tid            -- Scope to input TOPICID
+      AND CONVERTED_POST_ID IS NULL -- Only process unprocessed rows
+  )
+  DELETE FROM OPN_SFC_CONTENT
+  WHERE ROW_ID IN (
+    SELECT ROW_ID FROM cte WHERE rn > 1
+  );
+
+  -- Step 2:  Process remaining rows 
+  
   OPEN CURSOR_I;
-   READ_LOOP: LOOP
-    FETCH CURSOR_I INTO RID ;
-     IF DONE THEN
+  READ_LOOP: LOOP
+    FETCH CURSOR_I INTO RID;
+    IF DONE THEN
       LEAVE READ_LOOP;
-      END IF;
-      
-CALL createTCCDiscussion(RID) ;
-
-        END LOOP;
+    END IF;
+    CALL createTCCDiscussion(RID);
+  END LOOP;
   CLOSE CURSOR_I;
-  
--- UPDATE WEB_SCRAPE_RAW_L SET TAG_DONE_FLAG = 'Y' WHERE SCRAPE_TOPIC IN ('ENT', 'CELEB') AND COUNTRY_CODE = 'IND' AND MOD(ROW_ID, 2) = 0 ORDER BY RAND() LIMIT 2 ;
-  
+
 END$$
 DELIMITER ;
-
--- 

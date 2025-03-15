@@ -17,13 +17,21 @@ in the last 30 days. If yes, then it proceeds to bring them. The second CASE is 
 The main SELECT (and the PCNT) also checks if any of the resulting discussions have already been put into the cart by this user - and excludes them.
 11/04/2024 AST: Added the P.KEYID. that I had missed in the second ELSE
 
+03/06/2025 AST: Bifurcating this proc - to call showTCCContent when the TCC of the user is in the specified list (NGA, USA, IND)
+
 */
 
 declare  uid, tid, PCNT INT ;
-DECLARE ccode VARCHAR(5) ;
+DECLARE ccode, tcc VARCHAR(5) ;
 DECLARE UNAME VARCHAR(50) ;
 
-SELECT USERID, COUNTRY_CODE, USERNAME INTO uid, ccode, UNAME FROM OPN_USERLIST WHERE USER_UUID = uuid ;
+SELECT USERID, COUNTRY_CODE, TRUE_COUNTRY_CODE, USERNAME INTO uid, ccode, tcc, UNAME FROM OPN_USERLIST WHERE USER_UUID = uuid ;
+
+CASE WHEN tcc IN ('NGA', 'USA', 'IND') THEN 
+CALL showTCCContent(uuid, fromIndex, toIndex) ;
+
+ELSE 
+
 SET PCNT = (SELECT COUNT(1) FROM OPN_POSTS P WHERE P.CLEAN_POST_FLAG = 'Y' AND IFNULL(P.DELETED_FLAG, 'N') <> 'Y' 
 AND P.POST_DATETIME > CURRENT_DATE() - INTERVAL 3 DAY  AND P.DEMO_POST_FLAG <> 'Y' 
 AND P.TOPICID IN (SELECT INTEREST_ID FROM OPN_USER_INTERESTS WHERE USERID = uid) AND P.POSTOR_COUNTRY_CODE = ccode  
@@ -114,6 +122,7 @@ END CASE ;
 
 END CASE ;
 
+END CASE ;
 
 END //
 DELIMITER ;

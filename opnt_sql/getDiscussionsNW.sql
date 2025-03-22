@@ -50,22 +50,23 @@ thisproc: BEGIN
     10/24/2024 AST: Adding AND P.POSTOR_COUNTRY_CODE IN (CCODE, 'GGG') -- GGG IS ADDED ONLY TO HANDLE THE SCIENCE DATA
     
     12/08/2024 AST: Adding the portion that brings the latests selctions (if any) by the user from the showFreshContent
+    
+    03/19/2025 AST: Adding the diversion for getTCCDiscussionsNW for TCC codes
             
  */
  
 declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
 DECLARE UNAME VARCHAR(30) ;
 DECLARE CDTM DATETIME ;
-DECLARE CCODE, SUSPFLAG VARCHAR(5) ;
+DECLARE CCODE, SUSPFLAG, TCC VARCHAR(5) ;
 
-SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.USER_SUSPEND_FLAG
-INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
+SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.TRUE_COUNTRY_CODE, UL.USER_SUSPEND_FLAG
+INTO orig_uid, UNAME, CCODE, TCC, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
 
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsNW', CONCAT(tid,'-',toindex));
-
+VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsNW', CONCAT(tid,'-',TCC));
 
 /* end of use action tracking */
 
@@ -80,6 +81,11 @@ WHEN SUSPFLAG <> 'Y' THEN
 CASE WHEN tid = 9 THEN
 
 CALL getDiscussionsTrendingNW(uuid , tid  , fromindex , toindex ) ;
+
+ELSE
+
+IF TCC IN ('IND', 'NGA', 'USA') THEN
+CALL getTCCDiscussionsNW(uuid, tid, fromindex, toindex) ;
 
 ELSE
 
@@ -214,6 +220,8 @@ FROM
 ORDER BY 3 DESC, 10 DESC 
 LIMIT fromindex, toindex
 ;
+
+END IF ;
 
 END CASE ; -- THIS IS THE TRENDING CASE END
 

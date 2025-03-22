@@ -36,16 +36,18 @@ thisproc: BEGIN
     This is so that the BOTs can be used to start discussions and post STP as discussions.
     
     ALSO switching to last 30 days of posts instead of last 100 days
+    
+    03/20/2025 AST: Adding the diversion for getTCCDiscussionsANTI for TCC codes
         
  */
  
 declare  orig_uid, TIDCNT, LASTTID, CARTCNT INT;
 DECLARE UNAME VARCHAR(30) ;
 DECLARE CDTM DATETIME ;
-DECLARE CCODE, SUSPFLAG VARCHAR(5) ;
+DECLARE CCODE, SUSPFLAG, TCC VARCHAR(5) ;
 
-SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.USER_SUSPEND_FLAG
-INTO orig_uid, UNAME, CCODE, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
+SELECT UL.USERID, UL.USERNAME, UL.COUNTRY_CODE, UL.TRUE_COUNTRY_CODE, UL.USER_SUSPEND_FLAG
+INTO orig_uid, UNAME, CCODE, TCC, SUSPFLAG FROM OPN_USERLIST UL WHERE UL.USER_UUID = uuid ;
 
 /* Adding user action logging portion */
 
@@ -60,6 +62,11 @@ VALUES(UNAME, orig_uid, uuid, NOW(), 'getDiscussionsANTI', CONCAT(tid,'-',toinde
 CASE WHEN SUSPFLAG = 'Y' THEN LEAVE thisproc ;
 WHEN SUSPFLAG <> 'Y' THEN
 /* 04/06/2021 END OF THE SUSPENDED USER EXCLUSION */
+
+IF TCC IN ('IND', 'NGA', 'USA') THEN
+CALL getTCCDiscussionsANTI(uuid, tid, fromindex, toindex) ;
+
+ELSE
 
 SELECT 
     INSTREAM.POST_ID,
@@ -186,6 +193,8 @@ WHERE C.KEYID = D.KEYID AND C.CART = D.CART )
 ORDER BY POST_ID DESC  
 LIMIT fromindex, toindex
 ;
+
+END IF ;
 
 END CASE ; -- THIS IS THE SUSPFLAG CASE END
   

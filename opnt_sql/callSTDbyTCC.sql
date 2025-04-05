@@ -28,7 +28,7 @@ thisproc: BEGIN
     FROM OPN_SFC_CONTENT
     WHERE TRUE_COUNTRY_CODE = tcc  -- Scope to input TCC
       AND TOPICID = tid            -- Scope to input TOPICID
-      AND CONVERTED_POST_ID IS NULL -- Only process unprocessed rows
+      --  AND CONVERTED_POST_ID IS NULL -- Only process unprocessed rows
   )
   DELETE FROM OPN_SFC_CONTENT
   WHERE ROW_ID IN (

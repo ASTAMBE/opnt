@@ -1,0 +1,1599 @@
+[2025-04-03 10:57:52,827] INFO - Fetched 15 rows from OPN_TCC_PARAMS
+[2025-04-03 10:57:53,091] INFO - Connected to DEV database.
+[2025-04-03 10:57:53,637] INFO - Connected to PROD database.
+[2025-04-03 10:57:55,177] INFO - Fetched 5 articles from https://www.premiumtimesng.com/feed
+[2025-04-03 10:58:37,909] INFO - Fetched 5 articles from https://guardian.ng/category/politics/feed/
+[2025-04-03 10:58:39,133] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:40,301] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:41,570] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:41,650] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:41,733] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:42,370] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:43,188] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:45,151] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:45,235] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:45,309] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:45,918] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:46,792] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:48,799] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:48,889] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:48,966] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:49,484] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:50,388] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:54,987] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:58:55,077] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:55,140] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:58:55,935] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:01,636] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:03,147] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:03,236] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:03,315] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:03,917] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:04,922] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:06,507] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:06,583] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:06,668] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:07,169] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:09,097] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:09,944] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:10,022] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:10,101] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:10,823] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:12,402] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:14,464] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:14,548] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:14,608] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:15,156] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:17,338] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:18,151] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:18,228] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:18,296] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:18,708] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:20,544] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:21,258] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 10:59:21,334] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 10:59:21,420] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-03 11:00:25,331] INFO - Fetched 5 articles from https://rss.punchng.com/v1/category/sports
+[2025-04-03 11:01:08,472] INFO - Fetched 5 articles from https://www.brila.net/feed/
+[2025-04-03 11:02:12,833] INFO - Fetched 5 articles from https://www.vanguardngr.com/category/sports/feed/
+[2025-04-03 11:02:13,708] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:16,179] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:17,098] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:17,175] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:17,274] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:17,781] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:18,683] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:20,915] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:21,000] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:21,071] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:21,785] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:22,935] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:25,109] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:25,232] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:25,332] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:25,882] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:28,718] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:30,082] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:30,152] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:30,237] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:30,847] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:33,142] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:34,105] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:34,189] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:34,266] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:34,803] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:36,905] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:38,016] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:38,095] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:38,180] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:39,029] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:40,284] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:42,893] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:42,987] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:43,066] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:43,715] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:44,871] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:47,118] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:47,199] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:47,292] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:47,739] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:48,959] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:51,105] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:51,182] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:51,255] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:51,953] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:53,197] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:55,375] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:55,484] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:55,567] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:56,135] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:58,469] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:59,822] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:02:59,903] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:02:59,968] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:00,715] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:01,514] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:04,611] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:04,701] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:04,779] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:05,790] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:08,009] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:09,010] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:09,082] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:09,160] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:09,786] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:11,673] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:12,505] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:12,580] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:12,655] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:13,199] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:15,097] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:16,003] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:03:16,081] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:16,148] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-03 11:03:16,965] INFO - Fetched 5 articles from https://nairametrics.com/feed/
+[2025-04-03 11:04:20,570] INFO - Fetched 5 articles from https://businessday.ng/feed/
+[2025-04-03 11:04:21,347] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:22,283] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:24,442] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:24,531] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:24,602] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:25,192] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:27,438] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:28,549] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:28,638] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:28,725] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:29,196] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:31,342] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:32,388] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:32,475] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:32,547] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:33,102] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:35,189] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:36,252] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:36,333] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:36,410] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:37,026] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:38,715] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:40,703] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:40,800] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:40,875] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:41,463] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:42,351] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:44,132] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:44,221] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:44,291] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:44,688] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:45,510] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:47,981] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:48,063] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:48,130] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:48,665] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:50,672] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:51,639] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:51,724] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:51,797] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:52,364] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:53,517] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:57,164] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:57,249] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:57,310] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:04:57,897] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:04:59,669] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:05:00,746] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:05:00,832] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:05:00,904] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-03 11:05:02,027] INFO - Fetched 5 articles from https://www.vanguardngr.com/category/entertainment/feed/
+[2025-04-03 11:06:06,510] INFO - Fetched 5 articles from https://thenationonlineng.net/category/entertainment/feed/
+[2025-04-03 11:06:07,303] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:08,604] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:11,117] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:11,234] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:11,317] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:12,081] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:14,403] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:15,304] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:15,421] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:15,496] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:16,156] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:17,542] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:19,611] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:19,694] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:19,769] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:20,307] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:21,275] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:23,341] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:23,429] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:23,500] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:24,053] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:25,080] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:27,121] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:27,199] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:27,279] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:27,830] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:28,900] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:31,000] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:31,075] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:31,147] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:31,739] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:32,957] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:37,167] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:37,273] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:37,353] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:37,833] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:38,968] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:40,429] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:40,507] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:40,587] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:41,318] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:43,500] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:44,546] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:44,624] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:44,687] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:45,120] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:46,146] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:48,035] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:06:48,113] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:06:48,190] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-03 11:07:32,391] INFO - Fetched 5 articles from https://www.lindaikejisblog.com/feed/
+[2025-04-03 11:07:35,384] INFO - Fetched 5 articles from https://www.bellanaija.com/feed/
+[2025-04-03 11:07:36,273] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:37,383] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:38,842] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:38,929] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:39,001] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:39,714] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:41,680] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:42,487] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:42,580] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:42,643] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:43,247] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:44,333] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:45,951] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:46,026] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:46,096] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:46,532] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:47,500] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:49,238] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:49,317] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:49,382] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:49,802] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:50,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:52,866] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:52,952] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:53,025] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:53,521] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:55,816] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:56,757] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:56,958] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:57,038] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:07:57,507] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:07:58,439] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:00,651] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:00,735] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:00,807] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:01,425] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:03,717] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:04,787] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:04,875] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:04,947] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:05,538] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:06,676] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:08,734] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:08,821] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:08,900] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:09,650] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:10,796] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:12,894] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:12,978] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:13,066] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-03 11:08:14,403] INFO - Fetched 5 articles from https://www.news18.com/commonfeeds/v1/eng/rss/politics.xml
+[2025-04-03 11:08:15,419] INFO - Fetched 5 articles from https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+[2025-04-03 11:08:16,089] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:17,520] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:19,534] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:19,656] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:19,732] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:20,337] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:22,760] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:23,787] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:23,863] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:23,936] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:24,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:25,884] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:28,385] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:28,465] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:28,545] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:29,208] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:31,251] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:32,669] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:32,763] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:32,837] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:33,425] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:35,435] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:36,665] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:36,744] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:36,814] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:37,636] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:38,526] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:40,460] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:40,536] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:40,611] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:41,201] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:43,196] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:44,851] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:44,929] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:45,001] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:45,666] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:46,371] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:48,097] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:48,175] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:48,244] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:48,957] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:49,732] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:51,789] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:51,878] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:51,951] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:52,403] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:54,224] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:55,107] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:55,198] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:55,267] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-03 11:08:55,775] INFO - Fetched 5 articles from https://timesofindia.indiatimes.com/rssfeeds/4719148.cms
+[2025-04-03 11:08:56,591] INFO - Fetched 5 articles from https://www.espncricinfo.com/rss/content/story/feeds/6.xml
+[2025-04-03 11:08:57,066] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:57,831] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:59,584] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:08:59,665] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:08:59,729] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:00,213] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:01,276] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:03,210] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:03,289] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:03,364] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:03,871] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:04,778] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:07,181] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:07,319] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:07,456] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:08,033] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:09,062] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:11,520] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:11,595] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:11,666] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:12,325] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:14,387] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:15,813] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:15,891] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:15,959] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:16,663] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:17,702] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:19,471] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:19,547] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:19,622] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:20,432] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:21,690] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:23,707] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:23,793] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:23,877] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:28,073] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:29,926] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:30,840] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:30,922] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:30,990] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:31,965] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:32,920] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:35,328] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:35,410] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:35,478] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:36,024] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:36,803] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:38,638] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:09:38,713] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:09:38,786] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-03 11:10:22,101] INFO - Fetched 5 articles from https://www.thehindubusinessline.com/news/feeder/default.rss
+[2025-04-03 11:10:23,204] INFO - Fetched 5 articles from https://www.zeebiz.com/companies.xml
+[2025-04-03 11:10:23,974] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:25,951] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:27,129] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:27,197] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:27,289] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:27,896] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:28,882] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:30,792] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:30,862] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:30,960] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:31,887] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:34,281] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:35,312] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:35,392] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:35,462] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:36,012] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:37,167] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:42,246] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:42,321] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:42,397] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:42,878] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:44,677] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:45,743] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:45,830] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:45,903] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:46,419] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:47,381] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:50,099] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:50,170] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:50,240] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:51,084] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:51,989] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:54,088] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:54,164] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:54,233] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:54,894] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:56,903] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:57,749] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:57,831] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:57,915] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:10:58,516] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:10:59,369] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:01,479] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:01,557] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:11:01,626] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:11:02,179] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:03,107] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:05,238] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:05,329] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:11:05,400] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-03 11:11:06,399] INFO - Fetched 5 articles from https://www.bollywoodhungama.com/rss/news.xml
+[2025-04-03 11:11:06,999] INFO - Fetched 5 articles from https://www.indiatvnews.com/rssnews/topstory-entertainment.xml
+[2025-04-03 11:11:07,644] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:09,025] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:11,437] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:11,524] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:11,598] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:12,248] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:13,627] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:15,275] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:15,352] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:15,422] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:16,146] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:17,260] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:19,237] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:19,315] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:19,391] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:19,892] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:22,020] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:23,512] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:23,612] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:23,682] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:24,743] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:27,693] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:30,071] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:30,154] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:30,222] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:30,635] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:31,405] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:33,607] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:33,684] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:33,761] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:34,490] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:35,569] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:37,625] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:37,699] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:37,773] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:38,381] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:40,332] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:41,408] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:41,511] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:41,594] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:42,166] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:44,175] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:44,986] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:45,059] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:45,139] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:45,640] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:47,708] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:48,710] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:48,789] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:48,852] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-03 11:11:49,715] INFO - Fetched 5 articles from https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms
+[2025-04-03 11:11:50,239] INFO - Fetched 5 articles from https://www.hindustantimes.com/feeds/rss/entertainment/bollywood/rssfeed.xml
+[2025-04-03 11:11:51,115] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:53,105] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:54,078] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:54,183] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:11:54,278] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:11:55,209] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:57,269] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:58,064] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:11:58,126] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:11:58,206] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:11:58,856] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:00,773] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:01,492] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:01,571] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:01,659] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:02,263] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:05,041] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:05,976] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:06,051] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:06,123] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:06,704] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:08,681] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:09,712] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:09,791] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:09,855] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:10,481] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:11,247] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:13,157] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:13,237] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:13,317] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:14,024] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:14,949] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:17,082] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:17,162] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:17,241] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:17,739] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:19,421] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:20,313] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:20,393] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:20,469] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:21,076] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:21,929] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:24,243] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:24,338] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:24,417] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:25,043] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:26,014] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:27,934] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:28,007] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:28,076] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-03 11:12:28,927] INFO - Fetched 5 articles from https://moxie.foxnews.com/google-publisher/politics.xml
+[2025-04-03 11:12:29,490] INFO - Fetched 5 articles from https://thehill.com/homenews/feed/
+[2025-04-03 11:12:30,204] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:32,231] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:33,098] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:33,171] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:33,240] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:33,865] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:36,614] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:37,731] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:37,808] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:37,875] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:38,383] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:40,212] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:41,411] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:41,484] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:41,570] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:41,987] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:43,959] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:45,141] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:45,234] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:45,304] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:45,648] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:48,469] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:50,675] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:50,752] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:50,827] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:51,246] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:52,118] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:53,778] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:53,863] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:53,935] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:54,457] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:56,788] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:57,712] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:57,786] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:57,855] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:12:58,433] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:12:59,385] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:01,272] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:01,349] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:01,420] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:02,194] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:03,207] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:05,378] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:05,453] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:05,529] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:06,061] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:07,265] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:08,965] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:09,047] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:09,115] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-03 11:13:09,740] INFO - Fetched 5 articles from https://www.espn.com/espn/rss/news
+[2025-04-03 11:13:11,062] INFO - Fetched 5 articles from https://sports.yahoo.com/rss/
+[2025-04-03 11:13:11,580] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:12,459] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:14,577] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:14,645] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:14,723] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:15,377] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:16,330] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:18,056] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:18,128] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:18,197] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:18,639] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:19,652] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:23,444] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:23,528] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:23,597] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:24,394] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:26,311] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:27,043] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:27,126] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:27,194] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:27,861] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:30,073] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:31,458] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:31,527] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:31,593] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:32,677] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:33,528] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:35,493] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:35,575] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:35,644] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:36,194] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:38,159] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:39,744] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:39,860] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:39,935] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:40,395] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:41,261] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:43,178] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:43,261] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:43,327] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:44,010] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:47,005] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:48,395] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:48,476] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:48,561] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:49,563] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:51,510] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:52,393] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:52,486] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:52,561] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-03 11:13:53,308] INFO - Fetched 5 articles from https://feeds.nbcnews.com/nbcnews/public/news
+[2025-04-03 11:13:53,882] INFO - Fetched 5 articles from https://www.washingtontimes.com/rss/headlines/news/business-economy/
+[2025-04-03 11:13:54,362] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:55,465] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:57,327] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:57,409] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:13:57,478] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:13:58,386] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:13:59,762] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:06,473] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:06,565] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:06,625] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:07,138] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:08,027] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:09,953] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:10,030] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:10,110] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:10,612] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:12,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:13,993] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:14,120] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:14,184] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:14,735] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:16,692] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:17,590] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:17,682] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:17,758] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:18,386] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:19,552] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:21,904] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:21,975] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:22,054] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:22,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:24,687] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:25,693] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:25,774] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:25,850] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:26,511] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:28,468] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:29,344] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:29,409] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:29,489] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:29,957] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:31,906] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:32,638] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:32,717] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:32,797] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:33,286] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:35,546] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:36,256] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:36,324] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:36,404] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-03 11:14:37,373] INFO - Fetched 5 articles from https://www.huffpost.com/dept/entertainment/feed
+[2025-04-03 11:14:37,740] INFO - Fetched 5 articles from https://variety.com/feed/
+[2025-04-03 11:14:38,258] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:39,437] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:41,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:41,686] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:41,766] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:42,412] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:44,631] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:45,577] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:45,656] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:45,721] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:46,310] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:48,323] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:49,423] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:49,511] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:49,587] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:50,059] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:51,556] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:53,531] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:53,608] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:53,674] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:54,467] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:57,165] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:58,103] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:14:58,185] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:58,247] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:14:58,771] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:01,091] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:04,871] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:05,019] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:05,116] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:05,858] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:07,590] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:08,684] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:08,751] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:08,830] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:09,430] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:11,465] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:12,500] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:12,581] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:12,663] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:13,504] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:17,757] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:18,963] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:19,043] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:19,107] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:19,947] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:22,066] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:22,856] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:22,924] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:23,004] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-03 11:15:23,715] INFO - Fetched 5 articles from https://www.tmz.com/rss.xml
+[2025-04-03 11:15:26,937] INFO - Fetched 5 articles from https://www.usmagazine.com/category/entertainment/feed/
+[2025-04-03 11:15:27,510] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:28,466] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:30,816] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:30,890] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:30,961] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:31,444] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:35,017] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:37,028] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:37,113] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:37,180] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:37,698] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:39,927] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:40,711] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:40,798] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:40,871] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:41,411] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:43,631] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:44,755] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:44,843] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:44,927] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:45,646] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:48,301] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:49,377] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:49,461] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:49,537] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:50,244] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:56,809] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:57,786] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:57,876] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:57,971] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:15:58,730] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:15:59,619] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:01,609] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:01,692] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:01,753] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:02,526] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:03,512] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:05,372] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:05,454] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:05,514] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:06,065] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:08,102] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:09,297] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:09,377] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:09,457] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:09,926] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:10,824] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:13,111] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-03 11:16:13,193] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:13,260] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-03 11:16:13,260] INFO - Closed DEV DB connection.
+[2025-04-03 11:16:13,260] INFO - Closed PROD DB connection.
+[2025-04-03 11:16:13,260] INFO - Successfully processed and inserted 155 discussion topics into both DEV and PROD.
+[2025-04-04 11:23:08,170] INFO - Fetched 15 rows from OPN_TCC_PARAMS
+[2025-04-04 11:23:08,427] INFO - Connected to DEV database.
+[2025-04-04 11:23:08,803] INFO - Connected to PROD database.
+[2025-04-04 11:23:10,552] INFO - Fetched 5 articles from https://www.premiumtimesng.com/feed
+[2025-04-04 11:23:14,185] INFO - Fetched 5 articles from https://guardian.ng/category/politics/feed/
+[2025-04-04 11:23:15,317] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:16,353] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:18,362] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:18,478] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:18,551] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:19,190] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:20,988] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:22,037] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:22,144] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:22,256] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:22,666] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:23,701] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:25,201] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:25,301] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:25,412] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:25,991] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:27,683] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:28,684] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:28,780] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:28,892] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:29,446] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:31,215] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:32,053] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:32,186] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:32,293] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:32,768] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:33,442] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:35,295] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:35,424] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:35,540] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:36,029] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:37,624] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:38,292] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:38,356] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:38,436] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:38,932] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:39,999] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:41,920] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:42,024] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:42,136] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:42,518] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:44,154] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:44,968] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:45,043] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:45,122] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:46,175] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:46,904] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:48,448] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:48,558] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:48,621] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'POLITICS'.
+[2025-04-04 11:23:49,511] INFO - Fetched 5 articles from https://rss.punchng.com/v1/category/sports
+[2025-04-04 11:23:50,756] INFO - Fetched 5 articles from https://www.brila.net/feed/
+[2025-04-04 11:23:51,066] INFO - Fetched 0 articles from https://www.vanguardngr.com/category/sports/feed/
+[2025-04-04 11:23:51,606] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:53,357] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:54,081] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:54,211] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:23:54,282] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:23:54,841] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:55,638] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:57,471] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:57,586] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:23:57,682] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:23:58,233] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:23:59,457] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:01,031] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:01,128] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:01,193] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:01,658] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:03,716] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:04,736] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:04,816] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:04,896] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:06,040] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:06,838] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:08,790] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:08,859] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:08,938] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:09,948] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:15,679] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:17,313] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:17,392] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:17,464] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:17,891] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:19,108] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:20,725] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:20,804] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:20,866] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:21,616] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:23,229] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:24,250] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:24,331] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:24,410] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:25,419] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:26,205] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:27,675] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:27,803] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:27,911] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:28,368] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:30,108] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:31,086] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:31,160] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:31,241] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'SPORTS'.
+[2025-04-04 11:24:32,212] INFO - Fetched 5 articles from https://nairametrics.com/feed/
+[2025-04-04 11:24:33,831] INFO - Fetched 5 articles from https://businessday.ng/feed/
+[2025-04-04 11:24:34,457] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:35,199] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:36,851] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:36,927] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:37,006] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:37,465] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:39,092] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:39,745] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:39,822] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:39,890] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:40,596] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:42,339] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:43,326] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:43,411] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:43,480] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:43,853] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:45,597] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:46,573] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:46,642] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:46,725] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:47,226] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:49,019] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:50,082] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:50,180] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:50,257] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:50,981] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:52,003] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:53,450] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:53,537] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:53,611] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:54,236] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:55,064] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:57,116] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:57,205] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:57,275] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:24:57,808] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:24:59,768] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:00,458] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:00,536] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:00,622] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:01,350] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:03,066] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:03,832] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:03,908] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:03,992] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:04,542] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:05,752] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:08,398] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:08,541] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:08,636] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'BUSINESS'.
+[2025-04-04 11:25:09,506] INFO - Fetched 5 articles from https://www.vanguardngr.com/category/entertainment/feed/
+[2025-04-04 11:25:10,205] INFO - Fetched 5 articles from https://thenationonlineng.net/category/entertainment/feed/
+[2025-04-04 11:25:10,761] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:12,471] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:13,320] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:13,400] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:13,479] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:13,907] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:15,825] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:16,516] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:16,593] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:16,673] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:17,173] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:18,058] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:19,854] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:19,935] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:20,026] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:20,481] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:22,339] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:23,263] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:23,341] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:23,421] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:23,961] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:25,423] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:27,141] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:27,211] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:27,291] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:29,351] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:30,122] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:31,876] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:31,953] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:32,035] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:32,673] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:33,596] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:35,702] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:35,784] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:35,861] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:36,290] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:36,975] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:38,485] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:38,562] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:38,643] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:39,093] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:40,734] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:41,509] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:41,619] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:41,714] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:42,152] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:43,805] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:44,801] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:44,874] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:44,944] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'ENTERTAINMENT'.
+[2025-04-04 11:25:46,662] INFO - Fetched 5 articles from https://www.lindaikejisblog.com/feed/
+[2025-04-04 11:25:48,742] INFO - Fetched 5 articles from https://www.bellanaija.com/feed/
+[2025-04-04 11:25:49,808] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:51,418] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:52,320] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:52,406] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:25:52,478] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:25:52,936] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:53,707] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:55,408] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:55,492] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:25:55,565] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:25:56,216] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:58,752] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:59,591] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:25:59,671] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:25:59,734] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:00,860] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:02,520] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:03,355] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:03,437] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:03,509] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:04,289] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:05,221] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:07,736] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:07,827] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:07,898] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:08,513] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:13,094] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:13,969] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:14,048] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:14,128] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:14,591] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:19,459] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:21,016] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:21,090] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:21,189] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:21,704] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:23,355] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:24,478] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:24,549] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:24,658] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:25,081] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:25,979] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:27,741] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:27,805] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:27,882] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:28,380] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:30,183] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:31,184] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:31,254] INFO - [DEV] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:31,327] INFO - [PROD] Inserted discussion topic for 'Nigeria' under 'CELEBRITIES'.
+[2025-04-04 11:26:31,961] INFO - Fetched 5 articles from https://www.news18.com/commonfeeds/v1/eng/rss/politics.xml
+[2025-04-04 11:26:32,327] INFO - Fetched 5 articles from https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+[2025-04-04 11:26:32,785] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:34,446] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:35,527] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:35,605] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:35,672] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:36,256] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:38,220] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:39,128] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:39,210] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:39,286] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:40,107] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:40,876] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:42,601] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:42,674] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:42,766] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:43,337] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:45,088] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:45,839] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:45,900] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:45,987] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:46,528] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:47,221] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:49,706] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:49,787] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:49,904] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:50,331] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:51,077] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:53,143] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:53,215] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:53,288] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:53,758] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:54,636] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:56,167] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:56,234] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:56,316] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:56,885] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:57,755] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:59,713] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:26:59,799] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:26:59,873] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:27:00,325] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:02,578] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:03,764] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:03,827] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:27:03,913] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:27:04,468] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:06,416] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:07,590] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:07,677] INFO - [DEV] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:27:07,771] INFO - [PROD] Inserted discussion topic for 'India' under 'POLITICS'.
+[2025-04-04 11:27:08,113] INFO - Fetched 5 articles from https://timesofindia.indiatimes.com/rssfeeds/4719148.cms
+[2025-04-04 11:27:08,966] INFO - Fetched 5 articles from https://www.espncricinfo.com/rss/content/story/feeds/6.xml
+[2025-04-04 11:27:09,755] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:10,561] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:13,475] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:13,604] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:13,686] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:14,415] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:15,723] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:19,431] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:19,521] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:19,623] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:20,163] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:20,957] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:23,823] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:23,900] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:23,976] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:24,597] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:25,467] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:27,252] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:27,329] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:27,402] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:28,217] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:29,873] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:31,148] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:31,224] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:31,306] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:32,148] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:33,166] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:34,950] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:35,029] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:35,109] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:35,622] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:36,572] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:38,572] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:38,652] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:38,731] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:39,474] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:41,349] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:42,396] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:42,492] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:42,556] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:43,032] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:44,724] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:45,797] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:45,863] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:45,942] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:46,480] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:48,214] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:48,976] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:49,056] INFO - [DEV] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:49,136] INFO - [PROD] Inserted discussion topic for 'India' under 'SPORTS'.
+[2025-04-04 11:27:50,299] INFO - Fetched 5 articles from https://www.thehindubusinessline.com/news/feeder/default.rss
+[2025-04-04 11:27:50,854] INFO - Fetched 5 articles from https://www.zeebiz.com/companies.xml
+[2025-04-04 11:27:51,282] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:53,333] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:54,414] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:54,491] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:27:54,608] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:27:55,162] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:57,308] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:57,946] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:58,026] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:27:58,105] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:27:58,632] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:27:59,331] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:01,501] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:01,628] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:01,707] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:02,233] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:03,262] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:05,766] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:05,841] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:05,920] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:06,924] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:07,749] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:10,118] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:10,201] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:10,284] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:11,162] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:11,961] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:13,894] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:13,967] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:14,052] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:14,555] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:15,768] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:17,622] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:17,691] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:17,771] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:18,376] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:20,486] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:21,546] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:21,617] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:21,699] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:22,349] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:23,527] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:25,187] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:25,278] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:25,354] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:25,971] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:26,863] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:29,156] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:29,229] INFO - [DEV] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:29,306] INFO - [PROD] Inserted discussion topic for 'India' under 'BUSINESS'.
+[2025-04-04 11:28:30,141] INFO - Fetched 5 articles from https://www.bollywoodhungama.com/rss/news.xml
+[2025-04-04 11:28:30,674] INFO - Fetched 5 articles from https://www.indiatvnews.com/rssnews/topstory-entertainment.xml
+[2025-04-04 11:28:31,317] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:32,307] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:33,990] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:34,071] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:34,153] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:34,670] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:35,515] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:37,294] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:37,380] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:37,467] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:38,154] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:40,351] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:41,462] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:41,539] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:41,615] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:42,080] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:43,513] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:45,444] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:45,537] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:45,614] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:46,273] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:47,588] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:49,388] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:49,469] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:49,545] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:50,220] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:51,966] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:52,971] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:53,052] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:53,135] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:53,730] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:54,584] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:56,309] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:56,411] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:56,494] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:28:57,066] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:58,186] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:59,877] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:28:59,962] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:00,037] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:00,616] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:01,326] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:03,500] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:03,592] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:03,678] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:04,231] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:05,287] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:07,015] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:07,096] INFO - [DEV] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:07,170] INFO - [PROD] Inserted discussion topic for 'India' under 'ENTERTAINMENT'.
+[2025-04-04 11:29:07,394] INFO - Fetched 5 articles from https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms
+[2025-04-04 11:29:07,705] INFO - Fetched 5 articles from https://www.hindustantimes.com/feeds/rss/entertainment/bollywood/rssfeed.xml
+[2025-04-04 11:29:08,781] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:09,760] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:11,711] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:11,788] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:11,861] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:12,920] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:14,917] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:15,909] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:15,989] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:16,061] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:16,548] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:18,591] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:19,658] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:19,730] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:19,818] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:20,313] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:21,768] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:22,624] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:22,701] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:22,777] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:23,189] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:24,964] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:25,865] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:25,944] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:26,020] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:26,795] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:27,653] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:29,525] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:29,612] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:29,685] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:30,280] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:31,264] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:32,968] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:33,037] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:33,118] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:33,627] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:35,456] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:36,433] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:36,604] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:36,705] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:37,424] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:39,297] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:40,780] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:40,868] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:40,944] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:41,467] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:42,953] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:44,230] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:44,311] INFO - [DEV] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:44,394] INFO - [PROD] Inserted discussion topic for 'India' under 'CELEBRITIES'.
+[2025-04-04 11:29:44,741] INFO - Fetched 5 articles from https://moxie.foxnews.com/google-publisher/politics.xml
+[2025-04-04 11:29:44,972] INFO - Fetched 5 articles from https://thehill.com/homenews/feed/
+[2025-04-04 11:29:45,629] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:47,563] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:48,636] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:48,708] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:48,782] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:49,484] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:50,267] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:52,349] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:52,426] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:52,507] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:53,029] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:53,783] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:55,947] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:56,025] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:56,105] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:56,598] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:57,293] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:59,327] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:29:59,424] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:59,499] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:29:59,983] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:01,817] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:02,523] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:02,602] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:02,673] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:03,215] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:05,831] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:06,590] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:06,675] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:06,759] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:07,382] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:09,035] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:09,687] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:09,765] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:09,853] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:10,289] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:12,295] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:13,294] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:13,374] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:13,449] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:14,184] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:14,756] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:16,658] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:16,759] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:16,835] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:17,296] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:19,071] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:19,753] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:19,831] INFO - [DEV] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:19,915] INFO - [PROD] Inserted discussion topic for 'United States' under 'POLITICS'.
+[2025-04-04 11:30:20,196] INFO - Fetched 5 articles from https://www.espn.com/espn/rss/news
+[2025-04-04 11:30:21,097] INFO - Fetched 5 articles from https://sports.yahoo.com/rss/
+[2025-04-04 11:30:21,842] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:22,596] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:24,907] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:24,982] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:25,061] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:25,539] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:26,427] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:28,286] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:28,363] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:28,452] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:29,036] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:31,379] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:32,183] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:32,279] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:32,381] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:33,127] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:34,235] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:36,141] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:36,227] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:36,323] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:36,935] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:39,304] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:40,209] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:40,287] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:40,369] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:41,291] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:43,660] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:44,887] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:44,976] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:45,064] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:45,566] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:47,763] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:48,696] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:48,810] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:48,888] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:49,576] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:51,700] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:52,542] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:52,625] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:52,700] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:53,337] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:54,238] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:56,259] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:56,380] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:56,484] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:30:56,939] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:30:57,983] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:00,306] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:00,442] INFO - [DEV] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:31:00,579] INFO - [PROD] Inserted discussion topic for 'United States' under 'SPORTS'.
+[2025-04-04 11:31:00,969] INFO - Fetched 5 articles from https://feeds.nbcnews.com/nbcnews/public/news
+[2025-04-04 11:31:01,380] INFO - Fetched 5 articles from https://www.washingtontimes.com/rss/headlines/news/business-economy/
+[2025-04-04 11:31:01,845] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:04,030] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:04,895] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:04,976] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:05,057] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:05,612] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:07,998] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:15,102] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:15,201] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:15,282] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:15,776] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:16,676] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:18,649] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:18,719] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:18,796] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:19,412] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:21,250] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:22,139] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:22,228] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:22,311] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:22,961] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:25,758] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:26,546] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:26,620] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:26,694] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:27,135] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:27,836] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:29,530] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:29,602] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:29,678] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:30,367] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:31,211] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:33,117] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:33,193] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:33,268] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:33,655] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:35,200] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:36,225] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:36,322] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:36,400] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:36,954] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:37,867] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:40,724] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:40,835] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:40,912] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:41,431] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:42,424] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:44,327] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:44,414] INFO - [DEV] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:44,493] INFO - [PROD] Inserted discussion topic for 'United States' under 'BUSINESS'.
+[2025-04-04 11:31:45,314] INFO - Fetched 5 articles from https://www.huffpost.com/dept/entertainment/feed
+[2025-04-04 11:31:45,477] INFO - Fetched 5 articles from https://variety.com/feed/
+[2025-04-04 11:31:46,520] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:47,664] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:49,685] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:49,796] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:49,900] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:50,397] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:51,493] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:53,588] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:53,687] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:53,767] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:54,301] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:56,800] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:57,735] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:31:57,824] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:57,901] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:31:58,502] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:00,080] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:00,901] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:00,979] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:01,060] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:01,532] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:03,376] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:06,428] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:06,537] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:06,619] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:07,110] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:09,310] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:10,254] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:10,354] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:10,461] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:11,022] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:12,275] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:14,029] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:14,109] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:14,219] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:14,754] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:15,320] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:17,139] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:17,217] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:17,294] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:17,851] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:19,119] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:21,374] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:21,447] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:21,526] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:22,108] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:22,786] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:24,971] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:25,047] INFO - [DEV] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:25,122] INFO - [PROD] Inserted discussion topic for 'United States' under 'ENTERTAINMENT'.
+[2025-04-04 11:32:25,314] INFO - Fetched 5 articles from https://www.tmz.com/rss.xml
+[2025-04-04 11:32:25,624] INFO - Fetched 5 articles from https://www.usmagazine.com/category/entertainment/feed/
+[2025-04-04 11:32:26,105] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:27,203] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:28,885] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:28,960] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:29,040] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:29,576] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:32,487] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:33,443] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:33,528] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:33,606] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:34,015] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:35,228] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:37,086] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:37,167] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:37,260] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:37,789] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:39,494] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:40,206] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:40,289] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:40,365] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:40,856] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:42,560] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:43,433] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:43,511] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:43,605] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:44,162] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:44,760] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:46,605] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:46,678] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:46,759] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:47,244] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:48,361] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:50,252] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:50,339] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:50,426] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:50,908] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:51,979] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:53,616] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:32:53,689] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:53,766] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:32:58,105] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:00,048] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:01,808] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:01,893] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:33:01,969] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:33:02,514] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:03,631] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:05,606] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2025-04-04 11:33:05,706] INFO - [DEV] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:33:05,783] INFO - [PROD] Inserted discussion topic for 'United States' under 'CELEBRITIES'.
+[2025-04-04 11:33:05,783] INFO - Closed DEV DB connection.
+[2025-04-04 11:33:05,784] INFO - Closed PROD DB connection.
+[2025-04-04 11:33:05,784] INFO - Successfully processed and inserted 150 discussion topics into both DEV and PROD.

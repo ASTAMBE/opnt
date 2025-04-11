@@ -1,0 +1,74 @@
+[2025-04-07 15:01:23,203] ERROR - MySQL fetch error: 1054 (42S22): Unknown column 'C.COUNTRY_CODE' in 'on clause'
+[2025-04-07 15:01:23,205] INFO - No rows to process.
+[2025-04-07 15:03:02,355] INFO - No rows to process.
+[2025-04-07 15:06:03,405] INFO - No rows to process.
+[2025-04-07 15:07:56,249] INFO - No rows to process.
+[2025-04-07 15:08:31,021] INFO - No rows to process.
+[2025-04-07 15:16:40,310] ERROR - MySQL fetch error: 1054 (42S22): Unknown column 'INTEREST' in 'field list'
+[2025-04-07 15:16:40,311] INFO - No rows to process.
+[2025-04-07 15:20:56,755] ERROR - MySQL fetch error: 1054 (42S22): Unknown column 'RSS_FDD_DONE' in 'where clause'
+[2025-04-07 15:20:56,756] INFO - No rows to process.
+[2025-04-07 15:22:23,257] ERROR - MySQL fetch error: 1054 (42S22): Unknown column 'RSS_FDD_DONE' in 'where clause'
+[2025-04-07 15:22:23,258] INFO - No rows to process.
+[2025-04-07 15:23:17,490] INFO - No rows to process.
+[2025-04-07 15:26:59,567] INFO - No rows to process.
+[2025-04-07 15:28:35,981] INFO - Looking for news websites for GHA - POLITICS
+[2025-04-07 15:28:36,330] INFO - Inserting new row for GHA - POLITICS
+[2025-04-07 15:28:36,361] INFO - Completed feed discovery for GHA - POLITICS
+[2025-04-07 15:28:37,965] INFO - Looking for news websites for GHA - SPORTS
+[2025-04-07 15:28:38,629] INFO - Inserting new row for GHA - SPORTS
+[2025-04-07 15:28:38,661] INFO - Completed feed discovery for GHA - SPORTS
+[2025-04-07 15:28:40,109] INFO - Looking for news websites for GHA - BUSINESS
+[2025-04-07 15:28:40,439] INFO - Inserting new row for GHA - BUSINESS
+[2025-04-07 15:28:40,472] INFO - Completed feed discovery for GHA - BUSINESS
+[2025-04-07 15:28:41,925] INFO - Looking for news websites for GHA - ENTERTAINMENT
+[2025-04-07 15:28:42,395] INFO - Inserting new row for GHA - ENTERTAINMENT
+[2025-04-07 15:28:42,447] INFO - Completed feed discovery for GHA - ENTERTAINMENT
+[2025-04-07 15:28:44,255] INFO - Looking for news websites for GHA - CELEBRITIES
+[2025-04-07 15:28:44,999] INFO - Inserting new row for GHA - CELEBRITIES
+[2025-04-07 15:28:45,030] INFO - Completed feed discovery for GHA - CELEBRITIES
+[2025-04-07 15:40:21,030] INFO - Searching for real news websites for GHA - POLITICS
+[2025-04-07 15:40:21,307] INFO - Inserting new row for GHA - POLITICS
+[2025-04-07 15:40:21,340] INFO - Completed feed discovery for GHA - POLITICS
+[2025-04-07 15:40:21,423] INFO - Searching for real news websites for GHA - SPORTS
+[2025-04-07 15:40:21,582] INFO - Inserting new row for GHA - SPORTS
+[2025-04-07 15:40:21,614] INFO - Completed feed discovery for GHA - SPORTS
+[2025-04-07 15:40:21,683] INFO - Searching for real news websites for GHA - BUSINESS
+[2025-04-07 15:40:21,835] INFO - Inserting new row for GHA - BUSINESS
+[2025-04-07 15:40:21,872] INFO - Completed feed discovery for GHA - BUSINESS
+[2025-04-07 15:40:21,935] INFO - Searching for real news websites for GHA - ENTERTAINMENT
+[2025-04-07 15:40:22,104] INFO - Inserting new row for GHA - ENTERTAINMENT
+[2025-04-07 15:40:22,135] INFO - Completed feed discovery for GHA - ENTERTAINMENT
+[2025-04-07 15:40:22,199] INFO - Searching for real news websites for GHA - CELEBRITIES
+[2025-04-07 15:40:22,360] INFO - Inserting new row for GHA - CELEBRITIES
+[2025-04-07 15:40:22,392] INFO - Completed feed discovery for GHA - CELEBRITIES
+[2025-04-07 15:48:03,861] INFO - Searching for real news websites for GHA - POLITICS
+[2025-04-07 15:48:04,347] INFO - Updating existing row 21 for GHA - POLITICS
+[2025-04-07 15:48:04,382] INFO - Completed feed discovery for GHA - POLITICS
+[2025-04-07 15:48:04,451] INFO - Searching for real news websites for GHA - SPORTS
+[2025-04-07 15:48:04,933] INFO - Updating existing row 22 for GHA - SPORTS
+[2025-04-07 15:48:04,981] INFO - Completed feed discovery for GHA - SPORTS
+[2025-04-07 15:48:05,057] INFO - Searching for real news websites for GHA - BUSINESS
+[2025-04-07 15:48:05,618] INFO - Updating existing row 23 for GHA - BUSINESS
+[2025-04-07 15:48:05,651] INFO - Completed feed discovery for GHA - BUSINESS
+[2025-04-07 15:48:05,817] INFO - Searching for real news websites for GHA - ENTERTAINMENT
+[2025-04-07 15:48:06,370] INFO - Updating existing row 24 for GHA - ENTERTAINMENT
+[2025-04-07 15:48:06,404] INFO - Completed feed discovery for GHA - ENTERTAINMENT
+[2025-04-07 15:48:06,676] INFO - Searching for real news websites for GHA - CELEBRITIES
+[2025-04-07 15:48:07,144] INFO - Updating existing row 25 for GHA - CELEBRITIES
+[2025-04-07 15:48:07,175] INFO - Completed feed discovery for GHA - CELEBRITIES
+[2025-04-07 15:57:34,897] INFO - Searching for real news websites for GHA - POLITICS
+[2025-04-07 15:57:35,093] INFO - Discovered candidate news sites: []
+[2025-04-07 15:57:35,093] WARNING - No candidate sites found for GHA - POLITICS. Skipping.
+[2025-04-07 15:57:35,093] INFO - Searching for real news websites for GHA - SPORTS
+[2025-04-07 15:57:35,211] INFO - Discovered candidate news sites: []
+[2025-04-07 15:57:35,212] WARNING - No candidate sites found for GHA - SPORTS. Skipping.
+[2025-04-07 15:57:35,212] INFO - Searching for real news websites for GHA - BUSINESS
+[2025-04-07 15:57:35,331] INFO - Discovered candidate news sites: []
+[2025-04-07 15:57:35,332] WARNING - No candidate sites found for GHA - BUSINESS. Skipping.
+[2025-04-07 15:57:35,332] INFO - Searching for real news websites for GHA - ENTERTAINMENT
+[2025-04-07 15:57:35,452] INFO - Discovered candidate news sites: []
+[2025-04-07 15:57:35,453] WARNING - No candidate sites found for GHA - ENTERTAINMENT. Skipping.
+[2025-04-07 15:57:35,453] INFO - Searching for real news websites for GHA - CELEBRITIES
+[2025-04-07 15:57:35,575] INFO - Discovered candidate news sites: []
+[2025-04-07 15:57:35,576] WARNING - No candidate sites found for GHA - CELEBRITIES. Skipping.

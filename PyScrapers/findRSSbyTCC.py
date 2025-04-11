@@ -1,114 +1,120 @@
-import os
-import mysql.connector
-from dotenv import load_dotenv
+import requests
 import feedparser
-from iso3166 import countries_by_alpha3
-import time
+from bs4 import BeautifulSoup
+import re
+from collections import defaultdict
 
-# Load environment variables
-load_dotenv("C:\\AST\\GitHub\\set_env.env")
-
-# Ask for environment selection
-environment = input("Enter environment (DEV/PROD): ").strip().upper()
-while environment not in ["DEV", "PROD"]:
-    environment = input("Invalid choice. Enter environment (DEV/PROD): ").strip().upper()
-
-db_config = {
-    "DEV": {
-        "host": os.getenv("DEV_DB_HOST"),
-        "user": os.getenv("DEV_DB_USER"),
-        "password": os.getenv("DEV_PWD"),
-        "database": os.getenv("DEV_DATABASE"),
-    },
-    "PROD": {
-        "host": os.getenv("PROD_DB_HOST"),
-        "user": os.getenv("PROD_DB_USER"),
-        "password": os.getenv("PROD_PWD"),
-        "database": os.getenv("PROD_DATABASE"),
-    },
+# Mapping from topic keywords to your topic IDs
+TOPIC_KEYWORDS = {
+    "politics": 1,
+    "sports": 2,
+    "business": 4,
+    "entertainment": 5,
+    "celebrities": 10,
 }
 
-DB_CONFIG = db_config[environment]
+# GitHub raw README.md URL
+GHANA_FEEDS_URL = "https://raw.githubusercontent.com/yavuz/news-feed-list-of-countries/master/README.md"
 
-# Topic mapping
-TOPICS = {
-    1: "politics",
-    2: "sports",
-    4: "business",
-    5: "entertainment",
-    10: "celebrities"
-}
+def categorize_feed(url, title):
+    """Attempt to categorize feed based on URL or title"""
+    combined = f"{url} {title}".lower()
+    for keyword, topic_id in TOPIC_KEYWORDS.items():
+        if keyword in combined:
+            return keyword, topic_id
+    return None, None
 
-# Connect to DB
-conn = mysql.connector.connect(**DB_CONFIG)
-cursor = conn.cursor(dictionary=True)
+def get_ghana_feeds():
+    """Scrape the GitHub HTML and extract RSS feed URLs under the Ghana section."""
+    url = "https://github.com/yavuz/news-feed-list-of-countries"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
 
-# Ask user: one country or all
-scope = input("Run for (A)ll countries or (O)ne specific TRUE_COUNTRY_CODE? ").strip().upper()
-if scope == 'O':
-    true_country_code = input("Enter the TRUE_COUNTRY_CODE (e.g., SLE): ").strip().upper()
-    cursor.execute("SELECT * FROM OPN_TCC_COUNTS WHERE TRUE_COUNTRY_CODE = %s", (true_country_code,))
-else:
-    cursor.execute("SELECT * FROM OPN_TCC_COUNTS")
+    feed_urls = []
+    ghana_start = None
 
-countries = cursor.fetchall()
+    # Step 1: Find the heading with text "Ghana"
+    for h3 in soup.find_all("h3"):
+        if "Ghana" in h3.get_text(strip=True):
+            ghana_start = h3
+            break
 
-def get_country_name(alpha3):
-    try:
-        return countries_by_alpha3[alpha3].name
-    except:
-        return None
+    if not ghana_start:
+        print("❌ Ghana section header not found.")
+        return []
 
-# Placeholder function for RSS feed lookup (replace with real search logic)
-def find_rss_feeds(country_name, topic):
-    # TODO: Replace with real feed discovery logic
-    return [
-        f"https://example.com/{country_name.lower().replace(' ', '-')}/{topic}/rss",
-        f"https://news.example.com/{topic}/{country_name.lower().replace(' ', '-')}.xml"
-    ]
+    # Step 2: Collect links until the next h3 (next country)
+    for sibling in ghana_start.find_next_siblings():
+        if sibling.name == "h3":
+            break  # End of Ghana section
+        for a in sibling.find_all("a", href=True):
+            href = a['href'].strip()
+            if href.startswith("http"):
+                feed_urls.append(href)
 
-for row in countries:
-    code = row['TRUE_COUNTRY_CODE']
-    name = row['TRUE_COUNTRY_NAME']
-    if not name:
-        name = get_country_name(code)
-        if name:
-            cursor.execute("UPDATE OPN_TCC_COUNTS SET TRUE_COUNTRY_NAME = %s WHERE TRUE_COUNTRY_CODE = %s", (name, code))
-            conn.commit()
-            print(f"\u2705 Updated country name for {code}: {name}")
-        else:
-            print(f"\u274C Could not resolve country name for {code}")
+    print(f"✅ Found {len(feed_urls)} RSS URLs.")
+    return feed_urls
+
+
+def validate_and_categorize(feeds):
+    """Check feeds for availability and categorize them"""
+    categorized = defaultdict(list)
+    for url in feeds:
+        try:
+            parsed = feedparser.parse(url)
+            if parsed.bozo or not parsed.entries:
+                continue
+            title = parsed.feed.get("title", "")
+            topic, topic_id = categorize_feed(url, title)
+            if topic and len(categorized[topic]) < 3:
+                categorized[topic].append(url)
+        except Exception:
             continue
+    return categorized
 
-    for topic_id, topic in TOPICS.items():
-        feeds = find_rss_feeds(name, topic)
-        for feed_url in feeds:
-            parsed = feedparser.parse(feed_url)
-            print(f"🔍 Testing feed for {name} / {topic}: {feed_url}")
-            print(f"    ➤ Bozo: {parsed.bozo}, Entries: {len(parsed.entries)}")
+def generate_sql_statements(categorized_feeds):
+    """Build SQL statements per topic"""
+    statements = []
+    for topic, feeds in categorized_feeds.items():
+        topic_id = TOPIC_KEYWORDS[topic]
+        interest_upper = topic.upper()
+        # Pad feeds to always have 3 slots
+        padded = feeds + [""] * (3 - len(feeds))
+        sql = f"""
+INSERT INTO OPN_TCC_PARAMS (
+    TRUE_COUNTRY_CODE, COUNTRY_CODE, COUNTRY_NAME, INTEREST, TOPICID,
+    FEED_URL1, FEED_URL2, FEED_URL3,
+    FEED1_TYPE, FEED2_TYPE, FEED3_TYPE,
+    NEWS_COUNT_PER_RUN
+)
+VALUES (
+    'GHA', 'GGG', 'Ghana', '{interest_upper}', {topic_id},
+    '{padded[0]}', '{padded[1]}', '{padded[2]}',
+    'rss', 'rss', 'rss',
+    5
+)
+ON DUPLICATE KEY UPDATE
+    FEED_URL1 = VALUES(FEED_URL1),
+    FEED_URL2 = VALUES(FEED_URL2),
+    FEED_URL3 = VALUES(FEED_URL3),
+    FEED1_TYPE = VALUES(FEED1_TYPE),
+    FEED2_TYPE = VALUES(FEED2_TYPE),
+    FEED3_TYPE = VALUES(FEED3_TYPE),
+    NEWS_COUNT_PER_RUN = VALUES(NEWS_COUNT_PER_RUN);
+""".strip()
+        statements.append((interest_upper, sql))
+    return statements
 
-            if parsed.bozo:
-                continue
-            if not parsed.entries:
-                continue
+if __name__ == "__main__":
+    print("🔍 Fetching Ghana RSS feeds...")
+    feeds = get_ghana_feeds()
+    print(f"✅ Found {len(feeds)} RSS URLs.")
 
-            # Check if already exists
-            cursor.execute("""
-                SELECT 1 FROM OPN_TCC_PARAMS 
-                WHERE TRUE_COUNTRY_CODE = %s AND TOPICID = %s AND FEED_URL = %s
-            """, (code, topic_id, feed_url))
-            if cursor.fetchone():
-                continue
+    print("🧪 Checking which feeds are live and categorizing them...")
+    categorized = validate_and_categorize(feeds)
 
-            title = parsed.feed.get("title", f"{topic.title()} Feed")
-            cursor.execute("""
-                INSERT INTO OPN_TCC_PARAMS (TRUE_COUNTRY_CODE, TOPICID, FEED_URL, FEED_NAME, LAST_UPDATED_DTM)
-                VALUES (%s, %s, %s, %s, NOW())
-            """, (code, topic_id, feed_url, title))
-            conn.commit()
-            print(f"\u2705 Inserted {topic} feed for {name}: {feed_url}")
-            time.sleep(1)
-
-cursor.close()
-conn.close()
-print("\n\u2705 All done!")
+    print("📦 Generating SQL insert/update statements:")
+    sqls = generate_sql_statements(categorized)
+    for topic, sql in sqls:
+        print(f"\n--- Topic: {topic} ---")
+        print(sql)

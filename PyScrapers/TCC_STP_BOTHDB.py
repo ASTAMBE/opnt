@@ -84,7 +84,7 @@ def fetch_parameters_from_db(row_id=None, db_config=None):
         params = cursor.fetchall()
         cursor.close()
         conn.close()
-        logging.info(f"Fetched {len(params)} rows from OPN_TCC_PARAMS")
+        # logging.info(f"Fetched {len(params)} rows from OPN_TCC_PARAMS")
         return params
     except mysql.connector.Error as err:
         logging.error(f"Database Connection Error: {err}")

@@ -2053,3 +2053,7 @@
 [2025-05-19 18:17:23,512] INFO - Closed DEV DB connection.
 [2025-05-19 18:17:23,512] INFO - Closed PROD DB connection.
 [2025-05-19 18:17:23,512] INFO - Successfully processed and inserted 180 discussion topics into both DEV and PROD.
+[2025-05-24 12:02:58,562] ERROR - Error generating comment: Connection error.
+[2025-05-24 12:41:57,131] ERROR - Error generating comment: Connection error.
+[2025-05-24 12:41:57,139] ERROR - [DEV] Error inserting data: 2055: Lost connection to MySQL server at 'opntdevdb.cidtah9kj29d.us-west-1.rds.amazonaws.com:3306', system error: 10054 An existing connection was forcibly closed by the remote host
+[2025-05-24 12:41:57,140] ERROR - [PROD] Error inserting data: 2055: Lost connection to MySQL server at 'prodopnt-new.cidtah9kj29d.us-west-1.rds.amazonaws.com:3306', system error: 10054 An existing connection was forcibly closed by the remote host

@@ -5,6 +5,10 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 SHOW ENGINE INNODB STATUS ;
 SHOW FULL PROCESSLIST;
 
+call createGoogleUserTokenApp('ASTdev06062025', 'USA', 'AST'
+, 'ASTAGAIN', 'ASTOPNT@GMAIL.COM', 'https://lh3.googleusercontent.com/a/ACg8ocLduUEFbyFF92gm_OF13lJY-qDcxXvIZ6u92fcHT0ZI4gavtQ=s200'
+, 'ASTdev06062025', 'ASTOPNT@GMAIL.COM', 'SOMEDEVICESERIALTHATISCOMPLETELYMADEUPJUSTFOR TEST060625251254' ) ;
+
 CALL newPostwithmedia(1, bringUUID(1004649), 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html'
 , 'https://www.hindustantimes.com/india-news/breaking-news-updates-october-05-2021-101633390217882-amp.html', 'Y','','N') ;
 

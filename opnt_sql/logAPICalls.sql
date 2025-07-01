@@ -1,4 +1,4 @@
--- logAPICalls
+-- logAPICalls - for logging the login and create google user screpts
 
  DELIMITER //
 DROP PROCEDURE IF EXISTS logAPICalls //

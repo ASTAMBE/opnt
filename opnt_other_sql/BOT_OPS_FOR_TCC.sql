@@ -57,12 +57,22 @@ SELECT * FROM OPN_P_KW WHERE NEWS_ONLY_FLAG = 'Y' ORDER BY TOPICID;
 SELECT COUNT(1) FROM OPN_P_KW ;
 
 -- the process of old CART deletion for BOTs needs to be run every month or so.
-SELECT COUNT(1) from OPN_USER_CARTS where userid = 1020579 ;
 
-DELETE FROM OPN_USER_CARTS
-WHERE USERID IN (
-    SELECT USERID FROM OPN_USERLIST WHERE BOT_FLAG = 'Y' AND USERID = 1020579
-)
-AND KEYID NOT IN (105087, 105654, 105108, 105653, 105655, 105089)
-AND CREATION_DTM < NOW() - INTERVAL 30 DAY;
+DELETE FROM OPN_USER_CARTS WHERE USERID IN ( SELECT USERID FROM OPN_USERLIST WHERE BOT_FLAG = 'Y') 
+AND KEYID NOT IN (105087, 105654, 105108, 105653, 105655, 105089) AND CREATION_DTM < NOW() - INTERVAL 30 DAY ;
 
+-- Now we make sure that all the MAIN BOTs have all the 6 XYZ KEYIDs
+
+SELECT USERID, COUNT(1) FROM OPN_MAIN_BOTS WHERE KEYID IN (105087, 105654, 105108, 105653, 105655, 105089) GROUP BY USERID HAVING COUNT(1) = 1 ;
+
+/* WHY each MAIN BOT is not assigned with each of the XYZ KEYs ? Are MAIN BOTs supposed to make the network only with non-XYZ KWs ?
+What was the design difference envisaged between MAIN BOTs and XYZ BOTs
+Are XYZ BOTs exclusively used for INSTEAM while MAIN BOTs for the Discussions ?
+If the new user is not assigned the XYZ KWs, will he not get very little content ?
+Should we even persist with the Instream at all ?
+what if we have only the discussions - and all the BOTs (no distinction betwn MAIN or XYZ)) - are alwasy given the XYZ KEYs 
+
+*/
+SELECT * FROM OPN_SFC_CONTENT WHERE TRUE_COUNTRY_CODE = 'NGA' AND TOPICID = 1 ORDER BY ROW_ID DESC ;
+SELECT * FROM OPN_POSTS WHERE POST_ID IN (1626183, 1626182) ;
+SELECT * FROM OPN_P_KW WHERE KEYID IN (255906, 255907) ;

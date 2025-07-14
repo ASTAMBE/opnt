@@ -36,3 +36,19 @@ WHERE users.TRUE_COUNTRY_CODE IN (
   SELECT DISTINCT TRUE_COUNTRY_CODE 
   FROM OPN_BOT_NAMES
 );
+
+CALL callSTDbyTCC(1, 'USA');
+CALL callSTDbyTCC(2, 'USA');
+CALL callSTDbyTCC(4, 'USA');
+CALL callSTDbyTCC(5, 'USA');
+CALL callSTDbyTCC(10, 'USA');
+CALL callSTDbyTCC(1, 'IND');
+CALL callSTDbyTCC(2, 'IND');
+CALL callSTDbyTCC(4, 'IND');
+CALL callSTDbyTCC(5, 'IND');
+CALL callSTDbyTCC(10, 'IND');
+CALL callSTDbyTCC(1, 'NGA');
+CALL callSTDbyTCC(2, 'NGA');
+CALL callSTDbyTCC(4, 'NGA');
+CALL callSTDbyTCC(5, 'NGA');
+CALL callSTDbyTCC(10, 'NGA');

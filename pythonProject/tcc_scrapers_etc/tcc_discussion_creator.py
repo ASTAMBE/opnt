@@ -92,20 +92,26 @@ def fetch_news_from_rss(feed_urls, num_topics_per_feed):
 
 def assess_news_item_for_discussion(headline, country_name, topic):
     prompt = f"""
-You are an editorial assistant helping assess whether a news item is suitable for public discourse in {country_name} under the topic '{topic}'.
+    You are an editorial assistant helping filter news items for public debate in {country_name} under the topic '{topic}'.
 
-Headline: {headline}
+    Your job is to:
+    1. Decide if the headline is RELEVANT to the topic '{topic}'.
+    2. If relevant, determine if it's worth converting into a discussion (i.e., polarizing, emotional, or provocative enough).
 
-Classify it into one of the following categories:
-- SKIP: Not interesting, irrelevant, or unlikely to provoke any discussion
-- POLITICAL: Likely to provoke strong opposing views among ideological camps
-- UNIVERSAL_LOVE: Celebratory news (e.g. awards, births, national wins) that most would love
-- UNIVERSAL_HATE: Tragic or horrific news (e.g. deaths, terrorism) that most would hate
-- GRAY: Discussion-worthy but not necessarily polarizing
+    Examples of irrelevance:
+    - A tragic accident reported under 'Politics' is not relevant unless it has political implications.
+    - A celebrity scandal under 'Business' is irrelevant unless it involves policy, corporate governance, or market impact.
 
-Respond strictly in this JSON format:
-{{"status": "PROCEED" or "SKIP", "category": "POLITICAL" | "UNIVERSAL_LOVE" | "UNIVERSAL_HATE" | "GRAY", "reason": "one-sentence justification"}}
-"""
+    Headline: "{headline}"
+
+    Respond in this strict JSON format:
+    {{
+      "status": "PROCEED" or "SKIP",
+      "category": "POLITICAL" | "UNIVERSAL_LOVE" | "UNIVERSAL_HATE" | "GRAY",
+      "reason": "one-sentence justification of relevance and tone"
+    }}
+    """
+
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
@@ -171,24 +177,49 @@ Respond with only the camp name.
         return random.choice(list(camps))
 
 def generate_debatable_statement(news_title, true_country_name):
-    prompt = f"""
-Rewrite the following news headline as a strongly opinionated, assertive, and emotionally charged statement that would spark disagreement or support from different people in {true_country_name}. 
+    # Step 1: Check if the original headline is already emotionally charged or debate-worthy
+    check_prompt = f"""
+Is the following headline already worded in a way that would likely provoke debate or disagreement in {true_country_name}?
 
-Avoid phrasing it as a question. Take a clear stance either in support or against the implication of the headline. Do not include ambiguity or neutrality.
+Headline: "{news_title}"
 
-Headline: {news_title}
+Answer only "YES" or "NO".
 """
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=100,
-            temperature=0.8,
+            messages=[{"role": "user", "content": check_prompt}],
+            max_tokens=5,
+            temperature=0.3,
         )
-        return response.choices[0].message.content.strip()
+        decision = response.choices[0].message.content.strip().upper()
     except Exception as e:
-        logging.error(f"Error generating debatable statement: {e}")
-        return news_title
+        logging.warning(f"Could not assess headline debate-worthiness: {e}")
+        decision = "NO"
+
+    if decision == "YES":
+        return news_title  # Use the original headline as-is
+    else:
+        # Step 2: If not, rewrite it with a strong opinionated stance
+        rewrite_prompt = f"""
+Rewrite the following news headline as a strongly opinionated, assertive, and emotionally charged statement that would spark disagreement or support from different people in {true_country_name}. 
+
+Avoid questions or neutral phrasing. Take a clear stance either in support or against the implication of the headline.
+
+Headline: "{news_title}"
+"""
+        try:
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": rewrite_prompt}],
+                max_tokens=100,
+                temperature=0.8,
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            logging.error(f"Error rewriting headline: {e}")
+            return news_title  # Fallback to original
+
 
 def generate_comment(statement, sentiment, country_code, true_country_name):
     prompt = f"""
@@ -279,12 +310,13 @@ def process_and_store_discussion_topics():
 
             sql_query = """
                 INSERT INTO OPN_SFC_CONTENT 
-                (COUNTRY_CODE, TRUE_COUNTRY_CODE, TRUE_COUNTRY_NAME, CONTENT_DTM, CONTENT_DATE, INTEREST, TOPICID, CONTENT_TITLE, CONTENT_CAMP, CONTENT_TONE, COMMENT1_TONE, COMMENT1_TEXT, COMMENT1_CAMP, COMMENT2_TONE, COMMENT2_TEXT, COMMENT2_CAMP, CONTENT_URL)
+                (COUNTRY_CODE, TRUE_COUNTRY_CODE, TRUE_COUNTRY_NAME, CONTENT_DTM, CONTENT_DATE, INTEREST, TOPICID, NEWS_TITLE, CONTENT_TITLE, CONTENT_CAMP, CONTENT_TONE, COMMENT1_TONE, COMMENT1_TEXT, COMMENT1_CAMP, COMMENT2_TONE, COMMENT2_TEXT, COMMENT2_CAMP, CONTENT_URL)
                 VALUES 
-                (%s, %s, %s, NOW(), CURDATE(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                (%s, %s, %s, NOW(), CURDATE(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             """
             values = (
-                country_code, true_country_code, true_country_name, interest, topic_id, topic, content_camp,
+                country_code, true_country_code, true_country_name,
+                interest, topic_id, news_title, topic, content_camp,
                 content_tone, comment1_tone, comment1_text, comment1_camp,
                 comment2_tone, comment2_text, comment2_camp, news_url
             )

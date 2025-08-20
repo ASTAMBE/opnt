@@ -47,7 +47,7 @@ POLITICAL_CAMPS = {
     "KEN": {"AZIMIO", "UDA"},
     "PAK": {"ISLAMIST", "MODERN"},
 }
-COUNTRY_NAME_MAP = {"NGA": "Nigeria", "IND": "India", "USA": "United States", "GHA": "Ghana"}
+COUNTRY_NAME_MAP = {"NGA": "Nigeria", "IND": "India", "USA": "United States", "GHA": "Ghana", "KEN": "Kenya", "PAK": "Pakistan"}
 
 def fetch_parameters_from_db(row_id=None, db_config=None):
     try:
@@ -78,6 +78,7 @@ def fetch_news_from_rss(feed_urls, num_topics_per_feed):
                 feed_articles = [(entry.title, entry.link) for entry in feed.entries[:num_topics_per_feed]]
                 articles.extend(feed_articles)
 
+                # Quick local assessment report (kept from your original)
                 for title, _ in feed_articles:
                     assessment = assess_news_item_for_discussion(title, "", "")
                     if assessment.get("status") == "PROCEED":
@@ -92,26 +93,23 @@ def fetch_news_from_rss(feed_urls, num_topics_per_feed):
 
 def assess_news_item_for_discussion(headline, country_name, topic):
     prompt = f"""
-    You are an editorial assistant helping filter news items for public debate in {country_name} under the topic '{topic}'.
+You are an editorial assistant helping assess whether a news item is suitable for discussion in {country_name} under the topic '{topic}'.
 
-    Your job is to:
-    1. Decide if the headline is RELEVANT to the topic '{topic}'.
-    2. If relevant, determine if it's worth converting into a discussion (i.e., polarizing, emotional, or provocative enough).
+Your task is to:
+1. Is the headline RELEVANT to the topic '{topic}'?
+2. Is it INTERESTING enough to spark a conversation - even if it's not controversial?
 
-    Examples of irrelevance:
-    - A tragic accident reported under 'Politics' is not relevant unless it has political implications.
-    - A celebrity scandal under 'Business' is irrelevant unless it involves policy, corporate governance, or market impact.
+This does NOT mean the news must be emotional or polarizing. For sports, entertainment, celebrities, etc., even lineup announcements, transfers, or performances may be discussion-worthy.
 
-    Headline: "{headline}"
+Headline: "{headline}"
 
-    Respond in this strict JSON format:
-    {{
-      "status": "PROCEED" or "SKIP",
-      "category": "POLITICAL" | "UNIVERSAL_LOVE" | "UNIVERSAL_HATE" | "GRAY",
-      "reason": "one-sentence justification of relevance and tone"
-    }}
-    """
-
+Respond in strict JSON format:
+{{
+  "status": "PROCEED" or "SKIP",
+  "category": "POLITICAL" | "UNIVERSAL_LOVE" | "UNIVERSAL_HATE" | "GRAY",
+  "reason": "one-sentence justification"
+}}
+"""
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
@@ -167,8 +165,9 @@ Respond with only the camp name.
             max_tokens=20,
             temperature=0.3,
         )
-        camp = response.choices[0].message.content.strip().upper()
-        if camp not in camps:
+        camp = response.choices[0].message.content.strip().upper().replace('"', '').replace("'", "")
+        valid_camps = {c.upper() for c in camps}
+        if camp not in valid_camps:
             logging.warning(f"GPT returned invalid camp '{camp}'. Falling back to random from {camps}.")
             camp = random.choice(list(camps))
         return camp
@@ -176,10 +175,12 @@ Respond with only the camp name.
         logging.warning(f"Camp inference failed: {e}")
         return random.choice(list(camps))
 
-def generate_debatable_statement(news_title, true_country_name):
-    # Step 1: Check if the original headline is already emotionally charged or debate-worthy
+def generate_debatable_statement(news_title, true_country_name, interest):
+    # Step 1: Check if the headline is already discussion-worthy
     check_prompt = f"""
-Is the following headline already worded in a way that would likely provoke debate or disagreement in {true_country_name}?
+In the context of {true_country_name}, is the following headline already discussion-worthy for people interested in {interest.lower()}?
+
+A discussion-worthy headline is one that would naturally prompt people to talk about it — due to curiosity, fandom, relevance, or emotional reaction — even if it's not controversial or political.
 
 Headline: "{news_title}"
 
@@ -194,32 +195,59 @@ Answer only "YES" or "NO".
         )
         decision = response.choices[0].message.content.strip().upper()
     except Exception as e:
-        logging.warning(f"Could not assess headline debate-worthiness: {e}")
+        logging.warning(f"Could not assess discussion-worthiness: {e}")
         decision = "NO"
 
     if decision == "YES":
-        return news_title  # Use the original headline as-is
-    else:
-        # Step 2: If not, rewrite it with a strong opinionated stance
-        rewrite_prompt = f"""
-Rewrite the following news headline as a strongly opinionated, assertive, and emotionally charged statement that would spark disagreement or support from different people in {true_country_name}. 
+        # For politics, keep as-is. For non-politics, still rephrase with fan/personality flavor.
+        if interest.upper() == "POLITICS":
+            return news_title
+        else:
+            try:
+                reword_prompt = f"""
+Reword the following {interest.lower()} news headline to sound more like a personal reaction, casual commentary, or fan-style expression.
+Add some flavor, minor emotion, or context — but keep it under 15 words.
 
-Avoid questions or neutral phrasing. Take a clear stance either in support or against the implication of the headline.
-
-Headline: "{news_title}"
+Original: "{news_title}"
 """
-        try:
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": rewrite_prompt}],
-                max_tokens=100,
-                temperature=0.8,
-            )
-            return response.choices[0].message.content.strip()
-        except Exception as e:
-            logging.error(f"Error rewriting headline: {e}")
-            return news_title  # Fallback to original
+                response = client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{"role": "user", "content": reword_prompt}],
+                    max_tokens=50,
+                    temperature=0.7,
+                )
+                return response.choices[0].message.content.strip()
+            except Exception as e:
+                logging.warning(f"Error rewording non-political headline: {e}")
+                return news_title
+    else:
+        # Not even discussion-worthy — return None to skip
+        return None
 
+def infer_tone_for_statement(statement, camp, country):
+    prompt = f"""
+A person from {country} who identifies with the political camp '{camp}' is reacting to the following statement:
+
+"{statement}"
+
+Would they be more likely to feel LOVE (agreement, approval, pride) or HATE (anger, disagreement, disapproval) toward it?
+
+Respond only with "LOVE" or "HATE".
+"""
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=10,
+            temperature=0.4,
+        )
+        tone = response.choices[0].message.content.strip().upper()
+        if tone not in ["LOVE", "HATE"]:
+            raise ValueError("Invalid tone received")
+        return tone
+    except Exception as e:
+        logging.warning(f"Tone inference failed, defaulting to LOVE: {e}")
+        return "LOVE"
 
 def generate_comment(statement, sentiment, country_code, true_country_name):
     prompt = f"""
@@ -260,75 +288,108 @@ def process_and_store_discussion_topics():
     skipped_count = 0
     total_items_examined = 0
 
-    for param in params:
-        country_code = param["COUNTRY_CODE"]
-        true_country_code = param["TRUE_COUNTRY_CODE"]
-        interest = param["INTEREST"]
-        num_topics_per_feed = param["NEWS_COUNT_PER_RUN"]
-        true_country_name = COUNTRY_NAME_MAP.get(true_country_code, true_country_code)
-        topic_id = TOPIC_ID_MAP.get(interest)
-        feed_urls = [param["FEED_URL1"], param["FEED_URL2"], param["FEED_URL3"]]
+    # --- NEW: setup rejected items log once per run ---
+    rejected_log_path = "rejected/rejected_news_items.txt"
+    os.makedirs(os.path.dirname(rejected_log_path), exist_ok=True)
+    run_header = f"\n===== Run @ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} =====\n"
+    rejected_log = open(rejected_log_path, "a", encoding="utf-8")
+    rejected_log.write(run_header)
 
-        news_articles = fetch_news_from_rss(feed_urls, num_topics_per_feed)
+    try:
+        for param in params:
+            country_code = param["COUNTRY_CODE"]
+            true_country_code = param["TRUE_COUNTRY_CODE"]
+            interest = param["INTEREST"]
+            num_topics_per_feed = param["NEWS_COUNT_PER_RUN"]
+            true_country_name = COUNTRY_NAME_MAP.get(true_country_code, true_country_code)
+            topic_id = TOPIC_ID_MAP.get(interest)
+            feed_urls = [param["FEED_URL1"], param["FEED_URL2"], param["FEED_URL3"]]
 
-        for news_title, news_url in news_articles:
-            total_items_examined += 1
-            assessment = assess_news_item_for_discussion(news_title, true_country_name, interest)
-            if assessment.get("status") != "PROCEED":
-                skipped_count += 1
-                continue
+            news_articles = fetch_news_from_rss(feed_urls, num_topics_per_feed)
 
-            category = assessment["category"]
-            topic = generate_debatable_statement(news_title, true_country_name)
-            content_tone = random.choice(["LOVE", "HATE"])
-            camps = POLITICAL_CAMPS.get(true_country_code, {"NEUTRAL"})
+            for news_title, news_url in news_articles:
+                total_items_examined += 1
+                assessment = assess_news_item_for_discussion(news_title, true_country_name, interest)
+                if assessment.get("status") != "PROCEED":
+                    skipped_count += 1
+                    # NEW: log reject with reason
+                    reason = assessment.get("reason", "No reason provided")
+                    rejected_log.write(f"[{true_country_code} | {interest}] {news_title} -> {news_url}\n")
+                    rejected_log.write(f"Reason: {reason}\n\n")
+                    continue
 
-            if category == "POLITICAL":
-                content_camp = infer_camp_for_statement(topic, content_tone, camps, true_country_name)
-                comment1_camp = content_camp
-                comment2_camp = random.choice(list(camps - {content_camp})) if len(camps) > 1 else content_camp
-            elif category in ["UNIVERSAL_LOVE", "UNIVERSAL_HATE"]:
-                content_tone = "LOVE" if category == "UNIVERSAL_LOVE" else "HATE"
+                category = assessment["category"]
+                topic = generate_debatable_statement(news_title, true_country_name, interest)
+                if not topic:  # if generate_debatable_statement() returns None
+                    skipped_count += 1
+                    # NEW: log reject as not discussion-worthy post-check
+                    rejected_log.write(f"[{true_country_code} | {interest}] {news_title} -> {news_url}\n")
+                    rejected_log.write("Reason: generate_debatable_statement() returned None (not discussion-worthy)\n\n")
+                    continue
+
+                camps = POLITICAL_CAMPS.get(true_country_code, {"NEUTRAL"})
+
+                # Sequence: pick camp -> infer tone from camp & rewritten topic
                 content_camp = random.choice(list(camps))
-                comment1_camp = random.choice(list(camps))
-                comment2_camp = random.choice(list(camps))
-            elif category == "GRAY":
-                if is_news_politically_interpretable(topic, interest, true_country_name):
+                content_tone = infer_tone_for_statement(topic, content_camp, true_country_name)
+
+                if category == "POLITICAL":
                     content_camp = infer_camp_for_statement(topic, content_tone, camps, true_country_name)
                     comment1_camp = content_camp
                     comment2_camp = random.choice(list(camps - {content_camp})) if len(camps) > 1 else content_camp
-                else:
+                elif category in ["UNIVERSAL_LOVE", "UNIVERSAL_HATE"]:
+                    content_tone = "LOVE" if category == "UNIVERSAL_LOVE" else "HATE"
                     content_camp = random.choice(list(camps))
                     comment1_camp = random.choice(list(camps))
                     comment2_camp = random.choice(list(camps))
+                elif category == "GRAY":
+                    if is_news_politically_interpretable(topic, interest, true_country_name):
+                        content_camp = infer_camp_for_statement(topic, content_tone, camps, true_country_name)
+                        comment1_camp = content_camp
+                        comment2_camp = random.choice(list(camps - {content_camp})) if len(camps) > 1 else content_camp
+                    else:
+                        content_camp = random.choice(list(camps))
+                        comment1_camp = random.choice(list(camps))
+                        comment2_camp = random.choice(list(camps))
 
-            comment1_tone = content_tone
-            comment1_text = generate_comment(topic, comment1_tone, true_country_code, true_country_name)
+                comment1_tone = content_tone
 
-            comment2_tone = "HATE" if content_tone == "LOVE" else "LOVE"
-            comment2_text = generate_comment(topic, comment2_tone, true_country_code, true_country_name)
+                # If category is universal, keep both tones the same; else opposite
+                if category in ["UNIVERSAL_LOVE", "UNIVERSAL_HATE"]:
+                    comment2_tone = comment1_tone
+                else:
+                    comment2_tone = "HATE" if comment1_tone == "LOVE" else "LOVE"
 
-            sql_query = """
-                INSERT INTO OPN_SFC_CONTENT 
-                (COUNTRY_CODE, TRUE_COUNTRY_CODE, TRUE_COUNTRY_NAME, CONTENT_DTM, CONTENT_DATE, INTEREST, TOPICID, NEWS_TITLE, CONTENT_TITLE, CONTENT_CAMP, CONTENT_TONE, COMMENT1_TONE, COMMENT1_TEXT, COMMENT1_CAMP, COMMENT2_TONE, COMMENT2_TEXT, COMMENT2_CAMP, CONTENT_URL)
-                VALUES 
-                (%s, %s, %s, NOW(), CURDATE(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-            """
-            values = (
-                country_code, true_country_code, true_country_name,
-                interest, topic_id, news_title, topic, content_camp,
-                content_tone, comment1_tone, comment1_text, comment1_camp,
-                comment2_tone, comment2_text, comment2_camp, news_url
-            )
+                comment1_text = generate_comment(topic, comment1_tone, true_country_code, true_country_name)
+                comment2_text = generate_comment(topic, comment2_tone, true_country_code, true_country_name)
 
-            for env in ["DEV", "PROD"]:
-                try:
-                    cursors[env].execute(sql_query, values)
-                    connections[env].commit()
-                except mysql.connector.Error as err:
-                    logging.error(f"[{env}] Error inserting data: {err}")
+                sql_query = """
+                    INSERT INTO OPN_SFC_CONTENT 
+                    (COUNTRY_CODE, TRUE_COUNTRY_CODE, TRUE_COUNTRY_NAME, CONTENT_DTM, CONTENT_DATE, INTEREST, TOPICID, NEWS_TITLE, CONTENT_TITLE, CONTENT_CAMP, CONTENT_TONE, COMMENT1_TONE, COMMENT1_TEXT, COMMENT1_CAMP, COMMENT2_TONE, COMMENT2_TEXT, COMMENT2_CAMP, CONTENT_URL)
+                    VALUES 
+                    (%s, %s, %s, NOW(), CURDATE(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                """
+                values = (
+                    country_code, true_country_code, true_country_name,
+                    interest, topic_id, news_title, topic, content_camp,
+                    content_tone, comment1_tone, comment1_text, comment1_camp,
+                    comment2_tone, comment2_text, comment2_camp, news_url
+                )
 
-            processed_count += 1
+                for env in ["DEV", "PROD"]:
+                    try:
+                        cursors[env].execute(sql_query, values)
+                        connections[env].commit()
+                    except mysql.connector.Error as err:
+                        logging.error(f"[{env}] Error inserting data: {err}")
+
+                processed_count += 1
+    finally:
+        # ensure we always close the log file
+        try:
+            rejected_log.close()
+        except Exception:
+            pass
 
     for env in cursors:
         cursors[env].close()

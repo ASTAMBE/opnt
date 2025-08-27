@@ -760,3 +760,646 @@ Reason: The headline is not relevant to the topic 'CELEBRITIES' and may not spar
 [GHA | CELEBRITIES] I will use the GHALCA Top 4 game to assess Kotoko’s readiness for Africa – Karim Zito -> https://liveghanatv.com/2025/08/20/i-will-use-the-ghalca-top-4-game-to-assess-kotokos-readiness-for-africa-karim-zito/
 Reason: The headline is not directly related to celebrities, so it may not spark a conversation within the context of the 'CELEBRITIES' topic.
 
+
+===== Run @ 2025-08-22 09:48:54 =====
+[NGA | SPORTS] Ibrahim Gusau Reveals Progress on NFF-FIFA Forward Project -> https://brila.net/ibrahim-gusau-reveals-progress-on-nff-fifa-forward-project/
+Reason: While the headline involves sports organizations (NFF and FIFA), the focus on a project progress update may not be engaging enough to spark a conversation among the general sports audience.
+
+[NGA | SPORTS] Man Utd outcasts could return, says Amorim -> https://www.vanguardngr.com/2025/08/man-utd-outcasts-could-return-says-amorim/
+Reason: The headline is more focused on potential player transfers in football, which may not spark a broad discussion in Nigeria under the topic of 'SPORTS'.
+
+[NGA | SPORTS] Newcastle can’t win in Isak stand-off, says Howe -> https://www.vanguardngr.com/2025/08/newcastle-cant-win-in-isak-stand-off-says-howe/
+Reason: The headline is more focused on a stand-off situation rather than a sporting event or development, making it less relevant and interesting for a sports discussion in Nigeria.
+
+[NGA | BUSINESS] Atiku berates Tinubu’s administration over high rate of killings -> https://businessday.ng/news/article/atiku-berates-tinubus-administration-over-high-rate-of-killings/
+Reason: The headline is more political in nature and does not directly relate to the topic of business.
+
+[NGA | BUSINESS] Ruben Dias signs new Manchester City contract until 2029 -> https://businessday.ng/sports/article/ruben-dias-signs-new-manchester-city-contract-until-2029/
+Reason: While the headline involves a contract extension in the sports industry, it does not directly relate to the topic of business in Nigeria.
+
+[NGA | BUSINESS] Taribo West blasts NFF, Lagos FA for abandoning Peter Rufai’s family -> https://businessday.ng/sports/article/taribo-west-blasts-nff-lagos-fa-for-abandoning-peter-rufais-family/
+Reason: The headline is more focused on personal grievances rather than business-related issues.
+
+[NGA | ENTERTAINMENT] I don’t hate women’, GehGeh reacts to backlash over his relationship commentary -> https://www.vanguardngr.com/2025/08/i-dont-hate-women-gehgeh-reacts-to-backlash-over-his-relationship-commentary/
+Reason: The headline is more focused on relationship commentary rather than entertainment, may not spark a conversation in the entertainment category.
+
+[NGA | CELEBRITIES] Driver flees and abandons car with bags of cannabis during stop-and-search in Lagos -> http://www.lindaikejisblog.com/2025/8/driver-flees-and-abandons-car-with-bags-of-cannabis-during-stop-and-search-in-lagos-2.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on a criminal incident involving cannabis, which does not directly involve celebrities.
+
+[NGA | CELEBRITIES] FCT police arrest notorious kidnap kingpins, recover firearms and N7.4m cash -> http://www.lindaikejisblog.com/2025/8/fct-police-arrest-notorious-kidnap-kingpins-recover-firearms-and-n74m-cash-2.html
+Reason: The headline is not relevant to the topic 'CELEBRITIES' as it focuses on criminal activities rather than celebrities.
+
+[NGA | CELEBRITIES] NAFDAC raises alarm over fake sachet Cowbell Our Milk in circulation -> http://www.lindaikejisblog.com/2025/8/nafdac-raises-alarm-over-fake-sachet-cowbell-our-milk-in-circulation-2.html
+Reason: The headline is not directly relevant to the topic of 'CELEBRITIES' as it focuses on a product issue rather than a celebrity-related news item.
+
+[NGA | CELEBRITIES] Man commits su!cide in Osun -> http://www.lindaikejisblog.com/2025/8/man-commits-sucide-in-osun-2.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not be interesting enough to spark a conversation in that context.
+
+[NGA | CELEBRITIES] US reviewing visa of 55 million foreigners for possible violations -> http://www.lindaikejisblog.com/2025/8/us-reviewing-visa-of-55-million-foreigners-for-possible-violations.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on visa violations of foreigners, not celebrities.
+
+[NGA | CELEBRITIES] Mowe Golf Town Hosts Inaugural Daycation Highlighting Eco-Luxury Living -> https://www.bellanaija.com/2025/08/mowe-golf-town-daycation/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on a golf town event highlighting eco-luxury living.
+
+[NGA | CELEBRITIES] A Journalist’s First Experience of the Osun-Osogbo Festival -> https://www.bellanaija.com/2025/08/a-journalists-first-experience-of-the-osun-osogbo-festival/
+Reason: The headline is not directly related to celebrities, as it focuses on a journalist's experience at a festival rather than a celebrity's involvement.
+
+[IND | POLITICS] Bengaluru Stampede Row: Has Any BJP CM Quit After A Tragedy, Siddaramaiah Asks Belligerent BJP -> https://www.news18.com/politics/bengaluru-stampede-row-has-any-bjp-cm-quit-after-a-tragedy-siddaramaiah-asks-belligerent-bjp-9522351.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | POLITICS] Pakistan army chief’s ‘dumper truck’ comment is a confession: Rajnath Singh -> https://www.hindustantimes.com/india-news/pakistan-army-chief-s-dumper-truck-comment-is-a-confession-rajnath-singh-101755876809064.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | SPORTS] 'This math isn’t mathing': RCB’s role in Rajat Patidar’s MP captaincy questioned -> https://timesofindia.indiatimes.com/sports/cricket/ipl/top-stories/this-math-isnt-mathing-aakash-chopra-questions-rcbs-influence-on-rajat-patidars-mp-captaincy-sparks-debate/articleshow/123457668.cms
+Reason: The headline is more focused on internal team dynamics rather than the broader topic of sports that would interest a general audience.
+
+[IND | SPORTS] Online Gaming Bill: President Murmu gives assent; framework to promote e-sports -> https://timesofindia.indiatimes.com/sports/more-sports/others/online-gaming-bill-2025-president-droupadi-murmu-gives-assent-framework-to-promote-e-sports-regulate-sector-curb-money-games/articleshow/123456023.cms
+Reason: The headline is more focused on the political aspect of online gaming regulation rather than the sports aspect of e-sports.
+
+[IND | SPORTS] Two changes likely in Agarkar-led India men's selection committee -> https://www.espncricinfo.com/ci/content/story/1500065.html?ex_cid=OTC-RSS
+Reason: The headline is more focused on administrative changes within the selection committee rather than on actual sports events or players, which may not be interesting enough to spark a conversation.
+
+[IND | BUSINESS] 19 Palestinian officials attend training course in Gujarat for combating financial crimes -> https://www.thehindubusinessline.com/news/19-palestinian-officials-attend-training-course-in-gujarat-for-combating-financial-crimes/article69965464.ece
+Reason: The headline is more political in nature rather than purely business-focused.
+
+[IND | BUSINESS] Andhra Pradesh government to set up country’s biggest library in Amaravati -> https://www.thehindubusinessline.com/news/andhra-pradesh-government-to-set-up-countrys-biggest-library-in-amaravati/article69965175.ece
+Reason: While setting up a library may have economic implications, it is not directly related to business activities.
+
+[IND | ENTERTAINMENT] SHOCKING: Imran Khan recalls the time when his script was PLAGIARIZED: "I was powerless; they didn't know about my family; to them, I was just a kid off the street" -> https://www.bollywoodhungama.com/news/bollywood/shocking-imran-khan-recalls-time-script-plagiarized-powerless-didnt-know-family-just-kid-off-street/
+Reason: The headline is more focused on plagiarism and personal struggles rather than entertainment-related content.
+
+[IND | CELEBRITIES] Pahlaj: Govinda's marriage will survive even if he has 10 affairs -> https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/news/pahlaj-nihalani-once-clarified-govinda-and-sunita-ahuja-have-always-lived-separately-their-marriage-will-survive-even-if-he-has-10-affairs/articleshow/123458173.cms
+Reason: The headline is more focused on personal relationships rather than the celebrity's work or achievements, which may not be of interest to a wider audience.
+
+[USA | BUSINESS] FBI Raids John Bolton’s Home 'in Search of Classified Records' -> https://www.today.com/video/fbi-raids-john-bolton-s-home-in-search-of-classified-records-245562949667
+Reason: The headline is more political in nature rather than directly related to business topics.
+
+[USA | BUSINESS] Vance denies the FBI is investigating John Bolton because he's a Trump critic -> https://www.nbcnews.com/politics/politics-news/vance-denies-bolton-investigation-stems-trump-criticism-rcna226604
+Reason: The headline is more focused on politics and not directly related to business topics.
+
+[USA | BUSINESS] Russian FM Lavrov says no Putin-Zelenskyy meeting is planned, despite WH claims -> https://www.nbcnews.com/meet-the-press/video/russian-fm-lavrov-says-no-putin-zelenskyy-meeting-is-planned-despite-wh-claims-245555781984
+Reason: While the headline involves political figures, it does not directly relate to business topics.
+
+[USA | BUSINESS] U.N. calls Gaza famine preventable and blames Israel's obstruction of aid -> https://www.nbcnews.com/video/u-n-calls-gaza-famine-preventable-and-blames-israel-s-obstruction-of-aid-245558341728
+Reason: The headline focuses on political issues and blames a specific country, which may not be suitable for a general business discussion.
+
+[USA | BUSINESS] Inspectors find numerous decomposing bodies behind hidden door at Colorado funeral home -> https://www.washingtontimes.com/news/2025/aug/21/state-inspectors-find-numerous-decomposing-bodies-behind-hidden-door/
+Reason: The headline is not relevant to the topic of BUSINESS.
+
+[USA | BUSINESS] Trump's enforcer Pulte works to reshape the Fed and investigate Democrats over mortgages -> https://www.washingtontimes.com/news/2025/aug/21/trumps-enforcer-pulte-works-reshape-fed-investigate-democrats/
+Reason: The headline is more focused on political actions and investigations rather than business-related topics.
+
+[USA | ENTERTAINMENT] Lil Nas X Hospitalized And Arrested After Police Confrontation -> https://www.huffpost.com/entry/lil-nas-x-hospitalized-and-arrested-after-police-confrontation_n_68a7842be4b0c791dbaaeee0
+Reason: While the headline involves a popular entertainer, the mention of hospitalization and arrest may not be suitable for a light-hearted entertainment discussion.
+
+[USA | ENTERTAINMENT] Seth Meyers’ Beloved Dog Died, And 1 ‘SNL’ Alum Is Probably Very Happy About it -> https://www.huffpost.com/entry/seth-meyers-dog-frisbee-died_n_68a752f2e4b0e8c4a72418c4
+Reason: The headline may be relevant to entertainment due to Seth Meyers being a TV host, but the mention of someone being happy about a dog's death may not be suitable for discussion as it could be seen as insensitive.
+
+[USA | ENTERTAINMENT] Former Kennedy In-Law Says RFK Jr.’s Car ‘Always’ Had 1 Distinct Smell, And It’s Gross -> https://www.huffpost.com/entry/former-kennedy-in-law-says-rfk-jrs-car-had-1-very-distinctive-smell-and-its-gross_n_68a744d4e4b0cfb9a82aa658
+Reason: The headline is not relevant to the topic of 'ENTERTAINMENT' and may not spark a conversation in that context.
+
+[USA | ENTERTAINMENT] Hulk Hogan’s Daughter Says Bodycam Footage Could ‘Change Narrative’ Around His Death -> https://www.huffpost.com/entry/hulk-hogan-brooke-hogan-death_n_68a7389ae4b0221ae092e2bc
+Reason: The headline is more focused on a potential change in narrative surrounding Hulk Hogan's death rather than entertainment aspects.
+
+[USA | ENTERTAINMENT] ‘Are You My First?’ Producers on Verifying Whether Contestants Were Actually Virgins: ‘You Could Just Tell’ -> https://variety.com/2025/tv/news/are-you-my-first-virgin-casting-1236494391/
+Reason: The headline is more focused on the behind-the-scenes aspect of reality TV production rather than actual entertainment content.
+
+[USA | CELEBRITIES] Parents of Missing 7-Month-Old Emmanuel Haro Arrested For Murder -> https://www.tmz.com/2025/08/22/parents-of-missing-7-month-old-emmanuel-haro-arrested/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on a criminal case rather than celebrity news.
+
+[USA | CELEBRITIES] Lil Nas X To Remain in Jail Until At Least Monday -> https://www.tmz.com/2025/08/22/lil-nas-x-stay-in-jail-over-weekend/
+Reason: The headline is not directly related to celebrities as it focuses on a specific individual's legal situation rather than their career or personal life.
+
+[USA | CELEBRITIES] Get Up to 30% Off Popular Water Bottles and Tumblers -> https://www.tmz.com/2025/08/22/water-bottle-tumbler-deals-on-amazon/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it is about discounts on water bottles and tumblers, which does not involve any celebrities.
+
+[USA | CELEBRITIES] 3 Must-Watch Peacock Movies to Binge This Weekend (August 22-24) -> https://www.usmagazine.com/entertainment/news/3-underrated-peacock-movies-to-watch-this-weekend-august-22-24-25/
+Reason: The headline is not directly related to celebrities, as it focuses on movies rather than specific celebrities themselves.
+
+[USA | CELEBRITIES] Erik Menendez's Relationship With Wife Tammi's Daughter Talia Explained -> https://www.usmagazine.com/entertainment/news/erik-menendezs-relationship-with-wife-tammis-daughter-talia-explained/
+Reason: The headline is not directly related to celebrities in general, but rather focuses on a specific individual and their family relationships which may not be of broad interest.
+
+[GHA | POLITICS] LIVE: Ghana Tonight with Alfred Ocansey || 21-08-2025 -> http://ghheadlines.com/agency/3news/20250821/168908504/live-ghana-tonight-with-alfred-ocansey-21-08-2025
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] Kwame Baah trains with Hearts of Oak as ex-Kotoko goalkeeper nears switch -> http://ghheadlines.com/agency/ghana-soccer-net/20250821/168910302/kwame-baah-trains-with-hearts-of-oak-as-ex-kotoko-goalkeeper-nears-switch
+Reason: The headline is not directly related to politics and may not spark a significant conversation in that context.
+
+[GHA | POLITICS] Photos: Fans of Shatta Wale storm EOCO after his arrest -> http://ghheadlines.com/agency/3news/20250821/168907915/photos-fans-of-shatta-wale-storm-eoco-after-his-arrest
+Reason: The headline is more focused on entertainment and celebrity news rather than politics.
+
+[GHA | POLITICS] Frank Amankwah training with Bechem United ahead of possible move -> http://ghheadlines.com/agency/ghana-soccer-net/20250821/168910640/frank-amankwah-training-with-bechem-united-ahead-of-possible-move
+Reason: The headline is not directly related to politics and may not spark significant interest for a political discussion.
+
+[GHA | POLITICS] KJ Spio drops new single ‘Heat’ featuring KiDi and Stalk Ashley -> https://www.myjoyonline.com/kj-spio-drops-new-single-heat-featuring-kidi-and-stalk-ashley/
+Reason: The headline is not relevant to the topic of politics and may not spark a political conversation.
+
+[GHA | BUSINESS] Al Jazeera journalist Anas al-Sharif dies in Israeli attack -> https://www.bizcommunity.com/article/al-jazeera-journalist-anas-al-sharif-dies-in-israeli-attack-280877a
+Reason: The headline is not directly related to business and may not spark a relevant conversation in that context.
+
+[GHA | CELEBRITIES] Access Bank Employee Arrested after Filming Employees in Bathroom to Sell Online -> https://ghanacelebrities.com/2025/04/26/access-bank-employee-arrested-after-filming-employees-in-bathroom-to-sell-online/
+Reason: The headline is not directly related to celebrities and may not spark a conversation within the context of the topic.
+
+[GHA | CELEBRITIES] Afia Schwarzenegger Threatens to Have U.S. Police Arrest ‘Murderer’ Ayisha Modi -> https://ghanacelebrities.com/2025/04/26/afia-schwarzenegger-threatens-to-have-u-s-police-arrest-murderer-ayisha-modi/
+Reason: While the headline involves celebrities, the focus on potential legal action may not be the most engaging or positive topic for discussion.
+
+[GHA | CELEBRITIES] Ghana Will Not Be Clean Until Zoomlion Workers are Paid Ghc 2,000 Monthly – Mr Happiness -> https://ghanacelebrities.com/2025/04/26/ghana-will-not-be-clean-until-zoomlion-workers-are-paid-ghc-2000-monthly-mr-happiness/
+Reason: The headline is not directly related to celebrities, so it is not suitable for discussion under the topic 'CELEBRITIES'.
+
+[GHA | CELEBRITIES] Signs of Burnout: 8 Signs You’re Burnt Out Without Realising It -> https://liveghanatv.com/2025/08/22/signs-of-burnout-8-signs-youre-burnt-out-without-realising-it/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on signs of burnout rather than celebrity news.
+
+[GHA | CELEBRITIES] FIFA bans Hearts of Oak for three transfer windows over unpaid debt -> https://liveghanatv.com/2025/08/22/fifa-bans-hearts-of-oak-for-three-transfer-windows-over-unpaid-debt/
+Reason: The headline is not directly related to celebrities, so it may not be suitable for discussion under that topic.
+
+[GHA | CELEBRITIES] SanlamAllianz Life mourns with the Ghana Armed Forces -> https://liveghanatv.com/2025/08/22/sanlamallianz-life-mourns-with-the-ghana-armed-forces/
+Reason: The headline is not directly related to celebrities, it focuses on a company mourning with the Ghana Armed Forces.
+
+[GHA | CELEBRITIES] 7 Types of Female Orgasms Every Woman Should Know About -> https://liveghanatv.com/2025/08/22/7-types-of-female-orgasms-every-woman-should-know-about/
+Reason: The headline is not directly related to celebrities and may not be suitable for discussion in Ghana under the topic 'CELEBRITIES'.
+
+
+===== Run @ 2025-08-24 15:29:58 =====
+[NGA | POLITICS] “I didn’t snatch my husband from my best friend” – Veekee James -> https://www.premiumtimesng.com/entertainment/naija-fashion/816281-i-didnt-snatch-my-husband-from-my-best-friend-veekee-james.html
+Reason: The headline is not relevant to the topic of politics and may not be interesting enough to spark a conversation in that context.
+
+[NGA | POLITICS] Iyabo Ojo’s daughter, Priscilla, Juma Jux welcome baby boy -> https://www.premiumtimesng.com/entertainment/naija-fashion/816279-iyabo-ojos-daughter-priscilla-juma-jux-welcome-baby-boy.html
+Reason: The headline is not relevant to the topic of politics and may not spark a conversation in that context.
+
+[NGA | POLITICS] NPFL Roundup: Bayelsa United, Warri Wolves record first away victories -> https://www.premiumtimesng.com/sports/football/816274-npfl-roundup-bayelsa-united-warri-wolves-record-first-away-victories.html
+Reason: The headline is about sports (Nigerian Professional Football League) and not directly related to politics.
+
+[NGA | POLITICS] Transfers: Victor Boniface’s AC Milan move falls apart -> https://www.premiumtimesng.com/sports/football/816271-transfers-victor-bonifaces-ac-milan-move-falls-apart.html
+Reason: The headline is not relevant to the topic of politics and may not spark a conversation in that context.
+
+[NGA | SPORTS] Winless Man Utd need to ‘grow up’, says Amorim -> https://www.vanguardngr.com/2025/08/winless-man-utd-need-to-grow-up-says-amorim/
+Reason: While the headline mentions a sports team (Man Utd), the focus is more on a general statement about maturity rather than specific sports-related news or events.
+
+[NGA | BUSINESS] Emberga emerges Speaker, Benue State House of Assembly -> https://businessday.ng/news/article/emberga-emerges-speaker-benue-state-house-of-assembly/
+Reason: The headline is more political in nature rather than strictly business-related.
+
+[NGA | BUSINESS] Fernandes misses penalty as Man United held by Fulham at Craven Cottage -> https://businessday.ng/sports/article/fernandes-misses-penalty-as-man-united-held-by-fulham-at-craven-cottage/
+Reason: The headline is more relevant to sports rather than business, and while it may be of interest to football fans, it does not directly relate to the topic of business.
+
+[NGA | BUSINESS] Speaker of Benue House of Assembly resigns -> https://businessday.ng/news/article/speaker-of-benue-house-of-assembly-resigns/
+Reason: The headline is more political in nature rather than directly related to business topics.
+
+[NGA | BUSINESS] How Obaseki’s N41m monthly subvention adversely affected AAU – Acting VC -> https://businessday.ng/news/article/how-obasekis-n41m-monthly-subvention-adversely-affected-aau-acting-vc/
+Reason: The headline is more focused on politics and university administration rather than business.
+
+[NGA | CELEBRITIES] If your husband is a good man, encourage him to marry another wife - Nigerian woman advises women -> http://www.lindaikejisblog.com/2025/8/if-your-husband-is-a-good-man-encourage-him-to-marry-another-wife-nigerian-woman-advises-women.html
+Reason: The headline is not directly related to celebrities, but it could spark a discussion on polygamy and relationships in Nigeria.
+
+[NGA | CELEBRITIES] Ekiti police arrest eight suspected kidnappers for k!lling man after ransom payment -> http://www.lindaikejisblog.com/2025/8/ekiti-police-arrest-eight-suspected-kidnappers-for-klling-man-after-ransom-payment-2.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' as it focuses on a criminal incident rather than on celebrities.
+
+[NGA | CELEBRITIES] Woman reveals how she punished her cousin for not knowing how to speak Igbo -> http://www.lindaikejisblog.com/2025/8/woman-reveals-how-she-punished-her-cousin-for-not-knowing-how-to-speak-igbo-3.html
+Reason: The headline is not directly related to celebrities and may not spark an interesting conversation in that context.
+
+[NGA | CELEBRITIES] Woman d!es shortly after arriving at her boyfriend's house in Osun -> http://www.lindaikejisblog.com/2025/8/woman-des-shortly-after-arriving-at-her-boyfriends-house-in-osun.html
+Reason: The headline does not directly relate to celebrities, making it not suitable for discussion under the topic 'CELEBRITIES'.
+
+
+===== Run @ 2025-08-24 16:02:30 =====
+[IND | POLITICS] Shifting stray dog case after public criticism sent wrong signal: Justice Abhay Oka -> https://www.hindustantimes.com/india-news/shifting-stray-dog-case-sent-the-wrong-signal-justice-oka-101756060599297.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | POLITICS] Greater Noida dowry death: Reels, beauty parlour triggers for murder, say cops -> https://www.hindustantimes.com/cities/noida-news/greater-noida-dowry-death-reels-beauty-parlour-triggers-for-murder-say-cops-101756060175617.html
+Reason: While the headline involves a criminal investigation, it does not directly relate to politics and may not be suitable for a political discussion.
+
+
+===== Run @ 2025-08-24 16:03:32 =====
+
+===== Run @ 2025-08-24 16:08:01 =====
+[IND | BUSINESS] A journey in space for humanity; Rajnath’s tribute to astronaut Shukla -> https://www.thehindubusinessline.com/news/national/a-journey-in-space-for-humanity-rajnaths-tribute-to-astronaut-shukla/article69971625.ece
+Reason: The headline is more focused on a tribute to an astronaut and the journey in space, which is not directly related to business.
+
+
+===== Run @ 2025-08-25 10:15:09 =====
+[NGA | POLITICS] Two Nigerian swimmers bag World Aquatics scholarships -> https://www.premiumtimesng.com/sports/nigeria-sports-news/816423-two-nigerian-swimmers-bag-world-aquatics-scholarships.html
+Reason: The headline is not directly related to politics, but it could potentially spark a conversation about sports development and opportunities for Nigerian athletes.
+
+[NGA | POLITICS] No lingering crisis in PDP, says Reps’ caucus -> https://guardian.ng/politics/no-lingering-crisis-in-pdp-says-reps-caucus/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | POLITICS] Aborisade reaffirms unity in Oyo PDP during consultation visit -> https://guardian.ng/politics/aborisade-reaffirms-unity-in-oyo-pdp-during-consultation-visit/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | SPORTS] “I Take the Blame” – Amir Khan Ends Anthony Joshua Feud, Calls 2017 Affair Claim “Sad Mistake” -> https://brila.net/i-take-the-blame-amir-khan-ends-anthony-joshua-feud-calls-2017-affair-claim-sad-mistake/
+Reason: While the headline involves sports personalities, it focuses more on personal accountability rather than sparking a conversation about sports-related topics.
+
+[NGA | SPORTS] Brown Ideye refutes claims he called for jailing retired broke footballers -> https://www.vanguardngr.com/2025/08/brown-ideye-refutes-claims-he-called-for-jailing-broke-retired-footballers/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | BUSINESS] NAFDAC alerts public about fake Postinor-2 emergency contraceptive pills in Nigeria -> https://nairametrics.com/2025/08/25/nafdac-alerts-public-about-fake-postinor-2-emergency-contraceptive-pills-in-nigeria/
+Reason: While the topic of counterfeit drugs is important, it does not directly relate to business discussions unless there is a specific angle related to the pharmaceutical industry or business practices.
+
+[NGA | ENTERTAINMENT] Nwaogu’s wife exposes social media user over offensive comment -> https://thenationonlineng.net/nwaogus-wife-exposes-social-media-user-over-offensive-comment/
+Reason: The headline is not directly related to entertainment and may not spark a conversation in that context.
+
+[NGA | ENTERTAINMENT] Prudent Gabriel, Peterson expect first child -> https://thenationonlineng.net/prudent-gabriel-peterson-expect-first-child/
+Reason: While the news of expecting a child is personal and heartwarming, it may not be relevant or interesting enough to spark a conversation in the entertainment category.
+
+[NGA | ENTERTAINMENT] Phyna apologises for tagging road beggars as ‘Yoruba boys’ -> https://thenationonlineng.net/phyna-apologises-for-tagging-road-beggars-as-yoruba-boys/
+Reason: This headline is more political in nature rather than entertainment-focused.
+
+[NGA | CELEBRITIES] Lady laments how things changed with her parents when they found out her elder cousin was getting married soon -> http://www.lindaikejisblog.com/2025/8/lady-laments-how-things-changed-with-her-parents-when-they-found-out-her-elder-cousin-was-getting-married-soon-2.html
+Reason: The headline is not directly related to celebrities and may not spark enough interest for discussion.
+
+[NGA | CELEBRITIES] &quot;They’re putting it everywhere&quot; Snoop Dogg slams LGBTQ+ representation in kids’ films -> http://www.lindaikejisblog.com/2025/8/theyre-putting-it-everywhere-snoop-dogg-slams-lgbtq-representation-in-kids-films.html
+Reason: The headline is not directly related to celebrities as it focuses more on LGBTQ+ representation in kids' films rather than Snoop Dogg as a celebrity.
+
+[NGA | CELEBRITIES] ASUU threatens nationwide strike over FG’s inaction on 2009 agreement -> http://www.lindaikejisblog.com/2025/8/asuu-threatens-nationwide-strike-over-fgs-inaction-on-2009-agreement.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES'.
+
+[NGA | CELEBRITIES] Mfonobong Inyang: On Tkeyz & Steven Hills’ Timely Reminder That Jesus Is Enough -> https://www.bellanaija.com/2025/08/mfonobong-inyang-tkeyz-steven-hills-jesus-is-enough/
+Reason: The headline is not directly related to celebrities and may not spark a conversation within the context of discussing celebrities in Nigeria.
+
+[NGA | CELEBRITIES] Money Matters With Nimi: How Parents Can Manage Costs as Children Resume School -> https://www.bellanaija.com/2025/08/money-matters-with-nimi-how-parents-can-manage-costs-as-children-resume-school/
+Reason: The headline is not directly related to celebrities, so it is not suitable for discussion under the topic 'CELEBRITIES'.
+
+[IND | POLITICS] College student shot dead at home by ex-boyfriend in Bengal's Nadia -> https://www.hindustantimes.com/india-news/college-student-shot-dead-at-home-by-ex-boyfriend-in-bengals-nadia-101756129761164.html
+Reason: While the headline involves a tragic incident, it does not directly relate to politics and may not spark a conversation in that context.
+
+[IND | POLITICS] Trump now counts 'wars I stopped' up to seven, ‘four of them with tariffs’: Here's an updated list of his claims -> https://www.hindustantimes.com/india-news/trump-now-counts-wars-i-stopped-up-to-seven-four-of-them-with-tariffs-heres-how-he-added-russia-ukraine-to-list-101756137577863.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | SPORTS] 'I have to go back again ... ': Rohit Sharma opens up -> https://timesofindia.indiatimes.com/sports/cricket/news/i-have-to-go-back-again-rohit-sharma-opens-up-leaves-fans-emotional/articleshow/123507252.cms
+Reason: While Rohit Sharma is a sports personality, the headline does not provide enough context to determine if the discussion would be related to sports or personal matters.
+
+[IND | SPORTS] Virat Kohli's 'accidental' like! Avneet Kaur finally breaks silence, says 'Milta rahe pyaar' -> https://timesofindia.indiatimes.com/sports/off-the-field/virat-kohlis-accidental-like-avneet-kaur-finally-breaks-silence-says-milta-rahe-pyaar/articleshow/123508065.cms
+Reason: The headline is more focused on a personal interaction between Virat Kohli and Avneet Kaur rather than a sports-related topic.
+
+[IND | SPORTS] Did Arjun Tendulkar get engaged to Saaniya Chandhok? Sachin with first official answer -> https://timesofindia.indiatimes.com/sports/cricket/news/did-arjun-tendulkar-get-engaged-to-saaniya-chandhok-sachin-tendulkar-with-first-official-answer/articleshow/123505439.cms
+Reason: The headline is not relevant to the topic of sports as it focuses on a personal matter rather than a sports-related event or news.
+
+[IND | BUSINESS] Influenza vaccination, building greater awareness vital in public healthcare: Zydus -> https://www.thehindubusinessline.com/news/influenza-vaccination-building-greater-awareness-vital-in-public-healthcare-zydus/article69976334.ece
+Reason: While the topic of public healthcare is related to business, the focus on influenza vaccination and awareness may not be interesting enough to spark a conversation solely within the business context.
+
+[USA | POLITICS] Speaker Johnson says Trump deserves Nobel Peace Prize for DC police takeover -> https://thehill.com/homenews/house/5469047-trump-nobel-peace-prize-mike-johnson/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[USA | POLITICS] Stablecoins are about to change your life — you just don’t know it yet -> https://thehill.com/opinion/technology/5467954-stablecoins-are-about-to-change-your-life-you-just-dont-know-it-yet/
+Reason: The headline does not directly relate to politics, but it may be of interest to some individuals in the financial or technology sectors.
+
+[USA | POLITICS] Cracker Barrel releases statement following backlash over rebranded logo -> https://thehill.com/business/5469000-cracker-barrel-logo-backlash/
+Reason: While the headline involves a company responding to backlash, it does not directly relate to politics and may not spark a political discussion.
+
+[USA | SPORTS] 'His kids were getting messed with at school': How Ryan Day handles the pressures at Ohio State -> https://www.espn.com/college-football/story/_/id/46058557/college-football-ryan-day-ohio-state-handles-pressure
+Reason: The headline is not directly related to sports but focuses on how Ryan Day handles pressures off the field, which may not be of interest to a broad sports audience.
+
+[USA | BUSINESS] D.C. students return to school as the city remains on edge amid Trump’s takeover -> https://www.nbcnews.com/politics/immigration/dc-students-return-school-trump-takeover-rcna226383
+Reason: The headline focuses more on the political aspect of Trump's takeover rather than a business-related topic.
+
+[USA | BUSINESS] National Guard troops in D.C. begin carrying firearms -> https://www.nbcnews.com/politics/politics-news/national-guard-troops-dc-begin-carrying-firearms-rcna226890
+Reason: While the headline involves the National Guard and firearms, it is more closely related to political and security concerns rather than business topics.
+
+[USA | BUSINESS] Mayor blasts federal threat to deploy National Guard to Chicago -> https://www.nbcnews.com/news/us-news/mayor-blasts-trumps-threat-deploy-national-guard-chicago-rcna226905
+Reason: The headline is more political in nature rather than directly related to business.
+
+[USA | BUSINESS] Kilmar Abrego Garcia taken into ICE custody ahead of possible deportation -> https://www.nbcnews.com/now/video/kilmar-abrego-garcia-taken-into-ice-custody-ahead-of-possible-deportation-245712965584
+Reason: The headline is not directly related to business, as it focuses on an individual being taken into ICE custody for possible deportation.
+
+[USA | BUSINESS] Trump notes 'purge or revolution' in South Korea ahead of meeting with President Lee Jae-myung -> https://www.washingtontimes.com/news/2025/aug/25/trump-notes-purge-revolution-south-korea-ahead-meeting-president-lee/
+Reason: The headline is more focused on political dynamics between Trump and South Korea, rather than business-related news.
+
+[USA | ENTERTAINMENT] Michelle Obama Says One Of Her Daughters Was ‘Difficult’ For Barack — Here’s Why -> https://www.huffpost.com/entry/michelle-obama-sasha-parenting_n_68aa49d5e4b0434e01af7f23
+Reason: While Michelle Obama is a public figure, the headline focuses on personal family dynamics rather than entertainment-related topics.
+
+[USA | ENTERTAINMENT] Assistant Director Dies During Shoot Of 'Emily In Paris' In Venice -> https://www.huffpost.com/entry/emily-in-paris-assistant-director-dead_n_68aa0c09e4b0943e34b733b9
+Reason: While the headline is relevant to the entertainment industry, the news of an assistant director's death is not suitable for discussion as it is a tragic event.
+
+[USA | ENTERTAINMENT] Bill Maher Revives Prediction Of ‘Slow-Moving Coup’ Amid Trump’s DC Takeover -> https://www.huffpost.com/entry/bill-maher-trump-slow-moving-coup-washington-dc-takeover_n_68a9c410e4b0371e6a9b4c58
+Reason: The headline is more focused on political commentary rather than entertainment.
+
+[USA | ENTERTAINMENT] After Revealing That She’s Returned To Her Nursing Career Due To 'Sickening' Financial Struggles, Kate Gosselin Reacted To Her Son Collin's Latest Claims About Her Parenting -> https://www.huffpost.com/entry/kate-collin-gosselin-parenting-claims_n_68a8abc7e4b0768c801e977e
+Reason: The headline focuses more on personal struggles and parenting issues rather than entertainment-related topics.
+
+[USA | CELEBRITIES] Lil Nas X Charged with 4 Felonies, Assaulting Cops with Injury -> https://www.tmz.com/2025/08/25/lil-nas-x-charged-four-felonies-assaulting-cop-nearly-naked-walk/
+Reason: The headline is not suitable for discussion in the 'CELEBRITIES' topic as it focuses on criminal charges rather than celebrity news or achievements.
+
+[USA | CELEBRITIES] Comedian Reggie Carroll's Murder Suspect Identified -> https://www.tmz.com/2025/08/25/reggie-carroll-murder-suspect-identified/
+Reason: While the headline involves a celebrity, the topic of murder may not be suitable for a discussion on celebrities unless it directly relates to their career or public image.
+
+[GHA | POLITICS] What is behind the passion of Love Island USA's Nigerian fanbase? -> http://ghheadlines.com/agency/bbc-africa/20250824/168929773/what-is-behind-the-passion-of-love-island-usas-nigerian-fanbase
+Reason: The headline is not relevant to the topic of politics, but it may spark a discussion on the reasons behind the passion of Love Island USA's Nigerian fanbase.
+
+[GHA | POLITICS] How Russia is quietly trying to win over the world -> http://ghheadlines.com/agency/bbc-africa/20250824/168933182/how-russia-is-quietly-trying-to-win-over-the-world
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] Key accomplishments in President Mahama’s working visit to Japan -> http://ghheadlines.com/agency/3news/20250824/168929357/key-accomplishments-in-president-mahamas-working-visit-to-japan
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] GHALCA Top 4: Hearts of Oak humble Kotoko as GoldStars crowned champions -> http://ghheadlines.com/agency/ghana-soccer-net/20250824/168928986/ghalca-top-4-hearts-of-oak-humble-kotoko-as-goldstars-crowned-champions
+Reason: The headline is more related to sports (football) than politics, so it may not be suitable for discussion under the topic of 'POLITICS'.
+
+[GHA | POLITICS] Joy FM’s Drive Time with Lexis Bill to start at 2pm from September 1 -> https://www.myjoyonline.com/joy-fms-drive-time-with-lexis-bill-to-start-at-2pm-from-september-1/
+Reason: This news about a radio show's time change is not directly relevant to politics and may not spark a significant conversation.
+
+[GHA | POLITICS] Akwatia by-election: Ghanaians already benefiting from reset agenda – Tanko-Computer -> https://www.myjoyonline.com/akwatia-by-election-ghanaians-already-benefiting-from-reset-agenda-tanko-computer/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | BUSINESS] Al Jazeera journalist Anas al-Sharif dies in Israeli attack -> https://www.bizcommunity.com/article/al-jazeera-journalist-anas-al-sharif-dies-in-israeli-attack-280877a
+Reason: The headline is not directly related to business, it falls more under the political category.
+
+[GHA | ENTERTAINMENT] Piesie Esther Nyame Ye Lyrics (Stream audio) -> https://afiaghana.com/piesie-esther-nyame-ye-lyrics-stream-audio/
+Reason: The headline is more focused on providing a link to stream audio of a song's lyrics rather than sparking a discussion about entertainment.
+
+[GHA | CELEBRITIES] Stages of Burnout: 5 Key Stages You Should Know and How to Spot Them -> https://liveghanatv.com/2025/08/25/stages-of-burnout-5-key-stages-you-should-know-and-how-to-spot-them/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not spark a conversation within that context.
+
+[GHA | CELEBRITIES] African boxers who have won Olympic medals -> https://liveghanatv.com/2025/08/25/african-boxers-who-have-won-olympic-medals/
+Reason: The headline is not directly related to celebrities, but it could still spark some interest among sports enthusiasts.
+
+[GHA | CELEBRITIES] Top 10 Countries with the Cheapest Electricity Rates in Africa (2025) -> https://liveghanatv.com/2025/08/25/top-10-countries-with-the-cheapest-electricity-rates-in-africa-2025/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not spark a conversation within that context.
+
+
+===== Run @ 2025-08-25 13:56:32 =====
+[NGA | POLITICS] Nigeria’s oil output rises 9.9% in July – NUPRC -> https://www.premiumtimesng.com/business/business-news/816385-nigerias-oil-output-rises-9-9-in-july-nuprc.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | POLITICS] New Women’s Football Academy holds open screening in Lagos -> https://www.premiumtimesng.com/sports/football/816468-new-womens-football-academy-holds-open-screening-in-lagos.html
+Reason: The headline is not directly related to politics, but it could spark a conversation about women's sports development in Nigeria.
+
+[NGA | POLITICS] Experience as DG of Obasanjo/Atiku campaign made me shun ADC – Ex-ambassador -> https://guardian.ng/politics/experience-as-dg-of-obasanjo-atiku-campaign-made-me-shun-adc-ex-ambassador/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | SPORTS] Italian climber dies in Mont Blanc accident -> https://www.vanguardngr.com/2025/08/italian-climber-dies-in-mont-blanc-accident/
+Reason: The headline is not relevant to the topic of sports as it is about a climbing accident, not a sports-related event.
+
+[NGA | BUSINESS] FCTA demolishes more than 1,000 illegal structures in Karsana to open major road corridor -> https://nairametrics.com/2025/08/25/fcta-demolishes-more-than-1000-illegal-structures-in-karsana-to-open-major-road-corridor/
+Reason: While the headline involves the demolition of illegal structures, the focus is on infrastructure development rather than business-related activities.
+
+[NGA | BUSINESS] Four die, three injure as truck, two vehicles collide in Delta -> https://businessday.ng/news/article/four-die-three-injure-as-truck-two-vehicles-collide-in-delta/
+Reason: The headline is not relevant to the topic of BUSINESS and may not spark a conversation related to business matters.
+
+[NGA | BUSINESS] 3 die, 17 injure in Borno canoe mishap -> https://businessday.ng/news/article/3-die-17-injure-in-borno-canoe-mishap/
+Reason: The headline is not relevant to the topic of BUSINESS and may not spark a conversation related to that theme.
+
+[NGA | BUSINESS] ECOWAS unveils 260,000-member Rapid Force to tackle regional threats -> https://businessday.ng/news/article/ecowas-unveils-260000-member-rapid-force-to-tackle-regional-threats/
+Reason: While the headline is about a regional security force, it is not directly related to business topics.
+
+[NGA | ENTERTAINMENT] BBNAIJA: Don’t treat women like I was treated – Isabella tells son -> https://thenationonlineng.net/bbnaija-dont-treat-women-like-i-was-treated-isabella-tells-son/
+Reason: While the headline mentions BBNAIJA, the focus is on a personal statement made by Isabella to her son, which may not be widely engaging for a general entertainment discussion.
+
+[NGA | ENTERTAINMENT] Contraction disrupted my delivery-day content plans – Priscilla Ojo -> https://thenationonlineng.net/contraction-disrupted-my-delivery-day-content-plans-priscilla-ojo/
+Reason: The headline is not directly related to entertainment and may not be interesting enough to spark a conversation.
+
+[NGA | ENTERTAINMENT] Nwaogu’s wife exposes social media user over offensive comment -> https://thenationonlineng.net/nwaogus-wife-exposes-social-media-user-over-offensive-comment/
+Reason: The headline is more focused on a personal issue rather than a broader entertainment topic.
+
+[NGA | ENTERTAINMENT] Prudent Gabriel, Peterson expect first child -> https://thenationonlineng.net/prudent-gabriel-peterson-expect-first-child/
+Reason: The headline is more of a personal news item rather than a general entertainment topic.
+
+[NGA | CELEBRITIES] Buhari's granddaughter, Halima Junaid set to wed -> http://www.lindaikejisblog.com/2025/8/buharis-granddaughter-halima-junaid-set-to-wed-2.html
+Reason: The headline involves a political figure's family member, which may not directly relate to the topic of 'CELEBRITIES'.
+
+[NGA | CELEBRITIES] Four convicted for illegal tree felling in Kano -> http://www.lindaikejisblog.com/2025/8/four-convicted-for-illegal-tree-felling-in-kano-2.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not be interesting enough to spark a conversation in that context.
+
+[NGA | CELEBRITIES] Mfonobong Inyang: On Tkeyz & Steven Hills’ Timely Reminder That Jesus Is Enough -> https://www.bellanaija.com/2025/08/mfonobong-inyang-tkeyz-steven-hills-jesus-is-enough/
+Reason: While the headline mentions celebrities Tkeyz & Steven Hills, the focus is on a religious message rather than their celebrity status.
+
+[NGA | CELEBRITIES] Money Matters With Nimi: How Parents Can Manage Costs as Children Resume School -> https://www.bellanaija.com/2025/08/money-matters-with-nimi-how-parents-can-manage-costs-as-children-resume-school/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES'.
+
+[IND | POLITICS] Man kills girlfriend by stuffing explosive device in her mouth -> https://www.hindustantimes.com/india-news/man-kills-girlfriend-by-stuffing-explosive-device-in-her-mouth-101756148894053.html
+Reason: While the headline involves a criminal act, it does not directly relate to politics and may not be suitable for discussion under the topic of 'POLITICS'.
+
+[IND | POLITICS] US senator Mike Lee floats idea of pausing H1-B visa system -> https://www.hindustantimes.com/india-news/us-senator-floats-idea-of-pausing-h1-b-visa-system-101756146313293.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | SPORTS] 'I have to go back again ... ': Rohit Sharma opens up -> https://timesofindia.indiatimes.com/sports/cricket/news/i-have-to-go-back-again-rohit-sharma-opens-up-leaves-fans-emotional/articleshow/123507252.cms
+Reason: The headline does not directly relate to sports, so it may not be suitable for discussion under the topic 'SPORTS'.
+
+[IND | SPORTS] Virat Kohli's 'accidental' like! Avneet Kaur finally breaks silence, says 'Milta rahe pyaar' -> https://timesofindia.indiatimes.com/sports/off-the-field/virat-kohlis-accidental-like-avneet-kaur-finally-breaks-silence-says-milta-rahe-pyaar/articleshow/123508065.cms
+Reason: The headline is more focused on personal interactions rather than sports-related news, making it less suitable for discussion in the 'SPORTS' topic.
+
+[IND | SPORTS] Kuldeep Yadav breaks 70-day social media silence with fiancée Vanshika -> https://timesofindia.indiatimes.com/sports/off-the-field/kuldeep-yadav-breaks-70-day-social-media-silence-with-fiance-vanshika/articleshow/123508411.cms
+Reason: While the headline involves a cricketer, the news of breaking a social media silence with a fiancée may not be directly relevant or interesting enough for a sports discussion.
+
+[IND | SPORTS] Did Arjun Tendulkar get engaged to Saaniya Chandhok? Sachin with first official answer -> https://timesofindia.indiatimes.com/sports/cricket/news/did-arjun-tendulkar-get-engaged-to-saaniya-chandhok-sachin-tendulkar-with-first-official-answer/articleshow/123505439.cms
+Reason: The headline is not relevant to the topic of sports as it focuses on a personal relationship rather than sports-related news.
+
+[IND | BUSINESS] Influenza vaccination, building greater awareness vital in public healthcare: Zydus -> https://www.thehindubusinessline.com/news/influenza-vaccination-building-greater-awareness-vital-in-public-healthcare-zydus/article69976334.ece
+Reason: The headline is more focused on public healthcare rather than business-related topics.
+
+[USA | BUSINESS] 'Do not come to Chicago': Pritzker on Trump plans to send troops to Illinois -> https://www.nbcnews.com/video/illinois-gov-pritzker-warns-trump-not-to-send-troops-to-chicago-245738565963
+Reason: The headline is more focused on political statements rather than business-related news.
+
+[USA | BUSINESS] 'They're going to be brought down': Trump vows to go after Biden's advisers -> https://www.nbcnews.com/politics/white-house/-going-brought-trump-vows-go-bidens-advisers-rcna227019
+Reason: The headline is more focused on politics rather than business.
+
+[USA | BUSINESS] D.C. students return to school as the city remains on edge amid Trump’s takeover -> https://www.nbcnews.com/politics/immigration/dc-students-return-school-trump-takeover-rcna226383
+Reason: The headline is more focused on political tensions surrounding Trump rather than a business-related topic.
+
+[USA | BUSINESS] Kilmar Abrego Garcia taken into ICE custody ahead of possible deportation -> https://www.nbcnews.com/now/video/kilmar-abrego-garcia-taken-into-ice-custody-ahead-of-possible-deportation-245712965584
+Reason: The headline is not directly related to business topics, as it focuses on immigration and deportation.
+
+[USA | BUSINESS] Gov. Gavin Newsom goes full-Trump on merchandizing front -> https://www.washingtontimes.com/news/2025/aug/25/gov-gavin-newsom-goes-full-trump-merchandizing-front/
+Reason: The headline is more focused on a political figure rather than a business aspect, making it less relevant to the 'BUSINESS' topic.
+
+[USA | BUSINESS] Trump notes 'purge or revolution' in South Korea ahead of meeting with President Lee Jae-myung -> https://www.washingtontimes.com/news/2025/aug/25/trump-notes-purge-revolution-south-korea-ahead-meeting-president-lee/
+Reason: The headline is more political in nature and does not directly relate to business topics.
+
+[USA | ENTERTAINMENT] Michelle Obama Says One Of Her Daughters Was ‘Difficult’ For Barack — Here’s Why -> https://www.huffpost.com/entry/michelle-obama-sasha-parenting_n_68aa49d5e4b0434e01af7f23
+Reason: The headline is more focused on the personal dynamics within the Obama family rather than entertainment-related topics.
+
+[USA | ENTERTAINMENT] Bill Maher Revives Prediction Of ‘Slow-Moving Coup’ Amid Trump’s DC Takeover -> https://www.huffpost.com/entry/bill-maher-trump-slow-moving-coup-washington-dc-takeover_n_68a9c410e4b0371e6a9b4c58
+Reason: The headline is more political in nature rather than entertainment-focused.
+
+[USA | ENTERTAINMENT] After Revealing That She’s Returned To Her Nursing Career Due To 'Sickening' Financial Struggles, Kate Gosselin Reacted To Her Son Collin's Latest Claims About Her Parenting -> https://www.huffpost.com/entry/kate-collin-gosselin-parenting-claims_n_68a8abc7e4b0768c801e977e
+Reason: The headline focuses more on personal struggles and parenting issues rather than entertainment-related topics.
+
+[USA | CELEBRITIES] These 3 Popular Netflix Movies Need to Be Watched Now (August 25-29) -> https://www.usmagazine.com/entertainment/news/you-need-to-watch-these-3-popular-netflix-movies-now-august-25-29-25/
+Reason: The headline is not directly related to celebrities, it focuses on Netflix movies rather than celebrities themselves.
+
+[GHA | POLITICS] What is behind the passion of Love Island USA's Nigerian fanbase? -> http://ghheadlines.com/agency/bbc-africa/20250824/168929773/what-is-behind-the-passion-of-love-island-usas-nigerian-fanbase
+Reason: The headline is not directly relevant to the topic of politics in Ghana, but it may spark a conversation about cultural influences and entertainment preferences.
+
+[GHA | POLITICS] How Russia is quietly trying to win over the world -> http://ghheadlines.com/agency/bbc-africa/20250824/168933182/how-russia-is-quietly-trying-to-win-over-the-world
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] Key accomplishments in President Mahama’s working visit to Japan -> http://ghheadlines.com/agency/3news/20250824/168929357/key-accomplishments-in-president-mahamas-working-visit-to-japan
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] GHALCA Top 4: Hearts of Oak humble Kotoko as GoldStars crowned champions -> http://ghheadlines.com/agency/ghana-soccer-net/20250824/168928986/ghalca-top-4-hearts-of-oak-humble-kotoko-as-goldstars-crowned-champions
+Reason: While the headline involves sports teams, it does not directly relate to politics, so it may not be suitable for discussion under the topic 'POLITICS'.
+
+[GHA | POLITICS] Lil Nas X pleads not guilty to four felony charges after naked arrest in Los Angeles -> https://www.myjoyonline.com/lil-nas-x-pleads-not-guilty-to-four-felony-charges-after-naked-arrest-in-los-angeles/
+Reason: The headline is not relevant to the topic of politics, and while it may spark conversation, it is more suitable for entertainment or celebrity news discussions.
+
+[GHA | POLITICS] Mourner detained for allegedly possessing three pump-action guns -> https://www.myjoyonline.com/mourner-detained-for-allegedly-possessing-three-pump-action-guns/
+Reason: While the headline involves guns, it does not directly relate to politics and may not be of significant interest for a political discussion in Ghana.
+
+[GHA | BUSINESS] Al Jazeera journalist Anas al-Sharif dies in Israeli attack -> https://www.bizcommunity.com/article/al-jazeera-journalist-anas-al-sharif-dies-in-israeli-attack-280877a
+Reason: The headline is not directly related to business and may not spark a conversation in that context.
+
+[GHA | ENTERTAINMENT] Piesie Esther Nyame Ye Lyrics (Stream audio) -> https://afiaghana.com/piesie-esther-nyame-ye-lyrics-stream-audio/
+Reason: The headline is more focused on the lyrics of a song rather than a broader entertainment topic that would spark a conversation.
+
+[GHA | CELEBRITIES] Investigation board constituted to probe Z-9 military helicopter crash begins work -> https://liveghanatv.com/2025/08/25/investigation-board-constituted-to-probe-z-9-military-helicopter-crash-begins-work/
+Reason: The headline is not relevant to the topic of celebrities and may not spark a conversation within that context.
+
+[GHA | CELEBRITIES] Basil David Anthony Named CEO of the Year at the Global Trade & Business Awards 2025 -> https://liveghanatv.com/2025/08/25/basil-david-anthony-named-ceo-of-the-year-at-the-global-trade-business-awards-2025/
+Reason: While the headline mentions a notable individual, it does not directly relate to the topic of 'CELEBRITIES' and may not spark a conversation within that context.
+
+[GHA | CELEBRITIES] Stages of Burnout: 5 Key Stages You Should Know and How to Spot Them -> https://liveghanatv.com/2025/08/25/stages-of-burnout-5-key-stages-you-should-know-and-how-to-spot-them/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not spark a conversation within that context.
+
+
+===== Run @ 2025-08-26 09:13:45 =====
+[NGA | POLITICS] NDPC issues compliance notices to banks, insurers, pension and gaming firms -> https://www.premiumtimesng.com/business/816603-ndpc-issues-compliance-notices-to-banks-insurers-pension-and-gaming-firms.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[NGA | POLITICS] Chams’ SIM card business hits N5 billion turnover three years into launch -> https://www.premiumtimesng.com/business/816597-chams-sim-card-business-hits-n5-billion-turnover-three-years-into-launch.html
+Reason: The headline is not directly related to politics and may not be interesting enough to spark a conversation in that context.
+
+[NGA | POLITICS] Abuja-Kaduna train derails -> https://www.premiumtimesng.com/news/headlines/816593-abuja-kaduna-train-derails.html
+Reason: The headline is not directly related to politics, but it could potentially spark a conversation about infrastructure development and safety measures in Nigeria.
+
+[NGA | BUSINESS] Alleged terror financing: Court approves IGP’s request for banks to release Sowore’s transactions -> https://nairametrics.com/2025/08/26/alleged-terror-financing-court-approves-igps-request-for-banks-to-release-sowores-transactions/
+Reason: The headline is more politically focused rather than strictly business-related.
+
+[NGA | BUSINESS] Nigeria, Brazil to strengthen health sector cooperation with 5-Year Joint Action Plan -> https://nairametrics.com/2025/08/26/nigeria-brazil-to-strengthen-health-sector-cooperation-with-5-year-joint-action-plan/
+Reason: The headline is more focused on health sector cooperation rather than business, so it may not be directly relevant for a business discussion in Nigeria.
+
+[NGA | BUSINESS] Kano government denied the alleged fraud of the N6.5 billion claim by some groups -> https://businessday.ng/news/article/kano-government-denied-the-alleged-fraud-of-the-n6-5-billion-claim-by-some-groups/
+Reason: The headline is more political in nature rather than directly related to business topics.
+
+[NGA | BUSINESS] PSG move excites Super Falcons captain Rasheedat Ajibade -> https://businessday.ng/sports/article/psg-move-excites-super-falcons-captain-rasheedat-ajibade/
+Reason: The headline is more focused on sports and personal excitement rather than business-related news.
+
+[NGA | BUSINESS] By-elections conducted in Nigeria are far from meeting an acceptable standard – Political Scientist -> https://businessday.ng/politics/article/by-elections-conducted-in-nigeria-are-far-from-meeting-an-acceptable-standard-political-scientist/
+Reason: The headline is more focused on political issues rather than business-related topics.
+
+[NGA | ENTERTAINMENT] ‘With time, he will change’ – Jarvis tackles critics dragging Peller -> https://www.vanguardngr.com/2025/08/with-time-he-will-change-jarvis-tackles-critics-dragging-peller/
+Reason: The headline is more focused on addressing critics and personal growth rather than sparking entertainment-related discussions.
+
+[NGA | ENTERTAINMENT] Don’t mistake cash flow for profit, Williams Uchemba cautions business owners -> https://thenationonlineng.net/dont-mistake-cash-flow-for-profit-williams-uchemba-cautions-business-owners-2/
+Reason: While the headline involves a popular figure in the entertainment industry, the topic of cautioning business owners about cash flow and profit may not be directly related to entertainment and may not spark a conversation in that context.
+
+[NGA | ENTERTAINMENT] Don’t mistake cash flow for profit, Williams Uchemba cautions business owners -> https://thenationonlineng.net/dont-mistake-cash-flow-for-profit-williams-uchemba-cautions-business-owners/
+Reason: The headline is more focused on business advice rather than entertainment, so it may not be suitable for discussion under the topic of 'ENTERTAINMENT'.
+
+[NGA | ENTERTAINMENT] President Lula hosts Wole Soyinka in Brazil -> https://thenationonlineng.net/president-lula-hosts-wole-soyinka-in-brazil/
+Reason: The headline is more political in nature rather than entertainment-focused.
+
+[NGA | CELEBRITIES] Sleek Designs, Budget Friendly, Street Creed: 5 Reasons Why the Spark 40 Is the Most Customer-Centric Phone in the Market -> http://www.lindaikejisblog.com/2025/8/sleek-designs-budget-friendly-street-creed-5-reasons-why-the-spark-40-is-the-most-customer-centric-phone-in-the-market.html
+Reason: The headline is not directly related to celebrities and may not spark a conversation within that topic.
+
+[NGA | CELEBRITIES] Homeless man admits murdering woman with a mallet days after she took him in -> http://www.lindaikejisblog.com/2025/8/homeless-man-admits-murdering-woman-with-a-mallet-days-after-she-took-him-in.html
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not be suitable for discussion in that context.
+
+[NGA | CELEBRITIES] Elon Musk’s xAI sues Apple and OpenAI over AI competition and app store rankings -> http://www.lindaikejisblog.com/2025/8/elon-musks-xai-sues-apple-and-openai-over-ai-competition-and-app-store-rankings.html
+Reason: The headline is not directly related to celebrities and may not spark a conversation within the context of the topic.
+
+[NGA | CELEBRITIES] Iran vows reciprocal action after Australia expelled its envoy -> http://www.lindaikejisblog.com/2025/8/iran-vows-reciprocal-action-after-australia-expelled-its-envoy-2.html
+Reason: The headline is not relevant to the topic 'CELEBRITIES' and may not spark a conversation within that context.
+
+[NGA | CELEBRITIES] PDP members demanding ticket zoning to the North are selfish — Bode George -> http://www.lindaikejisblog.com/2025/8/pdp-members-demanding-ticket-zoning-to-the-north-are-selfish-bode-george.html
+Reason: The headline is more political in nature and does not directly relate to the topic of 'CELEBRITIES'.
+
+[NGA | CELEBRITIES] Sleek Design, Budget Friendly, Street Cred: 5 Features Defining the Spark 40 Experience -> https://www.bellanaija.com/2025/08/the-spark-40-experience/
+Reason: The headline is not directly related to celebrities and may not spark a conversation within the topic of 'CELEBRITIES'.
+
+[NGA | CELEBRITIES] Suzan Aguiyi-Ironsi: Why Nigeria Needs Special Legislative Seats For Women Now -> https://www.bellanaija.com/2025/08/suzan-aguiyi-ironsi-nigeria-needs-special-legislative-seats-for-women-now/
+Reason: The headline is more focused on political and gender equality issues rather than celebrities.
+
+[NGA | CELEBRITIES] One Phone Call Led to a Lifetime of Love for Eno and Uchenna -> https://www.bellanaija.com/2025/08/eno-uchenna-pre-wedding-shoot/
+Reason: The headline focuses on a personal love story rather than a celebrity-related topic.
+
+[NGA | CELEBRITIES] FIBA AfroBasket 2025: Angola Crowned Champions After Defeating Mali for Record 12th Title -> https://www.bellanaija.com/2025/08/angola-wins-afrobasket-2025-champions/
+Reason: The headline is not directly related to celebrities, so it may not spark a conversation within the context of the 'CELEBRITIES' topic.
+
+[IND | POLITICS] Absences, Deadlines & Delhi Trips: All Well Between Fadnavis And Shinde In Mahayuti? -> https://www.news18.com/politics/absences-deadlines-delhi-trips-all-well-between-fadnavis-and-shinde-in-mahayuti-ws-kl-9528452.html
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[IND | POLITICS] Six persons sentenced to three years imprisonment in TN tiger poaching case -> https://www.hindustantimes.com/india-news/six-persons-sentenced-to-three-years-imprisonment-in-tn-tiger-poaching-case-101756224119912.html
+Reason: While the news involves a legal case, it is more focused on wildlife poaching than political matters.
+
+[IND | SPORTS] Kohli’s emotional note for Pujara: ‘Thank you for making my job easier at 4’ -> https://timesofindia.indiatimes.com/sports/cricket/news/virat-kohlis-emotional-note-for-cheteshwar-pujara-thank-you-for-making-my-job-easier-at-4/articleshow/123528437.cms
+Reason: While the headline involves two well-known Indian cricketers, it focuses more on a personal note rather than a sports-related event or achievement.
+
+[IND | SPORTS] After blasting Gambhir, ex-India player accuses Dhoni of favouritism - 'He did not like me' -> https://timesofindia.indiatimes.com/sports/cricket/news/after-blasting-gautam-gambhir-ex-india-player-accuses-ms-dhoni-of-favouritism-he-did-not-like-me/articleshow/123523863.cms
+Reason: The headline is more focused on personal conflicts and accusations rather than sports-related matters.
+
+[IND | SPORTS] Two changes likely in Agarkar-led India men's selection committee -> https://www.espncricinfo.com/ci/content/story/1500065.html?ex_cid=OTC-RSS
+Reason: The headline is more about administrative changes within the selection committee rather than specific sports-related news that would spark a conversation.
+
+[IND | BUSINESS] DKS reiterates loyalty to Congress after RSS anthem row -> https://www.thehindubusinessline.com/news/dks-reiterates-loyalty-to-congress-after-rss-anthem-row/article69980374.ece
+Reason: The headline is more political in nature rather than business-related.
+
+[IND | BUSINESS] Who owns your thoughts? The ethical dilemmas of brain–computer interfaces -> https://www.thehindubusinessline.com/news/science/who-owns-your-thoughts-the-ethical-dilemmas-of-braincomputer-interfaces/article69980053.ece
+Reason: While the topic of brain-computer interfaces is intriguing, the headline focuses more on ethical dilemmas rather than direct business implications.
+
+[IND | BUSINESS] 10 points that that prompted top court to order SIT on Reliance Foundation-run Vantara -> https://www.zeebiz.com/companies/news-10-points-that-prompted-top-court-to-order-sit-on-reliance-foundation-run-vantara-377253
+Reason: The headline is more focused on legal and investigative aspects rather than business-related discussions.
+
+[IND | ENTERTAINMENT] Madras HC steps in as Boney Kapoor battles fresh ownership claims over Sridevi’s 1988 ECR property -> https://www.bollywoodhungama.com/news/bollywood/madras-hc-steps-boney-kapoor-battles-fresh-ownership-claims-sridevis-1988-ecr-property/
+Reason: While the headline involves a well-known Bollywood figure and legal battle, it may not be engaging enough for a broader entertainment discussion in India.
+
+[IND | ENTERTAINMENT] Shah Rukh Khan asks Farah Khan to apologise after Dilip dances to Aryan 'baba's beats -> https://www.indiatvnews.com/entertainment/news/shah-rukh-khan-farah-khan-dilip-aryan-khan-bads-of-bollywood-halka-kalka-2025-08-26-1005254
+Reason: The headline involves a specific incident involving celebrities, but it may not be of widespread interest or relevance to spark a broader conversation in the entertainment industry.
+
+[USA | SPORTS] Rich Rodriguez press conference summary: Robert Morris week -> https://www.on3.com/sites/wv-sports/news/rich-rodriguez-press-conference-summary-robert-morris-week/?yptr=yahoo
+Reason: While the headline mentions a press conference related to sports, it lacks specific details or highlights that would make it interesting enough to spark a conversation.
+
+[USA | BUSINESS] Fed Governor Lisa Cook Responds After Trump Fires Her -> https://www.today.com/video/trump-fires-fed-governor-lisa-cook-in-truth-social-post-245774917831
+Reason: The headline is more focused on political actions rather than business-related matters.
+
+[USA | BUSINESS] Trump holds Cabinet meeting -> https://www.nbcnews.com/video/watch-live-trump-holds-cabinet-meeting-245782085754
+Reason: While the headline involves a political figure, the topic of a Cabinet meeting does not directly relate to business.
+
+[USA | BUSINESS] Parents Sue ChatGPT Over Their 16-Year-Old Son’s Suicide -> https://www.today.com/video/parents-sue-openai-alleging-chatgpt-assisted-son-s-suicide-245776453698
+Reason: While the headline involves a lawsuit, it focuses more on a tragic event rather than a business-related aspect of ChatGPT.
+
+[USA | BUSINESS] Will this strip of land bury dreams of a Palestinian state? -> https://www.nbcnews.com/world/middle-east/greater-israel-palestinian-capital-tiny-strip-land-divide-west-bank-rcna226955
+Reason: The headline is more focused on political implications rather than business-related aspects.
+
+[USA | BUSINESS] Lisa Cook lawyers up, vows to fight Fed firing by Trump -> https://www.washingtontimes.com/news/2025/aug/26/lisa-cook-lawyers-vows-fight-fed-firing/
+Reason: The headline is more focused on political and legal aspects rather than business-related matters.
+
+[USA | BUSINESS] Newsom goes full-Trump on merchandizing front -> https://www.washingtontimes.com/news/2025/aug/25/gov-gavin-newsom-goes-full-trump-merchandizing-front/
+Reason: The headline is more focused on political figures and their actions, rather than business-related topics.
+
+[USA | CELEBRITIES] Celebrate National Dog Day with Major Discounts on Pet Beds! -> https://www.tmz.com/2025/08/26/national-dog-day-pet-bed-sales/
+Reason: The headline is not directly related to celebrities, as it focuses on National Dog Day and pet beds.
+
+[GHA | POLITICS] Forward Prince Obeng Ampem scores winner to hand Eyupspor first league victory of the season -> http://ghheadlines.com/agency/ghana-soccer-net/20250825/168936825/forward-prince-obeng-ampem-scores-winner-to-hand-eyupspor-first-league-victory-of-the-season
+Reason: The headline is not relevant to the topic of POLITICS as it is about a sports event.
+
+[GHA | POLITICS] Wydad AC terminate contract with Ghanaian striker Samuel Obeng after short spell -> http://ghheadlines.com/agency/ghana-soccer-net/20250825/168937115/wydad-ac-terminate-contract-with-ghanaian-striker-samuel-obeng-after-short-spell
+Reason: The headline is not directly related to politics and may not spark a significant conversation within the political context.
+
+[GHA | POLITICS] LIVE: Ghana Tonight with Alfred Ocansey || 25-08-2025 -> http://ghheadlines.com/agency/3news/20250825/168936559/live-ghana-tonight-with-alfred-ocansey-25-08-2025
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | POLITICS] â??We are not scared of Kotokoâ?? â?? Gold Stars goalkeeper Emmanuel Kobi insists ahead of Champions of Champions clash -> http://ghheadlines.com/agency/ghana-soccer-net/20250825/168936378/we-are-not-scared-of-kotoko-gold-stars-goalkeeper-emmanuel-kobi-insists-ahead-of-champions-of-champions-clash
+Reason: The headline is not directly related to politics, but it could spark a conversation among football fans or sports enthusiasts.
+
+[GHA | POLITICS] Selected Catch Them Young referees commence preparations for FIFA TDS U-15 Boys Championship -> http://ghheadlines.com/agency/ghana-soccer-net/20250825/168936241/selected-catch-them-young-referees-commence-preparations-for-fifa-tds-u-15-boys-championship
+Reason: While the headline is related to sports, it does not directly pertain to politics and may not spark a conversation in that context.
+
+[GHA | POLITICS] The puzzle between South Africa and Ukraine, with hopes for tourism and local development -> https://www.myjoyonline.com/the-puzzle-between-south-africa-and-ukraine-with-hopes-for-tourism-and-local-development/
+Reason: The headline does not directly relate to Ghanaian politics and may not spark a conversation on politics in Ghana.
+
+[GHA | POLITICS] Dr Muhammad Dan Suleiman: Opposition in Ghana – All hail the party, to hell with the people! -> https://www.myjoyonline.com/dr-muhammad-dan-suleiman-opposition-in-ghana-all-hail-the-party-to-hell-with-the-people/
+Reason: generate_debatable_statement() returned None (not discussion-worthy)
+
+[GHA | BUSINESS] Al Jazeera journalist Anas al-Sharif dies in Israeli attack -> https://www.bizcommunity.com/article/al-jazeera-journalist-anas-al-sharif-dies-in-israeli-attack-280877a
+Reason: The headline is not relevant to the topic of business as it focuses on a political event.
+
+[GHA | ENTERTAINMENT] Piesie Esther Nyame Ye Lyrics (Stream audio) -> https://afiaghana.com/piesie-esther-nyame-ye-lyrics-stream-audio/
+Reason: The headline is more focused on providing access to music lyrics rather than sparking a discussion about entertainment.
+
+[GHA | ENTERTAINMENT] Shima 21 Bitter & Sweet (Official ) Lyrics (Stream audio) -> https://afiaghana.com/shima-21-bitter-sweet-official-lyrics-stream-audio/
+Reason: The headline is more focused on the release of lyrics and audio, which may not be engaging enough for a discussion on entertainment in Ghana.
+
+[GHA | CELEBRITIES] Elevate your tutorials with a smart video speed changer -> https://liveghanatv.com/2025/08/26/elevate-your-tutorials-with-a-smart-video-speed-changer/
+Reason: The headline is not relevant to the topic of 'CELEBRITIES' and may not spark a conversation within that context.
+
+[GHA | CELEBRITIES] ‘He didn’t pay a penny’ – Bryan Acheampong claims he sponsored Bawumia in 2023 primaries -> https://liveghanatv.com/2025/08/26/he-didnt-pay-a-penny-bryan-acheampong-claims-he-sponsored-bawumia-in-2023-primaries/
+Reason: The headline is more political in nature, focusing on sponsorship in primaries rather than discussing celebrities.
+

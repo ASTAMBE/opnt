@@ -34,6 +34,10 @@ thisproc: BEGIN
   WHERE ROW_ID IN (
     SELECT ROW_ID FROM cte WHERE rn > 1
   );
+  
+-- step 1.5: Delete the rows that have already been converted to KW's in previous days - because the scrapers often bring the same items in later days
+
+DELETE FROM OPN_SFC_CONTENT WHERE CONVERTED_POST_ID IS NULL AND CONTENT_TITLE IN (SELECT KEYWORDS FROM OPN_P_KW WHERE CREATION_DTM > CURRENT_DATE() - INTERVAL 30 DAY) ;
 
   -- Step 2:  Process remaining rows 
   

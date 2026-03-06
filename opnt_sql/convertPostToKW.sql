@@ -57,37 +57,47 @@ thisproc: BEGIN
     tURNS OUT, THE STD_NO_DISC type of createBotDiscussion was the one that was causing the issue - beccause it did not insert
     the NEWS_HEADLINE into the POST_POSTS_RAW. Which, in turn, caused the convertPostToKW (this proc) to use the post_content (= URL)
     as the KEYWORDS value. Now the createBotDiscussion has been fixed.
+    
+    08/29/2025 AST: Adding the TRUE_COUNTRY_CODE to OPN_P_KW -> This will be populated only when the KW being created is through the STDTCC
 
     
  */
 
 declare pbuid, actionByUID, postidvar, newkeyid INT;
-DECLARE pbuname, actionByUNAME VARCHAR(30) ;
+DECLARE pbuname, actionByUNAME, STPPROC, CONTTONE, CONTCAMP VARCHAR(30) ;
 DECLARE substrPCONT, KW, substrURLT, UUID VARCHAR(160) ;
 DECLARE POSTCONTENT, URLTITLE LONGTEXT ;
 DECLARE actionCDTM DATETIME ;
-DECLARE CCODE VARCHAR(5) ;
+DECLARE CCODE, KWTCC VARCHAR(5) ;
 
 INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 'convertPostToKW-Entrypoint: postid-actionbyid-actionType-kidparam', CONCAT(postid,'-',actionbyid,'-', actionType, '-', kidparam), NOW() ) ;
 
+-- SELECT 'convertPostToKW-Entrypoint: postid-actionbyid-actionType-kidparam', CONCAT(postid,'-',actionbyid,'-', actionType, '-', kidparam), NOW() ;
+-- LEAVE thisproc ;
 CASE WHEN kidparam = 0 THEN
 
-SELECT P.POST_ID, POST_CONTENT, SUBSTR(P.POST_CONTENT, 1, 160), P.URL_TITLE, SUBSTR(P.URL_TITLE, 1, 160), POSTOR_COUNTRY_CODE
-INTO postidvar, POSTCONTENT, substrPCONT, URLTITLE, substrURLT, CCODE FROM OPN_POSTS P WHERE P.POST_ID = postid ;
+SELECT P.POST_ID, POST_CONTENT, SUBSTR(P.POST_CONTENT, 1, 160), P.URL_TITLE, SUBSTR(P.URL_TITLE, 1, 160)
+, POSTOR_COUNTRY_CODE, IFNULL(POSTOR_TCC, 'NOTCC'), IFNULL(STP_PROC_NAME, 'NOPROC')
+INTO postidvar, POSTCONTENT, substrPCONT, URLTITLE, substrURLT, CCODE, KWTCC, STPPROC FROM OPN_POSTS P WHERE P.POST_ID = postid ;
 
 SELECT USERNAME, USER_UUID INTO actionByUNAME, UUID 
 FROM OPN_USERLIST WHERE USERID = actionbyid ;
+
+SELECT IFNULL(CONTENT_TONE, 'NOTONE'), IFNULL(CONTENT_CAMP, 'NOCAMP') INTO CONTTONE, CONTCAMP  
+FROM OPN_SFC_CONTENT WHERE CONVERTED_POST_ID = postid ;
 
 /* Creating the new KeyWord below and updating the OPN_POSTS */
 
 INSERT INTO OPN_P_KW(TOPICID, KEYWORDS, KW_TRIM, COUNTRY_CODE, DISPLAY_SEQ, CREATION_DTM
 , LAST_UPDATE_DTM, CLUSTER_PRIO, ORIGIN_COUNTRY_CODE, NEW_KW_FLAG, SCRAPE_TAG1, SCRAPE_TAG2,
-USER_CREATED_KW, CREATED_BY_UID, CREATED_BY_UUID, CREATED_BY_UNAME, CLEAN_KW_FLAG, KW_EXT, KW_URL, ALT_KEYID)
+USER_CREATED_KW, CREATED_BY_UID, CREATED_BY_UUID, CREATED_BY_UNAME, CLEAN_KW_FLAG, KW_EXT, KW_URL, ALT_KEYID
+, KW_TCC, STP_PROC, KW_TONE, KW_CAMP)
 VALUES (tid, IFNULL(substrURLT, substrPCONT)
 , CONCAT(UPPER(REPLACE(IFNULL(substrURLT, substrPCONT), ' ', '') ), tid) , CCODE, 5, NOW()
 , NOW(), 5, CCODE, 'N', 'NOSCRAPE', 'NOSCRAPETAG2'
-, 'Y', actionbyid, UUID, actionByUNAME, 'Y', URLTITLE, POSTCONTENT , postid ); 
+, 'Y', actionbyid, UUID, actionByUNAME, 'Y', URLTITLE, POSTCONTENT , postid 
+, KWTCC, STPPROC, CONTTONE, CONTCAMP); 
 
 SELECT KEYID INTO newkeyid FROM OPN_P_KW WHERE ALT_KEYID = postid limit 1 ;
 
@@ -114,7 +124,7 @@ INSERT INTO OPN_RAW_LOGS(KEYVALUE_KEY, KEYVALUE_VALUE, LOG_DTM) VALUES(
 'convertPostToKW-Inserted CART with new POST-TO-KW: newkeyid-Cart For USERID-Topicid-CART Value'
 , CONCAT(newkeyid, '-', actionbyid,'-',tid,'-', actionType), NOW() ) ;
 
-CALL ADD_NUSERS_4K1(newkeyid , CCODE,  tid) ;
+ CALL ADD_NUSERS_4K1(newkeyid , CCODE,  tid) ;
 
 /* END upsert in the cart */
 

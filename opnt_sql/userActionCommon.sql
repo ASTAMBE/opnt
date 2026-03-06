@@ -3,7 +3,7 @@
  DELIMITER //
 DROP PROCEDURE IF EXISTS userActionCommon //
 CREATE PROCEDURE userActionCommon(uuid varchar(45), actionSource VARCHAR(10), actionType varchar(5), sourceID INT)
-BEGIN
+thisproc:BEGIN
 
 /*
 	06/04/2020 AST: Building this proc as a combined proc for User Post or Comment Actions
@@ -79,6 +79,9 @@ SELECT U1.USERNAME, U1.USERID INTO UNAME, ORIG_UID FROM OPN_USERLIST U1 WHERE U1
 
 SELECT TOPICID, POST_BY_USERID, IFNULL(KEYID, 0), SUBSTR(POST_CONTENT, 1, 100) INTO TID, postByUID, altkey, POSTCONTENT FROM OPN_POSTS WHERE POST_ID = sourceID ;
 
+-- SELECT TID, postByUID, altkey, POSTCONTENT ;
+-- LEAVE thisproc ;
+
 CASE WHEN altkey = 0 THEN 
 SELECT ifnull(MIN(KEYID),0) INTO altkid FROM OPN_P_KW WHERE KEYWORDS LIKE CONCAT("'", POSTCONTENT, '%', "'") ;
 -- SELECT UNAME, ORIG_UID, TID, postByUID, altkey, POSTCONTENT, CONCAT("'", POSTCONTENT, '%', "'"), altkid ;
@@ -117,6 +120,10 @@ IF actionType = 'L1' THEN
 ELSE
    SET actionTypeNew = 'H';
 END IF;
+
+-- SELECT ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, IFNULL(altkid, 0) ;
+-- LEAVE thisproc ;
+
 INSERT INTO OPN_USER_POST_ACTION (ACTION_BY_USERID, POST_BY_USERID, POST_ACTION_TYPE, POST_ACTION_DTM
 , CAUSE_POST_ID, ACTION_SOURCE, TOPICID, KEYID) 
 VALUES (ORIG_UID, postByUID, actionTypeNew, NOW(), sourceID, 'POST', TID, IFNULL(altkid, 0)) ;

@@ -27,6 +27,9 @@ DISCCART2 = THE OPPOSITE L/H FROM THE DISCCART1
 08/27/2025 AST: Trying to use OPN_USERLIST instead of OPN_MAIN_BOTS to create TCC discussions.
 It requires that we do not use TID in the WHERE clause for selecting the random BOTs as post and comment creators
 
+09/01/2025 AST: Moved up the UPDATE OPN_SFC_CONTENT SET CONVERTED_POST_ID = POSTID WHERE ROW_ID = source_row_id 
+right after the POST creation - because there is no point in prolonging it and other procs may depend on it.
+
 */
 
 declare  DISCBYUID, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST, TID, CONVPOSTID INT;
@@ -88,6 +91,13 @@ INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, 
 VALUES (TID, CDTM, DISCBYUID, newsTitle, URL, 'N', '', 'N', countryCode, truecountrycode, '', 'N', 'TCC_DISCUSSION');
 
 SELECT MAX(POST_ID) INTO POSTID FROM OPN_POSTS WHERE POST_BY_USERID = DISCBYUID AND STP_PROC_NAME = 'TCC_DISCUSSION' AND POST_CONTENT = newsTitle ;
+
+/* Now update the OPN_SFC_CONTENT with the converted POST_ID  */
+
+UPDATE OPN_SFC_CONTENT SET CONVERTED_POST_ID = POSTID WHERE ROW_ID = source_row_id ;
+
+-- SELECT DISCBYUUID, 'POST', DISCCART1, POSTID ;
+-- LEAVE thisProc  ;
 
 /* DISCBYUNAME doing L/H to own post */
 
@@ -152,10 +162,6 @@ VALUES
 , NOW() - INTERVAL 5 minute, '', 'N', 'CONP', '', 'N');
 
 END IF ;
-
-/* Now update the OPN_SFC_CONTENT with the converted POST_ID  */
-
-UPDATE OPN_SFC_CONTENT SET CONVERTED_POST_ID = POSTID WHERE ROW_ID = source_row_id ;
 
 /* Below: ending the very first IF - to skip the scrapes that have already been convrted to Posts. */
 

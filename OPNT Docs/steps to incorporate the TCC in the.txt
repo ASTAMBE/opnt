@@ -50,3 +50,5 @@ now we need to change the SFC - to use the TCC content when the user is from the
 2. add the NEWS_ONLY_FLAG kws to all the bot carts
 3. CONSIDER HOW WE ARE GOING TO BUILD THE NETWORK - THAT PRIORITIZES THE LATEST L/H SELECTIONS BY THE USER - AND FADE OUT THE NEWS_ONLY KW FOR NETWORK
 
+https://newsapi.org/v2/top-headlines?country=us&apiKey=c220e60f954f477091c583138f9debb0
+

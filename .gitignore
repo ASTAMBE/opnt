@@ -1,0 +1,21 @@
+# Ignore SQL files
+2025.sql
+opnt_sql/createSFCDiscussion.sql
+
+# Ignore IDE and build artifacts
+.idea/
+.gradle/
+build/
+
+# Ignore macOS system files
+.DS_Store
+APIFiles/.DS_Store
+
+# Ignore sensitive folders
+APIFiles/
+
+# Ignore project-specific junk
+OPNT Docs/Opinito Database Info
+
+.DS_Store
+PyScrapers/INDPOLOnce02-01-2025.sql

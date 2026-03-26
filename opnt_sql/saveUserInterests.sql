@@ -9,6 +9,7 @@ BEGIN
 
 06/09/2020 AST: Initial Creation for recording the User Interests when the user signs up first
 08/11/2020 Kapil: Confirmed
+12/24/2024 AST: Adding the bhv log
 */
 
 declare  orig_uid, pbuid INT;
@@ -20,10 +21,18 @@ SET SQL_SAFE_UPDATES = 0;
 SELECT USERID, USERNAME INTO orig_uid, uname FROM OPN_USERLIST WHERE USER_UUID = uuid ;
 SELECT T.TOPIC, T.CODE INTO intName, intCode FROM OPN_TOPICS T WHERE T.TOPICID = tid ;
 
-DELETE FROM OPN_USER_INTERESTS WHERE USERID = orig_uid ;
+-- DELETE FROM OPN_USER_INTERESTS WHERE USERID = orig_uid ;
 
 INSERT INTO OPN_USER_INTERESTS(USERID, USER_UUID, INTEREST_ID, INTEREST_NAME, INTEREST_CODE, CREATION_DTM, USERNAME)
 VALUES (orig_uid, uuid, tid, intName, intCode, NOW(), uname);
+
+/* Adding user action logging portion */
+
+INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+VALUES(bringUsernameByUUID(uuid), orig_uid, uuid, NOW(), 'saveUserInterests', CONCAT(orig_uid, '-', tid));
+
+/* end of user action tracking */
+
 
 
 END //

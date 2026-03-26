@@ -1,0 +1,173 @@
+-- createTCCDiscussion
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS createTCCDiscussion //
+CREATE PROCEDURE createTCCDiscussion(source_row_id INT -- , country_code VARCHAR(5)
+-- , trueCountryCode varchar(5), opnCamp varchar(50)
+-- , CARTVAL VARCHAR(3), tid INT 
+)
+thisProc: BEGIN
+
+/*   
+01/31/2025 AST: Creating this proc as the first step towards incorporating the TCC in SFC
+
+Prereq: The Python prog written by chatGpt that fetches the latest news items from NGA
+- it also tags the item with Opinion Camp (oCamp). Then it creates a for and an opposite comment
+and also tags them with the oCamp. It saves these in the OPN_SFC_CONTENT 
+- Thus, when we call this proc (createSFCDiscussion), we know exactly what is going to be 
+the post, the comment 1 and comment 2
+- Taking these from the table itself, we will create the SFC content
+- We will assign it to the OPN_MAIN_BOTS bot/s as per their tagging (they have been already 
+tagged with th OCAMP attribute.
+DISCCART1 = THE L/H AS DECIDED BY THE CGPT FOR THE DISCUSSION INITIATOR
+DISCCART2 = THE OPPOSITE L/H FROM THE DISCCART1
+
+03/04/2025 Removed the filter that was put on the recency of the post for calling the userActionCommon 
+
+08/27/2025 AST: Trying to use OPN_USERLIST instead of OPN_MAIN_BOTS to create TCC discussions.
+It requires that we do not use TID in the WHERE clause for selecting the random BOTs as post and comment creators
+
+09/01/2025 AST: Moved up the UPDATE OPN_SFC_CONTENT SET CONVERTED_POST_ID = POSTID WHERE ROW_ID = source_row_id 
+right after the POST creation - because there is no point in prolonging it and other procs may depend on it.
+
+*/
+
+declare  DISCBYUID, MATCHKID, POSTID, CBYUID1, CBYUID2, KWEXIST, TID, CONVPOSTID INT;
+DECLARE DISCBYUNAME,fromTable, COMMENTER1, COMMENTER2, scr_src, scr_topic, scr_type, CONTCAMP, COMM1CAMP, COMM2CAMP VARCHAR(30) ;
+declare NDTM, CDTM DATETIME ;
+DECLARE DISCBYUUID, C1BYUUID, C2BYUUID VARCHAR(50) ;
+DECLARE SUSPUSER, LIKECODE, countryCode,  truecountrycode VARCHAR(5) ;
+DECLARE DISCCART1, DISCCART2, COMMENT1CART, COMMENT2CART VARCHAR(2) ;
+DECLARE URL, newsTitle, newsExcrpt, CMNT1, CMNT2 varchar(1000) ;
+
+SET NDTM = NOW() - INTERVAL FLOOR(3 + (RAND() * (40 - 3 + 1))) HOUR;
+
+ SELECT TOPICID, COUNTRY_CODE, TRUE_COUNTRY_CODE, CONTENT_TITLE, CASE WHEN CONTENT_TONE = 'LOVE' THEN 'L1' ELSE 'H1' END 
+ , CONTENT_CAMP, CONTENT_URL, COMMENT1_TEXT, COMMENT1_CAMP, CASE WHEN CONTENT_TONE = 'LOVE' THEN 'L1' ELSE 'H1' END
+ , COMMENT2_TEXT, COMMENT2_CAMP, CASE WHEN CONTENT_TONE = 'LOVE' THEN 'H1' ELSE 'L1' END, CONVERTED_POST_ID
+ , CASE WHEN CONTENT_DTM < NOW() - INTERVAL 48 HOUR THEN NDTM ELSE CONTENT_DTM END
+ INTO TID, countryCode, truecountrycode, newsTitle, DISCCART1
+ , CONTCAMP, URL, CMNT1, COMM1CAMP, COMMENT1CART
+ , CMNT2, COMM2CAMP, COMMENT2CART, CONVPOSTID, CDTM
+ FROM OPN_SFC_CONTENT WHERE ROW_ID = source_row_id ;
+ 
+IF IFNULL(CONVPOSTID, 0) <> 0 THEN
+
+-- SELECT CONCAT('REACHED HERE - ', CONVPOSTID) ;
+
+LEAVE thisproc ;
+
+ELSE 
+ 
+SELECT USERID, USERNAME, USER_UUID INTO DISCBYUID, DISCBYUNAME, DISCBYUUID FROM OPN_USERLIST 
+WHERE OPINION_CAMP IS NOT NULL AND COUNTRY_CODE = countryCode AND TRUE_COUNTRY_CODE = truecountrycode AND OPINION_CAMP = CONTCAMP ORDER BY RAND() LIMIT 1 ;
+
+SELECT USERID, USERNAME, USER_UUID INTO CBYUID1, COMMENTER1, C1BYUUID FROM OPN_USERLIST 
+WHERE OPINION_CAMP IS NOT NULL AND COUNTRY_CODE = countryCode AND TRUE_COUNTRY_CODE = truecountrycode AND OPINION_CAMP = CONTCAMP ORDER BY RAND() LIMIT 1 ;
+
+/* Comment2 comes into picture only if the discussion is controversial - for a non-contro - there is no opposing comment  */
+
+IF CMNT2 IS NOT NULL AND CMNT2 <> '' THEN 
+
+SELECT USERID, USERNAME, USER_UUID INTO CBYUID2, COMMENTER2, C2BYUUID FROM OPN_USERLIST 
+WHERE OPINION_CAMP IS NOT NULL AND COUNTRY_CODE = countryCode AND TRUE_COUNTRY_CODE = truecountrycode AND OPINION_CAMP = COMM2CAMP ORDER BY RAND() LIMIT 1 ;
+
+END IF ;
+
+-- SELECT UNAME ;
+
+-- LEAVE thisProc ;
+
+/* Adding user action logging portion */
+
+-- INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
+-- VALUES(UNAME, orig_uid, UUID, NOW(), 'createTCCDiscussion', CONCAT(tid,'-',country_code));
+
+/* end of use action tracking */
+/* DISCBYUNAME making the initial discussion post */
+
+INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, POST_URL, DEMO_POST_FLAG
+,EMBEDDED_CONTENT,EMBEDDED_FLAG, POSTOR_COUNTRY_CODE, POSTOR_TCC,MEDIA_CONTENT,MEDIA_FLAG, STP_PROC_NAME)
+VALUES (TID, CDTM, DISCBYUID, newsTitle, URL, 'N', '', 'N', countryCode, truecountrycode, '', 'N', 'TCC_DISCUSSION');
+
+SELECT MAX(POST_ID) INTO POSTID FROM OPN_POSTS WHERE POST_BY_USERID = DISCBYUID AND STP_PROC_NAME = 'TCC_DISCUSSION' AND POST_CONTENT = newsTitle ;
+
+/* Now update the OPN_SFC_CONTENT with the converted POST_ID  */
+
+UPDATE OPN_SFC_CONTENT SET CONVERTED_POST_ID = POSTID WHERE ROW_ID = source_row_id ;
+
+-- SELECT DISCBYUUID, 'POST', DISCCART1, POSTID ;
+-- LEAVE thisProc  ;
+
+/* DISCBYUNAME doing L/H to own post */
+
+CALL userActionCommon(DISCBYUUID, 'POST', DISCCART1, POSTID) ;
+
+/* DISCBYUNAME posting the URL of the discussion as a comment */
+
+INSERT INTO OPN_POST_COMMENTS_RAW 
+(CAUSE_POST_ID, POST_BY_USERID, TOPICID, COMMENT_SEQ, COMMENT_CONTENT, COMMENT_BY_USERID, COMMENT_BY_UNAME
+, PARENT_COMMENT_CONTENT, PARENT_COMMENT_BYUID, PARENT_COMMENT_UNAME, PARENT_MEDIA_CONTENT
+, PARENT_MEDIA_FLAG, PARENT_COMMENT_DTM
+,COMMENT_DTM,EMBEDDED_CONTENT,EMBEDDED_FLAG, COMMENT_TYPE, MEDIA_CONTENT, MEDIA_FLAG) 
+VALUES
+(POSTID, DISCBYUID, TID, 1, URL, DISCBYUID, DISCBYUNAME
+, URL, DISCBYUID, DISCBYUNAME, ''
+, 'N', NOW() - INTERVAL 10 minute
+, NOW() - INTERVAL 10 minute, '', 'N', 'CONP', '', 'N');
+
+/* Now, CBYUID1 matching the L/H of the original discussion */
+
+/* FIRST CHECK IF THE CBYUID1, DUE TO THE RANDOM SELECTION - IS NOT THE SAME AS DISCBYUID - IF IT IS THEN WE DON'T NEED THE 
+userActionCommon CALL BELOW */
+
+IF CBYUID1 <> DISCBYUID THEN
+
+CALL userActionCommon(C1BYUUID, 'POST', DISCCART1, POSTID) ;
+
+END IF ;
+
+/* Now, CBYUID1 making the first comment that supports the original discussion and matches its L/H  */
+
+INSERT INTO OPN_POST_COMMENTS_RAW 
+(CAUSE_POST_ID, POST_BY_USERID, TOPICID, COMMENT_SEQ, COMMENT_CONTENT, COMMENT_BY_USERID, COMMENT_BY_UNAME
+, PARENT_COMMENT_CONTENT, PARENT_COMMENT_BYUID, PARENT_COMMENT_UNAME, PARENT_MEDIA_CONTENT
+, PARENT_MEDIA_FLAG, PARENT_COMMENT_DTM
+,COMMENT_DTM,EMBEDDED_CONTENT,EMBEDDED_FLAG, COMMENT_TYPE, MEDIA_CONTENT, MEDIA_FLAG) 
+VALUES
+(POSTID, DISCBYUID, TID, 1, CMNT1, CBYUID1, COMMENTER1
+, CMNT1, CBYUID1, COMMENTER1, ''
+, 'N', NOW() - INTERVAL 8 minute
+, NOW() - INTERVAL 8 minute, '', 'N', 'CONP', '', 'N');
+
+/* Now, entering the handling of CMNT2 - only if CMNT2 is not null */
+
+IF CMNT2 IS NOT NULL AND CMNT2 <> '' THEN 
+
+/* First, call the userActionCommon for the opposing view */
+
+CALL userActionCommon(C2BYUUID, 'POST', COMMENT2CART, POSTID) ;
+
+/* Then CBYUID2 makes CMNT2 on the post */
+
+INSERT INTO OPN_POST_COMMENTS_RAW 
+(CAUSE_POST_ID, POST_BY_USERID, TOPICID, COMMENT_SEQ, COMMENT_CONTENT, COMMENT_BY_USERID, COMMENT_BY_UNAME
+, PARENT_COMMENT_CONTENT, PARENT_COMMENT_BYUID, PARENT_COMMENT_UNAME, PARENT_MEDIA_CONTENT
+, PARENT_MEDIA_FLAG, PARENT_COMMENT_DTM
+,COMMENT_DTM,EMBEDDED_CONTENT,EMBEDDED_FLAG, COMMENT_TYPE, MEDIA_CONTENT, MEDIA_FLAG) 
+VALUES
+(POSTID, DISCBYUID, TID, 1, CMNT2, CBYUID2, COMMENTER2
+, CMNT2, CBYUID2, COMMENTER2, ''
+, 'N', NOW() - INTERVAL 5 minute
+, NOW() - INTERVAL 5 minute, '', 'N', 'CONP', '', 'N');
+
+END IF ;
+
+/* Below: ending the very first IF - to skip the scrapes that have already been convrted to Posts. */
+
+END IF ;
+
+END; //
+ DELIMITER ;
+ 
+ -- 

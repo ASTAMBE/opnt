@@ -12,6 +12,7 @@ thisproc: BEGIN
     02/23/2021 AST: Removing the AND OUC.TOPICID = topicid from the portion that checks for
     already existing keyids in the cart - this condition was redundent earlier (in single search)
     Now it is actually causing dupes. so removing it in all segments of the code
+    10/14/2024 AST: Going back to topic-specific search results - by adding  AND K.TOPICID = topicid
  */
 
 declare  orig_uid INT;
@@ -39,7 +40,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'A' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE  IN ('GGG')
+        WHERE  K.COUNTRY_CODE  IN ('GGG') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid )
      /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -51,7 +52,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'B' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE K.COUNTRY_CODE  IN ('USA')
+        WHERE K.COUNTRY_CODE  IN ('USA') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -63,7 +64,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'C' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE K.COUNTRY_CODE  NOT IN ('USA', 'GGG')
+        WHERE K.COUNTRY_CODE  NOT IN ('USA', 'GGG') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -79,7 +80,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'A' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE K.COUNTRY_CODE  IN ('USA')
+        WHERE K.COUNTRY_CODE  IN ('USA') AND K.TOPICID = topicid
     AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid   )
          /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -91,7 +92,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'B' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE  IN ('GGG')
+        WHERE  K.COUNTRY_CODE  IN ('GGG') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -103,7 +104,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'C' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE  NOT IN ('USA', 'GGG')
+        WHERE  K.COUNTRY_CODE  NOT IN ('USA', 'GGG') AND K.TOPICID = topicid
           AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -119,7 +120,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'A' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE  IN (country_code)
+        WHERE  K.COUNTRY_CODE  IN (country_code) AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -131,7 +132,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'B' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE  IN ('GGG')
+        WHERE  K.COUNTRY_CODE  IN ('GGG') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -143,7 +144,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'C' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE IN ('USA')
+        WHERE  K.COUNTRY_CODE IN ('USA') AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )
@@ -155,7 +156,7 @@ SELECT bringTopicfromTID(K.TOPICID) TNAME, K.TOPICID, K.KEYID, K.KEYWORDS, 'D' Q
 , SUM(CASE WHEN CART = 'L' THEN 1 ELSE 0 END) LCOUNT, SUM(1) TCOUNT
 FROM OPN_P_KW K LEFT OUTER JOIN OPN_USER_CARTS UC
 ON K.KEYID = UC.KEYID
-        WHERE  K.COUNTRY_CODE NOT IN ('USA', 'GGG', country_code)
+        WHERE  K.COUNTRY_CODE NOT IN ('USA', 'GGG', country_code)  AND K.TOPICID = topicid
                      AND K.KEYID NOT IN (SELECT OUC.KEYID FROM OPN_USER_CARTS OUC WHERE OUC.USERID = orig_uid  )
                           /* start of filtering out the Private KWs - in each non-cart UNION below */
       AND K.KEYID NOT IN (SELECT KW.KEYID FROM OPN_P_KW KW WHERE KW.PRIVATE_KW_FLAG = 'Y' )

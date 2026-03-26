@@ -1,0 +1,78 @@
+-- TCC Analysis: Preparing to include more TCCs for discussions and assigning main bots for discussions creation
+
+SELECT * FROM OPN_SFC_CONTENT WHERE TOPICID = 2 AND TRUE_COUNTRY_CODE = 'USA' ORDER BY ROW_ID DESC ;
+SELECT * FROM OPN_SFC_CONTENT WHERE CONVERTED_POST_ID IS NULL ORDER BY ROW_ID DESC ;
+
+/* How does TCC work ? 
+createTCCDiscussion uses: 1. TOPICID, TRUE_COUNTRY_CODE, OPINION_CAMP to select the bots who will post the discussions
+Hence: 1 We should first designate certain bot users from OPN_USERLIST as TCC BOTS for that specific TCC. 
+2. we also need to have roughly equal number of this TCC's bots assigned to the two CAMPs
+3. Then we should change their usernames to reflect the TCC and their commonly found names
+4. Then we should INSERT into OPN_MAIN_BOTS these users for all 5 discussion interests - keeping their USERNAME and CAMP intact
+
+*/
+SELECT TRUE_COUNTRY_CODE, COUNT(1) FROM OPN_USERLIST WHERE BOT_FLAG = 'Y' GROUP BY TRUE_COUNTRY_CODE ORDER BY 1 ;
+SELECT TCCODE, COUNT(DISTINCT USERID) FROM OPN_MAIN_BOTS GROUP BY TCCODE ;
+SELECT topicid, COUNT(1) FROM OPN_USERLIST WHERE BOT_FLAG = 'Y'  GROUP BY TOPICID ORDER BY 1 ;
+
+SELECT USERNAME, USERID, TRUE_COUNTRY_CODE, OPINION_CAMP FROM OPN_USERLIST WHERE TRUE_COUNTRY_CODE IN ('UGA', 'NGA') AND BOT_FLAG= 'Y' ;
+SELECT TRUE_COUNTRY_CODE, OPINION_CAMP, COUNT(1) FROM OPN_USERLIST WHERE  BOT_FLAG= 'Y' GROUP BY TRUE_COUNTRY_CODE, OPINION_CAMP ORDER BY 1, 2 ;
+
+SELECT USERID, USERNAME, COUNTRY_CODE, TRUE_COUNTRY_CODE, OPINION_CAMP
+FROM OPN_USERLIST WHERE TRUE_COUNTRY_CODE IS NULL AND COUNTRY_CODE = 'GGG' AND BOT_FLAG= 'Y' AND USERID NOT IN (SELECT USERID FROM OPN_MAIN_BOTS) LIMIT 60 ;
+
+CALL update_gha_bots_proc() ;
+
+-- Now that GHA BOTs with TCC and OCAMP have been designated with real UNAMES, time to insert them into OPN_MAIN_BOTS - do we insert all or only a few ?
+-- Looks like, we INSERT only a third of them, the rest are kept for INSTREAM? 
+
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'opntprodd' AND TABLE_NAME LIKE '%BOT%' ;
+
+-- WHAT IS COMMON BETWEEN OPN_MAIN_BOTS AND OPN_XYZNEWS_BOTS ?
+SELECT COUNT(DISTINCT USERID) FROM OPN_XYZNEWS_BOTS;
+
+-- based on this, we should convert all the TCC bots into MAIN bots. Let's begin with GHA
+SELECT DISTINCT TOPICID, KEYID, TOPICNAME FROM OPN_MAIN_BOTS WHERE TCCODE = 'NGA' ORDER BY 1;
+
+INSERT INTO OPN_MAIN_BOTS(USERID, USER_UUID, USERNAME, TOPICID, TOPICNAME, CCODE, TCCODE, OPINION_CAMP)
+SELECT U.USERID, U.USER_UUID, U.USERNAME, T.TOPICID, T.TOPICNAME, U.COUNTRY_CODE, U.TRUE_COUNTRY_CODE, U.OPINION_CAMP
+FROM OPN_USERLIST U, (SELECT DISTINCT TOPICID, KEYID, TOPICNAME FROM OPN_MAIN_BOTS WHERE TCCODE = 'NGA') T
+WHERE U.TRUE_COUNTRY_CODE = 'GHA' AND U.BOT_FLAG = 'Y' ;
+
+/* Final checklist to see if a TCC is ready to build discussions:
+1. It needs to have BOTs in OPN_USERLIST  with assigned OPINION_CAMPs
+2. At least some of these bots must be present in OPN_MAIN_BOTS with XYZ KIDs in their carts - also cross check if the OPN_MAIN_BOTS entries are matching with these BOTs actual CARTs
+	KEYIDs: 105087, 105654, 105108, 105653, 105655, 105089
+3. The desired TCC's scrapes are present in the OPN_SFC_CONTENT  table - for all the 5 TIDs 
+*/
+
+SELECT USERID, COUNT(1) FROM OPN_MAIN_BOTS WHERE TCCODE = 'GHA' GROUP BY USERID ;
+-- NOW CHECK IF THESE USERS ALSO HAVE THE XYZ KIDs IN THEIR CARTS
+SELECT C.USERID, COUNT(DISTINCT C.KEYID) FROM OPN_USER_CARTS C WHERE C.USERID IN (SELECT DISTINCT USERID FROM OPN_MAIN_BOTS WHERE TCCODE = 'GHA') 
+AND C.KEYID IN (SELECT DISTINCT KEYID FROM OPN_MAIN_BOTS WHERE TCCODE = 'GHA') GROUP BY USERID ;
+
+SELECT * FROM OPN_USER_CARTS WHERE USERID IN (1020579, 1020583, 1020584) AND KEYID IN (105087, 105654, 105108, 105653, 105655, 105089) ;
+
+SELECT * FROM OPN_P_KW WHERE NEWS_ONLY_FLAG = 'Y' ORDER BY TOPICID;
+SELECT COUNT(1) FROM OPN_P_KW ;
+
+-- the process of old CART deletion for BOTs needs to be run every month or so.
+
+DELETE FROM OPN_USER_CARTS WHERE USERID IN ( SELECT USERID FROM OPN_USERLIST WHERE BOT_FLAG = 'Y') 
+AND KEYID NOT IN (105087, 105654, 105108, 105653, 105655, 105089) AND CREATION_DTM < NOW() - INTERVAL 30 DAY ;
+
+-- Now we make sure that all the MAIN BOTs have all the 6 XYZ KEYIDs
+
+SELECT USERID, COUNT(1) FROM OPN_MAIN_BOTS WHERE KEYID IN (105087, 105654, 105108, 105653, 105655, 105089) GROUP BY USERID HAVING COUNT(1) = 1 ;
+
+/* WHY each MAIN BOT is not assigned with each of the XYZ KEYs ? Are MAIN BOTs supposed to make the network only with non-XYZ KWs ?
+What was the design difference envisaged between MAIN BOTs and XYZ BOTs
+Are XYZ BOTs exclusively used for INSTEAM while MAIN BOTs for the Discussions ?
+If the new user is not assigned the XYZ KWs, will he not get very little content ?
+Should we even persist with the Instream at all ?
+what if we have only the discussions - and all the BOTs (no distinction betwn MAIN or XYZ)) - are alwasy given the XYZ KEYs 
+
+*/
+SELECT * FROM OPN_SFC_CONTENT WHERE TRUE_COUNTRY_CODE = 'NGA' AND TOPICID = 1 ORDER BY ROW_ID DESC ;
+SELECT * FROM OPN_POSTS WHERE POST_ID IN (1626183, 1626182) ;
+SELECT * FROM OPN_P_KW WHERE KEYID IN (255906, 255907) ;

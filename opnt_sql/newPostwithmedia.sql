@@ -16,14 +16,14 @@ Also Adding DEMO_POST_FLAG = 'N'
 08/11/2020 Kapil: Confirmed
 
  04/15/2021 AST: Adding code to disable the suspended user from using this proc
- 
+ 05/29/2025 AST: Adding TCC to the proc
 */
 
 declare  orig_uid INT;
 DECLARE UNAME VARCHAR(30) ;
-DECLARE CCODE, SUSPUSER VARCHAR(5) ;
+DECLARE CCODE, TCC, SUSPUSER VARCHAR(5) ;
 
-SELECT OU.USERID, OU.USERNAME, OU.COUNTRY_CODE, OU.USER_SUSPEND_FLAG INTO orig_uid, UNAME, CCODE, SUSPUSER
+SELECT OU.USERID, OU.USERNAME, OU.COUNTRY_CODE, OU.TRUE_COUNTRY_CODE, OU.USER_SUSPEND_FLAG INTO orig_uid, UNAME, CCODE, TCC, SUSPUSER
 FROM OPN_USERLIST OU WHERE OU.USER_UUID = userid ;
 
 SET NAMES UTF8mb4;
@@ -31,7 +31,7 @@ SET NAMES UTF8mb4;
 /* Adding user action logging portion */
 
 INSERT INTO OPN_USER_BHV_LOG(USERNAME, USERID, USER_UUID, LOGIN_DTM, API_CALL, CONCAT_PARAMS)
-VALUES(UNAME, orig_uid, userid, NOW(), 'newPostwithmedia', CONCAT(topicid,'-',CCODE));
+VALUES(UNAME, orig_uid, userid, NOW(), 'newPostwithmedia', CONCAT(topicid,'-',TCC));
 
 
 /* end of use action tracking */
@@ -41,9 +41,9 @@ CASE WHEN SUSPUSER = 'Y' THEN LEAVE thisProc ;
 WHEN SUSPUSER = 'N' THEN
 
 INSERT INTO OPN_POSTS_RAW(TOPICID, POST_DATETIME, POST_BY_USERID, POST_CONTENT, DEMO_POST_FLAG
-,EMBEDDED_CONTENT,EMBEDDED_FLAG, POSTOR_COUNTRY_CODE,MEDIA_CONTENT,MEDIA_FLAG)
+,EMBEDDED_CONTENT,EMBEDDED_FLAG, POSTOR_COUNTRY_CODE, POSTOR_TCC, MEDIA_CONTENT,MEDIA_FLAG)
 VALUES (topicid, NOW(), orig_uid, message, 'N'
-, embedded_content, embedded_flag, CCODE, media_content, media_flag);
+, embedded_content, embedded_flag, CCODE, TCC, media_content, media_flag);
 
 END CASE ;
 
